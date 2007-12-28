@@ -15,7 +15,6 @@ namespace libeveapi
 
         public XmlDocument GetCharacterListXml(string userId, string apiKey, string characterId)
         {
-            WebRequestState wrs = new WebRequestState();
             string url = APIBASE + apiCharListUrl;
             string postData = "userid=" + userId + "&apiKey=" + apiKey;
 
@@ -25,12 +24,18 @@ namespace libeveapi
                 return cachedResult;
             }
 
+            XmlResponse xmlResponse = GetXmlResponse(url, postData);
+            cache.Set(url + postData, xmlResponse);
+            return xmlResponse.XmlDoc;
+        }
+
+        private XmlResponse GetXmlResponse(string url, string postData)
+        {
+            WebRequestState wrs = new WebRequestState();
             wrs.SetPost(postData);
             XmlDocument xmlDoc = EVEMonWebRequest.LoadXml(url, wrs);
             DateTime cachedUntilUTC = GetCacheExpiryUTC(xmlDoc);
-            XmlResponse xmlResponse = new XmlResponse(DateTime.Now.ToUniversalTime(), cachedUntilUTC, xmlDoc);
-            cache.Set(url + postData, xmlResponse);
-            return xmlDoc;
+            return new XmlResponse(DateTime.Now.ToUniversalTime(), cachedUntilUTC, xmlDoc);
         }
 
         /// <summary>
