@@ -12,9 +12,42 @@ namespace libeveapi
         private static string apiCharListUrl = "/Characters.xml";
         private static string characterSheetUrl = "/CharacterSheet.xml";
         private static string skillInTrainingUrl = "/SkillInTraining.xml";
+        private static string charAccountBalanceUrl = "/char/AccountBalance.xml";
+        private static string corpAccountBalanceUrl = "/corp/AccountBalance.xml";
 
         private Cache cache = Cache.GetInstance();
 
+        public enum AccountBalanceType
+        {
+            Char,
+            Corp
+        }
+
+        public XmlDocument GetAccountBalance(string userId, string fullApiKey, string characterId, AccountBalanceType accountBalanceType)
+        {
+            string url = APIBASE;
+            if (accountBalanceType == AccountBalanceType.Char)
+            {
+                url += charAccountBalanceUrl;
+            }
+            else
+            {
+                url += corpAccountBalanceUrl;
+            }
+
+            string postData = "userid=" + userId + "&apiKey=" + fullApiKey;
+
+            XmlDocument cachedResult = cache.Get(url + postData);
+            if (cachedResult != null)
+            {
+                return cachedResult;
+            }
+
+            XmlResponse xmlResponse = GetXmlResponse(url, postData);
+            cache.Set(url + postData, xmlResponse);
+            return xmlResponse.XmlDoc;
+        }
+        
         public XmlDocument GetCharacterListXml(string userId, string apiKey, string characterId)
         {
             string url = APIBASE + apiCharListUrl;
