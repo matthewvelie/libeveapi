@@ -10,6 +10,8 @@ namespace libeveapi
     {
         private static string APIBASE = "http://exa-nation.com/api";
         private static string apiCharListUrl = "/Characters.xml";
+        private static string characterSheetUrl = "/CharacterSheet.xml";
+        private static string skillInTrainingUrl = "/SkillInTraining.xml";
 
         private Cache cache = Cache.GetInstance();
 
@@ -17,6 +19,38 @@ namespace libeveapi
         {
             string url = APIBASE + apiCharListUrl;
             string postData = "userid=" + userId + "&apiKey=" + apiKey;
+
+            XmlDocument cachedResult = cache.Get(url + postData);
+            if (cachedResult != null)
+            {
+                return cachedResult;
+            }
+
+            XmlResponse xmlResponse = GetXmlResponse(url, postData);
+            cache.Set(url + postData, xmlResponse);
+            return xmlResponse.XmlDoc;
+        }
+
+        public XmlDocument GetCharacterSheet(string userId, string apiKey, string characterId)
+        {
+            string url = APIBASE + characterSheetUrl;
+            string postData = "userID=" + userId + "&apiKey=" + apiKey + "&characterID=" + characterId;
+
+            XmlDocument cachedResult = cache.Get(url + postData);
+            if (cachedResult != null)
+            {
+                return cachedResult;
+            }
+
+            XmlResponse xmlResponse = GetXmlResponse(url, postData);
+            cache.Set(url + postData, xmlResponse);
+            return xmlResponse.XmlDoc;
+        }
+        
+        public XmlDocument GetSkillInTrainingXml(string userId, string apiKey, string characterId)
+        {
+            string url = APIBASE + skillInTrainingUrl;
+            string postData = "userID=" + userId + "&apiKey=" + apiKey + "&characterID=" + characterId;
 
             XmlDocument cachedResult = cache.Get(url + postData);
             if (cachedResult != null)
