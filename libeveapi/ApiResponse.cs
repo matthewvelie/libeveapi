@@ -10,6 +10,7 @@ namespace libeveapi
         public string Url;
         public DateTime CurrentTime;
         public DateTime CachedUntil;
+        public DateTime CachedUntilLocal;
         public XmlDocument ResponseXml;
 
         public void ParseCommonElements(XmlDocument xmlDoc)
@@ -17,6 +18,9 @@ namespace libeveapi
             DateTime.TryParse(xmlDoc.GetElementsByTagName("currentTime")[0].InnerText, out this.CurrentTime);
             DateTime.TryParse(xmlDoc.GetElementsByTagName("cachedUntil")[0].InnerText, out this.CachedUntil);
             this.ResponseXml = xmlDoc;
+
+            TimeSpan cachedTimeSpan = CachedUntil.Subtract(CurrentTime);
+            this.CachedUntilLocal = DateTime.Now.Add(cachedTimeSpan);
 
             XmlNodeList errors = xmlDoc.GetElementsByTagName("error");
             if (errors.Count > 0)
