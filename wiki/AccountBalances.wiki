@@ -1,0 +1,47 @@
+=== Description ===
+Returns the ISK balance of a character or corporation.
+
+=== EveApi Call ===
+{{{
+/// <summary>
+/// Returns the ISK balance of a corporation or character
+/// </summary>
+/// <param name="accountBalanceType">retrieve balance for character or corporation</param>
+/// <param name="userId">user ID of account for authentication</param>
+/// <param name="characterId">
+/// For character balance: The character you are requesting data for
+/// For corporation balance: Character ID of a char with director/CEO access in the corp you want the balance for
+/// </param>
+/// <param name="fullApiKey">Full access api key of account</param>
+/// <returns></returns>
+public static AccountBalance GetAccountBalance(AccountBalanceType accountBalanceType, string userId, string characterId, string fullApiKey)
+}}}
+
+=== Result ===
+* AccountBalance Object *
+|| Member || Type || Description ||
+|| Url || string || The url used to make this request ||
+|| CurrentTime || DateTime || The currentTime timestamp from the XML Response in CCP time ||
+|| CachedUntil || DateTime || The cachedUntil timestamp from the XML Response in CCP time ||
+|| CachedUntilLocal || DateTime || The cachedUntil timestamp in local time ||
+|| CurrentTimeLocal || DateTime || The currentTime timestamp in local time ||
+|| ResponseXml || XmlDocument || The XML response from CCP ||
+|| Accounts || AccountBalanceItem[] || The accounts associated with this character or corporation ||
+
+* AccountBalanceItem Object *
+|| Member || Type || Description ||
+|| AccountId || string || ID number of the account ||
+|| AccountKey || string || Account Identifier. For Characters: always 1000. For Corp: the wallet division ||
+|| Balance || double || The amount of ISK in the account ||
+
+=== Example ===
+{{{
+public static void PrintAccounts()
+{
+    AccountBalance accountBalance = EveApi.GetAccountBalance(AccountBalanceType.Corporation, "userId", "characterId", "fullApiKey");
+    foreach (AccountBalanceItem abi in accountBalance.Accounts)
+    {
+        Console.WriteLine("id: {0} key: {1} balance: {2}", abi.AccountId, abi.AccountKey, abi.Balance);
+    }
+}
+}}}
