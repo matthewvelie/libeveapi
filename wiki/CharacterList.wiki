@@ -13,7 +13,7 @@ public static CharacterList GetAccountCharacters(string userId, string apiKey)
 }}}
 
 === Result ===
-* CharacterList Object (See ApiResult for inherited members) *
+* CharacterList Object (See ApiResponse for inherited members) *
 || Member || Type || Description ||
 || CharacterListItems || CharacterListItem[] || The characters from this list ||
 
