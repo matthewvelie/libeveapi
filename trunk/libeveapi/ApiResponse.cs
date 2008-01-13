@@ -7,6 +7,7 @@ using System.Xml.Serialization;
 namespace libeveapi
 {
     [XmlInclude(typeof(CharacterList))]
+    [XmlInclude(typeof(AccountBalance))]
     public class ApiResponse
     {
         [XmlElement]

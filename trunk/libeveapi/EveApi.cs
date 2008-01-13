@@ -30,6 +30,43 @@ namespace libeveapi
 
             return characterList;
         }
+
+        /// <summary>
+        /// Returns the ISK balance of a corporation or character
+        /// </summary>
+        /// <param name="accountBalanceType">retrieve balance for character or corporation</param>
+        /// <param name="userId">user ID of account for authentication</param>
+        /// <param name="characterId">
+        /// For character balance: The character you are requesting data for
+        /// For corporation balance: Character ID of a char with director/CEO access in the corp you want the balance for
+        /// </param>
+        /// <param name="apiKey">Full access api key of account</param>
+        /// <returns></returns>
+        public AccountBalance GetAccountBalance(AccountBalanceType accountBalanceType, string userId, string characterId, string apiKey)
+        {
+            string url = string.Empty;
+            if (accountBalanceType == AccountBalanceType.Character)
+            {
+                url = "http://localhost/eveapi/CharAccountBalance.xml";
+            }
+            else if (accountBalanceType == AccountBalanceType.Corporation)
+            {
+                url = "http://localhost/eveapi/CorpAccountBalance.xml";
+            }
+
+            ApiResponse cachedResponse = ResponseCache.Get(url);
+            if (cachedResponse != null)
+            {
+                return cachedResponse as AccountBalance;
+            }
+
+            XmlDocument xmlDoc = Network.GetXml(url);
+            AccountBalance accountBalance = AccountBalance.FromXmlDocument(xmlDoc);
+            accountBalance.Url = url;
+            ResponseCache.Set(url, accountBalance);
+
+            return accountBalance;
+        }
     }
 
     /// <summary>
