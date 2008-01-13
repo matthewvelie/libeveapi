@@ -13,8 +13,7 @@ namespace UnitTests
         [Test]
         public void GetCharAccountBalanceTest()
         {
-            EveApi eveApi = new EveApi();
-            AccountBalance accountBalance = eveApi.GetAccountBalance(AccountBalanceType.Character, "userId", "charId", "apiKey");
+            AccountBalance accountBalance = EveApi.GetAccountBalance(AccountBalanceType.Character, "userId", "charId", "apiKey");
 
             Assert.AreEqual(1, accountBalance.Accounts.Length);
             Assert.AreEqual("4807144", accountBalance.Accounts[0].AccountId);
@@ -25,8 +24,7 @@ namespace UnitTests
         [Test]
         public void GetCorpAccountBalanceTest()
         {
-            EveApi eveApi = new EveApi();
-            AccountBalance accountBalance = eveApi.GetAccountBalance(AccountBalanceType.Corporation, "userId", "charId", "apiKey");
+            AccountBalance accountBalance = EveApi.GetAccountBalance(AccountBalanceType.Corporation, "userId", "charId", "apiKey");
 
             Assert.AreEqual(7, accountBalance.Accounts.Length);
             
@@ -46,10 +44,9 @@ namespace UnitTests
         [Test]
         public void AccountPersist()
         {
-            EveApi eveApi = new EveApi();
             ResponseCache.Clear();
 
-            AccountBalance accountBalance = eveApi.GetAccountBalance(AccountBalanceType.Corporation, "userId", "charId", "apiKey");
+            AccountBalance accountBalance = EveApi.GetAccountBalance(AccountBalanceType.Corporation, "userId", "charId", "apiKey");
             ResponseCache.SaveToFile("ResponseCache.xml");
             ResponseCache.Clear();
             ResponseCache.LoadFromFile("ResponseCache.xml");

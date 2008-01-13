@@ -11,9 +11,7 @@ namespace Tests
     {
         static void Main(string[] args)
         {
-            EveApi eveApi = new EveApi();
-
-            CharacterList characterList = eveApi.GetAccountCharacters("asdf", "asdf");
+            CharacterList characterList = EveApi.GetAccountCharacters("asdf", "asdf");
             Console.WriteLine(characterList.CachedUntil);
             foreach (Character character in characterList.Characters)
             {
