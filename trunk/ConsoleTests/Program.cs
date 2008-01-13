@@ -11,9 +11,15 @@ namespace Tests
     {
         static void Main(string[] args)
         {
-            XmlDocument xmlDoc = Network.GetXml("http://localhost/eveapi/StarbaseDetail.xml");
-            XmlNodeList nodeList = xmlDoc.SelectNodes("//rowset[@name='fuel']/row");
-            Console.WriteLine(nodeList.Count);
+            ResponseCache.Clear();
+            ErrorList errorList = EveApi.GetErrorList();
+
+            ResponseCache.SaveToFile("ResponseCache.xml");
+            ResponseCache.Clear();
+            ResponseCache.LoadFromFile("ResponseCache.xml");
+
+            ErrorList cachedErrorList = ResponseCache.Get(errorList.Url) as ErrorList;
+            Console.WriteLine(cachedErrorList.GetMessageForErrorCode("100"));
         }
     }
 }

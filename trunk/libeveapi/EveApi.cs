@@ -123,6 +123,28 @@ namespace libeveapi
         }
 
         /// <summary>
+        /// Returns a list of error codes that can be returned by the EVE API servers
+        /// </summary>
+        /// <returns></returns>
+        public static ErrorList GetErrorList()
+        {
+            string url = String.Format("{0}{1}?version=2", Constants.ApiPrefix, Constants.ErrorList);
+
+            ApiResponse cachedResponse = ResponseCache.Get(url);
+            if (cachedResponse != null)
+            {
+                return cachedResponse as ErrorList;
+            }
+
+            XmlDocument xmlDoc = Network.GetXml(url);
+            ErrorList errorList = ErrorList.FromXmlDocument(xmlDoc);
+            errorList.Url = url;
+            ResponseCache.Set(url, errorList);
+
+            return errorList;
+        }
+
+        /// <summary>
         /// Convert a CCP DateTime to local time
         /// </summary>
         /// <param name="ccpCurrentTime">CCP server current datetime</param>
