@@ -4,7 +4,7 @@
  # === API Calls ===
   * Account Balances
   * Asset List
-  * [CharacterList] Character List
+  * [CharacterList Character List]
   * Error List
   * Starbase (POS) Details
   * Starbase (POS) List
