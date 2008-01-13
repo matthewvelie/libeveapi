@@ -12,7 +12,7 @@ namespace libeveapi
         public DateTime CachedUntil;
         public XmlDocument ResponseXml;
 
-        protected void ParseCommonElements(XmlDocument xmlDoc)
+        public void ParseCommonElements(XmlDocument xmlDoc)
         {
             DateTime.TryParse(xmlDoc.GetElementsByTagName("currentTime")[0].InnerText, out this.CurrentTime);
             DateTime.TryParse(xmlDoc.GetElementsByTagName("cachedUntil")[0].InnerText, out this.CachedUntil);
