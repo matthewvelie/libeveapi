@@ -73,9 +73,9 @@ namespace libeveapi
         /// </summary>
         /// <param name="userId">user ID of account for authentication</param>
         /// <param name="characterId">Character ID of a char with director/CEO access in the corp you want the starbases for</param>
-        /// <param name="apiKey">Full access api key of account</param>
+        /// <param name="fullApiKey">Full access api key of account</param>
         /// <returns></returns>
-        public static StarbaseList GetStarbaseList(string userId, string characterId, string apiKey)
+        public static StarbaseList GetStarbaseList(string userId, string characterId, string fullApiKey)
         {
             string url = "http://localhost/eveapi/StarbaseList.xml";
 
@@ -91,6 +91,32 @@ namespace libeveapi
             ResponseCache.Set(url, starbaseList);
 
             return starbaseList;
+        }
+
+        /// <summary>
+        /// Returns the settings and fuel status of a starbase
+        /// </summary>
+        /// <param name="userId">user ID of account for authentication</param>
+        /// <param name="characterId">Character ID of a char with director/CEO access in the corp that owns the starbase</param>
+        /// <param name="fullApiKey">Full access api key of account</param>
+        /// <param name="itemId">Item ID of the starbase as given in the starbase list</param>
+        /// <returns></returns>
+        public static StarbaseDetail GetStarbaseDetail(string userId, string characterId, string fullApiKey, string itemId)
+        {
+            string url = "http://localhost/eveapi/StarbaseDetail.xml";
+
+            ApiResponse cachedResponse = ResponseCache.Get(url);
+            if (cachedResponse != null)
+            {
+                return cachedResponse as StarbaseDetail;
+            }
+
+            XmlDocument xmlDoc = Network.GetXml(url);
+            StarbaseDetail starbaseDetail = StarbaseDetail.FromXmlDocument(xmlDoc);
+            starbaseDetail.Url = url;
+            ResponseCache.Set(url, starbaseDetail);
+
+            return starbaseDetail;
         }
 
         /// <summary>

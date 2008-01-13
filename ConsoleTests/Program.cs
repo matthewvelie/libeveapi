@@ -11,7 +11,9 @@ namespace Tests
     {
         static void Main(string[] args)
         {
-            
+            XmlDocument xmlDoc = Network.GetXml("http://localhost/eveapi/StarbaseDetail.xml");
+            XmlNodeList nodeList = xmlDoc.SelectNodes("//rowset[@name='fuel']/row");
+            Console.WriteLine(nodeList.Count);
         }
     }
 }
