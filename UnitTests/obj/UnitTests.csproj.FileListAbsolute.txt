@@ -1,0 +1,10 @@
+D:\Projects\libeveapi\UnitTests\bin\Release\UnitTests.dll
+D:\Projects\libeveapi\UnitTests\bin\Release\UnitTests.pdb
+D:\Projects\libeveapi\UnitTests\obj\Release\ResolveAssemblyReference.cache
+D:\Projects\libeveapi\UnitTests\obj\Release\UnitTests.dll
+D:\Projects\libeveapi\UnitTests\obj\Release\UnitTests.pdb
+D:\Projects\libeveapi\UnitTests\bin\Debug\UnitTests.dll
+D:\Projects\libeveapi\UnitTests\bin\Debug\UnitTests.pdb
+D:\Projects\libeveapi\UnitTests\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\libeveapi\UnitTests\obj\Debug\UnitTests.dll
+D:\Projects\libeveapi\UnitTests\obj\Debug\UnitTests.pdb
