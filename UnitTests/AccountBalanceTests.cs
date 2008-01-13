@@ -28,7 +28,7 @@ namespace UnitTests
 
             Assert.AreEqual(7, accountBalance.Accounts.Length);
             
-            Account account;
+            AccountBalanceItem account;
 
             account = accountBalance.Accounts[0];
             Assert.AreEqual("4759", account.AccountId);

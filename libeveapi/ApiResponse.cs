@@ -24,6 +24,9 @@ namespace libeveapi
         public DateTime CachedUntil;
 
         [XmlElement]
+        public DateTime CurrentTimeLocal;
+
+        [XmlElement]
         public DateTime CachedUntilLocal;
 
         [XmlElement]
@@ -37,6 +40,8 @@ namespace libeveapi
 
             TimeSpan cachedTimeSpan = CachedUntil.Subtract(CurrentTime);
             this.CachedUntilLocal = DateTime.Now.Add(cachedTimeSpan);
+
+            this.CurrentTimeLocal = EveApi.CCPDateTimeToLocal(this.CurrentTime, this.CurrentTime);
 
             XmlNodeList errors = xmlDoc.GetElementsByTagName("error");
             if (errors.Count > 0)
