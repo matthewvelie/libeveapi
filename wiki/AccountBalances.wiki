@@ -26,7 +26,7 @@ public static AccountBalance GetAccountBalance(AccountBalanceType accountBalance
 || CachedUntilLocal || DateTime || The cachedUntil timestamp in local time ||
 || CurrentTimeLocal || DateTime || The currentTime timestamp in local time ||
 || ResponseXml || XmlDocument || The XML response from CCP ||
-|| Accounts || AccountBalanceItem[] || The accounts associated with this character or corporation ||
+|| AccountBalanceItems || AccountBalanceItem[] || The accounts associated with this character or corporation ||
 
 * AccountBalanceItem Object *
 || Member || Type || Description ||
@@ -34,12 +34,17 @@ public static AccountBalance GetAccountBalance(AccountBalanceType accountBalance
 || AccountKey || string || Account Identifier. For Characters: always 1000. For Corp: the wallet division ||
 || Balance || double || The amount of ISK in the account ||
 
+* AccountBalanceType Enumeration *
+|| Member || Value || Description ||
+|| Character || - || Retrieve the account balances for the specified characterID ||
+|| Corporation || - || Retrieve the account balances for the characterID's corporation ||
+
 === Example ===
 {{{
 public static void PrintAccounts()
 {
     AccountBalance accountBalance = EveApi.GetAccountBalance(AccountBalanceType.Corporation, "userId", "characterId", "fullApiKey");
-    foreach (AccountBalanceItem abi in accountBalance.Accounts)
+    foreach (AccountBalanceItem abi in accountBalance.AccountBalanceItems)
     {
         Console.WriteLine("id: {0} key: {1} balance: {2}", abi.AccountId, abi.AccountKey, abi.Balance);
     }
