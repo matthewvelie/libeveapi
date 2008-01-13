@@ -10,7 +10,7 @@ namespace libeveapi
         /// <summary>
         /// List of characters associated with an account
         /// </summary>
-        public Character[] Characters = new Character[0];
+        public CharacterListItem[] Characters = new CharacterListItem[0];
 
         /// <summary>
         /// Create a CharacterList by parsing an XmlDocument response from the eveapi
@@ -22,10 +22,10 @@ namespace libeveapi
             CharacterList characterList = new CharacterList();
             characterList.ParseCommonElements(xmlDoc);
 
-            List<Character> parsedCharacters = new List<Character>();
+            List<CharacterListItem> parsedCharacters = new List<CharacterListItem>();
             foreach (XmlNode row in xmlDoc.SelectNodes("//rowset[@name='characters']/row"))
             {
-                Character character = new Character();
+                CharacterListItem character = new CharacterListItem();
                 character.Name = row.Attributes["name"].InnerText;
                 character.CharacterId = row.Attributes["characterID"].InnerText;
                 character.CorporationName = row.Attributes["corporationName"].InnerText;
@@ -41,7 +41,7 @@ namespace libeveapi
     /// <summary>
     /// Represents a character from the account character list
     /// </summary>
-    public class Character
+    public class CharacterListItem
     {
         /// <summary>
         /// Name of the character
