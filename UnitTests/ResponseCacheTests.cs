@@ -13,6 +13,7 @@ namespace UnitTests
         [Test]
         public void NonExpiredApiResponse()
         {
+            ResponseCache.Clear();
             ApiResponse apiResponse = new ApiResponse();
             apiResponse.CachedUntilLocal = DateTime.Now.Add(TimeSpan.FromDays(1));
 
@@ -25,6 +26,7 @@ namespace UnitTests
         [Test]
         public void ExpiredApiResponse()
         {
+            ResponseCache.Clear();
             ApiResponse apiResponse = new ApiResponse();
             apiResponse.CachedUntilLocal = DateTime.Now.Subtract(TimeSpan.FromDays(1));
 
@@ -32,6 +34,24 @@ namespace UnitTests
             ApiResponse cachedResponse = ResponseCache.Get("ExpiredApiResponse");
 
             Assert.AreEqual(null, cachedResponse);
+        }
+
+        [Test]
+        public void PersistResponseCache()
+        {
+            ResponseCache.Clear();
+            ApiResponse apiResponse = new ApiResponse();
+            DateTime cachedUntil = DateTime.Now.Add(TimeSpan.FromDays(1));
+            apiResponse.CachedUntilLocal = cachedUntil;
+            apiResponse.Url = "PersistResponseCache";
+
+            ResponseCache.Set("PersistResponseCache", apiResponse);
+            ResponseCache.SaveToFile("responseCache.xml");
+            ResponseCache.Clear();
+            ResponseCache.LoadFromFile("responseCache.xml");
+
+            ApiResponse cachedResponse = ResponseCache.Get("PersistResponseCache");
+            Assert.AreEqual(cachedUntil, cachedResponse.CachedUntilLocal);
         }
     }
 }

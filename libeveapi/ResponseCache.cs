@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace libeveapi
 {
@@ -33,10 +35,6 @@ namespace libeveapi
             if (hashTable.Contains(url))
             {
                 ApiResponse cachedResponse = hashTable[url] as ApiResponse;
-                if (cachedResponse == null)
-                {
-                    return null;
-                }
 
                 if (DateTime.Now >= cachedResponse.CachedUntilLocal)
                 {
@@ -47,6 +45,40 @@ namespace libeveapi
             }
 
             return null;
+        }
+
+        public static void Clear()
+        {
+            hashTable.Clear();
+        }
+
+        public static void SaveToFile(string filePath)
+        {
+            List<ApiResponse> apiResponses = new List<ApiResponse>();
+            foreach (ApiResponse apiResponse in hashTable.Values)
+            {
+                apiResponses.Add(apiResponse);
+            }
+
+            using (Stream s = new FileStream(filePath, FileMode.Create))
+            {
+                XmlSerializer xs = new XmlSerializer(typeof(List<ApiResponse>), new Type[] { typeof(ApiResponse) });
+                xs.Serialize(s, apiResponses);
+            }
+        }
+
+        public static void LoadFromFile(string filePath)
+        {
+            using (Stream s = new FileStream(filePath, FileMode.Open))
+            {
+                XmlSerializer xs = new XmlSerializer(typeof(List<ApiResponse>), new Type[] { typeof(ApiResponse) });
+                List<ApiResponse> apiResponses = xs.Deserialize(s) as List<ApiResponse>;
+                hashTable.Clear();
+                foreach (ApiResponse apiResponse in apiResponses)
+                {
+                    hashTable.Add(apiResponse.Url, apiResponse);
+                }
+            }
         }
     }
 }
