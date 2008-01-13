@@ -14,14 +14,8 @@ public static StarbaseList GetStarbaseList(string userId, string characterId, st
 }}}
 
 === Result ===
-* StarbaseList Object *
+* StarbaseList Object (See ApiResult for inherited members) *
 || Member || Type || Description ||
-|| Url || string || The url used to make this request ||
-|| CurrentTime || DateTime || The currentTime timestamp from the XML Response in CCP time ||
-|| CachedUntil || DateTime || The cachedUntil timestamp from the XML Response in CCP time ||
-|| CachedUntilLocal || DateTime || The cachedUntil timestamp in local time ||
-|| CurrentTimeLocal || DateTime || The currentTime timestamp in local time ||
-|| ResponseXml || XmlDocument || The XML response from CCP ||
 || StarbaseListItems || StarbaseListItem[] || The starbases contained in the list ||
 
 * StarbaseListItem Object *
