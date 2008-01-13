@@ -18,6 +18,4 @@ namespace libeveapi
             return xmlDoc;
         }
     }
-
-
 }
