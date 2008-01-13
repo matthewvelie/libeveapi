@@ -4,7 +4,7 @@
  * In your application project, add a reference to the .DLL file
 
 == Using the Library==
- # Add a using directive to any file that will need to use the library
+ # Add a using directive at the top of the file
 {{{
 using libeveapi;
 }}}
