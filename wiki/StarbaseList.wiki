@@ -42,3 +42,15 @@ public static StarbaseList GetStarbaseList(string userId, string characterId, st
 || Onlining || 2 || Starbase is in the process of coming online and will be online at time OnlineTimestamp ||
 || Reinforced || 3 || Starbase in in reinforced mode until time StateTimestamp ||
 || Online || 4 || Starbase is online and has been continuously since time OnlineTimestamp ||
+
+=== Example ===
+{{{
+public static void PrintStarbaseList()
+{
+    StarbaseList starbaseList = EveApi.GetStarbaseList("userId", "characterId", "fullApiKey");
+    foreach (StarbaseListItem sli in starbaseList.StarbaseListItems)
+    {
+        Console.WriteLine("ItemID: {0} LocationID: {1} State: {2}", sli.ItemId, sli.LocationId, sli.State);
+    }
+}
+}}}
