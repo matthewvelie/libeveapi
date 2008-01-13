@@ -66,7 +66,7 @@ namespace libeveapi
     }
 
     /// <summary>
-    /// Represents a 
+    /// Represents a single starbase in the starbase list
     /// </summary>
     public class StarbaseListItem
     {
