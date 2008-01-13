@@ -47,11 +47,18 @@ namespace libeveapi
             return null;
         }
 
+        /// <summary>
+        /// Remove all saved items from the cache
+        /// </summary>
         public static void Clear()
         {
             hashTable.Clear();
         }
 
+        /// <summary>
+        /// Save all currently cached items to the specified file
+        /// </summary>
+        /// <param name="filePath"></param>
         public static void SaveToFile(string filePath)
         {
             List<ApiResponse> apiResponses = new List<ApiResponse>();
@@ -67,6 +74,10 @@ namespace libeveapi
             }
         }
 
+        /// <summary>
+        /// Load cached items from the specified file
+        /// </summary>
+        /// <param name="filePath"></param>
         public static void LoadFromFile(string filePath)
         {
             using (Stream s = new FileStream(filePath, FileMode.Open))
