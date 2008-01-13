@@ -26,7 +26,7 @@ namespace libeveapi
             starbaseList.ParseCommonElements(xmlDoc);
 
             List<StarbaseListItem> starbaseListItems = new List<StarbaseListItem>();
-            foreach (XmlNode starbaseNode in xmlDoc.GetElementsByTagName("row"))
+            foreach (XmlNode starbaseNode in xmlDoc.SelectNodes("//rowset[@name='starbases']/row"))
             {
                 StarbaseListItem starbase = new StarbaseListItem();
                 starbase.ItemId = starbaseNode.Attributes["itemID"].InnerText;

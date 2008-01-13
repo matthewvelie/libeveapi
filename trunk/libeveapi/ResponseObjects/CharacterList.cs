@@ -23,8 +23,7 @@ namespace libeveapi
             characterList.ParseCommonElements(xmlDoc);
 
             List<Character> parsedCharacters = new List<Character>();
-            XmlNodeList rows = xmlDoc.GetElementsByTagName("row");
-            foreach (XmlNode row in rows)
+            foreach (XmlNode row in xmlDoc.SelectNodes("//rowset[@name='characters']/row"))
             {
                 Character character = new Character();
                 character.Name = row.Attributes["name"].InnerText;

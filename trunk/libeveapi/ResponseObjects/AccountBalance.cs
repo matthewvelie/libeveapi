@@ -28,7 +28,7 @@ namespace libeveapi
             accountBalance.ParseCommonElements(xmlDoc);
 
             List<Account> accountList = new List<Account>();
-            foreach (XmlNode accountRow in xmlDoc.GetElementsByTagName("row"))
+            foreach (XmlNode accountRow in xmlDoc.SelectNodes("//rowset[@name='accounts']/row"))
             {
                 Account account = new Account();
                 account.AccountId = accountRow.Attributes["accountID"].InnerText;
