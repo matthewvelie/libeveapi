@@ -15,7 +15,7 @@ namespace libeveapi
         /// <summary>
         /// The accounts associated with this character or corporation
         /// </summary>
-        public Account[] Accounts = new Account[0];
+        public AccountBalanceItem[] Accounts = new AccountBalanceItem[0];
 
         /// <summary>
         /// Create an AccountBalance object by parsing an XmlDocument response from the eve api
@@ -27,10 +27,10 @@ namespace libeveapi
             AccountBalance accountBalance = new AccountBalance();
             accountBalance.ParseCommonElements(xmlDoc);
 
-            List<Account> accountList = new List<Account>();
+            List<AccountBalanceItem> accountList = new List<AccountBalanceItem>();
             foreach (XmlNode accountRow in xmlDoc.SelectNodes("//rowset[@name='accounts']/row"))
             {
-                Account account = new Account();
+                AccountBalanceItem account = new AccountBalanceItem();
                 account.AccountId = accountRow.Attributes["accountID"].InnerText;
                 account.AccountKey = accountRow.Attributes["accountKey"].InnerText;
                 account.Balance = Convert.ToDouble(accountRow.Attributes["balance"].InnerText);
@@ -45,7 +45,7 @@ namespace libeveapi
     /// <summary>
     /// An account associated with a character or corporation
     /// </summary>
-    public class Account
+    public class AccountBalanceItem
     {
         /// <summary>
         /// ID number of the account
