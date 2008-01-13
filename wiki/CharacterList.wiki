@@ -15,7 +15,7 @@ public static CharacterList GetAccountCharacters(string userId, string apiKey)
 === Result ===
 * CharacterList Object *
 || Member || Type || Description ||
-|| Characters || CharacterListItem[] || The characters from this list ||
+|| CharacterListItems || CharacterListItem[] || The characters from this list ||
 
 * CharacterListItem Object *
 || Member || Type || Description ||
@@ -29,7 +29,7 @@ public static CharacterList GetAccountCharacters(string userId, string apiKey)
 public static void PrintCharacterList()
 {
     CharacterList characterList = EveApi.GetAccountCharacters("userId", "apiKey");
-    foreach (CharacterListItem cli in characterList.Characters)
+    foreach (CharacterListItem cli in characterList.CharacterListItems)
     {
         Console.WriteLine("Name: {0} Corporation: {1}", cli.Name, cli.CorporationName);
     }
