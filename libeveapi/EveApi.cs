@@ -93,17 +93,6 @@ namespace libeveapi
             return starbaseList;
         }
 
-        public static DateTime ParseCCPTimestamp(string timestamp)
-        {
-            return new DateTime(Convert.ToInt32(timestamp.Substring(0, 4)),
-                                Convert.ToInt32(timestamp.Substring(5, 2)),
-                                Convert.ToInt32(timestamp.Substring(8, 2)),
-                                Convert.ToInt32(timestamp.Substring(11, 2)),
-                                Convert.ToInt32(timestamp.Substring(14, 2)),
-                                Convert.ToInt32(timestamp.Substring(17, 2)),
-                                DateTimeKind.Utc);
-        }
-
         /// <summary>
         /// Convert a CCP DateTime to local time
         /// </summary>

@@ -11,7 +11,7 @@ namespace Tests
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(EveApi.ParseCCPTimestamp("0001-01-01 00:00:00"));
+            
         }
     }
 }
