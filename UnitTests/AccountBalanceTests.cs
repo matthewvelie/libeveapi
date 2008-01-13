@@ -15,10 +15,10 @@ namespace UnitTests
         {
             AccountBalance accountBalance = EveApi.GetAccountBalance(AccountBalanceType.Character, "userId", "charId", "apiKey");
 
-            Assert.AreEqual(1, accountBalance.Accounts.Length);
-            Assert.AreEqual("4807144", accountBalance.Accounts[0].AccountId);
-            Assert.AreEqual("1000", accountBalance.Accounts[0].AccountKey);
-            Assert.AreEqual(209127823.31, accountBalance.Accounts[0].Balance);
+            Assert.AreEqual(1, accountBalance.AccountBalanceItems.Length);
+            Assert.AreEqual("4807144", accountBalance.AccountBalanceItems[0].AccountId);
+            Assert.AreEqual("1000", accountBalance.AccountBalanceItems[0].AccountKey);
+            Assert.AreEqual(209127823.31, accountBalance.AccountBalanceItems[0].Balance);
         }
 
         [Test]
@@ -26,16 +26,16 @@ namespace UnitTests
         {
             AccountBalance accountBalance = EveApi.GetAccountBalance(AccountBalanceType.Corporation, "userId", "charId", "apiKey");
 
-            Assert.AreEqual(7, accountBalance.Accounts.Length);
+            Assert.AreEqual(7, accountBalance.AccountBalanceItems.Length);
             
             AccountBalanceItem account;
 
-            account = accountBalance.Accounts[0];
+            account = accountBalance.AccountBalanceItems[0];
             Assert.AreEqual("4759", account.AccountId);
             Assert.AreEqual("1000", account.AccountKey);
             Assert.AreEqual(74171957.08, account.Balance);
 
-            account = accountBalance.Accounts[6];
+            account = accountBalance.AccountBalanceItems[6];
             Assert.AreEqual("5692", account.AccountId);
             Assert.AreEqual("1006", account.AccountKey);
             Assert.AreEqual(0.00, account.Balance);
@@ -54,11 +54,11 @@ namespace UnitTests
 
             Assert.AreEqual(accountBalance.CachedUntilLocal, cachedAccountBalance.CachedUntilLocal);
 
-            for (int i = 0; i < accountBalance.Accounts.Length; i++)
+            for (int i = 0; i < accountBalance.AccountBalanceItems.Length; i++)
             {
-                Assert.AreEqual(accountBalance.Accounts[i].AccountId, cachedAccountBalance.Accounts[i].AccountId);
-                Assert.AreEqual(accountBalance.Accounts[i].AccountKey, cachedAccountBalance.Accounts[i].AccountKey);
-                Assert.AreEqual(accountBalance.Accounts[i].Balance, cachedAccountBalance.Accounts[i].Balance);
+                Assert.AreEqual(accountBalance.AccountBalanceItems[i].AccountId, cachedAccountBalance.AccountBalanceItems[i].AccountId);
+                Assert.AreEqual(accountBalance.AccountBalanceItems[i].AccountKey, cachedAccountBalance.AccountBalanceItems[i].AccountKey);
+                Assert.AreEqual(accountBalance.AccountBalanceItems[i].Balance, cachedAccountBalance.AccountBalanceItems[i].Balance);
             }
         }
     }

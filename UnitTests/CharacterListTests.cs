@@ -15,12 +15,12 @@ namespace UnitTests
         {
             CharacterList characterList = EveApi.GetAccountCharacters("asdf", "asdf");
 
-            Assert.AreEqual(3, characterList.Characters.Length);
+            Assert.AreEqual(3, characterList.CharacterListItems.Length);
 
-            Assert.AreEqual("Mary", characterList.Characters[0].Name);
-            Assert.AreEqual("150267069", characterList.Characters[0].CharacterId);
-            Assert.AreEqual("Starbase Anchoring Corp", characterList.Characters[0].CorporationName);
-            Assert.AreEqual("150279367", characterList.Characters[0].CorporationId);
+            Assert.AreEqual("Mary", characterList.CharacterListItems[0].Name);
+            Assert.AreEqual("150267069", characterList.CharacterListItems[0].CharacterId);
+            Assert.AreEqual("Starbase Anchoring Corp", characterList.CharacterListItems[0].CorporationName);
+            Assert.AreEqual("150279367", characterList.CharacterListItems[0].CorporationId);
         }
 
         [Test]
@@ -35,14 +35,14 @@ namespace UnitTests
 
             CharacterList cachedCharacterList = ResponseCache.Get(characterList.Url) as CharacterList;
 
-            Assert.AreEqual(cachedCharacterList.Characters.Length, characterList.Characters.Length);
+            Assert.AreEqual(cachedCharacterList.CharacterListItems.Length, characterList.CharacterListItems.Length);
 
-            for (int i = 0; i < characterList.Characters.Length; i++)
+            for (int i = 0; i < characterList.CharacterListItems.Length; i++)
             {
-                Assert.AreEqual(characterList.Characters[i].Name, cachedCharacterList.Characters[i].Name);
-                Assert.AreEqual(characterList.Characters[i].CharacterId, cachedCharacterList.Characters[i].CharacterId);
-                Assert.AreEqual(characterList.Characters[i].CorporationName, cachedCharacterList.Characters[i].CorporationName);
-                Assert.AreEqual(characterList.Characters[i].CorporationId, cachedCharacterList.Characters[i].CorporationId);
+                Assert.AreEqual(characterList.CharacterListItems[i].Name, cachedCharacterList.CharacterListItems[i].Name);
+                Assert.AreEqual(characterList.CharacterListItems[i].CharacterId, cachedCharacterList.CharacterListItems[i].CharacterId);
+                Assert.AreEqual(characterList.CharacterListItems[i].CorporationName, cachedCharacterList.CharacterListItems[i].CorporationName);
+                Assert.AreEqual(characterList.CharacterListItems[i].CorporationId, cachedCharacterList.CharacterListItems[i].CorporationId);
             }
         }
     }

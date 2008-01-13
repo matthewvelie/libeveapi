@@ -10,7 +10,7 @@ namespace libeveapi
         /// <summary>
         /// List of characters associated with an account
         /// </summary>
-        public CharacterListItem[] Characters = new CharacterListItem[0];
+        public CharacterListItem[] CharacterListItems = new CharacterListItem[0];
 
         /// <summary>
         /// Create a CharacterList by parsing an XmlDocument response from the eveapi
@@ -32,7 +32,7 @@ namespace libeveapi
                 character.CorporationId = row.Attributes["corporationID"].InnerText;
                 parsedCharacters.Add(character);
             }
-            characterList.Characters = parsedCharacters.ToArray();
+            characterList.CharacterListItems = parsedCharacters.ToArray();
 
             return characterList;
         }
