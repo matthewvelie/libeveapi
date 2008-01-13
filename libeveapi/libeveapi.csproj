@@ -34,10 +34,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiResponse.cs" />
+    <Compile Include="CharacterList.cs" />
     <Compile Include="EveApi.cs" />
     <Compile Include="Network.cs" />
-    <Compile Include="Parsing\ApiResponse.cs" />
-    <Compile Include="Parsing\CharacterList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
