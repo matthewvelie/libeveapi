@@ -13,7 +13,7 @@ namespace libeveapi
         /// <param name="userId">userID of the account for authentication</param>
         /// <param name="apiKey">limited or full access api key of account</param>
         /// <returns></returns>
-        public CharacterList GetAccountCharacters(string userId, string apiKey)
+        public static CharacterList GetAccountCharacters(string userId, string apiKey)
         {
             string url = String.Format("http://localhost/eveapi/Characters.xml?userId={0}&apiKey={1}", userId, apiKey);
 
@@ -42,7 +42,7 @@ namespace libeveapi
         /// </param>
         /// <param name="apiKey">Full access api key of account</param>
         /// <returns></returns>
-        public AccountBalance GetAccountBalance(AccountBalanceType accountBalanceType, string userId, string characterId, string apiKey)
+        public static AccountBalance GetAccountBalance(AccountBalanceType accountBalanceType, string userId, string characterId, string apiKey)
         {
             string url = string.Empty;
             if (accountBalanceType == AccountBalanceType.Character)
