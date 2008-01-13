@@ -1,0 +1,25 @@
+=== Description ===
+Returns a list of all the characters on an account.
+
+* CharacterList Object *
+|| Member || Type || Description ||
+|| Characters || CharacterListItem[] || The characters from this list ||
+
+* CharacterListItem Object *
+|| Member || Type || Description ||
+|| Name || string || Name of the character ||
+|| CharacterId || string || ID of the character ||
+|| CorporationName || string || Name of the character's corporation ||
+|| CorporationId || string || ID of the character's corporation ||
+
+=== Example ===
+{{{
+public static void PrintCharacterList()
+{
+    CharacterList characterList = EveApi.GetAccountCharacters("userId", "apiKey");
+    foreach (CharacterListItem cli in characterList.Characters)
+    {
+        Console.WriteLine("Name: {0} Corporation: {1}", cli.Name, cli.CorporationName);
+    }
+}
+}}}
