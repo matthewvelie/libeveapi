@@ -15,7 +15,7 @@ namespace libeveapi
         /// <returns></returns>
         public static CharacterList GetAccountCharacters(string userId, string apiKey)
         {
-            string url = String.Format("http://localhost/eveapi/Characters.xml?userId={0}&apiKey={1}", userId, apiKey);
+            string url = String.Format("{0}{1}?userID={2}&apiKey={3}", Constants.ApiPrefix, Constants.CharacterList, userId, apiKey);
 
             ApiResponse cachedResponse = ResponseCache.Get(url);
             if (cachedResponse != null)
@@ -40,19 +40,22 @@ namespace libeveapi
         /// For character balance: The character you are requesting data for
         /// For corporation balance: Character ID of a char with director/CEO access in the corp you want the balance for
         /// </param>
-        /// <param name="apiKey">Full access api key of account</param>
+        /// <param name="fullApiKey">Full access api key of account</param>
         /// <returns></returns>
-        public static AccountBalance GetAccountBalance(AccountBalanceType accountBalanceType, string userId, string characterId, string apiKey)
+        public static AccountBalance GetAccountBalance(AccountBalanceType accountBalanceType, string userId, string characterId, string fullApiKey)
         {
-            string url = string.Empty;
-            if (accountBalanceType == AccountBalanceType.Character)
+            string apiPath = string.Empty;
+            switch (accountBalanceType)
             {
-                url = "http://localhost/eveapi/CharAccountBalance.xml";
+                case AccountBalanceType.Character:
+                    apiPath = Constants.CharacterAccountBalance;
+                    break;
+                case AccountBalanceType.Corporation:
+                    apiPath = Constants.CorpAccountBalance;
+                    break;
             }
-            else if (accountBalanceType == AccountBalanceType.Corporation)
-            {
-                url = "http://localhost/eveapi/CorpAccountBalance.xml";
-            }
+
+            string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}", Constants.ApiPrefix, apiPath, userId, characterId, fullApiKey);
 
             ApiResponse cachedResponse = ResponseCache.Get(url);
             if (cachedResponse != null)
@@ -77,7 +80,7 @@ namespace libeveapi
         /// <returns></returns>
         public static StarbaseList GetStarbaseList(string userId, string characterId, string fullApiKey)
         {
-            string url = "http://localhost/eveapi/StarbaseList.xml";
+            string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}", Constants.ApiPrefix, Constants.StarbaseList, userId, characterId, fullApiKey);
 
             ApiResponse cachedResponse = ResponseCache.Get(url);
             if (cachedResponse != null)
@@ -103,7 +106,7 @@ namespace libeveapi
         /// <returns></returns>
         public static StarbaseDetail GetStarbaseDetail(string userId, string characterId, string fullApiKey, string itemId)
         {
-            string url = "http://localhost/eveapi/StarbaseDetail.xml";
+            string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}&itemID={5}", Constants.ApiPrefix, Constants.StarbaseDetails, userId, characterId, fullApiKey, itemId);
 
             ApiResponse cachedResponse = ResponseCache.Get(url);
             if (cachedResponse != null)
