@@ -80,7 +80,7 @@ namespace libeveapi
         /// <returns></returns>
         public static StarbaseList GetStarbaseList(string userId, string characterId, string fullApiKey)
         {
-            string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}", Constants.ApiPrefix, Constants.StarbaseList, userId, characterId, fullApiKey);
+            string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}&version=2", Constants.ApiPrefix, Constants.StarbaseList, userId, characterId, fullApiKey);
 
             ApiResponse cachedResponse = ResponseCache.Get(url);
             if (cachedResponse != null)
@@ -106,7 +106,7 @@ namespace libeveapi
         /// <returns></returns>
         public static StarbaseDetail GetStarbaseDetail(string userId, string characterId, string fullApiKey, string itemId)
         {
-            string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}&itemID={5}", Constants.ApiPrefix, Constants.StarbaseDetails, userId, characterId, fullApiKey, itemId);
+            string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}&itemID={5}&version=2", Constants.ApiPrefix, Constants.StarbaseDetails, userId, characterId, fullApiKey, itemId);
 
             ApiResponse cachedResponse = ResponseCache.Get(url);
             if (cachedResponse != null)
