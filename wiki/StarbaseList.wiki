@@ -1,0 +1,44 @@
+=== Description ===
+Represents a list of all the starbases owned by the specified corporation
+
+=== EveApi Call ===
+{{{
+/// <summary>
+/// Returns a list of starbases owned by a corporation
+/// </summary>
+/// <param name="userId">user ID of account for authentication</param>
+/// <param name="characterId">Character ID of a char with director/CEO access in the corp you want the starbases for</param>
+/// <param name="fullApiKey">Full access api key of account</param>
+/// <returns></returns>
+public static StarbaseList GetStarbaseList(string userId, string characterId, string fullApiKey)
+}}}
+
+=== Result ===
+* StarbaseList Object *
+|| Member || Type || Description ||
+|| Url || string || The url used to make this request ||
+|| CurrentTime || DateTime || The currentTime timestamp from the XML Response in CCP time ||
+|| CachedUntil || DateTime || The cachedUntil timestamp from the XML Response in CCP time ||
+|| CachedUntilLocal || DateTime || The cachedUntil timestamp in local time ||
+|| CurrentTimeLocal || DateTime || The currentTime timestamp in local time ||
+|| ResponseXml || XmlDocument || The XML response from CCP ||
+|| StarbaseListItems || StarbaseListItem[] || The starbases contained in the list ||
+
+* StarbaseListItem Object *
+|| Member || Type || Description ||
+|| ItemId || string || Unique identifier for the starbase ||
+|| TypeId || string || Control tower type id ||
+|| LocationId || string || ID of the system containing the starbase ||
+|| MoonId || string || ID of the moon where the starbase is located ||
+|| State || StarbaseState || See StarbaseState documentation ||
+|| StateTimestamp || DateTime || See StarbaseState documentation (CCP Time) ||
+|| OnlineTimestamp || DateTime || See StarbaseState documentation (CCP Time) ||
+|| StateTimestampLocal || DateTime || The StateTimestamp in local time ||
+|| OnlineTimeStampLocal || DateTime || The OnlineTimestamp in local time ||
+
+* StarbaseState Enumeration *
+|| Member || Value || Description ||
+|| AnchoredOrOffline || 1 || Starbase is anchored or offline if offline then it went offline at StateTimestamp ||
+|| Onlining || 2 || Starbase is in the process of coming online and will be online at time OnlineTimestamp ||
+|| Reinforced || 3 || Starbase in in reinforced mode until time StateTimestamp ||
+|| Online || 4 || Starbase is online and has been continuously since time OnlineTimestamp ||
