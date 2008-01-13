@@ -16,9 +16,17 @@ namespace libeveapi
         public CharacterList GetAccountCharacters(string userId, string apiKey)
         {
             string url = String.Format("http://localhost/eveapi/Characters.xml?userId={0}&apiKey={1}", userId, apiKey);
+
+            ApiResponse cachedResponse = ResponseCache.Get(url);
+            if (cachedResponse != null)
+            {
+                return cachedResponse as CharacterList;
+            }
+
             XmlDocument xmlDoc = Network.GetXml(url);
             CharacterList characterList = CharacterList.FromXmlDocument(xmlDoc);
             characterList.Url = url;
+            ResponseCache.Set(url, characterList);
 
             return characterList;
         }
