@@ -67,6 +67,54 @@ namespace libeveapi
 
             return accountBalance;
         }
+
+        /// <summary>
+        /// Returns a list of starbases owned by a corporation
+        /// </summary>
+        /// <param name="userId">user ID of account for authentication</param>
+        /// <param name="characterId">Character ID of a char with director/CEO access in the corp you want the starbases for</param>
+        /// <param name="apiKey">Full access api key of account</param>
+        /// <returns></returns>
+        public static StarbaseList GetStarbaseList(string userId, string characterId, string apiKey)
+        {
+            string url = "http://localhost/eveapi/StarbaseList.xml";
+
+            ApiResponse cachedResponse = ResponseCache.Get(url);
+            if (cachedResponse != null)
+            {
+                return cachedResponse as StarbaseList;
+            }
+
+            XmlDocument xmlDoc = Network.GetXml(url);
+            StarbaseList starbaseList = StarbaseList.FromXmlDocument(xmlDoc);
+            starbaseList.Url = url;
+            ResponseCache.Set(url, starbaseList);
+
+            return starbaseList;
+        }
+
+        public static DateTime ParseCCPTimestamp(string timestamp)
+        {
+            return new DateTime(Convert.ToInt32(timestamp.Substring(0, 4)),
+                                Convert.ToInt32(timestamp.Substring(5, 2)),
+                                Convert.ToInt32(timestamp.Substring(8, 2)),
+                                Convert.ToInt32(timestamp.Substring(11, 2)),
+                                Convert.ToInt32(timestamp.Substring(14, 2)),
+                                Convert.ToInt32(timestamp.Substring(17, 2)),
+                                DateTimeKind.Utc);
+        }
+
+        /// <summary>
+        /// Convert a CCP DateTime to local time
+        /// </summary>
+        /// <param name="ccpCurrentTime">CCP server current datetime</param>
+        /// <param name="ccpDateTime">the datetime to convert to local</param>
+        /// <returns></returns>
+        public static DateTime CCPDateTimeToLocal(DateTime ccpCurrentTime, DateTime ccpDateTime)
+        {
+            TimeSpan offset = DateTime.Now.Subtract(ccpCurrentTime);
+            return ccpDateTime.Add(offset);
+        }
     }
 
     /// <summary>

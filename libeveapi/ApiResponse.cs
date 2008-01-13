@@ -8,6 +8,7 @@ namespace libeveapi
 {
     [XmlInclude(typeof(CharacterList))]
     [XmlInclude(typeof(AccountBalance))]
+    [XmlInclude(typeof(StarbaseList))]
     public class ApiResponse
     {
         [XmlElement]
