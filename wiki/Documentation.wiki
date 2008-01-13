@@ -2,7 +2,7 @@
  # === General ===
   * [HowToUseTheLibrary How to use the library]
  # === API Calls ===
-  * Account Balances
+  * [AccountBalances Account Balances]
   * Asset List
   * [CharacterList Character List]
   * Error List
