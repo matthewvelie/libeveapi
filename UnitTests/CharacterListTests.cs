@@ -23,5 +23,29 @@ namespace UnitTests
             Assert.AreEqual("Starbase Anchoring Corp", characterList.Characters[0].CorporationName);
             Assert.AreEqual("150279367", characterList.Characters[0].CorporationId);
         }
+
+        [Test]
+        public void CharacterListPersist()
+        {
+            EveApi eveApi = new EveApi();
+            ResponseCache.Clear();
+            CharacterList characterList = eveApi.GetAccountCharacters("asdf", "asdf");
+
+            ResponseCache.SaveToFile("ResponseCache.xml");
+            ResponseCache.Clear();
+            ResponseCache.LoadFromFile("ResponseCache.xml");
+
+            CharacterList cachedCharacterList = ResponseCache.Get(characterList.Url) as CharacterList;
+
+            Assert.AreEqual(cachedCharacterList.Characters.Length, characterList.Characters.Length);
+
+            for (int i = 0; i < characterList.Characters.Length; i++)
+            {
+                Assert.AreEqual(characterList.Characters[i].Name, cachedCharacterList.Characters[i].Name);
+                Assert.AreEqual(characterList.Characters[i].CharacterId, cachedCharacterList.Characters[i].CharacterId);
+                Assert.AreEqual(characterList.Characters[i].CorporationName, cachedCharacterList.Characters[i].CorporationName);
+                Assert.AreEqual(characterList.Characters[i].CorporationId, cachedCharacterList.Characters[i].CorporationId);
+            }
+        }
     }
 }
