@@ -2,15 +2,26 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml;
+using System.Xml.Serialization;
 
 namespace libeveapi
 {
+    [XmlInclude(typeof(CharacterList))]
     public class ApiResponse
     {
+        [XmlElement]
         public string Url;
+
+        [XmlElement]
         public DateTime CurrentTime;
+
+        [XmlElement]
         public DateTime CachedUntil;
+
+        [XmlElement]
         public DateTime CachedUntilLocal;
+
+        [XmlElement]
         public XmlDocument ResponseXml;
 
         public void ParseCommonElements(XmlDocument xmlDoc)
