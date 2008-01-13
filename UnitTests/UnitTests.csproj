@@ -34,6 +34,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountBalanceTests.cs" />
     <Compile Include="ApiResponseTests.cs" />
     <Compile Include="CharacterListTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
