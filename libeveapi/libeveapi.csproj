@@ -41,6 +41,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseCache.cs" />
     <Compile Include="ResponseObjects\AccountBalance.cs" />
+    <Compile Include="ResponseObjects\AssetList.cs" />
     <Compile Include="ResponseObjects\CharacterList.cs" />
     <Compile Include="ResponseObjects\ErrorList.cs" />
     <Compile Include="ResponseObjects\StarbaseDetail.cs" />

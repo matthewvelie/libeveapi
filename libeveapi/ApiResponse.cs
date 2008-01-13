@@ -11,6 +11,7 @@ namespace libeveapi
     [XmlInclude(typeof(StarbaseList))]
     [XmlInclude(typeof(StarbaseDetail))]
     [XmlInclude(typeof(ErrorList))]
+    [XmlInclude(typeof(AssetList))]
     public class ApiResponse
     {
         [XmlElement]

@@ -11,15 +11,20 @@ namespace Tests
     {
         static void Main(string[] args)
         {
-            ResponseCache.Clear();
-            ErrorList errorList = EveApi.GetErrorList();
+            XmlDocument xmlDoc = Network.GetXml("http://localhost/eveapi/corp/AssetList.xml");
+            foreach (XmlNode node in xmlDoc.SelectNodes("//rowset[@name='assets']/row"))
+            {
+                PrintItem(node, "");
+            }
+        }
 
-            ResponseCache.SaveToFile("ResponseCache.xml");
-            ResponseCache.Clear();
-            ResponseCache.LoadFromFile("ResponseCache.xml");
-
-            ErrorList cachedErrorList = ResponseCache.Get(errorList.Url) as ErrorList;
-            Console.WriteLine(cachedErrorList.GetMessageForErrorCode("100"));
+        static void PrintItem(XmlNode item, string indent)
+        {
+            Console.WriteLine("{0}{1}", indent, item.Attributes["itemID"].InnerText);
+            foreach (XmlNode containedItem in item.SelectNodes("./rowset[@name='contents']/row"))
+            {
+                PrintItem(containedItem, indent + "  ");
+            }
         }
     }
 }

@@ -145,6 +145,43 @@ namespace libeveapi
         }
 
         /// <summary>
+        /// Returns a list of assets owned by a character or corporation.
+        /// </summary>
+        /// <param name="assetListType"><see cref="AssetListType" /></param>
+        /// <param name="userId">userID of account for authentication</param>
+        /// <param name="characterId">CharacterID of character for authentication</param>
+        /// <param name="fullApiKey">Full access API key of account</param>
+        /// <returns></returns>
+        public static AssetList GetAssetList(AssetListType assetListType, string userId, string characterId, string fullApiKey)
+        {
+            string apiPath = string.Empty;
+            switch (assetListType)
+            {
+                case AssetListType.Character:
+                    apiPath = Constants.CharAssetList;
+                    break;
+                case AssetListType.Corporation:
+                    apiPath = Constants.CorpAssetList;
+                    break;
+            }
+
+            string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}&version=2", Constants.ApiPrefix, apiPath, userId, characterId, fullApiKey);
+
+            ApiResponse cachedResponse = ResponseCache.Get(url);
+            if (cachedResponse != null)
+            {
+                return cachedResponse as AssetList;
+            }
+
+            XmlDocument xmlDoc = Network.GetXml(url);
+            AssetList assetList = AssetList.FromXmlDocument(xmlDoc);
+            assetList.Url = url;
+            ResponseCache.Set(url, assetList);
+
+            return assetList;
+        }
+
+        /// <summary>
         /// Convert a CCP DateTime to local time
         /// </summary>
         /// <param name="ccpCurrentTime">CCP server current datetime</param>
