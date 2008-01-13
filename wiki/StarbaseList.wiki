@@ -14,7 +14,7 @@ public static StarbaseList GetStarbaseList(string userId, string characterId, st
 }}}
 
 === Result ===
-* StarbaseList Object (See ApiResult for inherited members) *
+* StarbaseList Object (See ApiResponse for inherited members) *
 || Member || Type || Description ||
 || StarbaseListItems || StarbaseListItem[] || The starbases contained in the list ||
 
