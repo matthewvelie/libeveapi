@@ -1,5 +1,5 @@
  # === General ===
-  * How to use the library
+  * [HowToUseTheLibrary How to use the library]
  # === API Calls ===
   * Account Balances
   * Asset List
