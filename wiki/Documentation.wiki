@@ -1,3 +1,4 @@
+#labels Featured
  # === General ===
   * [HowToUseTheLibrary How to use the library]
  # === API Calls ===
