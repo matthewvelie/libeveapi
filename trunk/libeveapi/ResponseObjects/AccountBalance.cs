@@ -15,7 +15,7 @@ namespace libeveapi
         /// <summary>
         /// The accounts associated with this character or corporation
         /// </summary>
-        public AccountBalanceItem[] Accounts = new AccountBalanceItem[0];
+        public AccountBalanceItem[] AccountBalanceItems = new AccountBalanceItem[0];
 
         /// <summary>
         /// Create an AccountBalance object by parsing an XmlDocument response from the eve api
@@ -36,7 +36,7 @@ namespace libeveapi
                 account.Balance = Convert.ToDouble(accountRow.Attributes["balance"].InnerText);
                 accountList.Add(account);
             }
-            accountBalance.Accounts = accountList.ToArray();
+            accountBalance.AccountBalanceItems = accountList.ToArray();
 
             return accountBalance;
         }
