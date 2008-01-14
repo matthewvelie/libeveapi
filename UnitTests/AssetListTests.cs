@@ -10,6 +10,12 @@ namespace UnitTests
     [TestFixture]
     public class AssetListTests
     {
+        [SetUp]
+        public void Setup()
+        {
+            Utility.UseLocalUrls();
+        }
+
         [Test]
         public void GetAssetList()
         {

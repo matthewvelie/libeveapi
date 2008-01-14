@@ -43,6 +43,7 @@
     <Compile Include="ResponseCacheTests.cs" />
     <Compile Include="StarbaseDetailTests.cs" />
     <Compile Include="StarbaseListTests.cs" />
+    <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\libeveapi\libeveapi.csproj">
