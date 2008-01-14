@@ -15,19 +15,19 @@ public static AssetList GetAssetList(AssetListType assetListType, string userId,
 }}}
 
 === Result ===
-* AssetList Object (See ApiResponse for inherited members) *
+* !AssetList Object (See ApiResponse for inherited members) *
 || Member || Type || Description ||
-|| AssetListItems || AssetListItem[] || An array of top level assets ||
+|| !AssetListItems || !AssetListItem[] || An array of top level assets ||
 
 * AssetListItem Object *
 || Member || Type || Description ||
-|| ItemId || string || A unique identifier for this item ||
-|| LocationId || string || References a solar system or station. May not be present. ||
-|| TypeId || string || The type of this item. References the invTypes table. ||
+|| !ItemId || string || A unique identifier for this item ||
+|| !LocationId || string || References a solar system or station. May not be present. ||
+|| !TypeId || string || The type of this item. References the invTypes table. ||
 || Quantity || long || How many items are in this stack. ||
-|| Flag || InventoryFlagType || Indicates something about this item's storage location. ||
+|| Flag || !InventoryFlagType || Indicates something about this item's storage location. ||
 || Singleton || bool || If true, indicates that this item is a singleton. This means that the item is not packaged. ||
-|| Contents || AsstListItem[] || The items contained in this item if any ||
+|| Contents || !AssetListItem[] || The items contained in this item if any ||
 
 * AssetListType Enumeration *
 || Member || Value || Description ||
