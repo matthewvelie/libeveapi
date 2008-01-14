@@ -82,10 +82,10 @@ These are the available inventory flags from the EVE Trinity data export.
 || !RigSlot6 || 98 || Rig power slot 7 ||
 || !RigSlot7 || 99 || Rig power slot 8 ||
 || Factory Operation || 100 || Factory Background Operation ||
-|| !CorpSAG2 || 116 || Corp Security Access Group 2 ||
-|| !CorpSAG3 || 117 || Corp Security Access Group 3 ||
-|| !CorpSAG4 || 118 || Corp Security Access Group 4 ||
-|| !CorpSAG5 || 119 || Corp Security Access Group 5 ||
-|| !CorpSAG6 || 120 || Corp Security Access Group 6 ||
-|| !CorpSAG7 || 121 || Corp Security Access Group 7 ||
+|| CorpSAG2 || 116 || Corp Security Access Group 2 ||
+|| CorpSAG3 || 117 || Corp Security Access Group 3 ||
+|| CorpSAG4 || 118 || Corp Security Access Group 4 ||
+|| CorpSAG5 || 119 || Corp Security Access Group 5 ||
+|| CorpSAG6 || 120 || Corp Security Access Group 6 ||
+|| CorpSAG7 || 121 || Corp Security Access Group 7 ||
 || !SecondaryStorage || 122 || Secondary Storage ||
