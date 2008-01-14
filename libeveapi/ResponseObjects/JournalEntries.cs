@@ -56,8 +56,8 @@ namespace libeveapi
 
         /// <summary>
         /// This is an argument ID that goes with the argument
-        /// 38 = Dividend, 1/10 = Player Transfer, 72/74 = Insurance, 85 = Bounties
-        /// 42 = ,54 = , 2 = , 15 = , 35 =, 46 = , 17 = Single Bounty, 33 = , 37 =
+        /// Use the data from: http://wiki.eve-dev.net/APIv2_Eve_RefTypes_XML
+        /// to determine what this is used for
         /// </summary>
         public long argID1;
 
