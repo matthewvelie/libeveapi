@@ -17,7 +17,7 @@ public static CharacterList GetAccountCharacters(string userId, string apiKey)
 || Member || Type || Description ||
 || !CharacterListItems || !CharacterListItem[] || The characters from this list ||
 
-* CharacterListItem Object *
+* !CharacterListItem Object *
 || Member || Type || Description ||
 || Name || string || Name of the character ||
 || !CharacterId || string || ID of the character ||
