@@ -7,7 +7,7 @@ namespace libeveapi
 {
     public class AssetList : ApiResponse
     {
-        public AssetListItem[] Assets = new AssetListItem[0];
+        public AssetListItem[] AssetListItems = new AssetListItem[0];
 
         /// <summary>
         /// Create an AssetList by parsing an XmlDocument response from the eveapi
@@ -24,7 +24,7 @@ namespace libeveapi
             {
                 assets.Add(ParseAssetRow(node));
             }
-            assetList.Assets = assets.ToArray();
+            assetList.AssetListItems = assets.ToArray();
 
             return assetList;
         }

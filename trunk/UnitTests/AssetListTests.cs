@@ -15,7 +15,7 @@ namespace UnitTests
         {
             AssetList assetList = EveApi.GetAssetList(AssetListType.Corporation, "userId", "characterId", "apiKey");
 
-            AssetListItem parent = GetAsset("197977287", assetList.Assets);
+            AssetListItem parent = GetAsset("197977287", assetList.AssetListItems);
             AssetListItem child = GetAsset("331125392", parent.Contents);
             AssetListItem grandChild = GetAsset("109617951", child.Contents);
 
@@ -34,9 +34,9 @@ namespace UnitTests
             ResponseCache.LoadFromFile("ResponseCache.xml");
             AssetList cachedAssetList = ResponseCache.Get(assetList.Url) as AssetList;
 
-            for (int i = 0; i < assetList.Assets.Length; i++)
+            for (int i = 0; i < assetList.AssetListItems.Length; i++)
             {
-                Assert.AreEqual(true, CompareAssets(assetList.Assets[i], cachedAssetList.Assets[i]));
+                Assert.AreEqual(true, CompareAssets(assetList.AssetListItems[i], cachedAssetList.AssetListItems[i]));
             }
         }
 
