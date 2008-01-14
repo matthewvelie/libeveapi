@@ -4,7 +4,7 @@
  * In your application project, add a reference to the .DLL file
 
 == Important ==
-* During development you should get your XML responses from a local web server instead of the eve api. [UrlConstans Here's how to set it up].
+* During development you should get your XML responses from a local web server instead of the eve api. [UrlConstants Here's how to set it up].
 
 == Using the Library==
  # Add a using directive at the top of the file
