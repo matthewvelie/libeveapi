@@ -12,7 +12,7 @@ The Constants class contains all the strings used to create the url for each api
 || !CharAssetList || "/char/!AssetList.xml.aspx" || AssetList ||
 || !CorpAssetList || "/corp/!AssetList.xml.aspx" || AssetList ||
 
-=== Setting the strings for local development ===
+=== Loading local xml files during development ===
 {{{
 // While developing your app you should have the api load
 // response xml files from a local web server instead of
