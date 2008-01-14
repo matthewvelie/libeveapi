@@ -2,10 +2,10 @@
 The Constants class contains all the strings used to create the url for each api call. 
 
 === Loading local xml files during development ===
+While developing your app you should have the api load response xml files from a local web server instead of hitting the eve api
+
 {{{
-// While developing your app you should have the api load
-// response xml files from a local web server instead of
-// hitting the eve api
+// Make sure this code is called before any api calls
 #if USE_LOCALHOST
 Constants.ApiPrefix = "http://localhost/eveapi";
 Constants.CharacterAccountBalance = "/char/AccountBalance.xml";
