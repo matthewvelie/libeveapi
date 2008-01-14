@@ -19,7 +19,7 @@ public static AssetList GetAssetList(AssetListType assetListType, string userId,
 || Member || Type || Description ||
 || !AssetListItems || !AssetListItem[] || An array of top level assets ||
 
-* AssetListItem Object *
+* !AssetListItem Object *
 || Member || Type || Description ||
 || !ItemId || string || A unique identifier for this item ||
 || !LocationId || string || References a solar system or station. May not be present. ||
