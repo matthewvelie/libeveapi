@@ -41,32 +41,32 @@ These are the available inventory flags from the EVE Trinity data export.
 || !HiSlot5 || 32 || High power slot 6 ||
 || !HiSlot6 || 33 || High power slot 7 ||
 || !HiSlot7 || 34 || High power slot 8 ||
-|| Fixed Slot || 35 || Fixed Slot ||
+|| !FixedSlot || 35 || Fixed Slot ||
 || Capsule || 56 || Capsule ||
 || Pilot || 57 || Pilot ||
 || Passenger || 58 || Passenger ||
-|| Boarding Gate || 59 || Boarding gate ||
+|| !BoardingGate || 59 || Boarding gate ||
 || Crew || 60 || Crew ||
-|| Skill In Training || 61 || Skill in training ||
+|| !SkillInTraining || 61 || Skill in training ||
 || !CorpMarket || 62 || Corporation Market Deliveries / Returns ||
 || Locked || 63 || Locked item, can not be moved unless unlocked ||
 || Unlocked || 64 || Unlocked item, can be moved ||
-|| Office Slot 1 || 70 || Office slot 1 ||
-|| Office Slot 2 || 71 || Office slot 2 ||
-|| Office Slot 3 || 72 || Office slot 3 ||
-|| Office Slot 4 || 73 || Office slot 4 ||
-|| Office Slot 5 || 74 || Office slot 5 ||
-|| Office Slot 6 || 75 || Office slot 6 ||
-|| Office Slot 7 || 76 || Office slot 7 ||
-|| Office Slot 8 || 77 || Office slot 8 ||
-|| Office Slot 9 || 78 || Office slot 9 ||
-|| Office Slot 10 || 79 || Office slot 10 ||
-|| Office Slot 11 || 80 || Office slot 11 ||
-|| Office Slot 12 || 81 || Office slot 12 ||
-|| Office Slot 13 || 82 || Office slot 13 ||
-|| Office Slot 14 || 83 || Office slot 14 ||
-|| Office Slot 15 || 84 || Office slot 15 ||
-|| Office Slot 16 || 85 || Office slot 16 ||
+|| !OfficeSlot1 || 70 || Office slot 1 ||
+|| !OfficeSlot2 || 71 || Office slot 2 ||
+|| !OfficeSlot3 || 72 || Office slot 3 ||
+|| !OfficeSlot4 || 73 || Office slot 4 ||
+|| !OfficeSlot5 || 74 || Office slot 5 ||
+|| !OfficeSlot6 || 75 || Office slot 6 ||
+|| !OfficeSlot7 || 76 || Office slot 7 ||
+|| !OfficeSlot8 || 77 || Office slot 8 ||
+|| !OfficeSlot9 || 78 || Office slot 9 ||
+|| !OfficeSlot10 || 79 || Office slot 10 ||
+|| !OfficeSlot11 || 80 || Office slot 11 ||
+|| !OfficeSlot12 || 81 || Office slot 12 ||
+|| !OfficeSlot13 || 82 || Office slot 13 ||
+|| !OfficeSlot14 || 83 || Office slot 14 ||
+|| !OfficeSlot15 || 84 || Office slot 15 ||
+|| !OfficeSlot16 || 85 || Office slot 16 ||
 || Bonus || 86 || Bonus ||
 || !DroneBay || 87 || Drone Bay ||
 || Booster || 88 || Booster ||
@@ -81,7 +81,7 @@ These are the available inventory flags from the EVE Trinity data export.
 || !RigSlot5 || 97 || Rig power slot 6 ||
 || !RigSlot6 || 98 || Rig power slot 7 ||
 || !RigSlot7 || 99 || Rig power slot 8 ||
-|| Factory Operation || 100 || Factory Background Operation ||
+|| !FactoryOperation || 100 || Factory Background Operation ||
 || CorpSAG2 || 116 || Corp Security Access Group 2 ||
 || CorpSAG3 || 117 || Corp Security Access Group 3 ||
 || CorpSAG4 || 118 || Corp Security Access Group 4 ||
