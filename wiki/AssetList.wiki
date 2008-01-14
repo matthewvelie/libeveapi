@@ -29,7 +29,7 @@ public static AssetList GetAssetList(AssetListType assetListType, string userId,
 || Singleton || bool || If true, indicates that this item is a singleton. This means that the item is not packaged. ||
 || Contents || !AssetListItem[] || The items contained in this item if any ||
 
-* AssetListType Enumeration *
+* !AssetListType Enumeration *
 || Member || Value || Description ||
 || Corporation || - || Retrieve the asset list for the characterID's corporation ||
 || Character || - || Retrieve the asset list for the characterID ||
