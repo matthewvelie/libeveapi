@@ -6,7 +6,7 @@ These are the available inventory flags from the EVE Trinity data export.
 
 
 = Details =
-
+|| *Name* || *Value* || *Description* ||
 || None || 0 || None ||
 || Wallet || 1 || Wallet ||
 || Factory || 2 || Factory ||
