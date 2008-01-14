@@ -7,16 +7,16 @@ These are the available inventory flags from the EVE Trinity data export.
 
 = Details =
 
-|| !None || 0 || None ||
-|| !Wallet || 1 || Wallet ||
-|| !Factory || 2 || Factory ||
-|| !Hangar || 4 || Hangar ||
-|| !Cargo || 5 || Cargo ||
-|| !Briefcase || 6 || Briefcase ||
-|| !Skill || 7 || Skill ||
-|| !Reward || 8 || Reward ||
-|| !Connected || 9 || Character in station connected ||
-|| !Disconnected || 10 || Character in station offline ||
+|| None || 0 || None ||
+|| Wallet || 1 || Wallet ||
+|| Factory || 2 || Factory ||
+|| Hangar || 4 || Hangar ||
+|| Cargo || 5 || Cargo ||
+|| Briefcase || 6 || Briefcase ||
+|| Skill || 7 || Skill ||
+|| Reward || 8 || Reward ||
+|| Connected || 9 || Character in station connected ||
+|| Disconnected || 10 || Character in station offline ||
 || !LoSlot0 || 11 || Low power slot 1 ||
 || !LoSlot1 || 12 || Low power slot 2 ||
 || !LoSlot2 || 13 || Low power slot 3 ||
@@ -41,36 +41,36 @@ These are the available inventory flags from the EVE Trinity data export.
 || !HiSlot5 || 32 || High power slot 6 ||
 || !HiSlot6 || 33 || High power slot 7 ||
 || !HiSlot7 || 34 || High power slot 8 ||
-|| !Fixed Slot || 35 || Fixed Slot ||
-|| !Capsule || 56 || Capsule ||
-|| !Pilot || 57 || Pilot ||
-|| !Passenger || 58 || Passenger ||
-|| !Boarding Gate || 59 || Boarding gate ||
-|| !Crew || 60 || Crew ||
-|| !Skill In Training || 61 || Skill in training ||
+|| Fixed Slot || 35 || Fixed Slot ||
+|| Capsule || 56 || Capsule ||
+|| Pilot || 57 || Pilot ||
+|| Passenger || 58 || Passenger ||
+|| Boarding Gate || 59 || Boarding gate ||
+|| Crew || 60 || Crew ||
+|| Skill In Training || 61 || Skill in training ||
 || !CorpMarket || 62 || Corporation Market Deliveries / Returns ||
-|| !Locked || 63 || Locked item, can not be moved unless unlocked ||
-|| !Unlocked || 64 || Unlocked item, can be moved ||
-|| !Office Slot 1 || 70 || Office slot 1 ||
-|| !Office Slot 2 || 71 || Office slot 2 ||
-|| !Office Slot 3 || 72 || Office slot 3 ||
-|| !Office Slot 4 || 73 || Office slot 4 ||
-|| !Office Slot 5 || 74 || Office slot 5 ||
-|| !Office Slot 6 || 75 || Office slot 6 ||
-|| !Office Slot 7 || 76 || Office slot 7 ||
-|| !Office Slot 8 || 77 || Office slot 8 ||
-|| !Office Slot 9 || 78 || Office slot 9 ||
-|| !Office Slot 10 || 79 || Office slot 10 ||
-|| !Office Slot 11 || 80 || Office slot 11 ||
-|| !Office Slot 12 || 81 || Office slot 12 ||
-|| !Office Slot 13 || 82 || Office slot 13 ||
-|| !Office Slot 14 || 83 || Office slot 14 ||
-|| !Office Slot 15 || 84 || Office slot 15 ||
-|| !Office Slot 16 || 85 || Office slot 16 ||
-|| !Bonus || 86 || Bonus ||
+|| Locked || 63 || Locked item, can not be moved unless unlocked ||
+|| Unlocked || 64 || Unlocked item, can be moved ||
+|| Office Slot 1 || 70 || Office slot 1 ||
+|| Office Slot 2 || 71 || Office slot 2 ||
+|| Office Slot 3 || 72 || Office slot 3 ||
+|| Office Slot 4 || 73 || Office slot 4 ||
+|| Office Slot 5 || 74 || Office slot 5 ||
+|| Office Slot 6 || 75 || Office slot 6 ||
+|| Office Slot 7 || 76 || Office slot 7 ||
+|| Office Slot 8 || 77 || Office slot 8 ||
+|| Office Slot 9 || 78 || Office slot 9 ||
+|| Office Slot 10 || 79 || Office slot 10 ||
+|| Office Slot 11 || 80 || Office slot 11 ||
+|| Office Slot 12 || 81 || Office slot 12 ||
+|| Office Slot 13 || 82 || Office slot 13 ||
+|| Office Slot 14 || 83 || Office slot 14 ||
+|| Office Slot 15 || 84 || Office slot 15 ||
+|| Office Slot 16 || 85 || Office slot 16 ||
+|| Bonus || 86 || Bonus ||
 || !DroneBay || 87 || Drone Bay ||
-|| !Booster || 88 || Booster ||
-|| !Implant || 89 || Implant ||
+|| Booster || 88 || Booster ||
+|| Implant || 89 || Implant ||
 || !ShipHangar || 90 || Ship Hangar ||
 || !ShipOffline || 91 || Ship Offline ||
 || !RigSlot0 || 92 || Rig power slot 1 ||
@@ -81,7 +81,7 @@ These are the available inventory flags from the EVE Trinity data export.
 || !RigSlot5 || 97 || Rig power slot 6 ||
 || !RigSlot6 || 98 || Rig power slot 7 ||
 || !RigSlot7 || 99 || Rig power slot 8 ||
-|| !Factory Operation || 100 || Factory Background Operation ||
+|| Factory Operation || 100 || Factory Background Operation ||
 || !CorpSAG2 || 116 || Corp Security Access Group 2 ||
 || !CorpSAG3 || 117 || Corp Security Access Group 3 ||
 || !CorpSAG4 || 118 || Corp Security Access Group 4 ||
