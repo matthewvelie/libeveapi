@@ -15,5 +15,8 @@ namespace libeveapi
         public static string ErrorList = "/eve/ErrorList.xml.aspx";
         public static string CharAssetList = "/char/AssetList.xml.aspx";
         public static string CorpAssetList = "/corp/AssetList.xml.aspx";
+
+        // Not part of the eve-api - used for unit tests
+        public static string ExampleError = "/Error.xml.aspx";
     }
 }

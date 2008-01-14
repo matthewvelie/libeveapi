@@ -33,7 +33,7 @@ namespace UnitTests
         [ExpectedException(typeof(ApiResponseErrorException))]
         public void ApiResponseError()
         {
-            XmlDocument xmlDoc = Network.GetXml("http://localhost/eveapi/Error.xml");
+            XmlDocument xmlDoc = Network.GetXml(Constants.ApiPrefix + Constants.ExampleError);
             ApiResponse apiResponse = new ApiResponse();
             apiResponse.ParseCommonElements(xmlDoc);
         }
