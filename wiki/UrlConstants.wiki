@@ -2,12 +2,12 @@
 The Constants class contains all the strings used to create the url for each api call. 
 
 || Name || Default Value || Description ||
-|| ApiPrefix || "http://api.eve-online.com" || The base of all api urls. The other strings are concatenated with this string. ||
-|| CharacterAccountBalance || "/char/!AccountBalance.xml.aspx" || AccountBalance ||
-|| CorpAccountBalance || "/corp/!AccountBalance.xml.aspx" || AccountBalance ||
+|| !ApiPrefix || "http://api.eve-online.com" || The base of all api urls. The other strings are concatenated with this string. ||
+|| !CharacterAccountBalance || "/char/!AccountBalance.xml.aspx" || AccountBalances ||
+|| !CorpAccountBalance || "/corp/!AccountBalance.xml.aspx" || AccountBalances ||
 || CharacterList || "/account/!Characters.xml.aspx" || CharacterList ||
 || StarbaseDetail || "/corp/!StarbaseDetail.xml.aspx" || StarbaseDetail ||
 || StarbaseList || "/corp/!StarbaseList.xml.aspx" || StarbaseList ||
 || ErrorList || "/eve/!ErrorList.xml.aspx" || ErrorList ||
-|| CharAssetList || "/char/!AssetList.xml.aspx" || AssetList ||
-|| CorpAssetList || "/corp/!AssetList.xml.aspx" || AssetList ||
+|| !CharAssetList || "/char/!AssetList.xml.aspx" || AssetList ||
+|| !CorpAssetList || "/corp/!AssetList.xml.aspx" || AssetList ||
