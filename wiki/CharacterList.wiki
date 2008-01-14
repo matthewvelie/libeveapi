@@ -1,7 +1,7 @@
 === Description ===
 Returns a list of all the characters on an account.
 
-=== EveApi Method ===
+=== Eve Api Method ===
 {{{
 /// <summary>
 /// Returns a list of all characters on an account
@@ -13,16 +13,16 @@ public static CharacterList GetAccountCharacters(string userId, string apiKey)
 }}}
 
 === Result ===
-* CharacterList Object (See ApiResponse for inherited members) *
+* !CharacterList Object (See ApiResponse for inherited members) *
 || Member || Type || Description ||
-|| CharacterListItems || CharacterListItem[] || The characters from this list ||
+|| !CharacterListItems || !CharacterListItem[] || The characters from this list ||
 
 * CharacterListItem Object *
 || Member || Type || Description ||
 || Name || string || Name of the character ||
-|| CharacterId || string || ID of the character ||
-|| CorporationName || string || Name of the character's corporation ||
-|| CorporationId || string || ID of the character's corporation ||
+|| !CharacterId || string || ID of the character ||
+|| !CorporationName || string || Name of the character's corporation ||
+|| !CorporationId || string || ID of the character's corporation ||
 
 === Example ===
 {{{
