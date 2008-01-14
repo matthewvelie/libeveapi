@@ -14,6 +14,10 @@ The Constants class contains all the strings used to create the url for each api
 
 === Setting the strings for local development ===
 {{{
+// While developing your app you should have the api load
+// response xml files from a local web server instead of
+// hitting the eve api
+#if USE_LOCALHOST
 Constants.ApiPrefix = "http://localhost/eveapi";
 Constants.CharacterAccountBalance = "/char/AccountBalance.xml";
 Constants.CorpAccountBalance = "/corp/AccountBalance.xml";
@@ -23,4 +27,5 @@ Constants.StarbaseList = "/corp/StarbaseList.xml";
 Constants.ErrorList = "/eve/ErrorList.xml";
 Constants.CharAssetList = "/char/AssetList.xml";
 Constants.CorpAssetList = "/corp/AssetList.xml";
+#endif
 }}}
