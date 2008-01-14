@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Xml.Serialization;
+using System.Security.Cryptography;
 
 namespace libeveapi
 {
@@ -18,6 +19,8 @@ namespace libeveapi
         /// <param name="apiResponse"></param>
         public static void Set(string url, ApiResponse apiResponse)
         {
+            url = SHA1HashString(url);
+
             if (hashTable.Contains(url))
             {
                 hashTable.Remove(url);
@@ -32,6 +35,8 @@ namespace libeveapi
         /// <returns>ApiResponse if cached ApiResponse is valid, null if it is expired</returns>
         public static ApiResponse Get(string url)
         {
+            url = SHA1HashString(url);
+
             if (hashTable.Contains(url))
             {
                 ApiResponse cachedResponse = hashTable[url] as ApiResponse;
@@ -90,6 +95,22 @@ namespace libeveapi
                     hashTable.Add(apiResponse.Url, apiResponse);
                 }
             }
+        }
+
+        private static string SHA1HashString(string input)
+        {
+            Byte[] clearBytes;
+            Byte[] hashedBytes;
+            string output = String.Empty;
+
+            clearBytes = Encoding.UTF8.GetBytes(input);
+            SHA1CryptoServiceProvider sha1 = new SHA1CryptoServiceProvider();
+            sha1.ComputeHash(clearBytes);
+            hashedBytes = sha1.Hash;
+            sha1.Clear();
+            output = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
+
+            return output;
         }
     }
 }
