@@ -6,7 +6,7 @@
   * [AccountBalances Account Balances]
   * Asset List
   * [CharacterList Character List]
-  * Error List
+  * [ErrorList Error List]
   * [StarbaseDetail Starbase (POS) Details]
   * [StarbaseList Starbase (POS) List]
  # === Development ===
