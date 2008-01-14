@@ -10,6 +10,12 @@ namespace UnitTests
     [TestFixture]
     public class StarbaseListTests
     {
+        [SetUp]
+        public void Setup()
+        {
+            Utility.UseLocalUrls();
+        }
+
         [Test]
         public void GetStarbaseList()
         {

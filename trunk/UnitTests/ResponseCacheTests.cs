@@ -10,6 +10,12 @@ namespace UnitTests
     [TestFixture]
     public class ResponseCacheTests
     {
+        [SetUp]
+        public void Setup()
+        {
+            Utility.UseLocalUrls();
+        }
+
         [Test]
         public void NonExpiredApiResponse()
         {

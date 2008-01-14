@@ -10,6 +10,12 @@ namespace UnitTests
     [TestFixture]
     public class AccountBalanceTests
     {
+        [SetUp]
+        public void Setup()
+        {
+            Utility.UseLocalUrls();
+        }
+
         [Test]
         public void GetCharAccountBalanceTest()
         {

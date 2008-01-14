@@ -11,6 +11,12 @@ namespace UnitTests
     [TestFixture]
     public class ApiResponseTests
     {
+        [SetUp]
+        public void Setup()
+        {
+            Utility.UseLocalUrls();
+        }
+
         [Test]
         public void CommonElementParsing()
         {
