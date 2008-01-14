@@ -4,7 +4,7 @@
   * [ApiResponse The ApiResponse base class]
  # === API Calls ===
   * [AccountBalances Account Balances]
-  * Asset List
+  * [AssetList Asset List]
   * [CharacterList Character List]
   * [ErrorList Error List]
   * [StarbaseDetail Starbase (POS) Details]
