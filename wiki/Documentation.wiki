@@ -7,7 +7,7 @@
   * Asset List
   * [CharacterList Character List]
   * Error List
-  * Starbase (POS) Details
+  * [StarbaseDetail Starbase (POS) Details]
   * [StarbaseList Starbase (POS) List]
  # === Development ===
   * [DevelopmentEnvironment Setting up the development environment]
