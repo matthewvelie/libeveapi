@@ -37,7 +37,7 @@ namespace libeveapi
                 DateTime.TryParse(starbaseNode.Attributes["onlineTimestamp"].InnerText, out starbase.OnlineTimestamp);
 
                 starbase.StateTimestampLocal = EveApi.CCPDateTimeToLocal(starbaseList.CurrentTime, starbase.StateTimestamp);
-                starbase.OnlineTimestampLocal = EveApi.CCPDateTimeToLocal(starbaseList.CurrentTime, starbase.OnlineTimestampLocal);
+                starbase.OnlineTimestampLocal = EveApi.CCPDateTimeToLocal(starbaseList.CurrentTime, starbase.OnlineTimestamp);
                 
                 switch (Convert.ToInt32(starbaseNode.Attributes["state"].InnerText))
                 {
