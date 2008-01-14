@@ -14,6 +14,7 @@ namespace ConsoleTests
             CharacterListExamples.PrintCharacterList();
             AccountBalanceExamples.PrintAccounts();
             PrintStarbaseList();
+            PrintStarbaseDetail();
         }
 
         public static void PrintStarbaseList()
@@ -22,6 +23,17 @@ namespace ConsoleTests
             foreach (StarbaseListItem sli in starbaseList.StarbaseListItems)
             {
                 Console.WriteLine("ItemID: {0} LocationID: {1} State: {2}", sli.ItemId, sli.LocationId, sli.State);
+            }
+        }
+
+        public static void PrintStarbaseDetail()
+        {
+            StarbaseDetail starbaseDetail = EveApi.GetStarbaseDetail("userId", "characterId", "fullApiKey", "itemId");
+            Console.WriteLine("usageFlags: {0} deployFlags: {1}", starbaseDetail.UsageFlags, starbaseDetail.DeployFlags);
+            
+            foreach (FuelListItem fli in starbaseDetail.FuelList)
+            {
+                Console.WriteLine("TypeID: {0} Quantity: {1}", fli.TypeId, fli.Quantity);
             }
         }
     }

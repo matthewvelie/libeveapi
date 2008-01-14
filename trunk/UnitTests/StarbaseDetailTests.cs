@@ -20,7 +20,7 @@ namespace UnitTests
             Assert.AreEqual("0", starbaseDetail.DeployFlags);
             Assert.AreEqual(true, starbaseDetail.AllowCorporationMembers);
             Assert.AreEqual(false, starbaseDetail.AllowAllianceMembers);
-            Assert.AreEqual(false, starbaseDetail.claimSovereignty);
+            Assert.AreEqual(false, starbaseDetail.ClaimSovereignty);
 
             Assert.AreEqual(false, starbaseDetail.OnStandingDropEnabled);
             Assert.AreEqual("0", starbaseDetail.OnStandingDropStanding);
@@ -49,7 +49,7 @@ namespace UnitTests
             Assert.AreEqual(starbaseDetail.DeployFlags, cachedStarbaseDetail.DeployFlags);
             Assert.AreEqual(starbaseDetail.AllowCorporationMembers, cachedStarbaseDetail.AllowCorporationMembers);
             Assert.AreEqual(starbaseDetail.AllowAllianceMembers, cachedStarbaseDetail.AllowAllianceMembers);
-            Assert.AreEqual(starbaseDetail.claimSovereignty, cachedStarbaseDetail.claimSovereignty);
+            Assert.AreEqual(starbaseDetail.ClaimSovereignty, cachedStarbaseDetail.ClaimSovereignty);
 
             Assert.AreEqual(starbaseDetail.OnStandingDropEnabled, cachedStarbaseDetail.OnStandingDropEnabled);
             Assert.AreEqual(starbaseDetail.OnStandingDropStanding, cachedStarbaseDetail.OnStandingDropStanding);

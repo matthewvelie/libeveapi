@@ -14,7 +14,7 @@ namespace libeveapi
         public string DeployFlags;
         public bool AllowCorporationMembers;
         public bool AllowAllianceMembers;
-        public bool claimSovereignty;
+        public bool ClaimSovereignty;
 
         public bool OnStandingDropEnabled;
         public string OnStandingDropStanding;
@@ -39,7 +39,7 @@ namespace libeveapi
             starbaseDetail.DeployFlags = xmlDoc.SelectSingleNode("//generalSettings/deployFlags").InnerText;
             starbaseDetail.AllowCorporationMembers = Convert.ToBoolean(Convert.ToInt32(xmlDoc.SelectSingleNode("//generalSettings/allowCorporationMembers").InnerText));
             starbaseDetail.AllowAllianceMembers = Convert.ToBoolean(Convert.ToInt32(xmlDoc.SelectSingleNode("//generalSettings/allowAllianceMembers").InnerText));
-            starbaseDetail.claimSovereignty = Convert.ToBoolean(Convert.ToInt32(xmlDoc.SelectSingleNode("//generalSettings/claimSovereignty").InnerText));
+            starbaseDetail.ClaimSovereignty = Convert.ToBoolean(Convert.ToInt32(xmlDoc.SelectSingleNode("//generalSettings/claimSovereignty").InnerText));
 
             starbaseDetail.OnStandingDropEnabled = Convert.ToBoolean(Convert.ToInt32(xmlDoc.SelectSingleNode("//combatSettings/onStandingDrop").Attributes["enabled"].InnerText));
             starbaseDetail.OnStandingDropStanding = xmlDoc.SelectSingleNode("//combatSettings/onStandingDrop").Attributes["standing"].InnerText;
