@@ -8,14 +8,6 @@ While developing your app you should have the api load response xml files from a
 // Put this code in your application startup
 #if USE_LOCALHOST
 Constants.ApiPrefix = "http://localhost/eveapi";
-Constants.CharacterAccountBalance = "/char/AccountBalance.xml";
-Constants.CorpAccountBalance = "/corp/AccountBalance.xml";
-Constants.CharacterList = "/account/Characters.xml";
-Constants.StarbaseDetails = "/corp/StarbaseDetail.xml";
-Constants.StarbaseList = "/corp/StarbaseList.xml";
-Constants.ErrorList = "/eve/ErrorList.xml";
-Constants.CharAssetList = "/char/AssetList.xml";
-Constants.CorpAssetList = "/corp/AssetList.xml";
 #endif
 }}}
 
