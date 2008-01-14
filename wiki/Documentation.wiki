@@ -1,6 +1,7 @@
 #labels Featured
  # === General ===
   * [HowToUseTheLibrary How to use the library]
+  * [ApiResponse The ApiResponse base class]
  # === API Calls ===
   * [AccountBalances Account Balances]
   * Asset List
