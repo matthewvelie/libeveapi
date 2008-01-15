@@ -8,5 +8,5 @@ A class for caching responses from the eve api.
 || void Load(string filePath) || Load the response cache from this filename ||
 || void Load(Stream s) || Load the response cache from an external stream ||
 || void Set(string url, ApiResponse response) || Cache a response with plain text url ||
-|| ApiResult Get(string url) || Get ApiResponse from cache using plain text url ||
+|| ApiResponse Get(string url) || Get ApiResponse from cache using plain text url ||
 || void Clear() || Clear the response cache ||
