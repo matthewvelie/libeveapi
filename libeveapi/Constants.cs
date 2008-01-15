@@ -27,6 +27,17 @@ namespace libeveapi
         public static string MemberTracking = "/corp/MemberTracking.xml.aspx";
         public static string CharacterIDName = "/eve/CharacterID.xml.aspx";
         public static string CharacterSheet = "/char/CharacterSheet.xml.aspx";
+        public static string AllianceList = "/eve/AllianceList.xml.aspx";
+        public static string MapJumps = "/map/Jumps.xml.aspx";
+        public static string MapKills = "/map/Kills.xml.aspx";
+        public static string MapSoveignty = "/map/Sovereignty.xml.aspx";
+        public static string ConquerableStationOutput = "/eve/ConquerableStationList.xml.aspx";
+        public static string CorporationSheet = "/corp/CorporationSheet.xml.aspx";
+        public static string KillLog = "/char/Killlog.xml.aspx";
+        public static string SkillInTraining = "/char/SkillInTraining.xml.aspx";
+        public static string SkillTree = "/eve/SkillTree.xml.aspx";
+
+        public static string ImageFullURL = "http://img.eve.is/serv.asp";
 
         // Not part of the eve-api - used for unit tests
         public static string ExampleError = "/Error.xml.aspx";
