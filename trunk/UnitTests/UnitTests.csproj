@@ -39,6 +39,7 @@
     <Compile Include="AssetListTests.cs" />
     <Compile Include="CharacterListTests.cs" />
     <Compile Include="ErrorListTests.cs" />
+    <Compile Include="MemberTrackingTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseCacheTests.cs" />
     <Compile Include="StarbaseDetailTests.cs" />

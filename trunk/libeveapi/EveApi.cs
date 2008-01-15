@@ -176,6 +176,31 @@ namespace libeveapi
         }
 
         /// <summary>
+        /// Returns information on every member in the corporation. Information retrieved
+        /// varies on your roles without within the corporation. Not valid for NPC corps.
+        /// </summary>
+        /// <param name="userId">user ID of account for authentication</param>
+        /// <param name="characterId">Character ID of a char with director/CEO access in the corp that owns the starbase</param>
+        /// <param name="fullApiKey">Full access api key of account</param>
+        /// <returns></returns>
+        public static MemberTracking GetMemberTracking(string userId, string characterId, string fullApiKey)
+        {
+            string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}&version=1", Constants.ApiPrefix, Constants.MemberTracking, userId, characterId, fullApiKey);
+
+            ApiResponse cachedResponse = ResponseCache.Get(url);
+            if (cachedResponse != null)
+            {
+                return cachedResponse as MemberTracking;
+            }
+
+            XmlDocument xmlDoc = Network.GetXml(url);
+            MemberTracking memberTracking = MemberTracking.FromXmlDocument(xmlDoc);
+            ResponseCache.Set(url, memberTracking);
+
+            return memberTracking;
+        }
+
+        /// <summary>
         /// Convert a CCP DateTime to local time
         /// </summary>
         /// <param name="ccpCurrentTime">CCP server current datetime</param>
