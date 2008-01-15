@@ -38,7 +38,8 @@ namespace UnitTests
         [Test]
         public void GetDescription()
         {
-            Assert.AreEqual("Director Description", Roles.GetRoleDescription(RoleTypes.Director));
+            Assert.AreEqual("A director is, for most intents and purposes, the same as a CEO in many respects. They can hire and fire members and change job descriptions (assigning both roles and grantable roles).", 
+                Roles.GetRoleDescription(RoleTypes.Director));
         }
     }
 }
