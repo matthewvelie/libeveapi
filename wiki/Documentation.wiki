@@ -1,7 +1,7 @@
 #labels Featured
  # === General ===
   * [HowToUseTheLibrary How to use the library]
-  * Security
+  * [Security Security]
   * [UrlConstants How to get XML Responses from a local web server instead of the eve api]
  # === API Calls ===
   * [AccountBalances Account Balances]
