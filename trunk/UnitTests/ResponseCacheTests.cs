@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 using NUnit.Framework;
@@ -57,6 +58,34 @@ namespace UnitTests
             ResponseCache.Load("responseCache.xml");
 
             ApiResponse cachedResponse = ResponseCache.Get("PersistResponseCache");
+            Assert.AreEqual(cachedUntil, cachedResponse.CachedUntilLocal);
+        }
+
+        [Test]
+        public void UsingStreams()
+        {
+            ResponseCache.Clear();
+            ApiResponse apiResponse = new ApiResponse();
+            DateTime cachedUntil = DateTime.Now.Add(TimeSpan.FromDays(1));
+            apiResponse.CachedUntilLocal = cachedUntil;
+            apiResponse.HashedUrl = "PersistResponseCache";
+
+            ResponseCache.Set("PersistResponseCache", apiResponse);
+            
+            using (Stream s = new FileStream("ResponseCache.xml", FileMode.Create))
+            {
+                ResponseCache.Save(s);
+            }
+            
+            ResponseCache.Clear();
+            
+            using (Stream s = new FileStream("ResponseCache.xml", FileMode.Open))
+            {
+                ResponseCache.Load(s);
+            }
+
+            ApiResponse cachedResponse = ResponseCache.Get("PersistResponseCache");
+            
             Assert.AreEqual(cachedUntil, cachedResponse.CachedUntilLocal);
         }
     }
