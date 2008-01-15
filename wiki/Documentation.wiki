@@ -1,6 +1,7 @@
 #labels Featured
  # === General ===
   * [HowToUseTheLibrary How to use the library]
+  * Security
   * [UrlConstants How to get XML Responses from a local web server instead of the eve api]
   * [ApiResponse The ApiResponse base class]
  # === API Calls ===
