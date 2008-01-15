@@ -7,22 +7,22 @@
            typeName="Strontium Clathrates" typeID="16275" price="999.00" clientID="150208955"
            clientName="Mark Roled" stationID="60001870" 
            stationName="Eglennaert I - Moon 11 - Nugoeihuvi Corporation Development Studio"
-           transactionType="buy"/>
+           transactionType="buy" transactionFor="personal"/>
       <row transactionDateTime="2007-06-13 20:24:00" transactionID="618" quantity="10"
            typeName="Strontium Clathrates" typeID="16275" price="1000.00" clientID="150210601"
            clientName="Mark Player" stationID="60001870"
            stationName="Eglennaert I - Moon 11 - Nugoeihuvi Corporation Development Studio"
-           transactionType="sell"/>
+           transactionType="sell" transactionFor="personal"/>
       <row transactionDateTime="2007-06-13 20:24:00" transactionID="618" quantity="10"
            typeName="Strontium Clathrates" typeID="16275" price="1000.00" clientID="150210601"
            clientName="Mark Player" stationID="60001870"
            stationName="Eglennaert I - Moon 11 - Nugoeihuvi Corporation Development Studio"
-           transactionType="sell"/>
+           transactionType="sell" transactionFor="personal"/>
       <row transactionDateTime="2007-06-13 20:23:00" transactionID="617" quantity="120"
            typeName="Strontium Clathrates" typeID="16275" price="1000.00" clientID="150210601"
            clientName="Mark Player" stationID="60001870"
            stationName="Eglennaert I - Moon 11 - Nugoeihuvi Corporation Development Studio"
-           transactionType="sell"/>
+           transactionType="sell" transactionFor="personal"/>
     </rowset>
   </result>
   <cachedUntil>2007-06-18 22:36:09</cachedUntil>
