@@ -33,9 +33,9 @@ namespace UnitTests
             ResponseCache.Clear();
             ErrorList errorList = EveApi.GetErrorList();
 
-            ResponseCache.SaveToFile("ResponseCache.xml");
+            ResponseCache.Save("ResponseCache.xml");
             ResponseCache.Clear();
-            ResponseCache.LoadFromFile("ResponseCache.xml");
+            ResponseCache.Load("ResponseCache.xml");
             ErrorList cachedErrorList = EveApi.GetErrorList();
 
             Assert.AreEqual(errorList.CachedUntilLocal, cachedErrorList.CachedUntilLocal);

@@ -52,9 +52,9 @@ namespace UnitTests
             apiResponse.HashedUrl = "PersistResponseCache";
 
             ResponseCache.Set("PersistResponseCache", apiResponse);
-            ResponseCache.SaveToFile("responseCache.xml");
+            ResponseCache.Save("responseCache.xml");
             ResponseCache.Clear();
-            ResponseCache.LoadFromFile("responseCache.xml");
+            ResponseCache.Load("responseCache.xml");
 
             ApiResponse cachedResponse = ResponseCache.Get("PersistResponseCache");
             Assert.AreEqual(cachedUntil, cachedResponse.CachedUntilLocal);

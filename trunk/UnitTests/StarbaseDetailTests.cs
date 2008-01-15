@@ -45,9 +45,9 @@ namespace UnitTests
             ResponseCache.Clear();
             StarbaseDetail starbaseDetail = EveApi.GetStarbaseDetail("userId", "characterId", "fullApiKey", "itemId");
 
-            ResponseCache.SaveToFile("ResponseCache.xml");
+            ResponseCache.Save("ResponseCache.xml");
             ResponseCache.Clear();
-            ResponseCache.LoadFromFile("ResponseCache.xml");
+            ResponseCache.Load("ResponseCache.xml");
 
             StarbaseDetail cachedStarbaseDetail = EveApi.GetStarbaseDetail("userId", "characterId", "fullApiKey", "itemId");
 

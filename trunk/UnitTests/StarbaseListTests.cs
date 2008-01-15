@@ -39,9 +39,9 @@ namespace UnitTests
         {
             ResponseCache.Clear();
             StarbaseList starbaseList = EveApi.GetStarbaseList("userId", "characterId", "apiKey");
-            ResponseCache.SaveToFile("ResponseCache.xml");
+            ResponseCache.Save("ResponseCache.xml");
             ResponseCache.Clear();
-            ResponseCache.LoadFromFile("ResponseCache.xml");
+            ResponseCache.Load("ResponseCache.xml");
 
             StarbaseList cachedStarbaseList = EveApi.GetStarbaseList("userId", "characterId", "apiKey");
 

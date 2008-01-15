@@ -35,9 +35,9 @@ namespace UnitTests
         {
             ResponseCache.Clear();
             AssetList assetList = EveApi.GetAssetList(AssetListType.Corporation, "userId", "characterId", "apiKey");
-            ResponseCache.SaveToFile("ResponseCache.xml");
+            ResponseCache.Save("ResponseCache.xml");
             ResponseCache.Clear();
-            ResponseCache.LoadFromFile("ResponseCache.xml");
+            ResponseCache.Load("ResponseCache.xml");
             AssetList cachedAssetList = EveApi.GetAssetList(AssetListType.Corporation, "userId", "characterId", "apiKey");
 
             Assert.AreEqual(assetList.CachedUntilLocal, cachedAssetList.CachedUntilLocal);

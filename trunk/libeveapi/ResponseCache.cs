@@ -65,7 +65,7 @@ namespace libeveapi
         /// Save all currently cached items to the specified file
         /// </summary>
         /// <param name="filePath"></param>
-        public static void SaveToFile(string filePath)
+        public static void Save(string filePath)
         {
             List<ApiResponse> apiResponses = new List<ApiResponse>();
             foreach (ApiResponse apiResponse in hashTable.Values)
@@ -81,10 +81,26 @@ namespace libeveapi
         }
 
         /// <summary>
+        /// Serialize the ResposeCache to a stream
+        /// </summary>
+        /// <param name="s"></param>
+        public static void Save(Stream s)
+        {
+            List<ApiResponse> apiResponses = new List<ApiResponse>();
+            foreach (ApiResponse apiResponse in hashTable.Values)
+            {
+                apiResponses.Add(apiResponse);
+            }
+
+            XmlSerializer xs = new XmlSerializer(typeof(List<ApiResponse>), new Type[] { typeof(ApiResponse) });
+            xs.Serialize(s, apiResponses);
+        }
+
+        /// <summary>
         /// Load cached items from the specified file
         /// </summary>
         /// <param name="filePath"></param>
-        public static void LoadFromFile(string filePath)
+        public static void Load(string filePath)
         {
             using (Stream s = new FileStream(filePath, FileMode.Open))
             {
@@ -95,6 +111,21 @@ namespace libeveapi
                 {
                     hashTable.Add(apiResponse.HashedUrl, apiResponse);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Load the ResponseCache from a stream
+        /// </summary>
+        /// <param name="s"></param>
+        public static void Load(Stream s)
+        {
+            XmlSerializer xs = new XmlSerializer(typeof(List<ApiResponse>), new Type[] { typeof(ApiResponse) });
+            List<ApiResponse> apiResponses = xs.Deserialize(s) as List<ApiResponse>;
+            hashTable.Clear();
+            foreach (ApiResponse apiResponse in apiResponses)
+            {
+                hashTable.Add(apiResponse.HashedUrl, apiResponse);
             }
         }
 

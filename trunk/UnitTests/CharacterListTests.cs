@@ -35,9 +35,9 @@ namespace UnitTests
             ResponseCache.Clear();
             CharacterList characterList = EveApi.GetAccountCharacters("asdf", "asdf");
 
-            ResponseCache.SaveToFile("ResponseCache.xml");
+            ResponseCache.Save("ResponseCache.xml");
             ResponseCache.Clear();
-            ResponseCache.LoadFromFile("ResponseCache.xml");
+            ResponseCache.Load("ResponseCache.xml");
             CharacterList cachedCharacterList = EveApi.GetAccountCharacters("asdf", "asdf");
 
             Assert.AreEqual(characterList.CachedUntilLocal, cachedCharacterList.CachedUntilLocal);
