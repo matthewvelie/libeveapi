@@ -150,7 +150,7 @@ namespace libeveapi
         /// 
         /// </summary>
         [Name("Junior Accountant")]
-        [Description("The junior accountant is a cur down version of the accountant role. It essentially allows the holder to view the data that an accountant views. However it does not allow the holder to perform the actions that an accountant can.")]
+        [Description("The junior accountant is a cut down version of the accountant role. It essentially allows the holder to view the data that an accountant views. However it does not allow the holder to perform the actions that an accountant can.")]
         JuniorAccountant = 1 << 52,
 
         /// <summary>
