@@ -9,7 +9,7 @@ namespace libeveapi
     /// Represents a character or corporation journal entry from the eve api
     /// http://wiki.eve-dev.net/APIv2_Char_JournalEntries_XML
     /// </summary>
-    class JournalEntries : ApiResponse
+    public class JournalEntries : ApiResponse
     {
         public JournalEntryItem[] JournalEntryItems = new JournalEntryItem[0];
 

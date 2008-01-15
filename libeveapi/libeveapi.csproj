@@ -45,9 +45,14 @@
     <Compile Include="ResponseObjects\AssetList.cs" />
     <Compile Include="ResponseObjects\CharacterList.cs" />
     <Compile Include="ResponseObjects\ErrorList.cs" />
+    <Compile Include="ResponseObjects\IndustryJobs.cs" />
+    <Compile Include="ResponseObjects\JournalEntries.cs" />
+    <Compile Include="ResponseObjects\MarketOrders.cs" />
+    <Compile Include="ResponseObjects\RefTypes.cs" />
     <Compile Include="ResponseObjects\MemberTracking.cs" />
     <Compile Include="ResponseObjects\StarbaseDetail.cs" />
     <Compile Include="ResponseObjects\StarbaseList.cs" />
+    <Compile Include="ResponseObjects\WalletTransactions.cs" />
     <Compile Include="SerializableDictionary.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

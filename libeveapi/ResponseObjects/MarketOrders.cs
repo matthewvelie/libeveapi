@@ -9,7 +9,7 @@ namespace libeveapi
     /// Represents a character or corporation AccountBalance response from the eve api
     /// http://wiki.eve-dev.net/APIv2_Corp_MarketOrders_XML
     /// </summary>
-    class MarketOrder : ApiResponse
+    public class MarketOrder : ApiResponse
     {
         public MarketOrderItem[] MarketOrderItems = new MarketOrderItem[0];
 

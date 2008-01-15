@@ -39,12 +39,17 @@
     <Compile Include="AssetListTests.cs" />
     <Compile Include="CharacterListTests.cs" />
     <Compile Include="ErrorListTests.cs" />
+    <Compile Include="IndustryJobsTests.cs" />
     <Compile Include="MemberTrackingTests.cs" />
+    <Compile Include="JournalEntriesTests.cs" />
+    <Compile Include="MarketOrdersTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RefTypesTests.cs" />
     <Compile Include="ResponseCacheTests.cs" />
     <Compile Include="StarbaseDetailTests.cs" />
     <Compile Include="StarbaseListTests.cs" />
     <Compile Include="Utility.cs" />
+    <Compile Include="WalletTransactionsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\libeveapi\libeveapi.csproj">
