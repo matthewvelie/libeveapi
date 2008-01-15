@@ -19,7 +19,10 @@ namespace UnitTests
         [Test]
         public void GetCharWalletTransactionsTest()
         {
+            WalletTransactions walletTransactions = EveApi.GetWalletTransactionsList(WalletTransactionListType.Character, "userId", "charId", "apiKey");
 
+            Assert.AreEqual(4, walletTransactions.WalletTransactionItems.Length);
+            Assert.AreEqual(619, walletTransactions.WalletTransactionItems[0].transactionID);
         }
 
         [Test]
@@ -33,22 +36,21 @@ namespace UnitTests
         {
             ResponseCache.Clear();
 
-            WalletTransactions marketTransactions = EveApi.GetMarketTransactionsList(WalletTransactionListType.Corporation, "userId", "charId", "apiKey");
+            WalletTransactions walletTransactions = EveApi.GetWalletTransactionsList(WalletTransactionListType.Corporation, "userId", "charId", "apiKey");
             ResponseCache.Save("ResponseCache.xml");
             ResponseCache.Clear();
             ResponseCache.Load("ResponseCache.xml");
-            WalletTransactions cachedmarketTransactions = EveApi.GetMarketTransactionsList(WalletTransactionListType.Corporation, "userId", "charId", "apiKey");
+            WalletTransactions cachedwalletTransactions = EveApi.GetWalletTransactionsList(WalletTransactionListType.Corporation, "userId", "charId", "apiKey");
 
-            Assert.AreEqual(marketTransactions.CachedUntilLocal, cachedmarketTransactions.CachedUntilLocal);
+            Assert.AreEqual(walletTransactions.CachedUntilLocal, cachedwalletTransactions.CachedUntilLocal);
 
-            /*
-            for (int i = 0; i < accountBalance.AccountBalanceItems.Length; i++)
+            for (int i = 0; i < walletTransactions.WalletTransactionItems.Length; i++)
             {
-                Assert.AreEqual(accountBalance.AccountBalanceItems[i].AccountId, cachedAccountBalance.AccountBalanceItems[i].AccountId);
-                Assert.AreEqual(accountBalance.AccountBalanceItems[i].AccountKey, cachedAccountBalance.AccountBalanceItems[i].AccountKey);
-                Assert.AreEqual(accountBalance.AccountBalanceItems[i].Balance, cachedAccountBalance.AccountBalanceItems[i].Balance);
+                Assert.AreEqual(walletTransactions.WalletTransactionItems[i].characterID, cachedwalletTransactions.WalletTransactionItems[i].characterID);
+                Assert.AreEqual(walletTransactions.WalletTransactionItems[i].clientName, cachedwalletTransactions.WalletTransactionItems[i].clientName);
+                Assert.AreEqual(walletTransactions.WalletTransactionItems[i].quantity, cachedwalletTransactions.WalletTransactionItems[i].quantity);
             }
-             */
+             
         }
     }
 }

@@ -19,8 +19,8 @@ namespace libeveapi
         public static string CorpIndustryJobs = "/corp/IndustryJobs.xml.aspx";
         public static string CharJournalEntries = "/char/JournalEntries.xml.aspx";
         public static string CorpJournalEntries = "/corp/JournalEntries.xml.aspx";
-        public static string CharMarketTransactions = "/char/WalletTransactions.xml.aspx";
-        public static string CorpMarketTransactions = "/corp/WalletTransactions.xml.aspx";
+        public static string CharWalletTransactions = "/char/WalletTransactions.xml.aspx";
+        public static string CorpWalletTransactions = "/corp/WalletTransactions.xml.aspx";
         public static string CharMarketOrders = "/char/MarketOrders.xml.aspx";
         public static string CorpMarketOrders = "/corp/MarketOrders.xml.aspx";
         public static string RefTypesList = "/eve/RefTypes.xml.aspx";
