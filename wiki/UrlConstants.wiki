@@ -31,3 +31,4 @@ Constants.ApiPrefix = "http://localhost/eveapi";
 || !CorpMarketOrders || "/corp/!MarketOrders.xml.aspx" || Market Orders ||
 || !RefTypesList || "/eve/RefTypes.xml.aspx" || Reference Types for Journal Enteries ||
 || !MemberTracking || "/corp/!MemberTracking.xml.aspx" || Member Tracking ||
+|| !CharacterIDName || "/eve/CharacterID.xml.aspx" || Character ID / Name Translation ||
