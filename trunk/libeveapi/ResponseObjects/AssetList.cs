@@ -50,7 +50,7 @@ namespace libeveapi
             }
             else
             {
-                assetListItem.Flag = InventoryFlagType.FlagUnkown;
+                assetListItem.Flag = InventoryFlagType.FlagUnknown;
             }
 
             if (assetRow.Attributes.GetNamedItem("locationID") != null)
@@ -126,241 +126,420 @@ namespace libeveapi
     /// </summary>
     public enum InventoryFlagType
     {
-        FlagUnkown = 999,
-        FlagAutoFit = 0, 	
-        FlagBonus = 86, 	
-        FlagBooster = 88, 	
-        FlagBriefcase = 6, 	
-        FlagCapsule = 56, 
-
-	    /// <summary>
-	    /// general purpose cargo in a ship
-	    /// </summary>
-        FlagCargo = 5, 
-	
         /// <summary>
-        /// deliveries hangar
+        /// None
         /// </summary>
-        FlagCorpMarket = 62,
+        FlagNone = 0,
 
-        FlagDroneBay = 87, 	
-        FlagFactoryOperation = 100, 	
-        FlagFixedSlot = 35,
-        FlagImplant = 89,
-        FlagNone = 0,	
-        FlagPilot = 57, 	
-        FlagReward = 8,
-        FlagShipHangar = 90, 	
-        FlagShipOffline = 91, 	
-        FlagSkill = 7, 	
-        FlagSkillInTraining = 61, 	
-        FlagSlotFirst = 11, 	
-        FlagSlotLast = 35,
-        FlagLocked = 63,
-        FlagUnlocked = 64, 	
+        /// <summary>
+        /// Wallet
+        /// </summary>
         FlagWallet = 1,
 
-        #region Hangar Divisions
         /// <summary>
-        /// hangar division 1 / personal hanger
+        /// Factory
+        /// </summary>
+        FlagFactory = 2,
+
+        /// <summary>
+        /// Hangar
         /// </summary>
         FlagHangar = 4,
 
         /// <summary>
-        /// hangar division 2
+        /// Cargo
         /// </summary>
-        FlagCorpSAG2 = 116,
+        FlagCargo = 5,
 
         /// <summary>
-        /// hangar division 3
+        /// Briefcase
         /// </summary>
-        FlagCorpSAG3 = 117,
+        FlagBriefcase = 6,
 
         /// <summary>
-        /// hangar division 4
+        /// Skill
         /// </summary>
-        FlagCorpSAG4 = 118,
+        FlagSkill = 7,
 
         /// <summary>
-        /// hangar division 5
+        /// Reward
         /// </summary>
-        FlagCorpSAG5 = 119,
+        FlagReward = 8,
 
         /// <summary>
-        /// hangar division 6
+        /// Character in station connected
         /// </summary>
-        FlagCorpSAG6 = 120,
+        FlagConnected = 9,
 
         /// <summary>
-        /// hangar division 7
+        /// Character in station offline
         /// </summary>
-        FlagCorpSAG7 = 121,
-        #endregion
-        # region Fitted Low Slots
+        FlagDisconnected = 10,
+
         /// <summary>
-        /// Fitted in Low Slot 0
+        /// Low power slot 1
         /// </summary>
         FlagLoSlot0 = 11,
 
         /// <summary>
-        /// Fitted in Low Slot 1
+        /// Low power slot 2
         /// </summary>
         FlagLoSlot1 = 12,
 
         /// <summary>
-        /// Fitted in Low Slot 2
+        /// Low power slot 3
         /// </summary>
         FlagLoSlot2 = 13,
 
         /// <summary>
-        /// Fitted in Low Slot 3
+        /// Low power slot 4
         /// </summary>
         FlagLoSlot3 = 14,
 
         /// <summary>
-        /// Fitted in Low Slot 4
+        /// Low power slot 5
         /// </summary>
         FlagLoSlot4 = 15,
 
         /// <summary>
-        /// Fitted in Low Slot 5
+        /// Low power slot 6
         /// </summary>
         FlagLoSlot5 = 16,
 
         /// <summary>
-        /// Fitted in Low Slot 6
+        /// Low power slot 7
         /// </summary>
         FlagLoSlot6 = 17,
 
         /// <summary>
-        /// Fitted in Low Slot 7
+        /// Low power slot 8
         /// </summary>
         FlagLoSlot7 = 18,
-                #endregion
-        #region Fitted Medium Slots
+
         /// <summary>
-        /// Fitted in Medium Slot 0
+        /// Medium power slot 1
         /// </summary>
         FlagMedSlot0 = 19,
 
         /// <summary>
-        /// Fitted in Medium Slot 1
+        /// Medium power slot 2
         /// </summary>
         FlagMedSlot1 = 20,
 
         /// <summary>
-        /// Fitted in Medium Slot 2
+        /// Medium power slot 3
         /// </summary>
         FlagMedSlot2 = 21,
 
         /// <summary>
-        /// Fitted in Medium Slot 3
+        /// Medium power slot 4
         /// </summary>
         FlagMedSlot3 = 22,
 
         /// <summary>
-        /// Fitted in Medium Slot 4
+        /// Medium power slot 5
         /// </summary>
         FlagMedSlot4 = 23,
 
         /// <summary>
-        /// Fitted in Medium Slot 5
+        /// Medium power slot 6
         /// </summary>
         FlagMedSlot5 = 24,
 
         /// <summary>
-        /// Fitted in Medium Slot 6
+        /// Medium power slot 7
         /// </summary>
         FlagMedSlot6 = 25,
 
         /// <summary>
-        /// Fitted in Medium Slot 7
+        /// Medium power slot 8
         /// </summary>
         FlagMedSlot7 = 26,
-                #endregion
-        #region Fitted High Slots
+
         /// <summary>
-        /// Fitted in high slot 0
+        /// High power slot 1
         /// </summary>
         FlagHiSlot0 = 27,
 
         /// <summary>
-        /// Fitted in high slot 0
+        /// High power slot 2
         /// </summary>
         FlagHiSlot1 = 28,
 
         /// <summary>
-        /// Fitted in high slot 0
+        /// High power slot 3
         /// </summary>
         FlagHiSlot2 = 29,
 
         /// <summary>
-        /// Fitted in high slot 0
+        /// High power slot 4
         /// </summary>
         FlagHiSlot3 = 30,
 
         /// <summary>
-        /// Fitted in high slot 0
+        /// High power slot 5
         /// </summary>
         FlagHiSlot4 = 31,
 
         /// <summary>
-        /// Fitted in high slot 0
+        /// High power slot 6
         /// </summary>
         FlagHiSlot5 = 32,
 
         /// <summary>
-        /// Fitted in high slot 0
+        /// High power slot 7
         /// </summary>
         FlagHiSlot6 = 33,
 
         /// <summary>
-        /// Fitted in high slot 0
+        /// High power slot 8
         /// </summary>
         FlagHiSlot7 = 34,
-                #endregion
-        #region Fitted Rig Slots
+
         /// <summary>
-        /// Fitted in rig slot 0
+        /// Fixed Slot
+        /// </summary>
+        FlagFixedSlot = 35,
+
+        /// <summary>
+        /// Capsule
+        /// </summary>
+        FlagCapsule = 56,
+
+        /// <summary>
+        /// Pilot
+        /// </summary>
+        FlagPilot = 57,
+
+        /// <summary>
+        /// Passenger
+        /// </summary>
+        FlagPassenger = 58,
+
+        /// <summary>
+        /// Boarding gate
+        /// </summary>
+        FlagBoardingGate = 59,
+
+        /// <summary>
+        /// Crew
+        /// </summary>
+        FlagCrew = 60,
+
+        /// <summary>
+        /// Skill in training
+        /// </summary>
+        FlagSkillInTraining = 61,
+
+        /// <summary>
+        /// Corporation Market Deliveries / Returns
+        /// </summary>
+        FlagCorpMarket = 62,
+
+        /// <summary>
+        /// Locked item, can not be moved unless unlocked
+        /// </summary>
+        FlagLocked = 63,
+
+        /// <summary>
+        /// Unlocked item, can be moved
+        /// </summary>
+        FlagUnlocked = 64,
+
+        /// <summary>
+        /// Office slot 1
+        /// </summary>
+        FlagOfficeSlot1 = 70,
+
+        /// <summary>
+        /// Office slot 2
+        /// </summary>
+        FlagOfficeSlot2 = 71,
+
+        /// <summary>
+        /// Office slot 3
+        /// </summary>
+        FlagOfficeSlot3 = 72,
+
+        /// <summary>
+        /// Office slot 4
+        /// </summary>
+        FlagOfficeSlot4 = 73,
+
+        /// <summary>
+        /// Office slot 5
+        /// </summary>
+        FlagOfficeSlot5 = 74,
+
+        /// <summary>
+        /// Office slot 6
+        /// </summary>
+        FlagOfficeSlot6 = 75,
+
+        /// <summary>
+        /// Office slot 7
+        /// </summary>
+        FlagOfficeSlot7 = 76,
+
+        /// <summary>
+        /// Office slot 8
+        /// </summary>
+        FlagOfficeSlot8 = 77,
+
+        /// <summary>
+        /// Office slot 9
+        /// </summary>
+        FlagOfficeSlot9 = 78,
+
+        /// <summary>
+        /// Office slot 10
+        /// </summary>
+        FlagOfficeSlot10 = 79,
+
+        /// <summary>
+        /// Office slot 11
+        /// </summary>
+        FlagOfficeSlot11 = 80,
+
+        /// <summary>
+        /// Office slot 12
+        /// </summary>
+        FlagOfficeSlot12 = 81,
+
+        /// <summary>
+        /// Office slot 13
+        /// </summary>
+        FlagOfficeSlot13 = 82,
+
+        /// <summary>
+        /// Office slot 14
+        /// </summary>
+        FlagOfficeSlot14 = 83,
+
+        /// <summary>
+        /// Office slot 15
+        /// </summary>
+        FlagOfficeSlot15 = 84,
+
+        /// <summary>
+        /// Office slot 16
+        /// </summary>
+        FlagOfficeSlot16 = 85,
+
+        /// <summary>
+        /// Bonus
+        /// </summary>
+        FlagBonus = 86,
+
+        /// <summary>
+        /// Drone Bay
+        /// </summary>
+        FlagDroneBay = 87,
+
+        /// <summary>
+        /// Booster
+        /// </summary>
+        FlagBooster = 88,
+
+        /// <summary>
+        /// Implant
+        /// </summary>
+        FlagImplant = 89,
+
+        /// <summary>
+        /// Ship Hangar
+        /// </summary>
+        FlagShipHangar = 90,
+
+        /// <summary>
+        /// Ship Offline
+        /// </summary>
+        FlagShipOffline = 91,
+
+        /// <summary>
+        /// Rig power slot 1
         /// </summary>
         FlagRigSlot0 = 92,
 
         /// <summary>
-        /// Fitted in rig slot 1
+        /// Rig power slot 2
         /// </summary>
         FlagRigSlot1 = 93,
 
         /// <summary>
-        /// Fitted in rig slot 2
+        /// Rig power slot 3
         /// </summary>
         FlagRigSlot2 = 94,
 
         /// <summary>
-        /// Fitted in rig slot 3
+        /// Rig power slot 4
         /// </summary>
         FlagRigSlot3 = 95,
 
         /// <summary>
-        /// Fitted in rig slot 4
+        /// Rig power slot 5
         /// </summary>
         FlagRigSlot4 = 96,
 
         /// <summary>
-        /// Fitted in rig slot 5
+        /// Rig power slot 6
         /// </summary>
         FlagRigSlot5 = 97,
 
         /// <summary>
-        /// Fitted in rig slot 6
+        /// Rig power slot 7
         /// </summary>
         FlagRigSlot6 = 98,
 
         /// <summary>
-        /// Fitted in rig slot 7
+        /// Rig power slot 8
         /// </summary>
-        FlagRigSlot7 = 99
-           #endregion
+        FlagRigSlot7 = 99,
 
+        /// <summary>
+        /// Factory Background Operation
+        /// </summary>
+        FlagFactoryOperation = 100,
+
+        /// <summary>
+        /// Corp Security Access Group 2
+        /// </summary>
+        FlagCorpSAG2 = 116,
+
+        /// <summary>
+        /// Corp Security Access Group 3
+        /// </summary>
+        FlagCorpSAG3 = 117,
+
+        /// <summary>
+        /// Corp Security Access Group 4
+        /// </summary>
+        FlagCorpSAG4 = 118,
+
+        /// <summary>
+        /// Corp Security Access Group 5
+        /// </summary>
+        FlagCorpSAG5 = 119,
+
+        /// <summary>
+        /// Corp Security Access Group 6
+        /// </summary>
+        FlagCorpSAG6 = 120,
+
+        /// <summary>
+        /// Corp Security Access Group 7
+        /// </summary>
+        FlagCorpSAG7 = 121,
+
+        /// <summary>
+        /// Secondary Storage
+        /// </summary>
+        FlagSecondaryStorage = 122,
+
+        /// <summary>
+        /// Unknown Flag
+        /// </summary>
+        FlagUnknown = 999
     } 
 
     public enum AssetListType
