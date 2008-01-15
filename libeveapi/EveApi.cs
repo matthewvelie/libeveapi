@@ -233,7 +233,7 @@ namespace libeveapi
             }
 
             string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}", Constants.ApiPrefix, apiPath, userId, characterId, fullApiKey);
-
+            Console.WriteLine(url);
             ApiResponse cachedResponse = ResponseCache.Get(url);
             if (cachedResponse != null)
             {
