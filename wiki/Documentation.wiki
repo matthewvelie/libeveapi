@@ -3,7 +3,6 @@
   * [HowToUseTheLibrary How to use the library]
   * Security
   * [UrlConstants How to get XML Responses from a local web server instead of the eve api]
-  * [ApiResponse The ApiResponse base class]
  # === API Calls ===
   * [AccountBalances Account Balances]
   * [AssetList Asset List]
@@ -11,5 +10,8 @@
   * [ErrorList Error List]
   * [StarbaseDetail Starbase (POS) Details]
   * [StarbaseList Starbase (POS) List]
- # === Development ===
+ # === Reference ===
+  * [ApiResponse The ApiResponse base class]
+  * [Roles Roles class] - A pilot's roles in a corporation.
+ # === Library Development ===
   * [DevelopmentEnvironment Setting up the development environment]
