@@ -14,5 +14,6 @@
   * [ApiResponse The ApiResponse base class]
   * [Roles Roles class] - A pilot's roles in a corporation.
   * [CorpRoles Corporation roles explained]
+  * ResponseCache
  # === Library Development ===
   * [DevelopmentEnvironment Setting up the development environment]
