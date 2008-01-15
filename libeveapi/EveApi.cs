@@ -94,6 +94,51 @@ namespace libeveapi
         }
 
         /// <summary>
+        /// Returns the character id and character name, given the one or the other
+        /// </summary>
+        /// <param name="charactername">character name string, use to look up character id</param>
+        /// <returns></returns>
+        public static CharacterID GetCharacterIDName(string charactername)
+        {
+            string url = String.Format("{0}{1}?names={2}", Constants.ApiPrefix, Constants.CharacterIDName, charactername);
+
+            ApiResponse cachedResponse = ResponseCache.Get(url);
+            if (cachedResponse != null)
+            {
+                return cachedResponse as CharacterID;
+            }
+
+            XmlDocument xmlDoc = Network.GetXml(url);
+            CharacterID charID = CharacterID.FromXmlDocument(xmlDoc);
+            ResponseCache.Set(url, charID);
+
+            return charID;
+        }
+
+        /// <summary>
+        /// Returns the character id and character name, given the one or the other
+        /// </summary>
+        /// <param name="characterID">characterID used to look up character name</param>
+        /// <returns></returns>
+        public static CharacterID GetCharacterIDName(int characterID)
+        {
+            string url = String.Format("{0}{1}?ids={2}", Constants.ApiPrefix, Constants.CharacterIDName, characterID);
+
+            ApiResponse cachedResponse = ResponseCache.Get(url);
+            if (cachedResponse != null)
+            {
+                return cachedResponse as CharacterID;
+            }
+
+            XmlDocument xmlDoc = Network.GetXml(url);
+            CharacterID charID = CharacterID.FromXmlDocument(xmlDoc);
+            ResponseCache.Set(url, charID);
+
+            return charID;
+        }
+
+
+        /// <summary>
         /// Returns the settings and fuel status of a starbase
         /// </summary>
         /// <param name="userId">user ID of account for authentication</param>
