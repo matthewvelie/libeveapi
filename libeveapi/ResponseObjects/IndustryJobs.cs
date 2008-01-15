@@ -65,8 +65,8 @@ namespace libeveapi
             IndustryJobListItem.outputTypeID = Convert.ToInt64(industryJobRow.Attributes["outputTypeID"].InnerText);
             IndustryJobListItem.containerTypeID = Convert.ToInt64(industryJobRow.Attributes["containerTypeID"].InnerText);
             IndustryJobListItem.installedItemCopy = Convert.ToInt32(industryJobRow.Attributes["installedItemCopy"].InnerText);
-            IndustryJobListItem.completed = Convert.ToBoolean(industryJobRow.Attributes["completed"].InnerText);
-            IndustryJobListItem.completedSuccessfully = Convert.ToBoolean(industryJobRow.Attributes["completedSuccessfully"].InnerText);
+            IndustryJobListItem.completed = Convert.ToBoolean(Convert.ToInt32(industryJobRow.Attributes["completed"].InnerText));
+            IndustryJobListItem.completedSuccessfully = Convert.ToBoolean(Convert.ToInt32(industryJobRow.Attributes["completedSuccessfully"].InnerText));
             IndustryJobListItem.installedItemFlag = Convert.ToInt32(industryJobRow.Attributes["installedItemFlag"].InnerText);
             IndustryJobListItem.outputFlag = Convert.ToInt32(industryJobRow.Attributes["outputFlag"].InnerText);
             IndustryJobListItem.activityID = Convert.ToInt32(industryJobRow.Attributes["activityID"].InnerText);
