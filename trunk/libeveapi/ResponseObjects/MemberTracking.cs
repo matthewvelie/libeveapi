@@ -12,6 +12,9 @@ namespace libeveapi
     /// </summary>
     public class MemberTracking : ApiResponse
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public MemberTrackingItem[] MemberTrackingItems = new MemberTrackingItem[0];
 
         /// <summary>
@@ -153,6 +156,9 @@ namespace libeveapi
         /// This pilot's roles in the corporation
         /// </summary>
         protected Roles roles;
+        /// <summary>
+        /// This pilot's roles in the corporation
+        /// </summary>
         public Roles Roles
         {
             get

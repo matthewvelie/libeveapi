@@ -7,8 +7,17 @@ using System.Xml;
 
 namespace libeveapi
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Network
     {
+        /// <summary>
+        /// This function takes in a url, and will download the data from that
+        /// URL and create an xml document from it
+        /// </summary>
+        /// <param name="url">The url of the XML file to retrieve</param>
+        /// <returns></returns>
         public static XmlDocument GetXml(string url)
         {
             WebClient wc = new WebClient();

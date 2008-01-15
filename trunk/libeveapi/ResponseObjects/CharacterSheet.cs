@@ -5,31 +5,96 @@ using System.Xml;
 
 namespace libeveapi
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class CharacterSheet : ApiResponse
     {
+        /// <summary>
+        /// The eve assigned characterId
+        /// </summary>
         public string CharacterId;
+        /// <summary>
+        /// The name of the character
+        /// </summary>
         public string Name;
+        /// <summary>
+        /// The race of the character
+        /// </summary>
         public string Race;
+        /// <summary>
+        /// The bloodline of the character
+        /// </summary>
         public string BloodLine;
+        /// <summary>
+        /// The gender of the character (currently male/female)
+        /// </summary>
         public string Gender;
+        /// <summary>
+        /// The name of the corporation that the character is in
+        /// </summary>
         public string CorporationName;
+        /// <summary>
+        /// The eve generated ID of the corporation
+        /// </summary>
         public string CorporationId;
+        /// <summary>
+        /// The character's current wallet balance
+        /// </summary>
         public double Balance;
 
+        /// <summary>
+        /// The character's intelligence attriube
+        /// </summary>
         public int Intelligence;
+        /// <summary>
+        /// The character's memory attriube
+        /// </summary>
         public int Memory;
+        /// <summary>
+        /// The character's charisma attriube
+        /// </summary>
         public int Charisma;
+        /// <summary>
+        /// The character's perception attriube
+        /// </summary>
         public int Perception;
+        /// <summary>
+        /// The character's willpower attriube
+        /// </summary>
         public int Willpower;
 
+        /// <summary>
+        /// Memory Implant
+        /// </summary>
         public AttributeEnhancer MemoryBonus = new AttributeEnhancer();
+        /// <summary>
+        /// Willpower Implant
+        /// </summary>
         public AttributeEnhancer WillpowerBonus = new AttributeEnhancer();
+        /// <summary>
+        /// Perception Implant
+        /// </summary>
         public AttributeEnhancer PerceptionBonus = new AttributeEnhancer();
+        /// <summary>
+        /// Intelligence Implant
+        /// </summary>
         public AttributeEnhancer IntelligenceBonus = new AttributeEnhancer();
+        /// <summary>
+        /// Charisma Implant
+        /// </summary>
         public AttributeEnhancer CharismaBonus = new AttributeEnhancer();
 
+        /// <summary>
+        /// 
+        /// </summary>
         public SkillItem[] SkillItemList = new SkillItem[0];
 
+        /// <summary>
+        /// Create an CharacterSheet by parsing an XmlDocument response from the eveapi
+        /// </summary>
+        /// <param name="xmlDoc"></param>
+        /// <returns></returns>
         public static CharacterSheet FromXmlDocument(XmlDocument xmlDoc)
         {
             CharacterSheet characterSheet = new CharacterSheet();
@@ -80,6 +145,13 @@ namespace libeveapi
             return characterSheet;
         }
 
+        /// <summary>
+        /// Parses out each implant that the character has in
+        /// </summary>
+        /// <param name="xpath">The xpath location of the implant in the xml</param>
+        /// <param name="xmlDoc">The xml document</param>
+        /// <param name="ae">The correct attribute enhancer to modify</param>
+        /// <returns></returns>
         protected static void parseAugmentator(string xpath, XmlDocument xmlDoc, AttributeEnhancer ae)
         {
             //XmlNode enhancer = xmlDoc.SelectSingleNode("/eveapi/result/attributeEnhancers/memoryBonus");
@@ -92,17 +164,41 @@ namespace libeveapi
         }
     }
 
+    /// <summary>
+    /// Stores valid information about each skill in the character sheet
+    /// </summary>
     public class SkillItem
     {
+        /// <summary>
+        /// TypeID of the skill
+        /// </summary>
         public string TypeId;
+        /// <summary>
+        /// Current number of skillpoints the character has in the skill
+        /// </summary>
         public long Skillpoints;
+        /// <summary>
+        /// The highest completed level of the skill
+        /// </summary>
         public string Level;
+        /// <summary>
+        /// Flag if the skill is an unpublished skill
+        /// </summary>
         public string Unpublished;
     }
 
+    /// <summary>
+    /// Contains information about each attributeEnhancer (implant)
+    /// </summary>
     public class AttributeEnhancer
     {
+        /// <summary>
+        /// The name of the implant
+        /// </summary>
         public string Name = string.Empty;
+        /// <summary>
+        /// The implant's effect on that attribute
+        /// </summary>
         public int Value = 0;
     }
 }

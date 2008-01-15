@@ -70,7 +70,13 @@ namespace libeveapi
     /// </summary>
     public enum AccountBalanceType
     {
+        /// <summary>
+        /// A character account
+        /// </summary>
         Character,
+        /// <summary>
+        /// A corporation account
+        /// </summary>
         Corporation
     }
 }

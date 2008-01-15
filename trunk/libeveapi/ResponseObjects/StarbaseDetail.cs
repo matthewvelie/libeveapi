@@ -10,19 +10,55 @@ namespace libeveapi
     /// </summary>
     public class StarbaseDetail : ApiResponse
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public string UsageFlags;
+        /// <summary>
+        /// 
+        /// </summary>
         public string DeployFlags;
+        /// <summary>
+        /// Allow corporation members inside the force field
+        /// </summary>
         public bool AllowCorporationMembers;
+        /// <summary>
+        /// Allow alliance members inside the force field
+        /// </summary>
         public bool AllowAllianceMembers;
+        /// <summary>
+        /// Is the starbase claiming sovernty (only in 0.0 space)
+        /// </summary>
         public bool ClaimSovereignty;
 
+        /// <summary>
+        /// Shoot on standing drop
+        /// </summary>
         public bool OnStandingDropEnabled;
+        /// <summary>
+        /// What target standing makes them a valid target
+        /// </summary>
         public string OnStandingDropStanding;
+        /// <summary>
+        /// Shoot on status drop
+        /// </summary>
         public bool OnStatusDropEnabled;
+        /// <summary>
+        /// What target security make them a valid target
+        /// </summary>
         public string OnStatusDropStanding;
+        /// <summary>
+        /// Shoot on target agression
+        /// </summary>
         public bool OnAgressionEnabled;
+        /// <summary>
+        /// Shoot if at war with target
+        /// </summary>
         public bool OnCorporationWarEnabled;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public FuelListItem[] FuelList = new FuelListItem[0];
 
         /// <summary>

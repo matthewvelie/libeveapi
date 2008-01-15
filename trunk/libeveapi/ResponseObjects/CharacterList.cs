@@ -5,6 +5,9 @@ using System.Xml;
 
 namespace libeveapi
 {
+    /// <summary>
+    /// A list of characters on the account
+    /// </summary>
     public class CharacterList : ApiResponse
     {
         /// <summary>

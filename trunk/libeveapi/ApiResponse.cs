@@ -19,26 +19,54 @@ namespace libeveapi
     [XmlInclude(typeof(RefTypes))]
     [XmlInclude(typeof(MemberTracking))]
     [XmlInclude(typeof(CharacterSheet))]
+
     public class ApiResponse
     {
+        /// <summary>
+        /// This is a hashed version of the url that is sent to CCP to request the file
+        /// </summary>
         [XmlElement]
         public string HashedUrl;
 
+        /// <summary>
+        /// This is the current time that CCP sends to us on the file.
+        /// </summary>
         [XmlElement]
         public DateTime CurrentTime;
 
+        /// <summary>
+        /// This is the time that the file says it is cacheable till in CCP time.  We use
+        /// the currentTime that is sent along with the file to calculate how long this
+        /// is till.
+        /// </summary>
         [XmlElement]
         public DateTime CachedUntil;
 
+        /// <summary>
+        /// This is the current time on the local machine.
+        /// </summary>
         [XmlElement]
         public DateTime CurrentTimeLocal;
 
+        /// <summary>
+        /// This is what time the file should be cached to according to the local
+        /// clock.  A timespan is created from the eve time, and added to CurrentTimeLocal
+        /// </summary>
         [XmlElement]
         public DateTime CachedUntilLocal;
 
+        /// <summary>
+        /// 
+        /// </summary>
         [XmlElement]
         public XmlDocument ResponseXml;
 
+        /// <summary>
+        /// This parses out all of the elements that are common to each one of the xml files,
+        /// which mainly includes dates, or errors if they exist.
+        /// </summary>
+        /// <param name="xmlDoc"></param>
+        /// <returns></returns>
         public void ParseCommonElements(XmlDocument xmlDoc)
         {
             DateTime.TryParse(xmlDoc.GetElementsByTagName("currentTime")[0].InnerText, out this.CurrentTime);

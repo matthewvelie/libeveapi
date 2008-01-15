@@ -5,8 +5,14 @@ using System.Xml;
 
 namespace libeveapi
 {
+    /// <summary>
+    /// Holds the full asset list of a corporation or character
+    /// </summary>
     public class AssetList : ApiResponse
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public AssetListItem[] AssetListItems = new AssetListItem[0];
 
         /// <summary>
@@ -71,6 +77,10 @@ namespace libeveapi
         }
     }
 
+    /// <summary>
+    /// Represents one full asset and all information associated with it for a
+    /// character or corporation
+    /// </summary>
     public class AssetListItem
     {
         /// <summary>
@@ -101,7 +111,7 @@ namespace libeveapi
         /// <summary>
         /// Indicates something about this item's storage location. The flag 
         /// is used to differentiate between hangar divisions, drone bay, 
-        /// fitting location, and similar. Please see the <see cref="InventoryFlagTypes" />.
+        /// fitting location, and similar. Please see the <see cref="InventoryFlagType" />.
         /// </summary>
         public InventoryFlagType Flag;
 
@@ -540,11 +550,20 @@ namespace libeveapi
         /// Unknown Flag
         /// </summary>
         FlagUnknown = 999
-    } 
+    }
 
+    /// <summary>
+    /// A corporation or character asset
+    /// </summary>
     public enum AssetListType
     {
+        /// <summary>
+        /// It is a corporation asset
+        /// </summary>
         Corporation,
+        /// <summary>
+        /// It is a character asset
+        /// </summary>
         Character
     }
 }

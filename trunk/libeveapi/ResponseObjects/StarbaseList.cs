@@ -116,6 +116,10 @@ namespace libeveapi
         public DateTime OnlineTimestampLocal;
     }
 
+    /// <summary>
+    /// This represents the current state of the starbase, of which there are
+    /// four different valid states.
+    /// </summary>
     public enum StarbaseState
     {
         /// <summary>

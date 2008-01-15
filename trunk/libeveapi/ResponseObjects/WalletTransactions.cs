@@ -11,6 +11,9 @@ namespace libeveapi
     /// </summary>
     public class WalletTransactions : ApiResponse
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public WalletTransactionItem[] WalletTransactionItems = new WalletTransactionItem[0];
 
         /// <summary>
@@ -36,7 +39,7 @@ namespace libeveapi
         /// <summary>
         /// Create an WalletTransactionItem by parsing a single row
         /// </summary>
-        /// <param name="assetRow"></param>
+        /// <param name="walletTransactionRow"></param>
         /// <returns></returns>
         protected static WalletTransactionItem ParseTransactionRow(XmlNode walletTransactionRow)
         {
@@ -70,6 +73,9 @@ namespace libeveapi
         }
     }
 
+    /// <summary>
+    /// Contains information about one wallet transaction
+    /// </summary>
     public class WalletTransactionItem
     {
         /// <summary>
@@ -147,9 +153,18 @@ namespace libeveapi
         public string transactionFor;
     }
 
+    /// <summary>
+    /// If the transaction is a corporation or character transaction
+    /// </summary>
     public enum WalletTransactionListType
     {
+        /// <summary>
+        /// A corporation transaction
+        /// </summary>
         Corporation,
+        /// <summary>
+        /// A character transaction
+        /// </summary>
         Character
     }
 }

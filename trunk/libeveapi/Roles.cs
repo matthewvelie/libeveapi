@@ -6,21 +6,38 @@ using System.Text;
 
 namespace libeveapi
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Roles
     {
+        /// <summary>
+        /// 
+        /// </summary>
         protected Hashtable rolesTable = new Hashtable();
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Roles(string roleMask)
         {
             ulong mask = Convert.ToUInt64(roleMask);
             decodeRoles(mask);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Roles(ulong roleMask)
         {
             decodeRoles(roleMask);
         }
 
+        /// <summary>
+        /// This loops through each role and checks to see if it has been assigned
+        /// </summary>
+        /// <param name="mask"></param>
+        /// <returns></returns>
         private void decodeRoles(ulong mask)
         {
             foreach (RoleTypes roleType in Enum.GetValues(typeof(RoleTypes)))
@@ -218,44 +235,151 @@ namespace libeveapi
         Auditor = 1 << 12,
 
         /* Corp Hangers */
+        /// <summary>
+        /// This allows a person to take from the Division 1 Hanger
+        /// </summary>
         TakeFromDivision1Hangar = (ulong)1 << 13,
+        /// <summary>
+        /// This allows a person to take from the Division 2 Hanger
+        /// </summary>
         TakeFromDivision2Hangar = (ulong)1 << 14,
+        /// <summary>
+        /// This allows a person to take from the Division 3 Hanger
+        /// </summary>
         TakeFromDivision3Hangar = (ulong)1 << 15,
+        /// <summary>
+        /// This allows a person to take from the Division 4 Hanger
+        /// </summary>
         TakeFromDivision4Hangar = (ulong)1 << 16,
+        /// <summary>
+        /// This allows a person to take from the Division 5 Hanger
+        /// </summary>
         TakeFromDivision5Hangar = (ulong)1 << 17,
+        /// <summary>
+        /// This allows a person to take from the Division 6 Hanger
+        /// </summary>
         TakeFromDivision6Hangar = (ulong)1 << 18,
+        /// <summary>
+        /// This allows a person to take from the Division 7 Hanger
+        /// </summary>
         TakeFromDivision7Hangar = (ulong)1 << 19,
+
+        /// <summary>
+        /// This allows a person to query from the Division 1 Hanger
+        /// </summary>
         QueryDivision1Hangar = (ulong)1 << 20,
+        /// <summary>
+        /// This allows a person to query from the Division 2 Hanger
+        /// </summary>
         QueryDivision2Hangar = (ulong)1 << 21,
+        /// <summary>
+        /// This allows a person to query from the Division 3 Hanger
+        /// </summary>
         QueryDivision3Hangar = (ulong)1 << 22,
+        /// <summary>
+        /// This allows a person to query from the Division 4 Hanger
+        /// </summary>
         QueryDivision4Hangar = (ulong)1 << 23,
+        /// <summary>
+        /// This allows a person to query from the Division 5 Hanger
+        /// </summary>
         QueryDivision5Hangar = (ulong)1 << 24,
+        /// <summary>
+        /// This allows a person to query from the Division 6 Hanger
+        /// </summary>
         QueryDivision6Hangar = (ulong)1 << 25,
+        /// <summary>
+        /// This allows a person to query from the Division 7 Hanger
+        /// </summary>
         QueryDivision7Hangar = (ulong)1 << 26,
 
         /* Corp Wallets */
+        /// <summary>
+        /// This allows a person to take ISK from the Division 1 Account
+        /// </summary>
         TakeFromDivision1Accounts = (ulong)1 << 27,
+        /// <summary>
+        /// This allows a person to take ISK from the Division 2 Account
+        /// </summary>
         TakeFromDivision2Accounts = (ulong)1 << 28,
+        /// <summary>
+        /// This allows a person to take ISK from the Division 3 Account
+        /// </summary>
         TakeFromDivision3Accounts = (ulong)1 << 29,
+        /// <summary>
+        /// This allows a person to take ISK from the Division 4 Account
+        /// </summary>
         TakeFromDivision4Accounts = (ulong)1 << 30,
+        /// <summary>
+        /// This allows a person to take ISK from the Division 5 Account
+        /// </summary>
         TakeFromDivision5Accounts = (ulong)1 << 31,
+        /// <summary>
+        /// This allows a person to take ISK from the Division 6 Account
+        /// </summary>
         TakeFromDivision6Accounts = (ulong)1 << 32,
+        /// <summary>
+        /// This allows a person to take ISK from the Division 7 Account
+        /// </summary>
         TakeFromDivision7Accounts = (ulong)1 << 33,
+
+        /// <summary>
+        /// This allows a person to look at how much ISK is in Division 1 Account
+        /// </summary>
         QueryDivision1Accounts = (ulong)1 << 34,
+        /// <summary>
+        /// This allows a person to look at how much ISK is in Division 2 Account
+        /// </summary>
         QueryDivision2Accounts = (ulong)1 << 35,
+        /// <summary>
+        /// This allows a person to look at how much ISK is in Division 3 Account
+        /// </summary>
         QueryDivision3Accounts = (ulong)1 << 36,
+        /// <summary>
+        /// This allows a person to look at how much ISK is in Division 4 Account
+        /// </summary>
         QueryDivision4Accounts = (ulong)1 << 37,
+        /// <summary>
+        /// This allows a person to look at how much ISK is in Division 5 Account
+        /// </summary>
         QueryDivision5Accounts = (ulong)1 << 38,
+        /// <summary>
+        /// This allows a person to look at how much ISK is in Division 6 Account
+        /// </summary>
         QueryDivision6Accounts = (ulong)1 << 39,
+        /// <summary>
+        /// This allows a person to look at how much ISK is in Division 7 Account
+        /// </summary>
         QueryDivision7Accounts = (ulong)1 << 40,
 
         /* Container Access in Hangers */
+        /// <summary>
+        /// This allows a person to take a container from the Division 1 Hanger
+        /// </summary>
         ContainerCanTakeDivision1 = (ulong)1 << 42,
+        /// <summary>
+        /// This allows a person to take a container from the Division 2 Hanger
+        /// </summary>
         ContainerCanTakeDivision2 = (ulong)1 << 43,
+        /// <summary>
+        /// This allows a person to take a container from the Division 3 Hanger
+        /// </summary>
         ContainerCanTakeDivision3 = (ulong)1 << 44,
+        /// <summary>
+        /// This allows a person to take a container from the Division 4 Hanger
+        /// </summary>
         ContainerCanTakeDivision4 = (ulong)1 << 45,
+        /// <summary>
+        /// This allows a person to take a container from the Division 5 Hanger
+        /// </summary>
         ContainerCanTakeDivision5 = (ulong)1 << 46,
+        /// <summary>
+        /// This allows a person to take a container from the Division 6 Hanger
+        /// </summary>
         ContainerCanTakeDivision6 = (ulong)1 << 47,
+        /// <summary>
+        /// This allows a person to take a container from the Division 7 Hanger
+        /// </summary>
         ContainerCanTakeDivision7 = (ulong)1 << 48,
     }
 }
