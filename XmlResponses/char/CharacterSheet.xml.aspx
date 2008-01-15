@@ -23,10 +23,6 @@
         <augmentatorName>Ocular Filter - Standard</augmentatorName>
         <augmentatorValue>4</augmentatorValue>
       </perceptionBonus>
-      <intelligenceBonus>
-        <augmentatorName>Cybernetic Subprocessor - Standard</augmentatorName>
-        <augmentatorValue>4</augmentatorValue>
-      </intelligenceBonus>
       <charismaBonus>
         <augmentatorName>Social Adaptation Chip - Standard</augmentatorName>
         <augmentatorValue>4</augmentatorValue>

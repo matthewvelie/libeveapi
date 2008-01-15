@@ -25,6 +25,7 @@ namespace libeveapi
         public static string CorpMarketOrders = "/corp/MarketOrders.xml.aspx";
         public static string RefTypesList = "/eve/RefTypes.xml.aspx";
         public static string MemberTracking = "/corp/MemberTracking.xml.aspx";
+        public static string CharacterSheet = "/char/CharacterSheet.xml.aspx";
 
         // Not part of the eve-api - used for unit tests
         public static string ExampleError = "/Error.xml.aspx";
