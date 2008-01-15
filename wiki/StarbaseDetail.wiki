@@ -19,15 +19,15 @@ public static StarbaseDetail GetStarbaseDetail(string userId, string characterId
 || Member || Type || Description ||
 || UsageFlags || string || ||
 || DeployFlags || string || ||
-|| AllowCorporationMembers || bool || ||
-|| AllowAllianceMembers || bool || ||
-|| ClaimSovereignty || bool || ||
-|| OnStandingDropEnabled || bool || ||
-|| OnStandingDropStanding|| string|| ||
-|| OnStatusDropEnabled|| bool || ||
-|| OnStatusDropStanding|| string|| ||
-|| OnAgressionEnabled|| bool || ||
-|| OnCorporationWarEnabled|| bool || ||
+|| AllowCorporationMembers || bool || Allow corporation members access inside the forcefield bubble ||
+|| AllowAllianceMembers || bool || Allow alliance members access inside the forcefield bubble ||
+|| ClaimSovereignty || bool || Is this starbase claiming sovernty (only in 0.0) ||
+|| OnStandingDropEnabled || bool || Attack if target standing is dropping ||
+|| OnStandingDropStanding|| string|| Attack if target standing is below this ||
+|| OnStatusDropEnabled|| bool || Attack if target is status is dropping ||
+|| OnStatusDropStanding|| string|| Attack if target status is below this ||
+|| OnAgressionEnabled|| bool || Attack if target has aggressed ||
+|| OnCorporationWarEnabled|| bool || Attack if target is a wartarget ||
 || FuelList || FuelListItem[] || List of fuels present in the starbase ||
 
 * FuelListItem Object *
