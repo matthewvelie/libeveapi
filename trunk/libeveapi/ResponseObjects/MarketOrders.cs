@@ -79,7 +79,7 @@ namespace libeveapi
             marketItem.duration = Convert.ToInt32(marketOrderRow.Attributes["duration"].InnerText);
             marketItem.escrow = (float)Convert.ToDouble(marketOrderRow.Attributes["escrow"].InnerText);
             marketItem.price = (float)Convert.ToDouble(marketOrderRow.Attributes["price"].InnerText);
-            marketItem.bid = Convert.ToBoolean(marketOrderRow.Attributes["bid"].InnerText);
+            marketItem.bid = Convert.ToBoolean(Convert.ToInt32(marketOrderRow.Attributes["bid"].InnerText));
             marketItem.issued = Convert.ToDateTime(marketOrderRow.Attributes["issued"].InnerText);
 
             return marketItem;
