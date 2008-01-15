@@ -23,8 +23,11 @@ Constants.ApiPrefix = "http://localhost/eveapi";
 || !CorpAssetList || "/corp/!AssetList.xml.aspx" || AssetList ||
 || !CharIndustryJobs || "/char/IndustryJobs.xml.aspx" || Science and Industry Jobs ||
 || !CorpIndustryJobs || "/corp/IndustryJobs.xml.aspx" || Science and Industry Jobs ||
-|| !CharJournalEntries || "/char/WalletJournal.xml.aspx" || Journal Entries ||
-|| !CorpJournalEntries || "/corp/WalletJournal.xml.aspx" || Journal Entries ||
+|| !CharJournalEntries || "/char/JournalEntries.xml.aspx" || Journal Entries ||
+|| !CorpJournalEntries || "/corp/JournalEntries.xml.aspx" || Journal Entries ||
 || !CharMarketTransactions || "/char/WalletTransactions.xml.aspx" || Market Transactions ||
 || !CorpMarketTransactions || "/corp/WalletTransactions.xml.aspx" || Market Transactions ||
+|| !CharMarketOrders || "/char/!MarketOrders.xml.aspx" || Market Orders ||
+|| !CorpMarketOrders || "/corp/!MarketOrders.xml.aspx" || Market Orders ||
 || !RefTypesList || "/eve/RefTypes.xml.aspx" || Reference Types for Journal Enteries ||
+|| !MemberTracking || "/corp/!MemberTracking.xml.aspx" || Member Tracking ||
