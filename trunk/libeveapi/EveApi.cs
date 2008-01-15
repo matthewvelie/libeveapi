@@ -176,6 +176,172 @@ namespace libeveapi
         }
 
         /// <summary>
+        /// Returns a list of industrial jobs owned by a character or corporation.
+        /// </summary>
+        /// <param name="assetListType"><see cref="AssetListType" /></param>
+        /// <param name="userId">userID of account for authentication</param>
+        /// <param name="characterId">CharacterID of character for authentication</param>
+        /// <param name="fullApiKey">Full access API key of account</param>
+        /// <returns></returns>
+        public static IndustryJobList GetIndustryJobList(IndustryJobListType industryJobListType, string userId, string characterId, string fullApiKey)
+        {
+            string apiPath = string.Empty;
+            switch (industryJobListType)
+            {
+                case IndustryJobListType.Character:
+                    apiPath = Constants.CharIndustryJobs;
+                    break;
+                case IndustryJobListType.Corporation:
+                    apiPath = Constants.CorpIndustryJobs;
+                    break;
+            }
+
+            string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}&version=2", Constants.ApiPrefix, apiPath, userId, characterId, fullApiKey);
+
+            ApiResponse cachedResponse = ResponseCache.Get(url);
+            if (cachedResponse != null)
+            {
+                return cachedResponse as IndustryJobList;
+            }
+
+            XmlDocument xmlDoc = Network.GetXml(url);
+            IndustryJobList industryJobList = IndustryJobList.FromXmlDocument(xmlDoc);
+            ResponseCache.Set(url, industryJobList);
+
+            return industryJobList;
+        }
+
+        /// <summary>
+        /// Returns a list of journal entries owned by a character or corporation.
+        /// </summary>
+        /// <param name="assetListType"><see cref="AssetListType" /></param>
+        /// <param name="userId">userID of account for authentication</param>
+        /// <param name="characterId">CharacterID of character for authentication</param>
+        /// <param name="fullApiKey">Full access API key of account</param>
+        /// <returns></returns>
+        public static JournalEntries GetJournalEntryList(JournalEntryType journalEntriesType, string userId, string characterId, string fullApiKey)
+        {
+            string apiPath = string.Empty;
+            switch (journalEntriesType)
+            {
+                case JournalEntryType.Character:
+                    apiPath = Constants.CharJournalEntries;
+                    break;
+                case JournalEntryType.Corporation:
+                    apiPath = Constants.CorpJournalEntries;
+                    break;
+            }
+
+            string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}", Constants.ApiPrefix, apiPath, userId, characterId, fullApiKey);
+
+            ApiResponse cachedResponse = ResponseCache.Get(url);
+            if (cachedResponse != null)
+            {
+                return cachedResponse as JournalEntries;
+            }
+
+            XmlDocument xmlDoc = Network.GetXml(url);
+            JournalEntries journalEntriesList = JournalEntries.FromXmlDocument(xmlDoc);
+            ResponseCache.Set(url, journalEntriesList);
+
+            return journalEntriesList;
+        }
+
+        /// <summary>
+        /// Returns a list of market orders owned by a character or corporation.
+        /// </summary>
+        /// <param name="assetListType"><see cref="AssetListType" /></param>
+        /// <param name="userId">userID of account for authentication</param>
+        /// <param name="characterId">CharacterID of character for authentication</param>
+        /// <param name="fullApiKey">Full access API key of account</param>
+        /// <returns></returns>
+        public static MarketOrder GetMarketOrderList(MarketOrderType marketOrdersType, string userId, string characterId, string fullApiKey)
+        {
+            string apiPath = string.Empty;
+            switch (marketOrdersType)
+            {
+                case MarketOrderType.Character:
+                    apiPath = Constants.CharMarketOrders;
+                    break;
+                case MarketOrderType.Corporation:
+                    apiPath = Constants.CorpMarketOrders;
+                    break;
+            }
+
+            string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}&version=2", Constants.ApiPrefix, apiPath, userId, characterId, fullApiKey);
+
+            ApiResponse cachedResponse = ResponseCache.Get(url);
+            if (cachedResponse != null)
+            {
+                return cachedResponse as MarketOrder;
+            }
+
+            XmlDocument xmlDoc = Network.GetXml(url);
+            MarketOrder marketOrderList = MarketOrder.FromXmlDocument(xmlDoc);
+            ResponseCache.Set(url, marketOrderList);
+
+            return marketOrderList;
+        }
+
+        /// <summary>
+        /// Returns a list of market transactions (wallet transactions) owned by a character or corporation.
+        /// </summary>
+        /// <param name="assetListType"><see cref="AssetListType" /></param>
+        /// <param name="userId">userID of account for authentication</param>
+        /// <param name="characterId">CharacterID of character for authentication</param>
+        /// <param name="fullApiKey">Full access API key of account</param>
+        /// <returns></returns>
+        public static WalletTransactions GetMarketTransactionsList(WalletTransactionListType walletTransactionType, string userId, string characterId, string fullApiKey)
+        {
+            string apiPath = string.Empty;
+            switch (walletTransactionType)
+            {
+                case WalletTransactionListType.Character:
+                    apiPath = Constants.CharMarketTransactions;
+                    break;
+                case WalletTransactionListType.Corporation:
+                    apiPath = Constants.CorpMarketTransactions;
+                    break;
+            }
+
+            string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}&version=2", Constants.ApiPrefix, apiPath, userId, characterId, fullApiKey);
+
+            ApiResponse cachedResponse = ResponseCache.Get(url);
+            if (cachedResponse != null)
+            {
+                return cachedResponse as WalletTransactions;
+            }
+
+            XmlDocument xmlDoc = Network.GetXml(url);
+            WalletTransactions walletTransactionList = WalletTransactions.FromXmlDocument(xmlDoc);
+            ResponseCache.Set(url, walletTransactionList);
+
+            return walletTransactionList;
+        }
+
+        /// <summary>
+        /// Returns a list of RefTypes that are used by certain API Calls
+        /// </summary>
+        /// <returns></returns>
+        public static RefTypes GetRefTypesList()
+        {
+            string url = String.Format("{0}{1}?version=2", Constants.ApiPrefix, Constants.RefTypesList);
+
+            ApiResponse cachedResponse = ResponseCache.Get(url);
+            if (cachedResponse != null)
+            {
+                return cachedResponse as RefTypes;
+            }
+
+            XmlDocument xmlDoc = Network.GetXml(url);
+            RefTypes refTypeList = RefTypes.FromXmlDocument(xmlDoc);
+            ResponseCache.Set(url, refTypeList);
+
+            return refTypeList;
+        }
+
+
+        /// <summary>
         /// Returns information on every member in the corporation. Information retrieved
         /// varies on your roles without within the corporation. Not valid for NPC corps.
         /// </summary>

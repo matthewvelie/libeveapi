@@ -9,7 +9,7 @@ namespace libeveapi
     /// Represents a character or corporation AccountBalance response from the eve api
     /// http://wiki.eve-dev.net/APIv2_Char_MarketTransactions_XML
     /// </summary>
-    class WalletTransactions : ApiResponse
+    public class WalletTransactions : ApiResponse
     {
         public WalletTransactionItem[] WalletTransactionItems = new WalletTransactionItem[0];
 
