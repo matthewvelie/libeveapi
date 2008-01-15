@@ -46,16 +46,16 @@ The corprole is a bitmask, you can perform a logical and with the following valu
 || Account Can Query Division 6 || 549755813888 || 39 ||
 || Account Can Query Division 7 || 1099511627776 || 40 ||
 || Equipment Config || 2199023255552 || 41 ||
-|| ContainerCan Take Division 1 || 4398046511104 || 42 ||
-|| ContainerCan Take Division 2 || 8796093022208 || 43 ||
-|| ContainerCan Take Division 3 || 17592186044416 || 44 ||
-|| ContainerCan Take Division 4 || 35184372088832 || 45 ||
-|| ContainerCan Take Division 5 || 70368744177664 || 46 ||
-|| ContainerCan Take Division 6 || 140737488355328 || 47 ||
-|| ContainerCan Take Division 7 || 281474976710656 || 48 ||
+|| Container Can Take Division 1 || 4398046511104 || 42 ||
+|| Container Can Take Division 2 || 8796093022208 || 43 ||
+|| Container Can Take Division 3 || 17592186044416 || 44 ||
+|| Container Can Take Division 4 || 35184372088832 || 45 ||
+|| Container Can Take Division 5 || 70368744177664 || 46 ||
+|| Container Can Take Division 6 || 140737488355328 || 47 ||
+|| Container Can Take Division 7 || 281474976710656 || 48 ||
 || Can Rent Office || 562949953421312 || 49 ||
-|| Can Rent FactorySlot || 1125899906842624 || 50 ||
-|| Can Rent ResearchSlot || 2251799813685248 || 51 ||
+|| Can Rent Factory Slot || 1125899906842624 || 50 ||
+|| Can Rent Research Slot || 2251799813685248 || 51 ||
 || Junior Accountant || 4503599627370496 || 52 ||
 || Starbase Config || 9007199254740992 || 53 ||
 || Trader || 18014398509481984 || 54 ||
