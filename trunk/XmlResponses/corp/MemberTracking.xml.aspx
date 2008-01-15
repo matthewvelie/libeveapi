@@ -6,7 +6,7 @@
            baseID="0" base="base" title="asdf" logonDateTime="2007-06-16 21:12:00"
            logoffDateTime="2007-06-16 21:36:00" locationID="60011566"
            location="Bourynes VII - Moon 2 - University of Caille School" shipTypeID="606"
-           shipType="Velator" roles="0" grantableRoles="0"/>
+           shipType="Velator" roles="1281" grantableRoles="0"/>
       <row characterID="150337897" name="corpslave" startDateTime="2007-06-14 13:14:00"
            baseID="0" base="" title="" logonDateTime="2007-06-16 21:14:00"
            logoffDateTime="2007-06-16 21:35:00" locationID="60011566"

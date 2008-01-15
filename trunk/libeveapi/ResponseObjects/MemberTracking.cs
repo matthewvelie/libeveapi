@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml;
+using System.Xml.Serialization;
 
 namespace libeveapi
 {
@@ -36,7 +37,7 @@ namespace libeveapi
                 mti.Location = row.Attributes["location"].InnerText;
                 mti.ShipTypeId = row.Attributes["shipTypeID"].InnerText;
                 mti.ShipType = row.Attributes["shipType"].InnerText;
-                mti.Roles = row.Attributes["roles"].InnerText;
+                mti.RolesMask = row.Attributes["roles"].InnerText;
                 mti.GrantableRoles = row.Attributes["grantableRoles"].InnerText;
 
                 DateTime.TryParse(row.Attributes["startDateTime"].InnerText, out mti.StartDateTime);
@@ -139,13 +140,30 @@ namespace libeveapi
         public string ShipType;
 
         /// <summary>
-        /// The pilot's current roles in the corporation
+        /// A mask describing the pilot's current roles in the corporation
         /// </summary>
-        public string Roles;
+        public string RolesMask;
 
         /// <summary>
         /// Depricated
         /// </summary>
         public string GrantableRoles;
+
+        /// <summary>
+        /// This pilot's roles in the corporation
+        /// </summary>
+        protected Roles roles;
+        public Roles Roles
+        {
+            get
+            {
+                if (this.roles == null)
+                {
+                    this.roles = new Roles(this.RolesMask);
+                }
+
+                return this.roles;
+            }
+        }
     }
 }

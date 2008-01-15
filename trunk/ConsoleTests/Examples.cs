@@ -13,12 +13,10 @@ namespace ConsoleTests
         {
             UseLocalUrls();
 
-            CharacterListExamples.PrintCharacterList();
-            AccountBalanceExamples.PrintAccounts();
-            PrintStarbaseList();
-            PrintStarbaseDetail();
-            ErrorListExample();
-            PrintAllAssets();
+            foreach (RoleTypes roleType in Enum.GetValues(typeof(RoleTypes)))
+            {
+                Console.WriteLine((ulong)roleType & 128);
+            }
         }
 
         public static void UseLocalUrls()
