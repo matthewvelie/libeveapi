@@ -38,6 +38,7 @@
     <Compile Include="ApiResponseTests.cs" />
     <Compile Include="AssetListTests.cs" />
     <Compile Include="CharacterListTests.cs" />
+    <Compile Include="CharacterSheetTests.cs" />
     <Compile Include="ErrorListTests.cs" />
     <Compile Include="IndustryJobsTests.cs" />
     <Compile Include="MemberTrackingTests.cs" />

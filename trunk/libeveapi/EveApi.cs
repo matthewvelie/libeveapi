@@ -367,6 +367,30 @@ namespace libeveapi
         }
 
         /// <summary>
+        /// Returns a detailed description of a character
+        /// </summary>
+        /// <param name="userId">userID of account for authentication</param>
+        /// <param name="characterId">CharacterID of character for authentication</param>
+        /// <param name="apiKey">Limited access API key of account</param>
+        /// <returns></returns>
+        public static CharacterSheet GetCharacterSheet(string userId, string characterId, string apiKey)
+        {
+            string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}", Constants.ApiPrefix, Constants.CharacterSheet, userId, characterId, apiKey);
+            
+            ApiResponse cachedResponse = ResponseCache.Get(url);
+            if (cachedResponse != null)
+            {
+                return cachedResponse as CharacterSheet;
+            }
+
+            XmlDocument xmlDoc = Network.GetXml(url);
+            CharacterSheet characterSheet = CharacterSheet.FromXmlDocument(xmlDoc);
+            ResponseCache.Set(url, characterSheet);
+
+            return characterSheet;
+        }
+
+        /// <summary>
         /// Convert a CCP DateTime to local time
         /// </summary>
         /// <param name="ccpCurrentTime">CCP server current datetime</param>

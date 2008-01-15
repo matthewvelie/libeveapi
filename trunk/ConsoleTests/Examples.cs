@@ -13,10 +13,7 @@ namespace ConsoleTests
         {
             UseLocalUrls();
 
-            foreach (RoleTypes roleType in Enum.GetValues(typeof(RoleTypes)))
-            {
-                Console.WriteLine((ulong)roleType & 128);
-            }
+            CharacterSheet characterSheet = EveApi.GetCharacterSheet("userId", "characterId", "apiKey");
         }
 
         public static void UseLocalUrls()

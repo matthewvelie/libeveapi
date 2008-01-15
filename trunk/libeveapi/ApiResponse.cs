@@ -18,6 +18,7 @@ namespace libeveapi
     [XmlInclude(typeof(MarketOrder))]
     [XmlInclude(typeof(RefTypes))]
     [XmlInclude(typeof(MemberTracking))]
+    [XmlInclude(typeof(CharacterSheet))]
     public class ApiResponse
     {
         [XmlElement]

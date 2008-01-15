@@ -44,6 +44,7 @@
     <Compile Include="ResponseObjects\AccountBalance.cs" />
     <Compile Include="ResponseObjects\AssetList.cs" />
     <Compile Include="ResponseObjects\CharacterList.cs" />
+    <Compile Include="ResponseObjects\CharacterSheet.cs" />
     <Compile Include="ResponseObjects\ErrorList.cs" />
     <Compile Include="ResponseObjects\IndustryJobs.cs" />
     <Compile Include="ResponseObjects\JournalEntries.cs" />
