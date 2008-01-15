@@ -42,14 +42,14 @@ namespace libeveapi
         {
             MarketOrderItem marketItem = new MarketOrderItem();
 
-            marketItem.orderID = Convert.ToInt32(walletTransactionRow.Attributes["orderID"].InnerText);
-            marketItem.charID = Convert.ToInt64(walletTransactionRow.Attributes["charID"].InnerText);
-            marketItem.stationID = Convert.ToInt64(walletTransactionRow.Attributes["stationID"].InnerText);
-            marketItem.volEntered = Convert.ToInt64(walletTransactionRow.Attributes["volEntered"].InnerText);
-            marketItem.volRemaining = Convert.ToInt64(walletTransactionRow.Attributes["volRemaining"].InnerText);
-            marketItem.minVolume = Convert.ToInt64(walletTransactionRow.Attributes["minVolume"].InnerText);
+            marketItem.orderID = Convert.ToInt32(marketOrderRow.Attributes["orderID"].InnerText);
+            marketItem.charID = Convert.ToInt64(marketOrderRow.Attributes["charID"].InnerText);
+            marketItem.stationID = Convert.ToInt64(marketOrderRow.Attributes["stationID"].InnerText);
+            marketItem.volEntered = Convert.ToInt64(marketOrderRow.Attributes["volEntered"].InnerText);
+            marketItem.volRemaining = Convert.ToInt64(marketOrderRow.Attributes["volRemaining"].InnerText);
+            marketItem.minVolume = Convert.ToInt64(marketOrderRow.Attributes["minVolume"].InnerText);
 
-            switch (Convert.ToInt32(starbaseNode.Attributes["orderState"].InnerText))
+            switch (Convert.ToInt32(marketOrderRow.Attributes["orderState"].InnerText))
             {
                 case 0:
                     marketItem.orderState = marketOrderState.OpenActive;
@@ -61,7 +61,7 @@ namespace libeveapi
                     marketItem.orderState = marketOrderState.ExpiredFulfilled;
                     break;
                 case 3:
-                    marketItem.orderState = marketOrderState.Cancelled;
+                    marketItem.orderState = marketOrderState.Canceled;
                     break;
                 case 4:
                     marketItem.orderState = marketOrderState.Pending;
@@ -73,14 +73,14 @@ namespace libeveapi
                     break;
             }
 
-            marketItem.typeID = Convert.ToInt64(walletTransactionRow.Attributes["typeID"].InnerText);
-            marketItem.range = Convert.ToInt32(walletTransactionRow.Attributes["range"].InnerText);
-            marketItem.accountKey = Convert.ToInt32(walletTransactionRow.Attributes["accountKey"].InnerText);
-            marketItem.duration = Convert.ToInt32(walletTransactionRow.Attributes["duration"].InnerText);
-            marketItem.escrow = (float)Convert.ToDouble(walletTransactionRow.Attributes["escrow"].InnerText);
-            marketItem.price = (float)Convert.ToDouble(walletTransactionRow.Attributes["price"].InnerText);
-            marketItem.bid = Convert.ToBoolean(walletTransactionRow.Attributes["bid"].InnerText);
-            marketItem.issued = Convert.ToDateTime(walletTransactionRow.Attributes["issued"].InnerText);
+            marketItem.typeID = Convert.ToInt64(marketOrderRow.Attributes["typeID"].InnerText);
+            marketItem.range = Convert.ToInt32(marketOrderRow.Attributes["range"].InnerText);
+            marketItem.accountKey = Convert.ToInt32(marketOrderRow.Attributes["accountKey"].InnerText);
+            marketItem.duration = Convert.ToInt32(marketOrderRow.Attributes["duration"].InnerText);
+            marketItem.escrow = (float)Convert.ToDouble(marketOrderRow.Attributes["escrow"].InnerText);
+            marketItem.price = (float)Convert.ToDouble(marketOrderRow.Attributes["price"].InnerText);
+            marketItem.bid = Convert.ToBoolean(marketOrderRow.Attributes["bid"].InnerText);
+            marketItem.issued = Convert.ToDateTime(marketOrderRow.Attributes["issued"].InnerText);
 
             return marketItem;
         }

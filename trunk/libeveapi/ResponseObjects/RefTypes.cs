@@ -8,7 +8,7 @@ namespace libeveapi
 {
     public class RefTypes : ApiResponse
     {
-        public SerializableDictionary<int, string> RefTypes = new SerializableDictionary<string, string>();
+        public SerializableDictionary<int, string> ReferenceTypes = new SerializableDictionary<int, string>();
 
         /// <summary>
         /// Create an ErrorList by parsing an XmlDocument response from the eveapi
@@ -22,7 +22,7 @@ namespace libeveapi
 
             foreach (XmlNode refTypeNode in xmlDoc.SelectNodes("//rowset[@name='reftypes']/row"))
             {
-                refTypes.RefTypes.Add(Convert.ToInt32(refTypeNode.Attributes["refTypeID"].InnerText), refTypeNode.Attributes["refTypeName"].InnerText);
+                refTypes.ReferenceTypes.Add(Convert.ToInt32(refTypeNode.Attributes["refTypeID"].InnerText), refTypeNode.Attributes["refTypeName"].InnerText);
             }
 
             return refTypes;
@@ -37,7 +37,7 @@ namespace libeveapi
         {
             try
             {
-                return RefTypes[referenceTypeID];
+                return ReferenceTypes[referenceTypeID];
             }
             catch (KeyNotFoundException)
             {
