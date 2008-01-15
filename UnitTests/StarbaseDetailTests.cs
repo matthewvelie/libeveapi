@@ -49,7 +49,9 @@ namespace UnitTests
             ResponseCache.Clear();
             ResponseCache.LoadFromFile("ResponseCache.xml");
 
-            StarbaseDetail cachedStarbaseDetail = ResponseCache.Get(starbaseDetail.Url) as StarbaseDetail;
+            StarbaseDetail cachedStarbaseDetail = EveApi.GetStarbaseDetail("userId", "characterId", "fullApiKey", "itemId");
+
+            Assert.AreEqual(starbaseDetail.CachedUntilLocal, cachedStarbaseDetail.CachedUntilLocal);
 
             Assert.AreEqual(starbaseDetail.UsageFlags, cachedStarbaseDetail.UsageFlags);
             Assert.AreEqual(starbaseDetail.DeployFlags, cachedStarbaseDetail.DeployFlags);

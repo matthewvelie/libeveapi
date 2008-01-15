@@ -49,7 +49,7 @@ namespace UnitTests
             ApiResponse apiResponse = new ApiResponse();
             DateTime cachedUntil = DateTime.Now.Add(TimeSpan.FromDays(1));
             apiResponse.CachedUntilLocal = cachedUntil;
-            apiResponse.Url = "PersistResponseCache";
+            apiResponse.HashedUrl = "PersistResponseCache";
 
             ResponseCache.Set("PersistResponseCache", apiResponse);
             ResponseCache.SaveToFile("responseCache.xml");

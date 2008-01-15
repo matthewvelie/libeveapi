@@ -25,7 +25,6 @@ namespace libeveapi
 
             XmlDocument xmlDoc = Network.GetXml(url);
             CharacterList characterList = CharacterList.FromXmlDocument(xmlDoc);
-            characterList.Url = url;
             ResponseCache.Set(url, characterList);
 
             return characterList;
@@ -65,7 +64,6 @@ namespace libeveapi
 
             XmlDocument xmlDoc = Network.GetXml(url);
             AccountBalance accountBalance = AccountBalance.FromXmlDocument(xmlDoc);
-            accountBalance.Url = url;
             ResponseCache.Set(url, accountBalance);
 
             return accountBalance;
@@ -90,7 +88,6 @@ namespace libeveapi
 
             XmlDocument xmlDoc = Network.GetXml(url);
             StarbaseList starbaseList = StarbaseList.FromXmlDocument(xmlDoc);
-            starbaseList.Url = url;
             ResponseCache.Set(url, starbaseList);
 
             return starbaseList;
@@ -116,7 +113,6 @@ namespace libeveapi
 
             XmlDocument xmlDoc = Network.GetXml(url);
             StarbaseDetail starbaseDetail = StarbaseDetail.FromXmlDocument(xmlDoc);
-            starbaseDetail.Url = url;
             ResponseCache.Set(url, starbaseDetail);
 
             return starbaseDetail;
@@ -138,7 +134,6 @@ namespace libeveapi
 
             XmlDocument xmlDoc = Network.GetXml(url);
             ErrorList errorList = ErrorList.FromXmlDocument(xmlDoc);
-            errorList.Url = url;
             ResponseCache.Set(url, errorList);
 
             return errorList;
@@ -175,7 +170,6 @@ namespace libeveapi
 
             XmlDocument xmlDoc = Network.GetXml(url);
             AssetList assetList = AssetList.FromXmlDocument(xmlDoc);
-            assetList.Url = url;
             ResponseCache.Set(url, assetList);
 
             return assetList;
