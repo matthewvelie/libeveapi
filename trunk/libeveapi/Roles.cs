@@ -132,61 +132,48 @@ namespace libeveapi
         [Description("A director is, for most intents and purposes, the same as a CEO in many respects. They can hire and fire members and change job descriptions (assigning both roles and grantable roles).")]
         Director = 1,
 
-        /* The roles below exist but at current time their bitmask is unknown.
-         * 
-         */
-
-        /*
         /// <summary>
         /// 
         /// </summary>
         [Name("Config Equipment")]
         [Description("This role allows the holder to anchor, unanchor, rename, and configure various types of objects in space.")]
-        Director = 1,
+        Director = 1 << 41,
 
         /// <summary>
         /// 
         /// </summary>
         [Name("Config Starbase")]
         [Description("This role allows the holder to perform star base configuration.")]
-        Director = 1,
+        ConfigStarbase = 1 << 53,
 
         /// <summary>
         /// 
         /// </summary>
         [Name("Junior Accountant")]
         [Description("The junior accountant is a cur down version of the accountant role. It essentially allows the holder to view the data that an accountant views. However it does not allow the holder to perform the actions that an accountant can.")]
-        Director = 1,
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [Name("Personnel Manager")]
-        [Description("A personnel manager can process applications and sign up new members. ")]
-        Director = 1,
+        JuniorAccountant = 1 << 52,
 
         /// <summary>
         /// 
         /// </summary>
         [Name("Rent Factory")]
         [Description("This role allows the holder to rent factory slots for the corporation. ")]
-        Director = 1,
+        RentFactory = 1 << 50,
 
         /// <summary>
         /// 
         /// </summary>
         [Name("Rent Office")]
         [Description("The role Rent Office allows the holder to rent offices for the corporation. ")]
-        Director = 1,
+        RentOffice = 1 << 49,
 
         /// <summary>
         /// 
         /// </summary>
         [Name("Rent Research Facility")]
         [Description("This role allows the holder to rent research facilities for the corporation. ")]
-        Director = 1,
+        RentResearchFacility = 1 << 51,
 
-        */
 
         /// <summary>
         /// 
@@ -230,6 +217,7 @@ namespace libeveapi
         [Description("The Auditor role allows the holder to check the role history of members of the corporation. ")]
         Auditor = 1 << 12,
 
+        /* Corp Hangers */
         TakeFromDivision1Hangar = (ulong)1 << 13,
         TakeFromDivision2Hangar = (ulong)1 << 14,
         TakeFromDivision3Hangar = (ulong)1 << 15,
@@ -244,6 +232,8 @@ namespace libeveapi
         QueryDivision5Hangar = (ulong)1 << 24,
         QueryDivision6Hangar = (ulong)1 << 25,
         QueryDivision7Hangar = (ulong)1 << 26,
+
+        /* Corp Wallets */
         TakeFromDivision1Accounts = (ulong)1 << 27,
         TakeFromDivision2Accounts = (ulong)1 << 28,
         TakeFromDivision3Accounts = (ulong)1 << 29,
@@ -258,6 +248,14 @@ namespace libeveapi
         QueryDivision5Accounts = (ulong)1 << 38,
         QueryDivision6Accounts = (ulong)1 << 39,
         QueryDivision7Accounts = (ulong)1 << 40,
-        EquipmentConfigAndDeploySpace = (ulong)1 << 41
+
+        /* Container Access in Hangers */
+        ContainerCanTakeDivision1 = (ulong)1 << 42,
+        ContainerCanTakeDivision2 = (ulong)1 << 43,
+        ContainerCanTakeDivision3 = (ulong)1 << 44,
+        ContainerCanTakeDivision4 = (ulong)1 << 45,
+        ContainerCanTakeDivision5 = (ulong)1 << 46,
+        ContainerCanTakeDivision6 = (ulong)1 << 47,
+        ContainerCanTakeDivision7 = (ulong)1 << 48,
     }
 }
