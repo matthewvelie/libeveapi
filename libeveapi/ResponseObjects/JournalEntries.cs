@@ -5,9 +5,58 @@ using System.Xml;
 
 namespace libeveapi
 {
+    /// <summary>
+    /// Represents a character or corporation journal entry from the eve api
+    /// http://wiki.eve-dev.net/APIv2_Char_JournalEntries_XML
+    /// </summary>
     class JournalEntries : ApiResponse
     {
+        public JournalEntryItem[] JournalEntryItems = new JournalEntryItem[0];
 
+        /// <summary>
+        /// Create an JournalEntryItemList by parsing an XmlDocument response from the eveapi
+        /// </summary>
+        /// <param name="xmlDoc"></param>
+        /// <returns></returns>
+        public static JournalEntries FromXmlDocument(XmlDocument xmlDoc)
+        {
+            JournalEntries JournalEntryList = new JournalEntries();
+            JournalEntryList.ParseCommonElements(xmlDoc);
+
+            List<JournalEntryItem> journalEntry = new List<JournalEntryItem>();
+            foreach (XmlNode node in xmlDoc.SelectNodes("//rowset[@name='transactions']/row"))
+            {
+                journalEntry.Add(ParseTransactionRow(node));
+            }
+            JournalEntryList.JournalEntryItems = journalEntry.ToArray();
+
+            return JournalEntryList;
+        }
+
+        /// <summary>
+        /// Create an JournalEntryItem by parsing a single row
+        /// </summary>
+        /// <param name="assetRow"></param>
+        /// <returns></returns>
+        protected static JournalEntryItem ParseTransactionRow(XmlNode journalTransactionRow)
+        {
+            JournalEntryItem journalEntryItem = new JournalEntryItem();
+
+            journalEntryItem.date = Convert.ToDateTime(journalTransactionRow.Attributes["date"].InnerText);
+            journalEntryItem.refID = Convert.ToInt64(journalTransactionRow.Attributes["refID"].InnerText);
+            journalEntryItem.refTypeID = Convert.ToInt64(journalTransactionRow.Attributes["refTypeID"].InnerText);
+            journalEntryItem.ownerName1 = journalTransactionRow.Attributes["ownerName1"].InnerText;
+            journalEntryItem.ownerID1 = Convert.ToInt64(journalTransactionRow.Attributes["ownerID1"].InnerText);
+            journalEntryItem.ownerName2 = journalTransactionRow.Attributes["ownerName2"].InnerText;
+            journalEntryItem.ownerID2 = Convert.ToInt64(journalTransactionRow.Attributes["ownerID2"].InnerText);
+            journalEntryItem.argName1 = journalTransactionRow.Attributes["argName1"].InnerText;
+            journalEntryItem.argID1 = Convert.ToInt64(journalTransactionRow.Attributes["argID1"].InnerText);
+            journalEntryItem.ammount = Convert.ToDouble(journalTransactionRow.Attributes["ammount"].InnerText);
+            journalEntryItem.balance = Convert.ToInt64(journalTransactionRow.Attributes["balance"].InnerText);
+            journalEntryItem.reason = journalTransactionRow.Attributes["reason"].InnerText;
+
+            return journalEntryItem;
+        }
     }
 
     public class JournalEntryItem
