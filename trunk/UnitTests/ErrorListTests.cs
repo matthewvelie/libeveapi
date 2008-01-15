@@ -36,11 +36,13 @@ namespace UnitTests
             ResponseCache.SaveToFile("ResponseCache.xml");
             ResponseCache.Clear();
             ResponseCache.LoadFromFile("ResponseCache.xml");
-            ErrorList cachedErrorList = ResponseCache.Get(errorList.Url) as ErrorList;
+            ErrorList cachedErrorList = EveApi.GetErrorList();
+
+            Assert.AreEqual(errorList.CachedUntilLocal, cachedErrorList.CachedUntilLocal);
 
             Assert.AreEqual(errorList.GetMessageForErrorCode("100"), cachedErrorList.GetMessageForErrorCode("100"));
-            //Assert.AreEqual(errorList.GetMessageForErrorCode("200"), cachedErrorList.GetMessageForErrorCode("200"));
-            //Assert.AreEqual(errorList.GetMessageForErrorCode("999"), cachedErrorList.GetMessageForErrorCode("999"));
+            Assert.AreEqual(errorList.GetMessageForErrorCode("200"), cachedErrorList.GetMessageForErrorCode("200"));
+            Assert.AreEqual(errorList.GetMessageForErrorCode("999"), cachedErrorList.GetMessageForErrorCode("999"));
         }
     }
 }

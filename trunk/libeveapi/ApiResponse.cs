@@ -15,7 +15,7 @@ namespace libeveapi
     public class ApiResponse
     {
         [XmlElement]
-        public string Url;
+        public string HashedUrl;
 
         [XmlElement]
         public DateTime CurrentTime;

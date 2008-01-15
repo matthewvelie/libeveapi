@@ -38,7 +38,9 @@ namespace UnitTests
             ResponseCache.SaveToFile("ResponseCache.xml");
             ResponseCache.Clear();
             ResponseCache.LoadFromFile("ResponseCache.xml");
-            AssetList cachedAssetList = ResponseCache.Get(assetList.Url) as AssetList;
+            AssetList cachedAssetList = EveApi.GetAssetList(AssetListType.Corporation, "userId", "characterId", "apiKey");
+
+            Assert.AreEqual(assetList.CachedUntilLocal, cachedAssetList.CachedUntilLocal);
 
             for (int i = 0; i < assetList.AssetListItems.Length; i++)
             {

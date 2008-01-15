@@ -26,6 +26,7 @@ namespace libeveapi
                 hashTable.Remove(url);
             }
             hashTable.Add(url, apiResponse);
+            apiResponse.HashedUrl = url;
         }
 
         /// <summary>
@@ -92,7 +93,7 @@ namespace libeveapi
                 hashTable.Clear();
                 foreach (ApiResponse apiResponse in apiResponses)
                 {
-                    hashTable.Add(apiResponse.Url, apiResponse);
+                    hashTable.Add(apiResponse.HashedUrl, apiResponse);
                 }
             }
         }

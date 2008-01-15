@@ -56,7 +56,7 @@ namespace UnitTests
             ResponseCache.SaveToFile("ResponseCache.xml");
             ResponseCache.Clear();
             ResponseCache.LoadFromFile("ResponseCache.xml");
-            AccountBalance cachedAccountBalance = ResponseCache.Get(accountBalance.Url) as AccountBalance;
+            AccountBalance cachedAccountBalance = EveApi.GetAccountBalance(AccountBalanceType.Corporation, "userId", "charId", "apiKey");
 
             Assert.AreEqual(accountBalance.CachedUntilLocal, cachedAccountBalance.CachedUntilLocal);
 
