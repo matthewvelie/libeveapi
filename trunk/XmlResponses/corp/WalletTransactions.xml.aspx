@@ -25,5 +25,5 @@
            transactionType="sell" transactionFor="corporation"/>
     </rowset>
   </result>
-  <cachedUntil>2007-06-18 22:36:09</cachedUntil>
+  <cachedUntil>2007-06-18 22:39:09</cachedUntil>
 </eveapi>
