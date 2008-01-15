@@ -20,7 +20,7 @@ namespace libeveapi
             RefTypes refTypes = new RefTypes();
             refTypes.ParseCommonElements(xmlDoc);
 
-            foreach (XmlNode refTypeNode in xmlDoc.SelectNodes("//rowset[@name='reftypes']/row"))
+            foreach (XmlNode refTypeNode in xmlDoc.SelectNodes("//rowset[@name='refTypes']/row"))
             {
                 refTypes.ReferenceTypes.Add(Convert.ToInt32(refTypeNode.Attributes["refTypeID"].InnerText), refTypeNode.Attributes["refTypeName"].InnerText);
             }
