@@ -291,16 +291,16 @@ namespace libeveapi
         /// <param name="characterId">CharacterID of character for authentication</param>
         /// <param name="fullApiKey">Full access API key of account</param>
         /// <returns></returns>
-        public static WalletTransactions GetMarketTransactionsList(WalletTransactionListType walletTransactionType, string userId, string characterId, string fullApiKey)
+        public static WalletTransactions GetWalletTransactionsList(WalletTransactionListType walletTransactionType, string userId, string characterId, string fullApiKey)
         {
             string apiPath = string.Empty;
             switch (walletTransactionType)
             {
                 case WalletTransactionListType.Character:
-                    apiPath = Constants.CharMarketTransactions;
+                    apiPath = Constants.CharWalletTransactions;
                     break;
                 case WalletTransactionListType.Corporation:
-                    apiPath = Constants.CorpMarketTransactions;
+                    apiPath = Constants.CorpWalletTransactions;
                     break;
             }
 

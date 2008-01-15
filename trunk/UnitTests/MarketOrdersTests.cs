@@ -21,16 +21,22 @@ namespace UnitTests
         {
             MarketOrder marketOrder = EveApi.GetMarketOrderList(MarketOrderType.Character, "userId", "charId", "apiKey");   
 
-            //Assert.AreEqual(1, accountBalance.AccountBalanceItems.Length);
-            //Assert.AreEqual("4807144", accountBalance.AccountBalanceItems[0].AccountId);
-            //Assert.AreEqual("1000", accountBalance.AccountBalanceItems[0].AccountKey);
-            //Assert.AreEqual(209127823.31, accountBalance.AccountBalanceItems[0].Balance);
+            Assert.AreEqual(9, marketOrder.MarketOrderItems.Length);
+            Assert.AreEqual(150208955, marketOrder.MarketOrderItems[0].charID);
+            Assert.AreEqual(60010783, marketOrder.MarketOrderItems[0].stationID);
+            Assert.AreEqual(325.00, marketOrder.MarketOrderItems[0].price);
+
         }
 
         [Test]
         public void GetCorpMarketOrdersTest()
         {
             MarketOrder marketOrder = EveApi.GetMarketOrderList(MarketOrderType.Corporation, "userId", "charId", "apiKey");
+
+            Assert.AreEqual(9, marketOrder.MarketOrderItems.Length);
+            Assert.AreEqual(150208955, marketOrder.MarketOrderItems[0].charID);
+            Assert.AreEqual(60010783, marketOrder.MarketOrderItems[0].stationID);
+            Assert.AreEqual(325.00, marketOrder.MarketOrderItems[0].price);
         }
 
         [Test]
