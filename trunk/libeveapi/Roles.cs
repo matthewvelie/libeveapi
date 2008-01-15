@@ -137,7 +137,7 @@ namespace libeveapi
         /// </summary>
         [Name("Config Equipment")]
         [Description("This role allows the holder to anchor, unanchor, rename, and configure various types of objects in space.")]
-        Director = 1 << 41,
+        ConfigEquipment = 1 << 41,
 
         /// <summary>
         /// 
