@@ -7,14 +7,23 @@ using System.Xml.Serialization;
 
 namespace libeveapi
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [XmlRoot]
     public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, IXmlSerializable
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public XmlSchema GetSchema()
         {
             return null;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void ReadXml(XmlReader reader)
         {
             XmlSerializer keySer = new XmlSerializer(typeof(TKey));
@@ -44,6 +53,9 @@ namespace libeveapi
             reader.ReadEndElement();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void WriteXml(XmlWriter writer)
         {
             XmlSerializer keySer = new XmlSerializer(typeof(TKey));

@@ -11,6 +11,9 @@ namespace libeveapi
     /// </summary>
     public class JournalEntries : ApiResponse
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public JournalEntryItem[] JournalEntryItems = new JournalEntryItem[0];
 
         /// <summary>
@@ -36,7 +39,7 @@ namespace libeveapi
         /// <summary>
         /// Create an JournalEntryItem by parsing a single row
         /// </summary>
-        /// <param name="assetRow"></param>
+        /// <param name="journalTransactionRow"></param>
         /// <returns></returns>
         protected static JournalEntryItem ParseTransactionRow(XmlNode journalTransactionRow)
         {
@@ -59,6 +62,9 @@ namespace libeveapi
         }
     }
 
+    /// <summary>
+    /// Contains the data for one journal entry item
+    /// </summary>
     public class JournalEntryItem
     {
         /// <summary>
@@ -128,9 +134,18 @@ namespace libeveapi
         public string reason;
     }
 
+    /// <summary>
+    /// Represents what type of journal entry, corporation or character
+    /// </summary>
     public enum JournalEntryType
     {
+        /// <summary>
+        /// Corporation journal entry
+        /// </summary>
         Corporation,
+        /// <summary>
+        /// Character journal entry
+        /// </summary>
         Character
     }
 }

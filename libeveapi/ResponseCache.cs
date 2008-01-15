@@ -8,6 +8,12 @@ using System.Security.Cryptography;
 
 namespace libeveapi
 {
+    /// <summary>
+    /// The response cache is responsible for holding all of the responses when they are
+    /// retrieved from the server, and then caching then, and serving them out instead
+    /// of requesting a new reponse from the server, while the item is supposed to be
+    /// cached.
+    /// </summary>
     public class ResponseCache
     {
         private static Hashtable hashTable = new Hashtable();

@@ -11,6 +11,9 @@ namespace libeveapi
     /// </summary>
     public class IndustryJobList : ApiResponse
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public IndustryJobListItem[] IndustryJobListItems = new IndustryJobListItem[0];
 
         /// <summary>
@@ -36,7 +39,7 @@ namespace libeveapi
         /// <summary>
         /// Create an IndustryJobListItem by parsing a single row
         /// </summary>
-        /// <param name="assetRow"></param>
+        /// <param name="industryJobRow">An xml row containing an industry job</param>
         /// <returns></returns>
         protected static IndustryJobListItem ParseIndustryJobRow(XmlNode industryJobRow)
         {
@@ -80,6 +83,9 @@ namespace libeveapi
         }
     }
 
+    /// <summary>
+    /// A representation of an industry job
+    /// </summary>
     public class IndustryJobListItem
     {
         /// <summary>
@@ -271,9 +277,18 @@ namespace libeveapi
         public DateTime pauseProductionTime;
     }
 
+    /// <summary>
+    /// Is this a corporation or character type of job
+    /// </summary>
     public enum IndustryJobListType
     {
+        /// <summary>
+        /// This is a job for the Corporation
+        /// </summary>
         Corporation,
+        /// <summary>
+        /// This is a personal job for the Character
+        /// </summary>
         Character
     }
 }

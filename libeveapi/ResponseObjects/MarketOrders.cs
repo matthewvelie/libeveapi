@@ -11,6 +11,9 @@ namespace libeveapi
     /// </summary>
     public class MarketOrder : ApiResponse
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public MarketOrderItem[] MarketOrderItems = new MarketOrderItem[0];
 
         /// <summary>
@@ -86,6 +89,9 @@ namespace libeveapi
         }
     }
 
+    /// <summary>
+    /// A single market order associated with a person or corporation
+    /// </summary>
     public class MarketOrderItem
     {
         
@@ -172,6 +178,10 @@ namespace libeveapi
         public DateTime issued;
     }
 
+    /// <summary>
+    /// This is the current state of the market order, letting you know if the
+    /// item is still on the market or not.
+    /// </summary>
     public enum marketOrderState
     {
         /// <summary>
@@ -205,9 +215,18 @@ namespace libeveapi
         CharacterDeleted = 5
     }
 
+    /// <summary>
+    /// If this is a corporation or (peronal) character market order
+    /// </summary>
     public enum MarketOrderType
     {
+        /// <summary>
+        /// A corporation market order
+        /// </summary>
         Corporation,
+        /// <summary>
+        /// A personal market order
+        /// </summary>
         Character
     }
 }

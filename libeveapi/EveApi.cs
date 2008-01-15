@@ -5,6 +5,9 @@ using System.Xml;
 
 namespace libeveapi
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class EveApi
     {
         /// <summary>
@@ -223,7 +226,7 @@ namespace libeveapi
         /// <summary>
         /// Returns a list of industrial jobs owned by a character or corporation.
         /// </summary>
-        /// <param name="assetListType"><see cref="AssetListType" /></param>
+        /// <param name="industryJobListType"><see cref="IndustryJobListType" /></param>
         /// <param name="userId">userID of account for authentication</param>
         /// <param name="characterId">CharacterID of character for authentication</param>
         /// <param name="fullApiKey">Full access API key of account</param>
@@ -259,7 +262,7 @@ namespace libeveapi
         /// <summary>
         /// Returns a list of journal entries owned by a character or corporation.
         /// </summary>
-        /// <param name="assetListType"><see cref="AssetListType" /></param>
+        /// <param name="journalEntriesType"><see cref="JournalEntryType" /></param>
         /// <param name="userId">userID of account for authentication</param>
         /// <param name="characterId">CharacterID of character for authentication</param>
         /// <param name="fullApiKey">Full access API key of account</param>
@@ -295,7 +298,7 @@ namespace libeveapi
         /// <summary>
         /// Returns a list of market orders owned by a character or corporation.
         /// </summary>
-        /// <param name="assetListType"><see cref="AssetListType" /></param>
+        /// <param name="marketOrdersType"><see cref="MarketOrderType" /></param>
         /// <param name="userId">userID of account for authentication</param>
         /// <param name="characterId">CharacterID of character for authentication</param>
         /// <param name="fullApiKey">Full access API key of account</param>
@@ -331,7 +334,7 @@ namespace libeveapi
         /// <summary>
         /// Returns a list of market transactions (wallet transactions) owned by a character or corporation.
         /// </summary>
-        /// <param name="assetListType"><see cref="AssetListType" /></param>
+        /// <param name="walletTransactionType"><see cref="WalletTransactionListType" /></param>
         /// <param name="userId">userID of account for authentication</param>
         /// <param name="characterId">CharacterID of character for authentication</param>
         /// <param name="fullApiKey">Full access API key of account</param>
@@ -453,8 +456,16 @@ namespace libeveapi
     /// </summary>
     public class ApiResponseErrorException : Exception
     {
+        /// <summary>
+        /// The error code
+        /// </summary>
         public string Code;
 
+        /// <summary>
+        /// Sets the current error code to the code recieved
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="message"></param>
         public ApiResponseErrorException(string code, string message)
             : base(message)
         {

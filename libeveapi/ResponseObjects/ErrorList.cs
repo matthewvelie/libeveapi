@@ -6,8 +6,14 @@ using System.Xml;
 
 namespace libeveapi
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ErrorList : ApiResponse
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public SerializableDictionary<string, string> ErrorTable = new SerializableDictionary<string, string>();
 
         /// <summary>
