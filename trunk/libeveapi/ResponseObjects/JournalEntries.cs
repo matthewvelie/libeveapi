@@ -79,7 +79,7 @@ namespace libeveapi
         public string reason;
     }
 
-    public enum WalletTransactionListType
+    public enum JournalEntryType
     {
         Corporation,
         Character
