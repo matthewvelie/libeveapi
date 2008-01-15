@@ -24,7 +24,7 @@ namespace libeveapi
             JournalEntryList.ParseCommonElements(xmlDoc);
 
             List<JournalEntryItem> journalEntry = new List<JournalEntryItem>();
-            foreach (XmlNode node in xmlDoc.SelectNodes("//rowset[@name='transactions']/row"))
+            foreach (XmlNode node in xmlDoc.SelectNodes("//rowset[@name='entries']/row"))
             {
                 journalEntry.Add(ParseTransactionRow(node));
             }
@@ -51,8 +51,8 @@ namespace libeveapi
             journalEntryItem.ownerID2 = Convert.ToInt64(journalTransactionRow.Attributes["ownerID2"].InnerText);
             journalEntryItem.argName1 = journalTransactionRow.Attributes["argName1"].InnerText;
             journalEntryItem.argID1 = Convert.ToInt64(journalTransactionRow.Attributes["argID1"].InnerText);
-            journalEntryItem.ammount = Convert.ToDouble(journalTransactionRow.Attributes["ammount"].InnerText);
-            journalEntryItem.balance = Convert.ToInt64(journalTransactionRow.Attributes["balance"].InnerText);
+            journalEntryItem.amount = Convert.ToDouble(journalTransactionRow.Attributes["amount"].InnerText);
+            journalEntryItem.balance = Convert.ToDouble(journalTransactionRow.Attributes["balance"].InnerText);
             journalEntryItem.reason = journalTransactionRow.Attributes["reason"].InnerText;
 
             return journalEntryItem;
@@ -111,9 +111,9 @@ namespace libeveapi
         public long argID1;
 
         /// <summary>
-        /// The ammount of the transaction
+        /// The amount of the transaction
         /// </summary>
-        public double ammount;
+        public double amount;
 
         /// <summary>
         /// The balance left in the account after the transaction
