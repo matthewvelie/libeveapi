@@ -3,9 +3,10 @@ A class for caching responses from the eve api.
 
 == Methods ==
 || Name || Description ||
-|| Save(string filePath) || Save the response cache to this filename ||
-|| Save(Stream s) || Save the response cache using an external stream ||
-|| Load(string filePath) || Load the response cache from this filename ||
-|| Load(Stream s) || Load the response cache from an external stream ||
-|| Set(string url, ApiResponse response) || Cache a response with plain text url ||
-|| Get(string url) || Get ApiResponse from cache using plain text url ||
+|| void Save(string filePath) || Save the response cache to this filename ||
+|| void Save(Stream s) || Save the response cache using an external stream ||
+|| void Load(string filePath) || Load the response cache from this filename ||
+|| void Load(Stream s) || Load the response cache from an external stream ||
+|| void Set(string url, ApiResponse response) || Cache a response with plain text url ||
+|| ApiResult Get(string url) || Get ApiResponse from cache using plain text url ||
+|| void Clear() || Clear the response cache ||
