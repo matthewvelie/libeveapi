@@ -13,5 +13,6 @@
  # === Reference ===
   * [ApiResponse The ApiResponse base class]
   * [Roles Roles class] - A pilot's roles in a corporation.
+  * [CorpRoles Corporation roles list]
  # === Library Development ===
   * [DevelopmentEnvironment Setting up the development environment]
