@@ -65,6 +65,8 @@ namespace UnitTests
             ResponseCache.Load("ResponseCache.xml");
             CharacterSheet cached = EveApi.GetCharacterSheet("userId", "characterId", "apiKey");
 
+            Assert.AreEqual(cached.CachedUntilLocal, cs.CachedUntilLocal);
+
             Assert.AreEqual(cached.CharacterId, cs.CharacterId);
             Assert.AreEqual(cached.Name, cs.Name);
             Assert.AreEqual(cached.Race, cs.Race);
