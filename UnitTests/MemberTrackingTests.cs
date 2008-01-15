@@ -34,12 +34,18 @@ namespace UnitTests
             Assert.AreEqual("Bourynes VII - Moon 2 - University of Caille School", mti.Location);
             Assert.AreEqual("606", mti.ShipTypeId);
             Assert.AreEqual("Velator", mti.ShipType);
-            Assert.AreEqual("0", mti.Roles);
+            Assert.AreEqual("1281", mti.RolesMask);
             Assert.AreEqual("0", mti.GrantableRoles);
 
             Assert.AreEqual(new DateTime(2007, 6, 13, 14, 39, 00), mti.StartDateTime);
             Assert.AreEqual(new DateTime(2007, 6, 16, 21, 12, 00), mti.LogonDateTime);
             Assert.AreEqual(new DateTime(2007, 6, 16, 21, 36, 00), mti.LogoffDateTime);
+
+            Assert.IsFalse(mti.Roles.HasRole(RoleTypes.PersonnelManager));
+            Assert.IsFalse(mti.Roles.HasRole(RoleTypes.SecurityManager));
+            Assert.IsTrue(mti.Roles.HasRole(RoleTypes.Director));
+            Assert.IsTrue(mti.Roles.HasRole(RoleTypes.Accountant));
+            Assert.IsTrue(mti.Roles.HasRole(RoleTypes.FactoryManager));
         }
 
         [Test]
@@ -70,7 +76,7 @@ namespace UnitTests
                 Assert.AreEqual(mti.Location, cmti.Location);
                 Assert.AreEqual(mti.ShipTypeId, cmti.ShipTypeId);
                 Assert.AreEqual(mti.ShipType, cmti.ShipType);
-                Assert.AreEqual(mti.Roles, cmti.Roles);
+                Assert.AreEqual(mti.RolesMask, cmti.RolesMask);
                 Assert.AreEqual(mti.GrantableRoles, cmti.GrantableRoles);
                 Assert.AreEqual(mti.StartDateTime, cmti.StartDateTime);
                 Assert.AreEqual(mti.LogonDateTime, cmti.LogonDateTime);

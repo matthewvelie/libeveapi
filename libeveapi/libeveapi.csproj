@@ -53,6 +53,7 @@
     <Compile Include="ResponseObjects\StarbaseDetail.cs" />
     <Compile Include="ResponseObjects\StarbaseList.cs" />
     <Compile Include="ResponseObjects\WalletTransactions.cs" />
+    <Compile Include="Roles.cs" />
     <Compile Include="SerializableDictionary.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
