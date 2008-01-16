@@ -424,7 +424,7 @@ namespace libeveapi
         public static CharacterSheet GetCharacterSheet(string userId, string characterId, string apiKey)
         {
             string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}", Constants.ApiPrefix, Constants.CharacterSheet, userId, characterId, apiKey);
-            
+
             ApiResponse cachedResponse = ResponseCache.Get(url);
             if (cachedResponse != null)
             {
@@ -436,6 +436,48 @@ namespace libeveapi
             ResponseCache.Set(url, characterSheet);
 
             return characterSheet;
+        }
+
+        /// <summary>
+        /// Returns a detailed description of a corporation
+        /// </summary>
+        /// <param name="userId">userID of account for authentication</param>
+        /// <param name="characterId">CharacterID of character for authentication</param>
+        /// <param name="apiKey">Limited access API key of account</param>
+        /// <returns></returns>
+        public static CorporationSheet GetCorporationSheet(string userId, string characterId, string apiKey)
+        {
+            return GetCorporationSheet(userId, characterId, apiKey, null);
+        }
+
+        /// <summary>
+        /// Returns a detailed description of a corporation
+        /// </summary>
+        /// <param name="userId">userID of account for authentication</param>
+        /// <param name="characterId">CharacterID of character for authentication</param>
+        /// <param name="apiKey">Limited access API key of account</param>
+        /// <param name="corporationId">retrieve information on the corporation with this id</param>
+        /// <returns></returns>
+        public static CorporationSheet GetCorporationSheet(string userId, string characterId, string apiKey, string corporationId)
+        {
+            string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}", Constants.ApiPrefix, Constants.CorporationSheet, userId, characterId, apiKey);
+
+            if (!String.IsNullOrEmpty(corporationId))
+            {
+                url = String.Format("{0}&corporationID={1}", url, corporationId);
+            }
+
+            ApiResponse cachedResponse = ResponseCache.Get(url);
+            if (cachedResponse != null)
+            {
+                return cachedResponse as CorporationSheet;
+            }
+
+            XmlDocument xmlDoc = Network.GetXml(url);
+            CorporationSheet corporationSheet = CorporationSheet.FromXmlDocument(xmlDoc);
+            ResponseCache.Set(url, corporationSheet);
+
+            return corporationSheet;
         }
 
         /// <summary>
