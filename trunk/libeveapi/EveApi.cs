@@ -281,7 +281,7 @@ namespace libeveapi
             }
 
             string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}", Constants.ApiPrefix, apiPath, userId, characterId, fullApiKey);
-            
+            Console.WriteLine(url);
             ApiResponse cachedResponse = ResponseCache.Get(url);
             if (cachedResponse != null)
             {
@@ -407,48 +407,6 @@ namespace libeveapi
             ResponseCache.Set(url, mapJumps);
 
             return mapJumps;
-        }
-
-        /// <summary>
-        /// Returns a list solar systems that have sovereignty
-        /// </summary>
-        /// <returns></returns>
-        public static MapSovereignty GetMapSovereignty()
-        {
-            string url = String.Format("{0}{1}?version=2", Constants.ApiPrefix, Constants.MapSoveignty);
-
-            ApiResponse cachedResponse = ResponseCache.Get(url);
-            if (cachedResponse != null)
-            {
-                return cachedResponse as MapSovereignty;
-            }
-
-            XmlDocument xmlDoc = Network.GetXml(url);
-            MapSovereignty mapSovereignty = MapSovereignty.FromXmlDocument(xmlDoc);
-            ResponseCache.Set(url, mapSovereignty);
-
-            return mapSovereignty;
-        }
-
-        /// <summary>
-        /// Returns a list kills in solar systems with more than 0 kills
-        /// </summary>
-        /// <returns></returns>
-        public static MapKills GetMapKills()
-        {
-            string url = String.Format("{0}{1}?version=2", Constants.ApiPrefix, Constants.MapKills);
-
-            ApiResponse cachedResponse = ResponseCache.Get(url);
-            if (cachedResponse != null)
-            {
-                return cachedResponse as MapKills;
-            }
-
-            XmlDocument xmlDoc = Network.GetXml(url);
-            MapKills mapKills = MapKills.FromXmlDocument(xmlDoc);
-            ResponseCache.Set(url, mapKills);
-
-            return mapKills;
         }
 
         /// <summary>
@@ -594,6 +552,30 @@ namespace libeveapi
         {
             TimeSpan offset = DateTime.Now.Subtract(ccpCurrentTime);
             return ccpDateTime.Add(offset);
+        }
+
+        /// <summary>
+        /// Get the currently training Skill for a character
+        /// </summary>
+        /// <param name="userId">User Id of account for authentication</param>
+        /// <param name="characterId">Character Id of the character to get skill info for</param>
+        /// <param name="apiKey">limited access API key of Account</param>
+        /// <returns></returns>
+        public static SkillInTraining GetSkillInTraining(string userId, string characterId, string apiKey)
+        {
+            string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}", Constants.ApiPrefix, Constants.SkillInTraining, userId, characterId, apiKey);
+
+            ApiResponse cachedResponse = ResponseCache.Get(url);
+            if (cachedResponse != null)
+            {
+                return cachedResponse as SkillInTraining;
+            }
+
+            XmlDocument xmlDoc = Network.GetXml(url);
+            SkillInTraining skillintraining = SkillInTraining.FromXmlDocument(xmlDoc);
+            ResponseCache.Set(url, skillintraining);
+
+            return skillintraining;
         }
     }
 
