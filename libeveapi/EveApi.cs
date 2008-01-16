@@ -410,6 +410,48 @@ namespace libeveapi
         }
 
         /// <summary>
+        /// Returns a list solar systems that have sovereignty
+        /// </summary>
+        /// <returns></returns>
+        public static MapSovereignty GetMapSovereignty()
+        {
+            string url = String.Format("{0}{1}?version=2", Constants.ApiPrefix, Constants.MapSoveignty);
+
+            ApiResponse cachedResponse = ResponseCache.Get(url);
+            if (cachedResponse != null)
+            {
+                return cachedResponse as MapSovereignty;
+            }
+
+            XmlDocument xmlDoc = Network.GetXml(url);
+            MapSovereignty mapSovereignty = MapSovereignty.FromXmlDocument(xmlDoc);
+            ResponseCache.Set(url, mapSovereignty);
+
+            return mapSovereignty;
+        }
+
+        /// <summary>
+        /// Returns a list kills in solar systems with more than 0 kills
+        /// </summary>
+        /// <returns></returns>
+        public static MapKills GetMapKills()
+        {
+            string url = String.Format("{0}{1}?version=2", Constants.ApiPrefix, Constants.MapKills);
+
+            ApiResponse cachedResponse = ResponseCache.Get(url);
+            if (cachedResponse != null)
+            {
+                return cachedResponse as MapKills;
+            }
+
+            XmlDocument xmlDoc = Network.GetXml(url);
+            MapKills mapKills = MapKills.FromXmlDocument(xmlDoc);
+            ResponseCache.Set(url, mapKills);
+
+            return mapKills;
+        }
+
+        /// <summary>
         /// Returns information on every member in the corporation. Information retrieved
         /// varies on your roles without within the corporation. Not valid for NPC corps.
         /// </summary>
