@@ -403,7 +403,7 @@ namespace libeveapi
             }
 
             XmlDocument xmlDoc = Network.GetXml(url);
-            MapJumps mapJumps = RefTypes.FromXmlDocument(xmlDoc);
+            MapJumps mapJumps = MapJumps.FromXmlDocument(xmlDoc);
             ResponseCache.Set(url, mapJumps);
 
             return mapJumps;

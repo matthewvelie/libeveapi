@@ -29,7 +29,7 @@ namespace UnitTests
 
             Assert.AreEqual(mapJumps.CachedUntilLocal, cachedMapJumps.CachedUntilLocal);
 
-            for (int i = 0; i < mapJumps.AccountBalanceItems.Length; i++)
+            for (int i = 0; i < mapJumps.MapSystemJumps.Length; i++)
             {
                 Assert.AreEqual(mapJumps.MapSystemJumps[i].shipJumps, cachedMapJumps.MapSystemJumps[i].shipJumps);
                 Assert.AreEqual(mapJumps.MapSystemJumps[i].solarSystemID, cachedMapJumps.MapSystemJumps[i].solarSystemID);
