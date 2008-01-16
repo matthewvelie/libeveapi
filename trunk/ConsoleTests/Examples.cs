@@ -49,16 +49,16 @@ namespace ConsoleTests
         public static void PrintAllAssets()
         {
             AssetList assetList = EveApi.GetAssetList(AssetListType.Corporation, "userId", "characterId", "fullApiKey");
-            foreach (AssetListItem ali in assetList.AssetListItems)
+            foreach (AssetList.AssetListItem ali in assetList.AssetListItems)
             {
                 PrintAsset(ali);
             }
         }
 
-        public static void PrintAsset(AssetListItem ali)
+        public static void PrintAsset(AssetList.AssetListItem ali)
         {
             Console.WriteLine("itemID: {0} quantity: {1}", ali.ItemId, ali.Quantity);
-            foreach (AssetListItem childAsset in ali.Contents)
+            foreach (AssetList.AssetListItem childAsset in ali.Contents)
             {
                 PrintAsset(childAsset);
             }

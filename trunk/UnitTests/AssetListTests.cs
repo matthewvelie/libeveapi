@@ -21,9 +21,9 @@ namespace UnitTests
         {
             AssetList assetList = EveApi.GetAssetList(AssetListType.Corporation, "userId", "characterId", "apiKey");
 
-            AssetListItem parent = GetAsset(197977287, assetList.AssetListItems);
-            AssetListItem child = GetAsset(331125392, parent.Contents);
-            AssetListItem grandChild = GetAsset(109617951, child.Contents);
+            AssetList.AssetListItem parent = GetAsset(197977287, assetList.AssetListItems);
+            AssetList.AssetListItem child = GetAsset(331125392, parent.Contents);
+            AssetList.AssetListItem grandChild = GetAsset(109617951, child.Contents);
 
             Assert.AreEqual(197977287, parent.ItemId);
             Assert.AreEqual(331125392, child.ItemId);
@@ -48,9 +48,9 @@ namespace UnitTests
             }
         }
 
-        private AssetListItem GetAsset(int itemId, AssetListItem[] assets)
+        private AssetList.AssetListItem GetAsset(int itemId, AssetList.AssetListItem[] assets)
         {
-            foreach (AssetListItem asset in assets)
+            foreach (AssetList.AssetListItem asset in assets)
             {
                 if (asset.ItemId == itemId)
                 {
@@ -61,7 +61,7 @@ namespace UnitTests
             return null;
         }
 
-        private bool CompareAssets(AssetListItem item1, AssetListItem item2)
+        private bool CompareAssets(AssetList.AssetListItem item1, AssetList.AssetListItem item2)
         {
             if (item1.ItemId != item2.ItemId)
             {
