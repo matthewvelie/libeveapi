@@ -30,9 +30,9 @@ namespace libeveapi
             {
                 CharacterListItem character = new CharacterListItem();
                 character.Name = row.Attributes["name"].InnerText;
-                character.CharacterId = row.Attributes["characterID"].InnerText;
+                character.CharacterId = Convert.ToInt32(row.Attributes["characterID"].InnerText);
                 character.CorporationName = row.Attributes["corporationName"].InnerText;
-                character.CorporationId = row.Attributes["corporationID"].InnerText;
+                character.CorporationId = Convert.ToInt32(row.Attributes["corporationID"].InnerText);
                 parsedCharacters.Add(character);
             }
             characterList.CharacterListItems = parsedCharacters.ToArray();
@@ -54,7 +54,7 @@ namespace libeveapi
         /// <summary>
         /// ID of the character
         /// </summary>
-        public string CharacterId;
+        public int CharacterId;
 
         /// <summary>
         /// Name of the corporation the character is a member of
@@ -64,6 +64,6 @@ namespace libeveapi
         /// <summary>
         /// ID of the corporation the character is a member of
         /// </summary>
-        public string CorporationId;
+        public int CorporationId;
     }
 }

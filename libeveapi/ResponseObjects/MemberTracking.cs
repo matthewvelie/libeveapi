@@ -31,14 +31,14 @@ namespace libeveapi
             foreach (XmlNode row in xmlDoc.SelectNodes("//rowset[@name='members']/row"))
             {
                 MemberTrackingItem mti = new MemberTrackingItem();
-                mti.CharacterId = row.Attributes["characterID"].InnerText;
+                mti.CharacterId = Convert.ToInt32(row.Attributes["characterID"].InnerText);
                 mti.Name = row.Attributes["name"].InnerText;
-                mti.BaseId = row.Attributes["baseID"].InnerText;
+                mti.BaseId = Convert.ToInt32(row.Attributes["baseID"].InnerText);
                 mti.Base = row.Attributes["base"].InnerText;
                 mti.Title = row.Attributes["title"].InnerText;
-                mti.LocationId = row.Attributes["locationID"].InnerText;
+                mti.LocationId = Convert.ToInt32(row.Attributes["locationID"].InnerText);
                 mti.Location = row.Attributes["location"].InnerText;
-                mti.ShipTypeId = row.Attributes["shipTypeID"].InnerText;
+                mti.ShipTypeId = Convert.ToInt32(row.Attributes["shipTypeID"].InnerText);
                 mti.ShipType = row.Attributes["shipType"].InnerText;
                 mti.RolesMask = row.Attributes["roles"].InnerText;
                 mti.GrantableRoles = row.Attributes["grantableRoles"].InnerText;
@@ -66,7 +66,7 @@ namespace libeveapi
         /// <summary>
         /// Unique identifier of the pilot.
         /// </summary>
-        public string CharacterId;
+        public int CharacterId;
 
         /// <summary>
         /// Name of the pilot
@@ -87,7 +87,7 @@ namespace libeveapi
         /// The unique identifier of the station the pilot's 
         /// base station.
         /// </summary>
-        public string BaseId;
+        public int BaseId;
 
         /// <summary>
         /// The human readable description of the pilot's base 
@@ -123,7 +123,7 @@ namespace libeveapi
         /// <summary>
         /// The unique id of the system where the pilot is currently located
         /// </summary>
-        public string LocationId;
+        public int LocationId;
 
         /// <summary>
         /// A human readable description of the current location of the pilot
@@ -134,7 +134,7 @@ namespace libeveapi
         /// The unique identifier of the ship type the pilot is 
         /// currently flying
         /// </summary>
-        public string ShipTypeId;
+        public int ShipTypeId;
 
         /// <summary>
         /// The human readable description of the type of ship the 

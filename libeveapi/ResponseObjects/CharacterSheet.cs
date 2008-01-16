@@ -13,7 +13,7 @@ namespace libeveapi
         /// <summary>
         /// The eve assigned characterId
         /// </summary>
-        public string CharacterId;
+        public int CharacterId;
         /// <summary>
         /// The name of the character
         /// </summary>
@@ -37,7 +37,7 @@ namespace libeveapi
         /// <summary>
         /// The eve generated ID of the corporation
         /// </summary>
-        public string CorporationId;
+        public int CorporationId;
         /// <summary>
         /// The character's current wallet balance
         /// </summary>
@@ -101,13 +101,13 @@ namespace libeveapi
             characterSheet.ParseCommonElements(xmlDoc);
 
             // general info
-            characterSheet.CharacterId = xmlDoc.SelectSingleNode("/eveapi/result/characterID").InnerText;
+            characterSheet.CharacterId = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/characterID").InnerText);
             characterSheet.Name = xmlDoc.SelectSingleNode("/eveapi/result/name").InnerText;
             characterSheet.Race = xmlDoc.SelectSingleNode("/eveapi/result/race").InnerText;
             characterSheet.BloodLine = xmlDoc.SelectSingleNode("/eveapi/result/bloodLine").InnerText;
             characterSheet.Gender = xmlDoc.SelectSingleNode("/eveapi/result/gender").InnerText;
             characterSheet.CorporationName = xmlDoc.SelectSingleNode("/eveapi/result/corporationName").InnerText;
-            characterSheet.CorporationId = xmlDoc.SelectSingleNode("/eveapi/result/corporationID").InnerText;
+            characterSheet.CorporationId = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/corporationID").InnerText);
             characterSheet.Balance = Convert.ToDouble(xmlDoc.SelectSingleNode("/eveapi/result/balance").InnerText);
 
             // attribute enhancers
@@ -129,9 +129,9 @@ namespace libeveapi
             foreach (XmlNode row in xmlDoc.SelectNodes("//rowset[@name='skills']/row"))
             {
                 SkillItem si = new SkillItem();
-                si.TypeId = row.Attributes["typeID"].InnerText;
+                si.TypeId = Convert.ToInt32(row.Attributes["typeID"].InnerText);
                 si.Skillpoints = Convert.ToInt64(row.Attributes["skillpoints"].InnerText);
-                si.Level = row.Attributes["level"].InnerText;
+                si.Level = Convert.ToInt32(row.Attributes["level"].InnerText);
 
                 if (row.Attributes.GetNamedItem("unpublished") != null)
                 {
@@ -172,7 +172,7 @@ namespace libeveapi
         /// <summary>
         /// TypeID of the skill
         /// </summary>
-        public string TypeId;
+        public int TypeId;
         /// <summary>
         /// Current number of skillpoints the character has in the skill
         /// </summary>
@@ -180,7 +180,7 @@ namespace libeveapi
         /// <summary>
         /// The highest completed level of the skill
         /// </summary>
-        public string Level;
+        public int Level;
         /// <summary>
         /// Flag if the skill is an unpublished skill
         /// </summary>

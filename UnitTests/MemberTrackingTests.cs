@@ -25,14 +25,14 @@ namespace UnitTests
             Assert.AreEqual(memberTracking.MemberTrackingItems.Length, 2);
 
             MemberTrackingItem mti = memberTracking.MemberTrackingItems[0];
-            Assert.AreEqual("150336922", mti.CharacterId);
+            Assert.AreEqual(150336922, mti.CharacterId);
             Assert.AreEqual("corpexport", mti.Name);
-            Assert.AreEqual("0", mti.BaseId);
+            Assert.AreEqual(0, mti.BaseId);
             Assert.AreEqual("base", mti.Base);
             Assert.AreEqual("asdf", mti.Title);
-            Assert.AreEqual("60011566", mti.LocationId);
+            Assert.AreEqual(60011566, mti.LocationId);
             Assert.AreEqual("Bourynes VII - Moon 2 - University of Caille School", mti.Location);
-            Assert.AreEqual("606", mti.ShipTypeId);
+            Assert.AreEqual(606, mti.ShipTypeId);
             Assert.AreEqual("Velator", mti.ShipType);
             Assert.AreEqual("1281", mti.RolesMask);
             Assert.AreEqual("0", mti.GrantableRoles);

@@ -24,9 +24,9 @@ namespace UnitTests
             Assert.AreEqual(3, characterList.CharacterListItems.Length);
 
             Assert.AreEqual("Mary", characterList.CharacterListItems[0].Name);
-            Assert.AreEqual("150267069", characterList.CharacterListItems[0].CharacterId);
+            Assert.AreEqual(150267069, characterList.CharacterListItems[0].CharacterId);
             Assert.AreEqual("Starbase Anchoring Corp", characterList.CharacterListItems[0].CorporationName);
-            Assert.AreEqual("150279367", characterList.CharacterListItems[0].CorporationId);
+            Assert.AreEqual(150279367, characterList.CharacterListItems[0].CorporationId);
         }
 
         [Test]

@@ -29,10 +29,10 @@ namespace libeveapi
             foreach (XmlNode starbaseNode in xmlDoc.SelectNodes("//rowset[@name='starbases']/row"))
             {
                 StarbaseListItem starbase = new StarbaseListItem();
-                starbase.ItemId = starbaseNode.Attributes["itemID"].InnerText;
-                starbase.TypeId = starbaseNode.Attributes["typeID"].InnerText;
-                starbase.LocationId = starbaseNode.Attributes["locationID"].InnerText;
-                starbase.MoonId = starbaseNode.Attributes["moonID"].InnerText;
+                starbase.ItemId = Convert.ToInt32(starbaseNode.Attributes["itemID"].InnerText);
+                starbase.TypeId = Convert.ToInt32(starbaseNode.Attributes["typeID"].InnerText);
+                starbase.LocationId = Convert.ToInt32(starbaseNode.Attributes["locationID"].InnerText);
+                starbase.MoonId = Convert.ToInt32(starbaseNode.Attributes["moonID"].InnerText);
                 DateTime.TryParse(starbaseNode.Attributes["stateTimestamp"].InnerText, out starbase.StateTimestamp);
                 DateTime.TryParse(starbaseNode.Attributes["onlineTimestamp"].InnerText, out starbase.OnlineTimestamp);
 
@@ -73,22 +73,22 @@ namespace libeveapi
         /// <summary>
         /// Unique identifier for this starbase
         /// </summary>
-        public string ItemId;
+        public int ItemId;
 
         /// <summary>
         /// Control tower type id
         /// </summary>
-        public string TypeId;
+        public int TypeId;
 
         /// <summary>
         /// The id of the system where the starbase is located
         /// </summary>
-        public string LocationId;
+        public int LocationId;
 
         /// <summary>
         /// The id of the moon where the starbase is located
         /// </summary>
-        public string MoonId;
+        public int MoonId;
 
         /// <summary>
         /// See <see cref="StarbaseState"/> for full descriptions of each starbase state
