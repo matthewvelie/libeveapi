@@ -22,13 +22,13 @@ public static AccountBalance GetAccountBalance(AccountBalanceType accountBalance
 || Member || Type || Description ||
 || !AccountBalanceItems || !AccountBalanceItem[] || The accounts associated with this character or corporation ||
 
-* AccountBalanceItem Object *
+* !AccountBalanceItem Object *
 || Member || Type || Description ||
 || !AccountId || string || ID number of the account ||
 || !AccountKey || string || Account Identifier. For Characters: always 1000. For Corp: the wallet division ||
 || Balance || double || The amount of ISK in the account ||
 
-* AccountBalanceType Enumeration *
+* !AccountBalanceType Enumeration *
 || Member || Value || Description ||
 || Character || - || Retrieve the account balances for the specified characterID ||
 || Corporation || - || Retrieve the account balances for the characterID's corporation ||
