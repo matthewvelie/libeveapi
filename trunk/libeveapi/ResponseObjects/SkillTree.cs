@@ -105,15 +105,16 @@ namespace libeveapi
             {
                 case "memory":
                     return AttributeType.Memory;
-                    break;
+                    
                 case "willpower":
                     return AttributeType.Willpower;
-                    break;
+                    
                 case "intelligence":
                     return AttributeType.Intelligence;
-                    break;
+                    
                 case "perception":
                     return AttributeType.Perception;
+
                 case "charisma":
                     return AttributeType.Charisma;
             }

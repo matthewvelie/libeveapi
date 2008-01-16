@@ -23,7 +23,7 @@ namespace libeveapi
         /// </summary>
         /// <param name="url"></param>
         /// <param name="apiResponse"></param>
-        public static void Set(string url, ApiResponse apiResponse)
+        internal static void Set(string url, ApiResponse apiResponse)
         {
             url = SHA1HashString(url);
 
@@ -40,7 +40,7 @@ namespace libeveapi
         /// </summary>
         /// <param name="url"></param>
         /// <returns>ApiResponse if cached ApiResponse is valid, null if it is expired</returns>
-        public static ApiResponse Get(string url)
+        internal static ApiResponse Get(string url)
         {
             url = SHA1HashString(url);
 
