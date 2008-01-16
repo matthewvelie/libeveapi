@@ -57,6 +57,7 @@
     <Compile Include="ResponseObjects\MarketOrders.cs" />
     <Compile Include="ResponseObjects\RefTypes.cs" />
     <Compile Include="ResponseObjects\MemberTracking.cs" />
+    <Compile Include="ResponseObjects\SkillInTraining.cs" />
     <Compile Include="ResponseObjects\SkillTree.cs" />
     <Compile Include="ResponseObjects\StarbaseDetail.cs" />
     <Compile Include="ResponseObjects\StarbaseList.cs" />
