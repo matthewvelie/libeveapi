@@ -75,56 +75,56 @@ namespace libeveapi
 
             return assetListItem;
         }
-    }
-
-    /// <summary>
-    /// Represents one full asset and all information associated with it for a
-    /// character or corporation
-    /// </summary>
-    public class AssetListItem
-    {
-        /// <summary>
-        /// Unique ID for this item. This is only guaranteed to be unique within 
-        /// this page load. IDs are recycled over time and it is possible for this 
-        /// to happen. Also, items are not guaranteed to maintain the same itemID 
-        /// over time. When they are repackaged, stacks are split or merged, when 
-        /// they're assembled, and other actions can cause itemIDs to change.
-        /// </summary>
-        public int ItemId;
 
         /// <summary>
-        /// References a solar system or station. Note that this column is not present in 
-        /// the sub-asset lists, i.e. for things inside of other things.
+        /// Represents one full asset and all information associated with it for a
+        /// character or corporation
         /// </summary>
-        public int LocationId;
+        public class AssetListItem
+        {
+            /// <summary>
+            /// Unique ID for this item. This is only guaranteed to be unique within 
+            /// this page load. IDs are recycled over time and it is possible for this 
+            /// to happen. Also, items are not guaranteed to maintain the same itemID 
+            /// over time. When they are repackaged, stacks are split or merged, when 
+            /// they're assembled, and other actions can cause itemIDs to change.
+            /// </summary>
+            public int ItemId;
 
-        /// <summary>
-        /// The type of this item. References the invTypes table.
-        /// </summary>
-        public int TypeId;
+            /// <summary>
+            /// References a solar system or station. Note that this column is not present in 
+            /// the sub-asset lists, i.e. for things inside of other things.
+            /// </summary>
+            public int LocationId;
 
-        /// <summary>
-        /// How many items are in this stack.
-        /// </summary>
-        public long Quantity;
+            /// <summary>
+            /// The type of this item. References the invTypes table.
+            /// </summary>
+            public int TypeId;
 
-        /// <summary>
-        /// Indicates something about this item's storage location. The flag 
-        /// is used to differentiate between hangar divisions, drone bay, 
-        /// fitting location, and similar. Please see the <see cref="InventoryFlagType" />.
-        /// </summary>
-        public InventoryFlagType Flag;
+            /// <summary>
+            /// How many items are in this stack.
+            /// </summary>
+            public long Quantity;
 
-        /// <summary>
-        /// If true, indicates that this item is a singleton. This means that 
-        /// the item is not packaged.
-        /// </summary>
-        public bool Singleton;
+            /// <summary>
+            /// Indicates something about this item's storage location. The flag 
+            /// is used to differentiate between hangar divisions, drone bay, 
+            /// fitting location, and similar. Please see the <see cref="InventoryFlagType" />.
+            /// </summary>
+            public InventoryFlagType Flag;
 
-        /// <summary>
-        /// The items contained in this item if any
-        /// </summary>
-        public AssetListItem[] Contents = new AssetListItem[0];
+            /// <summary>
+            /// If true, indicates that this item is a singleton. This means that 
+            /// the item is not packaged.
+            /// </summary>
+            public bool Singleton;
+
+            /// <summary>
+            /// The items contained in this item if any
+            /// </summary>
+            public AssetListItem[] Contents = new AssetListItem[0];
+        }
     }
 
     /// <summary>
