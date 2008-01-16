@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading;
 using System.Xml.Serialization;
 using System.Security.Cryptography;
 
@@ -16,6 +17,7 @@ namespace libeveapi
     /// </summary>
     public class ResponseCache
     {
+        private static object lockThis = new object();
         private static Hashtable hashTable = new Hashtable();
 
         /// <summary>
@@ -26,13 +28,16 @@ namespace libeveapi
         internal static void Set(string url, ApiResponse apiResponse)
         {
             url = SHA1HashString(url);
-
-            if (hashTable.Contains(url))
-            {
-                hashTable.Remove(url);
-            }
-            hashTable.Add(url, apiResponse);
             apiResponse.HashedUrl = url;
+
+            lock (lockThis)
+            {
+                if (hashTable.Contains(url))
+                {
+                    hashTable.Remove(url);
+                }
+                hashTable.Add(url, apiResponse);
+            }
         }
 
         /// <summary>
@@ -50,6 +55,11 @@ namespace libeveapi
 
                 if (DateTime.Now >= cachedResponse.CachedUntilLocal)
                 {
+                    lock (lockThis)
+                    {
+                        hashTable.Remove(url);
+                    }
+
                     return null;
                 }
 
@@ -64,7 +74,10 @@ namespace libeveapi
         /// </summary>
         public static void Clear()
         {
-            hashTable.Clear();
+            lock (lockThis)
+            {
+                hashTable.Clear();
+            }
         }
 
         /// <summary>
@@ -82,7 +95,10 @@ namespace libeveapi
             using (Stream s = new FileStream(filePath, FileMode.Create))
             {
                 XmlSerializer xs = new XmlSerializer(typeof(List<ApiResponse>), new Type[] { typeof(ApiResponse) });
-                xs.Serialize(s, apiResponses);
+                lock (lockThis)
+                {
+                    xs.Serialize(s, apiResponses);
+                }
             }
         }
 
@@ -99,7 +115,10 @@ namespace libeveapi
             }
 
             XmlSerializer xs = new XmlSerializer(typeof(List<ApiResponse>), new Type[] { typeof(ApiResponse) });
-            xs.Serialize(s, apiResponses);
+            lock (lockThis)
+            {
+                xs.Serialize(s, apiResponses);
+            }
         }
 
         /// <summary>
@@ -112,10 +131,13 @@ namespace libeveapi
             {
                 XmlSerializer xs = new XmlSerializer(typeof(List<ApiResponse>), new Type[] { typeof(ApiResponse) });
                 List<ApiResponse> apiResponses = xs.Deserialize(s) as List<ApiResponse>;
-                hashTable.Clear();
-                foreach (ApiResponse apiResponse in apiResponses)
+                lock (lockThis)
                 {
-                    hashTable.Add(apiResponse.HashedUrl, apiResponse);
+                    hashTable.Clear();
+                    foreach (ApiResponse apiResponse in apiResponses)
+                    {
+                        hashTable.Add(apiResponse.HashedUrl, apiResponse);
+                    }
                 }
             }
         }
@@ -128,10 +150,14 @@ namespace libeveapi
         {
             XmlSerializer xs = new XmlSerializer(typeof(List<ApiResponse>), new Type[] { typeof(ApiResponse) });
             List<ApiResponse> apiResponses = xs.Deserialize(s) as List<ApiResponse>;
-            hashTable.Clear();
-            foreach (ApiResponse apiResponse in apiResponses)
+
+            lock (lockThis)
             {
-                hashTable.Add(apiResponse.HashedUrl, apiResponse);
+                hashTable.Clear();
+                foreach (ApiResponse apiResponse in apiResponses)
+                {
+                    hashTable.Add(apiResponse.HashedUrl, apiResponse);
+                }
             }
         }
 

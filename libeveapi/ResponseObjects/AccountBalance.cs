@@ -40,29 +40,29 @@ namespace libeveapi
 
             return accountBalance;
         }
-    }
-
-    /// <summary>
-    /// An account associated with a character or corporation
-    /// </summary>
-    public class AccountBalanceItem
-    {
-        /// <summary>
-        /// ID number of the account
-        /// </summary>
-        public int AccountId;
 
         /// <summary>
-        /// Account Identifier
-        /// For character: always 1000
-        /// For corporation: the corp wallet division
+        /// An account associated with a character or corporation
         /// </summary>
-        public int AccountKey;
+        public class AccountBalanceItem
+        {
+            /// <summary>
+            /// ID number of the account
+            /// </summary>
+            public int AccountId;
 
-        /// <summary>
-        /// Amount of isk in the account
-        /// </summary>
-        public double Balance;
+            /// <summary>
+            /// Account Identifier
+            /// For character: always 1000
+            /// For corporation: the corp wallet division
+            /// </summary>
+            public int AccountKey;
+
+            /// <summary>
+            /// Amount of isk in the account
+            /// </summary>
+            public double Balance;
+        }
     }
 
     /// <summary>

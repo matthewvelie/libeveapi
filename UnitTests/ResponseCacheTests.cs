@@ -24,7 +24,7 @@ namespace UnitTests
             string errorListLocation = Constants.ErrorList;
             Constants.ErrorList = "/ErrorListExpired.xml.aspx";
             ErrorList errorList = EveApi.GetErrorList();
-            System.Threading.Thread.Sleep(10);
+            System.Threading.Thread.Sleep(100);
             ErrorList errorList2 = EveApi.GetErrorList();
 
             Assert.AreNotEqual(errorList.CachedUntilLocal, errorList2.CachedUntilLocal);
