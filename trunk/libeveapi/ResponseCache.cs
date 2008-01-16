@@ -55,11 +55,6 @@ namespace libeveapi
 
                 if (DateTime.Now >= cachedResponse.CachedUntilLocal)
                 {
-                    lock (lockThis)
-                    {
-                        hashTable.Remove(url);
-                    }
-
                     return null;
                 }
 
