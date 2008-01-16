@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -26,6 +27,14 @@ namespace libeveapi
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(s);
             return xmlDoc;
+        }
+
+        public static Image GetImage(string url)
+        {
+            WebClient wc = new WebClient();
+            wc.Headers.Add("user-agent", "libEveApi/1");
+            Stream s = wc.OpenRead(url);
+            return Image.FromStream(s, true, true);
         }
     }
 }

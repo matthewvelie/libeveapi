@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 using System.Xml;
 
@@ -606,6 +607,12 @@ namespace libeveapi
             ResponseCache.Set(url, skillintraining);
 
             return skillintraining;
+        }
+
+        public static Image GetCharacterPortrait(int characterId)
+        {
+            string url = String.Format("{0}?CharacterID={1}", Constants.ImageFullURL, characterId.ToString());
+            return Network.GetImage(url);
         }
 
         /// <summary>
