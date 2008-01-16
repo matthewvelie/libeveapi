@@ -25,6 +25,7 @@ namespace libeveapi
     [XmlInclude(typeof(MapKills))]
     [XmlInclude(typeof(MapSovereignty))]
     [XmlInclude(typeof(CorporationSheet))]
+    [XmlInclude(typeof(SkillInTraining))]
 
     public class ApiResponse
     {

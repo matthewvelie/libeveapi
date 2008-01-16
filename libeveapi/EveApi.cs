@@ -585,6 +585,30 @@ namespace libeveapi
         }
 
         /// <summary>
+        /// Get the currently training Skill for a character
+        /// </summary>
+        /// <param name="userId">User Id of account for authentication</param>
+        /// <param name="characterId">Character Id of the character to get skill info for</param>
+        /// <param name="apiKey">limited access API key of Account</param>
+        /// <returns></returns>
+        public static SkillInTraining GetSkillInTraining(string userId, string characterId, string apiKey)
+        {
+            string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}", Constants.ApiPrefix, Constants.SkillInTraining, userId, characterId, apiKey);
+
+            ApiResponse cachedResponse = ResponseCache.Get(url);
+            if (cachedResponse != null)
+            {
+                return cachedResponse as SkillInTraining;
+            }
+
+            XmlDocument xmlDoc = Network.GetXml(url);
+            SkillInTraining skillintraining = SkillInTraining.FromXmlDocument(xmlDoc);
+            ResponseCache.Set(url, skillintraining);
+
+            return skillintraining;
+        }
+
+        /// <summary>
         /// Convert a CCP DateTime to local time
         /// </summary>
         /// <param name="ccpCurrentTime">CCP server current datetime</param>
