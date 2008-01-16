@@ -114,7 +114,7 @@ namespace libeveapi
         /// <summary>
         /// The location of the conquerable stations and outpost statistics xml file
         /// </summary>
-        public static string ConquerableStationOutput = "/eve/ConquerableStationList.xml.aspx";
+        public static string ConquerableStationOutpost = "/eve/ConquerableStationList.xml.aspx";
         /// <summary>
         /// The location of the coporation sheet xml file
         /// </summary>

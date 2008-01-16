@@ -481,6 +481,27 @@ namespace libeveapi
         }
 
         /// <summary>
+        /// Gets a list of conquerable stations from the api
+        /// </summary>
+        /// <returns></returns>
+        public static ConquerableStationList GetConquerableStationList()
+        {
+            string url = String.Format("{0}{1}?version=2", Constants.ApiPrefix, Constants.ConquerableStationOutpost);
+
+            ApiResponse cachedResponse = ResponseCache.Get(url);
+            if (cachedResponse != null)
+            {
+                return cachedResponse as ConquerableStationList;
+            }
+
+            XmlDocument xmlDoc = Network.GetXml(url);
+            ConquerableStationList outpostList = ConquerableStationList.FromXmlDocument(xmlDoc);
+            ResponseCache.Set(url, outpostList);
+
+            return outpostList;
+        }
+
+        /// <summary>
         /// Convert a CCP DateTime to local time
         /// </summary>
         /// <param name="ccpCurrentTime">CCP server current datetime</param>
