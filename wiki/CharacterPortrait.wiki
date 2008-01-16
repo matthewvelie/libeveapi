@@ -1,7 +1,7 @@
 === Description ===
 Retrieves the character's portrait from the EVE servers
 
-*NOTE:These images are NOT cached by the library it is up to the client application to cache the images.*
+*NOTE:These images are NOT cached by the library it is up to the client application to cache the library.*
 
 === Eve Api Call ===
 {{{
@@ -11,6 +11,7 @@ Retrieves the character's portrait from the EVE servers
 /// <param name="characterId">Retrieve the portrait of the character with this id</param>
 /// <param name="portraitSize">Small (64) or Large (256)</param>
 /// <returns></returns>
+public static Image GetCharacterPortrait(int characterId, PortraitSize portraitSize)
 }}}
 
 
