@@ -19,8 +19,8 @@ namespace libeveapi
         /// <summary>
         /// Create an Mapkills object by parsing an XmlDocument response from the eve api
         /// </summary>
-        /// <param name="xmlDoc"></param>
-        /// <returns></returns>
+        /// <param name="xmlDoc">XML Document containing map sovereignty information</param>
+        /// <returns><see cref="MapSovereignty"/>A map sovereignty object</returns>
         public static MapSovereignty FromXmlDocument(XmlDocument xmlDoc)
         {
             MapSovereignty mapSovereignty = new MapSovereignty();
@@ -30,12 +30,12 @@ namespace libeveapi
             foreach (XmlNode systemRow in xmlDoc.SelectNodes("//rowset[@name='solarSystems']/row"))
             {
                 MapSovereigntyItem sovereigntyData = new MapSovereigntyItem();
-                sovereigntyData.solarSystemID = Convert.ToInt32(systemRow.Attributes["solarSystemID"].InnerText);
-                sovereigntyData.allianceID = Convert.ToInt32(systemRow.Attributes["allianceID"].InnerText);
-                sovereigntyData.constellationSovereignty = Convert.ToInt32(systemRow.Attributes["constellationSovereignty"].InnerText);
-                sovereigntyData.sovereigntyLevel = Convert.ToInt32(systemRow.Attributes["sovereigntyLevel"].InnerText);
-                sovereigntyData.factionID = Convert.ToInt32(systemRow.Attributes["factionID"].InnerText);
-                sovereigntyData.solarSystemName = systemRow.Attributes["solarSystemName"].InnerText;
+                sovereigntyData.SolarSystemID = Convert.ToInt32(systemRow.Attributes["solarSystemID"].InnerText);
+                sovereigntyData.AllianceID = Convert.ToInt32(systemRow.Attributes["allianceID"].InnerText);
+                sovereigntyData.ConstellationSovereignty = Convert.ToInt32(systemRow.Attributes["constellationSovereignty"].InnerText);
+                sovereigntyData.SovereigntyLevel = Convert.ToInt32(systemRow.Attributes["sovereigntyLevel"].InnerText);
+                sovereigntyData.FactionID = Convert.ToInt32(systemRow.Attributes["factionID"].InnerText);
+                sovereigntyData.SolarSystemName = systemRow.Attributes["solarSystemName"].InnerText;
                 sovereigntyList.Add(sovereigntyData);
             }
             mapSovereignty.MapSystemSovereignty = sovereigntyList.ToArray();
@@ -52,31 +52,32 @@ namespace libeveapi
         /// <summary>
         /// The unique identification number of a solar system
         /// </summary>
-        public int solarSystemID;
+        public int SolarSystemID;
 
         /// <summary>
         /// The ID of the alliance that has sovereignty of this solar system, or 0 if nobody has sovereignty.
         /// </summary>
-        public int allianceID;
+        public int AllianceID;
 
         /// <summary>
         /// The ID of the alliance that has sovereignty of this constellation, or 0 if nobody has constellation sovereignty.
+        /// http://myeve.eve-online.com/devblog.asp?a=blog&bid=477
         /// </summary>
-        public int constellationSovereignty;
+        public int ConstellationSovereignty;
 
         /// <summary>
         /// The level of sovernty
         /// </summary>
-        public int sovereigntyLevel;
+        public int SovereigntyLevel;
 
         /// <summary>
         /// The NPC faction that controls this system
         /// </summary>
-        public int factionID;
+        public int FactionID;
 
         /// <summary>
         /// Name of the solar system
         /// </summary>
-        public string solarSystemName;
+        public string SolarSystemName;
     }
 }

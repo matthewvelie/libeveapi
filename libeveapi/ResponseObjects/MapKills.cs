@@ -19,8 +19,8 @@ namespace libeveapi
         /// <summary>
         /// Create an Mapkills object by parsing an XmlDocument response from the eve api
         /// </summary>
-        /// <param name="xmlDoc"></param>
-        /// <returns></returns>
+        /// <param name="xmlDoc">An XML Document containing kill information on the map</param>
+        /// <returns><see cref="MapKills"/></returns>
         public static MapKills FromXmlDocument(XmlDocument xmlDoc)
         {
             MapKills mapKills = new MapKills();
@@ -30,10 +30,10 @@ namespace libeveapi
             foreach (XmlNode systemRow in xmlDoc.SelectNodes("//rowset[@name='solarSystems']/row"))
             {
                 MapKillsItem systemData = new MapKillsItem();
-                systemData.solarSystemID = Convert.ToInt32(systemRow.Attributes["solarSystemID"].InnerText);
-                systemData.shipKills = Convert.ToInt32(systemRow.Attributes["shipKills"].InnerText);
-                systemData.factionKills = Convert.ToInt32(systemRow.Attributes["factionKills"].InnerText);
-                systemData.podKills = Convert.ToInt32(systemRow.Attributes["podKills"].InnerText);
+                systemData.SolarSystemID = Convert.ToInt32(systemRow.Attributes["solarSystemID"].InnerText);
+                systemData.ShipKills = Convert.ToInt32(systemRow.Attributes["shipKills"].InnerText);
+                systemData.FactionKills = Convert.ToInt32(systemRow.Attributes["factionKills"].InnerText);
+                systemData.PodKills = Convert.ToInt32(systemRow.Attributes["podKills"].InnerText);
                 systemList.Add(systemData);
             }
             mapKills.MapSystemKills = systemList.ToArray();
@@ -50,21 +50,21 @@ namespace libeveapi
         /// <summary>
         /// The ID of the solarsystem
         /// </summary>
-        public int solarSystemID;
+        public int SolarSystemID;
 
         /// <summary>
         /// The number of kills
         /// </summary>
-        public int shipKills;
+        public int ShipKills;
 
         /// <summary>
         /// The number of kills
         /// </summary>
-        public int factionKills;
+        public int FactionKills;
 
         /// <summary>
         /// The number of kills
         /// </summary>
-        public int podKills;
+        public int PodKills;
     }
 }

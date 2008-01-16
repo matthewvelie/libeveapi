@@ -93,8 +93,8 @@ namespace libeveapi
         /// <summary>
         /// Create an CharacterSheet by parsing an XmlDocument response from the eveapi
         /// </summary>
-        /// <param name="xmlDoc"></param>
-        /// <returns></returns>
+        /// <param name="xmlDoc">An XML Document containing the CharacterSheet</param>
+        /// <returns><see cref="CharacterSheet"/></returns>
         public static CharacterSheet FromXmlDocument(XmlDocument xmlDoc)
         {
             CharacterSheet characterSheet = new CharacterSheet();

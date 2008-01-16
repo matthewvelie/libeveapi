@@ -20,8 +20,8 @@ namespace libeveapi
         /// <summary>
         /// Returns the characterID and character name that are associated with eachother
         /// </summary>
-        /// <param name="xmlDoc"></param>
-        /// <returns></returns>
+        /// <param name="xmlDoc">An XML Document containing characterID and character name information</param>
+        /// <returns><see cref="CharacterID"/></returns>
         public static CharacterID FromXmlDocument(XmlDocument xmlDoc)
         {
             //FIX the row:name problem here (HACK!)
@@ -44,8 +44,8 @@ namespace libeveapi
             foreach (XmlNode charIDRow in xmlDoc.SelectNodes("//rowset[@name='characters']/row"))
             {
                 CharacterIDItem charIDItem = new CharacterIDItem();
-                charIDItem.name = charIDRow.Attributes["name"].InnerText;
-                charIDItem.characterID = Convert.ToInt32(charIDRow.Attributes["characterID"].InnerText);
+                charIDItem.Name = charIDRow.Attributes["name"].InnerText;
+                charIDItem.CharacterID = Convert.ToInt32(charIDRow.Attributes["characterID"].InnerText);
                 characterList.Add(charIDItem);
             }
             charID.CharacterIDItems = characterList.ToArray();
@@ -62,12 +62,12 @@ namespace libeveapi
         /// <summary>
         /// The character's name
         /// </summary>
-        public string name;
+        public string Name;
 
         /// <summary>
         /// The characterID for the character name
         /// </summary>
-        public int characterID;
+        public int CharacterID;
 
     }
 

@@ -20,7 +20,7 @@ namespace libeveapi
         /// <summary>
         /// Create a MemberTracking object by parsing an XmlDocument response from the eveapi
         /// </summary>
-        /// <param name="xmlDoc"></param>
+        /// <param name="xmlDoc">An XML File containing member tracking data</param>
         /// <returns></returns>
         public static MemberTracking FromXmlDocument(XmlDocument xmlDoc)
         {

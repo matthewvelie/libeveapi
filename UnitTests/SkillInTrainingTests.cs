@@ -23,13 +23,13 @@ namespace UnitTests
             SkillInTraining skillintraining = EveApi.GetSkillInTraining("asdf","asdf","asdf");
 
             //Attributes of the currently training skill
-            Assert.AreEqual("6/21/2007 9:27:50 PM", skillintraining.trainingEndTime.ToString());
-            Assert.AreEqual("6/21/2007 11:00:38 AM", skillintraining.trainingStartTime.ToString());
-            Assert.AreEqual(3347, skillintraining.trainingTypeID);
-            Assert.AreEqual(4000, skillintraining.trainingStartSP);
-            Assert.AreEqual(22628, skillintraining.trainingDestinationSP);
-            Assert.AreEqual(2, skillintraining.trainingToLevel);
-            Assert.AreEqual(true, skillintraining.skillInTraining);
+            Assert.AreEqual("6/21/2007 9:27:50 PM", skillintraining.TrainingEndTime.ToString());
+            Assert.AreEqual("6/21/2007 11:00:38 AM", skillintraining.TrainingStartTime.ToString());
+            Assert.AreEqual(3347, skillintraining.TrainingTypeID);
+            Assert.AreEqual(4000, skillintraining.TrainingStartSP);
+            Assert.AreEqual(22628, skillintraining.TrainingDestinationSP);
+            Assert.AreEqual(2, skillintraining.TrainingToLevel);
+            Assert.AreEqual(true, skillintraining.SkillCurrentlyInTraining);
         }
 
         [Test]
@@ -46,13 +46,13 @@ namespace UnitTests
             Assert.AreEqual(skillintraining.CachedUntilLocal, cached.CachedUntilLocal);
 
             //Attributes of the currently training skill
-            Assert.AreEqual(cached.trainingEndTime, skillintraining.trainingEndTime);
-            Assert.AreEqual(cached.trainingStartTime, skillintraining.trainingStartTime);
-            Assert.AreEqual(cached.trainingTypeID, skillintraining.trainingTypeID);
-            Assert.AreEqual(cached.trainingStartSP, skillintraining.trainingStartSP);
-            Assert.AreEqual(cached.trainingDestinationSP, skillintraining.trainingDestinationSP);
-            Assert.AreEqual(cached.trainingToLevel, skillintraining.trainingToLevel);
-            Assert.AreEqual(cached.skillInTraining, skillintraining.skillInTraining);
+            Assert.AreEqual(cached.TrainingEndTime, skillintraining.TrainingEndTime);
+            Assert.AreEqual(cached.TrainingStartTime, skillintraining.TrainingStartTime);
+            Assert.AreEqual(cached.TrainingTypeID, skillintraining.TrainingTypeID);
+            Assert.AreEqual(cached.TrainingStartSP, skillintraining.TrainingStartSP);
+            Assert.AreEqual(cached.TrainingDestinationSP, skillintraining.TrainingDestinationSP);
+            Assert.AreEqual(cached.TrainingToLevel, skillintraining.TrainingToLevel);
+            Assert.AreEqual(cached.SkillCurrentlyInTraining, skillintraining.SkillCurrentlyInTraining);
         }
     }
 }

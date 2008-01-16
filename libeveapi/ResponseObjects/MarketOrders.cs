@@ -45,45 +45,45 @@ namespace libeveapi
         {
             MarketOrderItem marketItem = new MarketOrderItem();
 
-            marketItem.orderID = Convert.ToInt32(marketOrderRow.Attributes["orderID"].InnerText);
-            marketItem.charID = Convert.ToInt64(marketOrderRow.Attributes["charID"].InnerText);
-            marketItem.stationID = Convert.ToInt64(marketOrderRow.Attributes["stationID"].InnerText);
-            marketItem.volEntered = Convert.ToInt64(marketOrderRow.Attributes["volEntered"].InnerText);
-            marketItem.volRemaining = Convert.ToInt64(marketOrderRow.Attributes["volRemaining"].InnerText);
-            marketItem.minVolume = Convert.ToInt64(marketOrderRow.Attributes["minVolume"].InnerText);
+            marketItem.OrderID = Convert.ToInt32(marketOrderRow.Attributes["orderID"].InnerText);
+            marketItem.CharID = Convert.ToInt64(marketOrderRow.Attributes["charID"].InnerText);
+            marketItem.StationID = Convert.ToInt64(marketOrderRow.Attributes["stationID"].InnerText);
+            marketItem.VolEntered = Convert.ToInt64(marketOrderRow.Attributes["volEntered"].InnerText);
+            marketItem.VolRemaining = Convert.ToInt64(marketOrderRow.Attributes["volRemaining"].InnerText);
+            marketItem.MinVolume = Convert.ToInt64(marketOrderRow.Attributes["minVolume"].InnerText);
 
             switch (Convert.ToInt32(marketOrderRow.Attributes["orderState"].InnerText))
             {
                 case 0:
-                    marketItem.orderState = marketOrderState.OpenActive;
+                    marketItem.OrderState = marketOrderState.OpenActive;
                     break;
                 case 1:
-                    marketItem.orderState = marketOrderState.Closed;
+                    marketItem.OrderState = marketOrderState.Closed;
                     break;
                 case 2:
-                    marketItem.orderState = marketOrderState.ExpiredFulfilled;
+                    marketItem.OrderState = marketOrderState.ExpiredFulfilled;
                     break;
                 case 3:
-                    marketItem.orderState = marketOrderState.Canceled;
+                    marketItem.OrderState = marketOrderState.Canceled;
                     break;
                 case 4:
-                    marketItem.orderState = marketOrderState.Pending;
+                    marketItem.OrderState = marketOrderState.Pending;
                     break;
                 case 5:
-                    marketItem.orderState = marketOrderState.CharacterDeleted;
+                    marketItem.OrderState = marketOrderState.CharacterDeleted;
                     break;
                 default:
                     break;
             }
 
-            marketItem.typeID = Convert.ToInt64(marketOrderRow.Attributes["typeID"].InnerText);
-            marketItem.range = Convert.ToInt32(marketOrderRow.Attributes["range"].InnerText);
-            marketItem.accountKey = Convert.ToInt32(marketOrderRow.Attributes["accountKey"].InnerText);
-            marketItem.duration = Convert.ToInt32(marketOrderRow.Attributes["duration"].InnerText);
-            marketItem.escrow = (float)Convert.ToDouble(marketOrderRow.Attributes["escrow"].InnerText);
-            marketItem.price = (float)Convert.ToDouble(marketOrderRow.Attributes["price"].InnerText);
-            marketItem.bid = Convert.ToBoolean(Convert.ToInt32(marketOrderRow.Attributes["bid"].InnerText));
-            marketItem.issued = Convert.ToDateTime(marketOrderRow.Attributes["issued"].InnerText);
+            marketItem.TypeID = Convert.ToInt64(marketOrderRow.Attributes["typeID"].InnerText);
+            marketItem.Range = Convert.ToInt32(marketOrderRow.Attributes["range"].InnerText);
+            marketItem.AccountKey = Convert.ToInt32(marketOrderRow.Attributes["accountKey"].InnerText);
+            marketItem.Duration = Convert.ToInt32(marketOrderRow.Attributes["duration"].InnerText);
+            marketItem.Escrow = Convert.ToDouble(marketOrderRow.Attributes["escrow"].InnerText);
+            marketItem.Price = Convert.ToDouble(marketOrderRow.Attributes["price"].InnerText);
+            marketItem.Bid = Convert.ToBoolean(Convert.ToInt32(marketOrderRow.Attributes["bid"].InnerText));
+            marketItem.Issued = Convert.ToDateTime(marketOrderRow.Attributes["issued"].InnerText);
 
             return marketItem;
         }
@@ -98,43 +98,43 @@ namespace libeveapi
         /// <summary>
         /// Order id, not forever unique but for this pull they will be unique
         /// </summary>
-        public int orderID;
+        public int OrderID;
 
         /// <summary>
         /// Character ID of the character who placed the market order
         /// </summary>
-        public long charID;
+        public long CharID;
 
         /// <summary>
         /// The ID of the station that the order was placed in
         /// </summary>
-        public long stationID;
+        public long StationID;
 
         /// <summary>
         /// The quantity of the items required/offered when the order was placed
         /// </summary>
-        public long volEntered;
+        public long VolEntered;
 
         /// <summary>
         /// The quantitiy of items that are still for sale/ still required
         /// </summary>
-        public long volRemaining;
+        public long VolRemaining;
 
         /// <summary>
         /// For bids (buy orders) the minimum quantity that must be sold in one
         /// sale so that the order is accepted.
         /// </summary>
-        public long minVolume;
+        public long MinVolume;
 
         /// <summary>
         /// See <see cref="marketOrderState"/> for full descriptions of each order state
         /// </summary>
-        public marketOrderState orderState;
+        public marketOrderState OrderState;
 
         /// <summary>
         /// This is the typeId of the item that is being bought/sold
         /// </summary>
-        public long typeID;
+        public long TypeID;
 
         /// <summary>
         /// This is the range of the order
@@ -143,39 +143,39 @@ namespace libeveapi
         /// Any number above 1 is number of jumps in region
         /// And 32767 means region
         /// </summary>
-        public int range;
+        public int Range;
 
         /// <summary>
         /// This is which wallet the order is using, for a personal order
         /// this will always be 1000, for corporation orders it can be 1000-1006
         /// depending on which wallet is being used
         /// </summary>
-        public int accountKey;
+        public int AccountKey;
 
         /// <summary>
         /// How many days this order is good for. Expiration is issued + duration in days
         /// </summary>
-        public int duration;
+        public int Duration;
 
         /// <summary>
         /// How much ISK is in escrow. Valid for buy orders only (I believe).
         /// </summary>
-        public float escrow;
+        public double Escrow;
 
         /// <summary>
         /// The cost per unit for this order
         /// </summary>
-        public float price;
+        public double Price;
 
         /// <summary>
         /// If true this is a bid or buy order, else it is a sell order
         /// </summary>
-        public bool bid;
+        public bool Bid;
 
         /// <summary>
         /// This is when the order was issued
         /// </summary>
-        public DateTime issued;
+        public DateTime Issued;
     }
 
     /// <summary>

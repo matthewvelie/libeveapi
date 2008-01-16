@@ -18,8 +18,8 @@ namespace libeveapi
         /// <summary>
         /// Create an AssetList by parsing an XmlDocument response from the eveapi
         /// </summary>
-        /// <param name="xmlDoc"></param>
-        /// <returns></returns>
+        /// <param name="xmlDoc">An XML Dcoument containing Asset Information</param>
+        /// <returns><see cref="AssetList"/>Return an AssetList object</returns>
         public static AssetList FromXmlDocument(XmlDocument xmlDoc)
         {
             AssetList assetList = new AssetList();

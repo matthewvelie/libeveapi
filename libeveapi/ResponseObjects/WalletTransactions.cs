@@ -17,9 +17,9 @@ namespace libeveapi
         public WalletTransactionItem[] WalletTransactionItems = new WalletTransactionItem[0];
 
         /// <summary>
-        /// Create an IndustryJobList by parsing an XmlDocument response from the eveapi
+        /// Create an WalletTransaction by parsing an XmlDocument response from the eveapi
         /// </summary>
-        /// <param name="xmlDoc"></param>
+        /// <param name="xmlDoc">An XML Document Containing Wallet Transaction Data</param>
         /// <returns></returns>
         public static WalletTransactions FromXmlDocument(XmlDocument xmlDoc)
         {
@@ -45,29 +45,29 @@ namespace libeveapi
         {
             WalletTransactionItem WalletTransactionItem = new WalletTransactionItem();
 
-            WalletTransactionItem.transactionDateTime = Convert.ToDateTime(walletTransactionRow.Attributes["transactionDateTime"].InnerText);
-            WalletTransactionItem.transactionID = Convert.ToInt32(walletTransactionRow.Attributes["transactionID"].InnerText);
-            WalletTransactionItem.quantity = Convert.ToInt32(walletTransactionRow.Attributes["quantity"].InnerText);
-            WalletTransactionItem.typeName = walletTransactionRow.Attributes["typeName"].InnerText;
-            WalletTransactionItem.typeID = Convert.ToInt64(walletTransactionRow.Attributes["typeID"].InnerText);
-            WalletTransactionItem.price = (float)Convert.ToDouble(walletTransactionRow.Attributes["price"].InnerText);
-            WalletTransactionItem.clientID = Convert.ToInt64(walletTransactionRow.Attributes["clientID"].InnerText);
-            WalletTransactionItem.clientName = walletTransactionRow.Attributes["clientName"].InnerText;
+            WalletTransactionItem.TransactionDateTime = Convert.ToDateTime(walletTransactionRow.Attributes["transactionDateTime"].InnerText);
+            WalletTransactionItem.TransactionID = Convert.ToInt32(walletTransactionRow.Attributes["transactionID"].InnerText);
+            WalletTransactionItem.Quantity = Convert.ToInt32(walletTransactionRow.Attributes["quantity"].InnerText);
+            WalletTransactionItem.TypeName = walletTransactionRow.Attributes["typeName"].InnerText;
+            WalletTransactionItem.TypeID = Convert.ToInt64(walletTransactionRow.Attributes["typeID"].InnerText);
+            WalletTransactionItem.Price = (float)Convert.ToDouble(walletTransactionRow.Attributes["price"].InnerText);
+            WalletTransactionItem.ClientID = Convert.ToInt64(walletTransactionRow.Attributes["clientID"].InnerText);
+            WalletTransactionItem.ClientName = walletTransactionRow.Attributes["clientName"].InnerText;
             
             //These are only present in the corp version
             if (walletTransactionRow.Attributes.GetNamedItem("characterID") != null)
             {
-                WalletTransactionItem.characterID = Convert.ToInt64(walletTransactionRow.Attributes["characterID"].InnerText);
+                WalletTransactionItem.CharacterID = Convert.ToInt64(walletTransactionRow.Attributes["characterID"].InnerText);
             }
             if (walletTransactionRow.Attributes.GetNamedItem("characterName") != null)
             {
-                WalletTransactionItem.characterName = walletTransactionRow.Attributes["characterName"].InnerText;
+                WalletTransactionItem.CharacterName = walletTransactionRow.Attributes["characterName"].InnerText;
             }
 
-            WalletTransactionItem.stationID = Convert.ToInt64(walletTransactionRow.Attributes["stationID"].InnerText);
-            WalletTransactionItem.stationName = walletTransactionRow.Attributes["stationName"].InnerText;
-            WalletTransactionItem.transactionType = walletTransactionRow.Attributes["transactionType"].InnerText;
-            WalletTransactionItem.transactionFor = walletTransactionRow.Attributes["transactionFor"].InnerText;
+            WalletTransactionItem.StationID = Convert.ToInt64(walletTransactionRow.Attributes["stationID"].InnerText);
+            WalletTransactionItem.StationName = walletTransactionRow.Attributes["stationName"].InnerText;
+            WalletTransactionItem.TransactionType = walletTransactionRow.Attributes["transactionType"].InnerText;
+            WalletTransactionItem.TransactionFor = walletTransactionRow.Attributes["transactionFor"].InnerText;
 
             return WalletTransactionItem;
         }
@@ -81,76 +81,76 @@ namespace libeveapi
         /// <summary>
         /// This is the date and time when the transaction took place
         /// </summary>
-        public DateTime transactionDateTime;
+        public DateTime TransactionDateTime;
 
         /// <summary>
         /// This is the transactionID that is assigned to the transaction
         /// </summary>
-        public int transactionID;
+        public int TransactionID;
 
         /// <summary>
         /// This is the quantity of the item
         /// </summary>
-        public int quantity;
+        public int Quantity;
 
         /// <summary>
         /// This is the name of the item in the transaction
         /// </summary>
-        public string typeName;
+        public string TypeName;
 
         /// <summary>
         /// This is the typeID of the item referenced in the transaction
         /// </summary>
-        public long typeID;
+        public long TypeID;
 
         /// <summary>
         /// This is the price of the item in the transaction
         /// </summary>
-        public double price;
+        public double Price;
 
         /// <summary>
         /// The client's ID
         /// </summary>
-        public long clientID;
+        public long ClientID;
 
         /// <summary>
         /// The client's name
         /// </summary>
-        public string clientName;
+        public string ClientName;
 
         /// <summary>
         /// The character who initiated the transaction's id 
         /// This is only present when viewing corp transactions, otherwise
         /// it is assumed to be the character accessing the data
         /// </summary>
-        public long characterID;
+        public long CharacterID;
 
         /// <summary>
         /// The character who initiated the transaction's name 
         /// This is only present when viewing corp transactions, otherwise
         /// it is assumed to be the character accessing the data
         /// </summary>
-        public string characterName;
+        public string CharacterName;
 
         /// <summary>
         /// The ID of the station where the transaction took place
         /// </summary>
-        public long stationID;
+        public long StationID;
 
         /// <summary>
         /// The name of the station where the transaction took place
         /// </summary>
-        public string stationName;
+        public string StationName;
 
         /// <summary>
         /// This is the type of transaction type, sell or buy
         /// </summary>
-        public string transactionType;
+        public string TransactionType;
 
         /// <summary>
         /// This is who the transaction was for (personal or corporation)
         /// </summary>
-        public string transactionFor;
+        public string TransactionFor;
     }
 
     /// <summary>

@@ -22,7 +22,7 @@ namespace UnitTests
             WalletTransactions walletTransactions = EveApi.GetWalletTransactionsList(WalletTransactionListType.Character, "userId", "charId", "apiKey");
 
             Assert.AreEqual(4, walletTransactions.WalletTransactionItems.Length);
-            Assert.AreEqual(619, walletTransactions.WalletTransactionItems[0].transactionID);
+            Assert.AreEqual(619, walletTransactions.WalletTransactionItems[0].TransactionID);
         }
 
         [Test]
@@ -46,9 +46,9 @@ namespace UnitTests
 
             for (int i = 0; i < walletTransactions.WalletTransactionItems.Length; i++)
             {
-                Assert.AreEqual(walletTransactions.WalletTransactionItems[i].characterID, cachedwalletTransactions.WalletTransactionItems[i].characterID);
-                Assert.AreEqual(walletTransactions.WalletTransactionItems[i].clientName, cachedwalletTransactions.WalletTransactionItems[i].clientName);
-                Assert.AreEqual(walletTransactions.WalletTransactionItems[i].quantity, cachedwalletTransactions.WalletTransactionItems[i].quantity);
+                Assert.AreEqual(walletTransactions.WalletTransactionItems[i].CharacterID, cachedwalletTransactions.WalletTransactionItems[i].CharacterID);
+                Assert.AreEqual(walletTransactions.WalletTransactionItems[i].ClientName, cachedwalletTransactions.WalletTransactionItems[i].ClientName);
+                Assert.AreEqual(walletTransactions.WalletTransactionItems[i].Quantity, cachedwalletTransactions.WalletTransactionItems[i].Quantity);
             }
              
         }
