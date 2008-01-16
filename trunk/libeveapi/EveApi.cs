@@ -615,8 +615,9 @@ namespace libeveapi
         /// <param name="characterId">Retrieve the portrait of the character with this id</param>
         /// <param name="size">64 or 256</param>
         /// <returns></returns>
-        public static Image GetCharacterPortrait(int characterId, int size)
+        public static Image GetCharacterPortrait(int characterId, PortraitSize portraitSize)
         {
+            int size = (int)portraitSize;
             string url = String.Format("{0}?c={1}&s={2}", Constants.ImageFullURL, characterId.ToString(), size.ToString());
             return Network.GetImage(url);
         }
@@ -654,5 +655,14 @@ namespace libeveapi
         {
             this.Code = code;
         }
+    }
+
+    /// <summary>
+    /// Character portrait size
+    /// </summary>
+    public enum PortraitSize
+    {
+        Small,
+        Large
     }
 }
