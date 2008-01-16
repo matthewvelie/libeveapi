@@ -14,18 +14,6 @@ Retrieves the character's portrait from the EVE servers
 public static Image GetCharacterPortrait(int characterId, PortraitSize portraitSize)
 }}}
 
-
-=== Caching Time ===
-The cache time on the eve servers is unknown
-
-=== URL ===
-http://img.eve.is/serv.asp?s=&c=
-
-=== Input Argument ===
-|| Name || Type || Description ||
-|| c || int || The characterID of the character you want the portrait for ||
-|| s || int || The size of the image, either 64 or 256 ||
-
 === Result ===
 
 === Example ===
