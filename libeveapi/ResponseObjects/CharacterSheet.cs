@@ -44,23 +44,23 @@ namespace libeveapi
         public double Balance;
 
         /// <summary>
-        /// The character's intelligence attriube
+        /// The character's intelligence attribute
         /// </summary>
         public int Intelligence;
         /// <summary>
-        /// The character's memory attriube
+        /// The character's memory attribute
         /// </summary>
         public int Memory;
         /// <summary>
-        /// The character's charisma attriube
+        /// The character's charisma attribute
         /// </summary>
         public int Charisma;
         /// <summary>
-        /// The character's perception attriube
+        /// The character's perception attribute
         /// </summary>
         public int Perception;
         /// <summary>
-        /// The character's willpower attriube
+        /// The character's willpower attribute
         /// </summary>
         public int Willpower;
 
