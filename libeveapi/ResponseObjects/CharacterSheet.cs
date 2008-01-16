@@ -6,7 +6,7 @@ using System.Xml;
 namespace libeveapi
 {
     /// <summary>
-    /// 
+    /// Detailed information about a character
     /// </summary>
     public class CharacterSheet : ApiResponse
     {
@@ -86,7 +86,7 @@ namespace libeveapi
         public AttributeEnhancer CharismaBonus = new AttributeEnhancer();
 
         /// <summary>
-        /// 
+        /// The list of retrieved skills
         /// </summary>
         public SkillItem[] SkillItemList = new SkillItem[0];
 
