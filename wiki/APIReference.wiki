@@ -43,3 +43,8 @@ None of the global data requires API Keys to retrieve the data
 || Name/ID Conversion || eve/CharacterID.xml.aspx ||
 || Character ID to Portrait || http://img.eve.is/serv.asp ||
 || Skill Tree || eve/!SkillTree.xml.aspx ||
+
+= Notes =
+Much of the information used in these pages is taken from other reference pages on the internet, data dumps, and just playing with the data till we figured out what it was.  We hope this to be a complete reference.  This reference also represents what the API expects to see from the EVE API.
+  * http://wiki.eve-dev.net/APIv2_Page_Index - API Reference
+  * EVE Trinity Data Dump
