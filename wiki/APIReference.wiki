@@ -34,12 +34,12 @@ Everything in this group requires the FULL API Key in order to access the data.
 = Global Data =
 None of the global data requires API Keys to retrieve the data
 || Name || URL ||
-|| Alliance List || !eve/AllianceList.xml.aspx ||
-|| Conquerable Station/Outpost List || !eve/ConquerableStationList.xml.aspx ||
-|| Error List || !eve/ErrorList.xml.aspx ||
+|| Alliance List || eve/!AllianceList.xml.aspx ||
+|| Conquerable Station/Outpost List || eve/!ConquerableStationList.xml.aspx ||
+|| Error List || eve/!ErrorList.xml.aspx ||
 || Map: Jumps || map/Jumps.xml.aspx ||
 || Map: Kills || map/Kills.xml.aspx ||
 || Map: Sovereignty || map/Sovereignty.xml.aspx ||
 || Name/ID Conversion || eve/CharacterID.xml.aspx ||
 || Character ID to Portrait || http://img.eve.is/serv.asp ||
-|| Skill Tree || !eve/SkillTree.xml.aspx ||
+|| Skill Tree || eve/!SkillTree.xml.aspx ||
