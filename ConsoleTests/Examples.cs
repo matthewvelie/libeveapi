@@ -13,7 +13,6 @@ namespace ConsoleTests
         {
             UseLocalUrls();
 
-            CharacterSheet characterSheet = EveApi.GetCharacterSheet("userId", "characterId", "apiKey");
         }
 
         public static void UseLocalUrls()
