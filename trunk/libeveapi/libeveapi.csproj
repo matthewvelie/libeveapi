@@ -47,6 +47,7 @@
     <Compile Include="ResponseObjects\CharacterId.cs" />
     <Compile Include="ResponseObjects\CharacterSheet.cs" />
     <Compile Include="ResponseObjects\ConquerableStation.cs" />
+    <Compile Include="ResponseObjects\MapJumps.cs" />
     <Compile Include="ResponseObjects\CorporationSheet.cs" />
     <Compile Include="ResponseObjects\ErrorList.cs" />
     <Compile Include="ResponseObjects\IndustryJobs.cs" />

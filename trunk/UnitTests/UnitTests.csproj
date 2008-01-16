@@ -44,6 +44,7 @@
     <Compile Include="CorporationSheetTests.cs" />
     <Compile Include="ErrorListTests.cs" />
     <Compile Include="IndustryJobsTests.cs" />
+    <Compile Include="MapJumpsTests.cs" />
     <Compile Include="MemberTrackingTests.cs" />
     <Compile Include="JournalEntriesTests.cs" />
     <Compile Include="MarketOrdersTests.cs" />

@@ -388,6 +388,26 @@ namespace libeveapi
             return refTypeList;
         }
 
+        /// <summary>
+        /// Returns a list solar systems that have more than 0 jumps with the jump count
+        /// </summary>
+        /// <returns></returns>
+        public static MapJumps GetMapJumps()
+        {
+            string url = String.Format("{0}{1}?version=2", Constants.ApiPrefix, Constants.MapJumps);
+
+            ApiResponse cachedResponse = ResponseCache.Get(url);
+            if (cachedResponse != null)
+            {
+                return cachedResponse as MapJumps;
+            }
+
+            XmlDocument xmlDoc = Network.GetXml(url);
+            MapJumps mapJumps = RefTypes.FromXmlDocument(xmlDoc);
+            ResponseCache.Set(url, mapJumps);
+
+            return mapJumps;
+        }
 
         /// <summary>
         /// Returns information on every member in the corporation. Information retrieved
