@@ -23,13 +23,13 @@ namespace UnitTests
 
             CharacterSheet cs = EveApi.GetCharacterSheet("userId", "characterId", "apiKey");
 
-            Assert.AreEqual("150337897", cs.CharacterId);
+            Assert.AreEqual(150337897, cs.CharacterId);
             Assert.AreEqual("corpslave", cs.Name);
             Assert.AreEqual("Minmatar", cs.Race);
             Assert.AreEqual("Brutor", cs.BloodLine);
             Assert.AreEqual("Female", cs.Gender);
             Assert.AreEqual("corpexport Corp", cs.CorporationName);
-            Assert.AreEqual("150337746", cs.CorporationId);
+            Assert.AreEqual(150337746, cs.CorporationId);
             Assert.AreEqual(190210393.87, cs.Balance);
 
             Assert.AreEqual("Memory Augmentation - Basic", cs.MemoryBonus.Name);
@@ -49,9 +49,9 @@ namespace UnitTests
             Assert.AreEqual(8, cs.Perception);
             Assert.AreEqual(9, cs.Willpower);
 
-            Assert.AreEqual("11584", cs.SkillItemList[0].TypeId);
+            Assert.AreEqual(11584, cs.SkillItemList[0].TypeId);
             Assert.AreEqual(768000, cs.SkillItemList[0].Skillpoints);
-            Assert.AreEqual("5", cs.SkillItemList[0].Level);
+            Assert.AreEqual(5, cs.SkillItemList[0].Level);
             Assert.AreEqual(null, cs.SkillItemList[0].Unpublished);
         }
 

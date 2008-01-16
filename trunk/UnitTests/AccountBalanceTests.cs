@@ -22,8 +22,8 @@ namespace UnitTests
             AccountBalance accountBalance = EveApi.GetAccountBalance(AccountBalanceType.Character, "userId", "charId", "apiKey");
 
             Assert.AreEqual(1, accountBalance.AccountBalanceItems.Length);
-            Assert.AreEqual("4807144", accountBalance.AccountBalanceItems[0].AccountId);
-            Assert.AreEqual("1000", accountBalance.AccountBalanceItems[0].AccountKey);
+            Assert.AreEqual(4807144, accountBalance.AccountBalanceItems[0].AccountId);
+            Assert.AreEqual(1000, accountBalance.AccountBalanceItems[0].AccountKey);
             Assert.AreEqual(209127823.31, accountBalance.AccountBalanceItems[0].Balance);
         }
 
@@ -37,13 +37,13 @@ namespace UnitTests
             AccountBalanceItem account;
 
             account = accountBalance.AccountBalanceItems[0];
-            Assert.AreEqual("4759", account.AccountId);
-            Assert.AreEqual("1000", account.AccountKey);
+            Assert.AreEqual(4759, account.AccountId);
+            Assert.AreEqual(1000, account.AccountKey);
             Assert.AreEqual(74171957.08, account.Balance);
 
             account = accountBalance.AccountBalanceItems[6];
-            Assert.AreEqual("5692", account.AccountId);
-            Assert.AreEqual("1006", account.AccountKey);
+            Assert.AreEqual(5692, account.AccountId);
+            Assert.AreEqual(1006, account.AccountKey);
             Assert.AreEqual(0.00, account.Balance);
         }
 

@@ -44,8 +44,8 @@ namespace libeveapi
         protected static AssetListItem ParseAssetRow(XmlNode assetRow)
         {
             AssetListItem assetListItem = new AssetListItem();
-            assetListItem.ItemId = assetRow.Attributes["itemID"].InnerText;
-            assetListItem.TypeId = assetRow.Attributes["typeID"].InnerText;
+            assetListItem.ItemId = Convert.ToInt32(assetRow.Attributes["itemID"].InnerText);
+            assetListItem.TypeId = Convert.ToInt32(assetRow.Attributes["typeID"].InnerText);
             assetListItem.Quantity = Convert.ToInt64(assetRow.Attributes["quantity"].InnerText);
             assetListItem.Singleton = Convert.ToBoolean(Convert.ToInt32(assetRow.Attributes["singleton"].InnerText));
 
@@ -61,7 +61,7 @@ namespace libeveapi
 
             if (assetRow.Attributes.GetNamedItem("locationID") != null)
             {
-                assetListItem.LocationId = assetRow.Attributes["locationID"].InnerText;
+                assetListItem.LocationId = Convert.ToInt32(assetRow.Attributes["locationID"].InnerText);
             }
             
 
@@ -90,18 +90,18 @@ namespace libeveapi
         /// over time. When they are repackaged, stacks are split or merged, when 
         /// they're assembled, and other actions can cause itemIDs to change.
         /// </summary>
-        public string ItemId;
+        public int ItemId;
 
         /// <summary>
         /// References a solar system or station. Note that this column is not present in 
         /// the sub-asset lists, i.e. for things inside of other things.
         /// </summary>
-        public string LocationId;
+        public int LocationId;
 
         /// <summary>
         /// The type of this item. References the invTypes table.
         /// </summary>
-        public string TypeId;
+        public int TypeId;
 
         /// <summary>
         /// How many items are in this stack.

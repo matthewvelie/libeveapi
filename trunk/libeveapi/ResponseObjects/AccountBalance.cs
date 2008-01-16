@@ -31,8 +31,8 @@ namespace libeveapi
             foreach (XmlNode accountRow in xmlDoc.SelectNodes("//rowset[@name='accounts']/row"))
             {
                 AccountBalanceItem account = new AccountBalanceItem();
-                account.AccountId = accountRow.Attributes["accountID"].InnerText;
-                account.AccountKey = accountRow.Attributes["accountKey"].InnerText;
+                account.AccountId = Convert.ToInt32(accountRow.Attributes["accountID"].InnerText);
+                account.AccountKey = Convert.ToInt32(accountRow.Attributes["accountKey"].InnerText);
                 account.Balance = Convert.ToDouble(accountRow.Attributes["balance"].InnerText);
                 accountList.Add(account);
             }
@@ -50,14 +50,14 @@ namespace libeveapi
         /// <summary>
         /// ID number of the account
         /// </summary>
-        public string AccountId;
+        public int AccountId;
 
         /// <summary>
         /// Account Identifier
         /// For character: always 1000
         /// For corporation: the corp wallet division
         /// </summary>
-        public string AccountKey;
+        public int AccountKey;
 
         /// <summary>
         /// Amount of isk in the account
