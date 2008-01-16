@@ -1,0 +1,43 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+This api call....
+
+== URLS ==
+/bla.xml.aspx
+
+== Overview ==
+Information about the API Calls
+
+|| *Key* || *Data* ||
+|| API Version || 2 ||
+|| Cache Timing || Short ||
+|| Authorization || Full/No/Limited ||
+
+|| *Type Of Access Key* || *Supported* ||
+|| Character || Yes ||
+|| Corporation || Yes ||
+|| Global || Yes ||
+
+
+= Details =
+
+Long description of the stuff here
+
+== Input ==
+|| *Name* || *Type* || *Description* ||
+||  ||  ||  ||
+
+== Output ==
+The information below describes the output information produced by the EVE API
+
+=== Sample XML ===
+{{{
+
+}}}
+=== Rowset Columns ===
+|| *Name* || *Type* || *Description* ||
+||  ||  ||  ||
+
+== libEveApi Reference ==
+Link To library reference
