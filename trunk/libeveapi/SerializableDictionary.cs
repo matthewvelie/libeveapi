@@ -8,7 +8,8 @@ using System.Xml.Serialization;
 namespace libeveapi
 {
     /// <summary>
-    /// 
+    /// Shamelessly "borrowed" from the EveMon project.
+    /// http://evemon.battleclinic.com/
     /// </summary>
     [XmlRoot]
     public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, IXmlSerializable
