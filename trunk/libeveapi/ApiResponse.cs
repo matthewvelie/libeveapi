@@ -19,6 +19,8 @@ namespace libeveapi
     [XmlInclude(typeof(RefTypes))]
     [XmlInclude(typeof(MemberTracking))]
     [XmlInclude(typeof(CharacterSheet))]
+    [XmlInclude(typeof(ConquerableStationList))]
+
     [XmlInclude(typeof(CorporationSheet))]
     public class ApiResponse
     {
