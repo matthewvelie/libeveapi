@@ -5,7 +5,7 @@
 This API is used to find the different characters that are available on the account.
 
 == URLS ==
-/char/!Characters.xml.aspx 
+/char/Characters.xml.aspx 
 
 == Overview ==
 Information about the API Calls
