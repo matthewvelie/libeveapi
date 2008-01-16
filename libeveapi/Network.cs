@@ -29,6 +29,11 @@ namespace libeveapi
             return xmlDoc;
         }
 
+        /// <summary>
+        /// This function takes in a url of an image and then returns the image
+        /// </summary>
+        /// <param name="url">The url of the image file to retrieve</param>
+        /// <returns>An image object containing the image from the url</returns>
         public static Image GetImage(string url)
         {
             WebClient wc = new WebClient();
