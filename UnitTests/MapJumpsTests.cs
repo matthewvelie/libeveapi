@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+using NUnit.Framework;
+using libeveapi;
+
+namespace UnitTests
+{
+    [TestFixture]
+    class MapJumpsTests
+    {
+        [SetUp]
+        public void Setup()
+        {
+            Utility.UseLocalUrls();
+        }
+
+        [Test]
+        public void JumpsPersist()
+        {
+            ResponseCache.Clear();
+
+            MapJumps mapJumps = EveApi.GetMapJumps();
+            ResponseCache.Save("ResponseCache.xml");
+            ResponseCache.Clear();
+            ResponseCache.Load("ResponseCache.xml");
+            MapJumps cachedMapJumps = EveApi.GetMapJumps();
+
+            Assert.AreEqual(mapJumps.CachedUntilLocal, cachedMapJumps.CachedUntilLocal);
+
+            for (int i = 0; i < mapJumps.AccountBalanceItems.Length; i++)
+            {
+                Assert.AreEqual(mapJumps.MapSystemJumps[i].shipJumps, cachedMapJumps.MapSystemJumps[i].shipJumps);
+                Assert.AreEqual(mapJumps.MapSystemJumps[i].solarSystemID, cachedMapJumps.MapSystemJumps[i].solarSystemID);
+            }
+        }
+    }
+}
