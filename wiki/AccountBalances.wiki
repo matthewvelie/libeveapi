@@ -18,7 +18,7 @@ public static AccountBalance GetAccountBalance(AccountBalanceType accountBalance
 }}}
 
 === Result ===
-* AccountBalance Object (See ApiResponse for inherited members) *
+* !AccountBalance Object (See ApiResponse for inherited members) *
 || Member || Type || Description ||
 || !AccountBalanceItems || !AccountBalanceItem[] || The accounts associated with this character or corporation ||
 
