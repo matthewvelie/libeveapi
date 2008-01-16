@@ -1,10 +1,11 @@
 #summary API Character Account Balance Information
+#labels EVEApi
 
 = Introduction =
 This API is used to access the balance of a character's wallet.  Character's will only have one wallet, whose !accountKey is 1000.
 
 == URLS ==
-/char/AccountBalance.xml.aspx 
+/char/!AccountBalance.xml.aspx 
 
 == Overview ==
 Information about the API Calls
