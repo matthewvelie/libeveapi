@@ -8,7 +8,7 @@ using libeveapi;
 namespace UnitTests
 {
     [TestFixture]
-    class MapJumpsTests
+    public class MapJumpsTests
     {
         [SetUp]
         public void Setup()

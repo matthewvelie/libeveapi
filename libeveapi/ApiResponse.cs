@@ -21,7 +21,7 @@ namespace libeveapi
     [XmlInclude(typeof(CharacterSheet))]
     [XmlInclude(typeof(ConquerableStationList))]
     [XmlInclude(typeof(SkillTree))]
-    [XmlInclude(typeof(MapSystemItem))]
+    [XmlInclude(typeof(MapJumps))]
     [XmlInclude(typeof(CorporationSheet))]
 
     public class ApiResponse
