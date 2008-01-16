@@ -21,6 +21,7 @@ namespace libeveapi
         public static XmlDocument GetXml(string url)
         {
             WebClient wc = new WebClient();
+            wc.Headers.Add("user-agent", "libEveApi/1");
             Stream s = wc.OpenRead(url);
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(s);
