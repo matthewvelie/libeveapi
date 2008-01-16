@@ -1,4 +1,5 @@
 #summary EVE API Key
+#labels EVEApi
 
 = Introduction =
 
