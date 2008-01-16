@@ -502,6 +502,27 @@ namespace libeveapi
         }
 
         /// <summary>
+        /// Gets a data structure containing information on every skill in the game.
+        /// </summary>
+        /// <returns></returns>
+        public static SkillTree GetSkillTree()
+        {
+            string url = String.Format("{0}{1}?version=1", Constants.ApiPrefix, Constants.SkillTree);
+
+            ApiResponse cachedResponse = ResponseCache.Get(url);
+            if (cachedResponse != null)
+            {
+                return cachedResponse as SkillTree;
+            }
+
+            XmlDocument xmlDoc = Network.GetXml(url);
+            SkillTree skillTree = SkillTree.FromXmlDocument(xmlDoc);
+            ResponseCache.Set(url, skillTree);
+
+            return skillTree;
+        }
+
+        /// <summary>
         /// Convert a CCP DateTime to local time
         /// </summary>
         /// <param name="ccpCurrentTime">CCP server current datetime</param>
