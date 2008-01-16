@@ -21,15 +21,15 @@ Everything in this group requires the FULL API Key in order to access the data.
 || Name || URL (corp/) ||
 || Account Balances || !AccountBalance.xml.aspx ||
 || Asset List || !AssetList.xml.aspx ||
-|| Corporation Sheet || CorporationSheet.xml.aspx ||
-|| Industry Jobs || IndustryJobs.xml.aspx ||
-|| Journal Entries || WalletJournal.xml.aspx ||
+|| Corporation Sheet || !CorporationSheet.xml.aspx ||
+|| Industry Jobs || !IndustryJobs.xml.aspx ||
+|| Journal Entries || !WalletJournal.xml.aspx ||
 || KillMails || Killlog.xml.aspx ||
-|| Market Transactions || WalletTransactions.xml.aspx ||
-|| Market Orders || MarketOrders.xml.aspx ||
-|| Member Tracking || MemberTracking.xml.aspx ||
-|| Starbase (POS) Details || StarbaseDetail.xml.aspx ||
-|| Starbase (POS) List || StarbaseList.xml.aspx ||
+|| Market Transactions || !WalletTransactions.xml.aspx ||
+|| Market Orders || !MarketOrders.xml.aspx ||
+|| Member Tracking || !MemberTracking.xml.aspx ||
+|| Starbase (POS) Details || !StarbaseDetail.xml.aspx ||
+|| Starbase (POS) List || !StarbaseList.xml.aspx ||
 
 = Global Data =
 None of the global data requires API Keys to retrieve the data
