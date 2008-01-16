@@ -1,5 +1,5 @@
 #summary Contains All of the EVE API Reference Documentation
-#labels Featured,EVEAPI,Reference
+#labels Featured,EVEApi,Reference
 
 = Character Data =
 Anyone with an API Key can access this data.
