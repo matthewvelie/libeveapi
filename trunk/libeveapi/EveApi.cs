@@ -586,6 +586,27 @@ namespace libeveapi
         }
 
         /// <summary>
+        /// Gets a list of all alliances and their member corporations
+        /// </summary>
+        /// <returns></returns>
+        public static AllianceList GetAllianceList()
+        {
+            string url = String.Format("{0}{1}?version=1", Constants.ApiPrefix, Constants.AllianceList);
+
+            ApiResponse cachedResponse = ResponseCache.Get(url);
+            if (cachedResponse != null)
+            {
+                return cachedResponse as AllianceList;
+            }
+
+            XmlDocument xmlDoc = Network.GetXml(url);
+            AllianceList allianceList = AllianceList.FromXmlDocument(xmlDoc);
+            ResponseCache.Set(url, allianceList);
+
+            return allianceList;
+        }
+
+        /// <summary>
         /// Get the currently training Skill for a character
         /// </summary>
         /// <param name="userId">User Id of account for authentication</param>
