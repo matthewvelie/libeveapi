@@ -33,8 +33,8 @@ namespace UnitTests
             AccountBalance accountBalance = EveApi.GetAccountBalance(AccountBalanceType.Corporation, "userId", "charId", "apiKey");
 
             Assert.AreEqual(7, accountBalance.AccountBalanceItems.Length);
-            
-            AccountBalanceItem account;
+
+            AccountBalance.AccountBalanceItem account;
 
             account = accountBalance.AccountBalanceItems[0];
             Assert.AreEqual(4759, account.AccountId);
