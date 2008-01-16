@@ -18,60 +18,26 @@ namespace UnitTests
         }
 
         [Test]
-        public void NonExpiredApiResponse()
-        {
-            ResponseCache.Clear();
-            ApiResponse apiResponse = new ApiResponse();
-            apiResponse.CachedUntilLocal = DateTime.Now.Add(TimeSpan.FromDays(1));
-
-            ResponseCache.Set("NonExpiredApiResponse", apiResponse);
-            ApiResponse cachedResponse = ResponseCache.Get("NonExpiredApiResponse");
-
-            Assert.AreEqual(apiResponse, cachedResponse);
-        }
-
-        [Test]
         public void ExpiredApiResponse()
         {
             ResponseCache.Clear();
-            ApiResponse apiResponse = new ApiResponse();
-            apiResponse.CachedUntilLocal = DateTime.Now.Subtract(TimeSpan.FromDays(1));
+            string errorListLocation = Constants.ErrorList;
+            Constants.ErrorList = "/ErrorListExpired.xml.aspx";
+            ErrorList errorList = EveApi.GetErrorList();
+            System.Threading.Thread.Sleep(10);
+            ErrorList errorList2 = EveApi.GetErrorList();
 
-            ResponseCache.Set("ExpiredApiResponse", apiResponse);
-            ApiResponse cachedResponse = ResponseCache.Get("ExpiredApiResponse");
+            Assert.AreNotEqual(errorList.CachedUntilLocal, errorList2.CachedUntilLocal);
 
-            Assert.AreEqual(null, cachedResponse);
-        }
-
-        [Test]
-        public void PersistResponseCache()
-        {
-            ResponseCache.Clear();
-            ApiResponse apiResponse = new ApiResponse();
-            DateTime cachedUntil = DateTime.Now.Add(TimeSpan.FromDays(1));
-            apiResponse.CachedUntilLocal = cachedUntil;
-            apiResponse.HashedUrl = "PersistResponseCache";
-
-            ResponseCache.Set("PersistResponseCache", apiResponse);
-            ResponseCache.Save("responseCache.xml");
-            ResponseCache.Clear();
-            ResponseCache.Load("responseCache.xml");
-
-            ApiResponse cachedResponse = ResponseCache.Get("PersistResponseCache");
-            Assert.AreEqual(cachedUntil, cachedResponse.CachedUntilLocal);
+            Constants.ErrorList = errorListLocation;
         }
 
         [Test]
         public void UsingStreams()
         {
             ResponseCache.Clear();
-            ApiResponse apiResponse = new ApiResponse();
-            DateTime cachedUntil = DateTime.Now.Add(TimeSpan.FromDays(1));
-            apiResponse.CachedUntilLocal = cachedUntil;
-            apiResponse.HashedUrl = "PersistResponseCache";
+            ErrorList errorList = EveApi.GetErrorList();
 
-            ResponseCache.Set("PersistResponseCache", apiResponse);
-            
             using (Stream s = new FileStream("ResponseCache.xml", FileMode.Create))
             {
                 ResponseCache.Save(s);
@@ -84,9 +50,9 @@ namespace UnitTests
                 ResponseCache.Load(s);
             }
 
-            ApiResponse cachedResponse = ResponseCache.Get("PersistResponseCache");
-            
-            Assert.AreEqual(cachedUntil, cachedResponse.CachedUntilLocal);
+            ErrorList cached = EveApi.GetErrorList();
+
+            Assert.AreEqual(errorList.CachedUntilLocal, cached.CachedUntilLocal);
         }
     }
 }
