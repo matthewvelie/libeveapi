@@ -31,8 +31,8 @@ namespace UnitTests
 
             for (int i = 0; i < mapJumps.MapSystemJumps.Length; i++)
             {
-                Assert.AreEqual(mapJumps.MapSystemJumps[i].shipJumps, cachedMapJumps.MapSystemJumps[i].shipJumps);
-                Assert.AreEqual(mapJumps.MapSystemJumps[i].solarSystemID, cachedMapJumps.MapSystemJumps[i].solarSystemID);
+                Assert.AreEqual(mapJumps.MapSystemJumps[i].ShipJumps, cachedMapJumps.MapSystemJumps[i].ShipJumps);
+                Assert.AreEqual(mapJumps.MapSystemJumps[i].SolarSystemID, cachedMapJumps.MapSystemJumps[i].SolarSystemID);
             }
         }
     }

@@ -21,11 +21,11 @@ namespace UnitTests
         {
             JournalEntries journalEntry = EveApi.GetJournalEntryList(JournalEntryType.Character, "userId", "charId", "apiKey");
 
-            Console.WriteLine("'" + journalEntry.JournalEntryItems[0].argName1 + "'");
-            Assert.AreEqual("", journalEntry.JournalEntryItems[0].argName1);
-            Assert.AreEqual(59149, journalEntry.JournalEntryItems[0].refID);
-            Assert.AreEqual("corpslave", journalEntry.JournalEntryItems[0].ownerName1);
-            Assert.AreEqual("", journalEntry.JournalEntryItems[0].reason);
+            Console.WriteLine("'" + journalEntry.JournalEntryItems[0].ArgName1 + "'");
+            Assert.AreEqual("", journalEntry.JournalEntryItems[0].ArgName1);
+            Assert.AreEqual(59149, journalEntry.JournalEntryItems[0].RefID);
+            Assert.AreEqual("corpslave", journalEntry.JournalEntryItems[0].OwnerName1);
+            Assert.AreEqual("", journalEntry.JournalEntryItems[0].Reason);
         }
 
         [Test]
@@ -33,11 +33,11 @@ namespace UnitTests
         {
             JournalEntries journalEntry = EveApi.GetJournalEntryList(JournalEntryType.Corporation, "userId", "charId", "apiKey");
 
-            Console.WriteLine("'" + journalEntry.JournalEntryItems[0].argName1 + "'");
-            Assert.AreEqual("", journalEntry.JournalEntryItems[0].argName1);
-            Assert.AreEqual(59149, journalEntry.JournalEntryItems[0].refID);
-            Assert.AreEqual("corpslave", journalEntry.JournalEntryItems[0].ownerName1);
-            Assert.AreEqual("", journalEntry.JournalEntryItems[0].reason);
+            Console.WriteLine("'" + journalEntry.JournalEntryItems[0].ArgName1 + "'");
+            Assert.AreEqual("", journalEntry.JournalEntryItems[0].ArgName1);
+            Assert.AreEqual(59149, journalEntry.JournalEntryItems[0].RefID);
+            Assert.AreEqual("corpslave", journalEntry.JournalEntryItems[0].OwnerName1);
+            Assert.AreEqual("", journalEntry.JournalEntryItems[0].Reason);
         }
 
         [Test]
@@ -56,9 +56,9 @@ namespace UnitTests
 
             for (int i = 0; i < journalEntry.JournalEntryItems.Length; i++)
             {
-                Assert.AreEqual(journalEntry.JournalEntryItems[i].date, cachedJournalEntry.JournalEntryItems[i].date);
-                Assert.AreEqual(journalEntry.JournalEntryItems[i].amount, cachedJournalEntry.JournalEntryItems[i].amount);
-                Assert.AreEqual(journalEntry.JournalEntryItems[i].balance, cachedJournalEntry.JournalEntryItems[i].balance);
+                Assert.AreEqual(journalEntry.JournalEntryItems[i].Date, cachedJournalEntry.JournalEntryItems[i].Date);
+                Assert.AreEqual(journalEntry.JournalEntryItems[i].Amount, cachedJournalEntry.JournalEntryItems[i].Amount);
+                Assert.AreEqual(journalEntry.JournalEntryItems[i].Balance, cachedJournalEntry.JournalEntryItems[i].Balance);
             }
              
         }

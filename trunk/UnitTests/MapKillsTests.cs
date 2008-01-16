@@ -31,8 +31,8 @@ namespace UnitTests
 
             for (int i = 0; i < mapKills.MapSystemKills.Length; i++)
             {
-                Assert.AreEqual(mapKills.MapSystemKills[i].podKills, cachedmapKills.MapSystemKills[i].podKills);
-                Assert.AreEqual(mapKills.MapSystemKills[i].shipKills, cachedmapKills.MapSystemKills[i].shipKills);
+                Assert.AreEqual(mapKills.MapSystemKills[i].PodKills, cachedmapKills.MapSystemKills[i].PodKills);
+                Assert.AreEqual(mapKills.MapSystemKills[i].ShipKills, cachedmapKills.MapSystemKills[i].ShipKills);
             }
         }
     }

@@ -18,8 +18,8 @@ namespace libeveapi
         /// <summary>
         /// Create a CharacterList by parsing an XmlDocument response from the eveapi
         /// </summary>
-        /// <param name="xmlDoc"></param>
-        /// <returns></returns>
+        /// <param name="xmlDoc">An XML Document containing information about the Character List</param>
+        /// <returns><see cref="CharacterList"/></returns>
         public static CharacterList FromXmlDocument(XmlDocument xmlDoc)
         {
             CharacterList characterList = new CharacterList();

@@ -19,8 +19,8 @@ namespace libeveapi
         /// <summary>
         /// Create an ErrorList by parsing an XmlDocument response from the eveapi
         /// </summary>
-        /// <param name="xmlDoc"></param>
-        /// <returns></returns>
+        /// <param name="xmlDoc">An XML Document Containing error list information</param>
+        /// <returns><see cref="ErrorList"/></returns>
         public static ErrorList FromXmlDocument(XmlDocument xmlDoc)
         {
             ErrorList errorList = new ErrorList();

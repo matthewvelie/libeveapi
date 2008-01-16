@@ -28,6 +28,7 @@ namespace libeveapi
         public bool AllowAllianceMembers;
         /// <summary>
         /// Is the starbase claiming sovernty (only in 0.0 space)
+        /// http://myeve.eve-online.com/devblog.asp?a=blog&bid=477
         /// </summary>
         public bool ClaimSovereignty;
 

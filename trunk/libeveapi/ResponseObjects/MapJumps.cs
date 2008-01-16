@@ -19,7 +19,7 @@ namespace libeveapi
         /// <summary>
         /// Create an MapJumps object by parsing an XmlDocument response from the eve api
         /// </summary>
-        /// <param name="xmlDoc"></param>
+        /// <param name="xmlDoc">An XML document containing jump information</param>
         /// <returns></returns>
         public static MapJumps FromXmlDocument(XmlDocument xmlDoc)
         {
@@ -30,8 +30,8 @@ namespace libeveapi
             foreach (XmlNode systemRow in xmlDoc.SelectNodes("//rowset[@name='solarSystems']/row"))
             {
                 MapSystemItem systemData = new MapSystemItem();
-                systemData.solarSystemID = Convert.ToInt32(systemRow.Attributes["solarSystemID"].InnerText);
-                systemData.shipJumps = Convert.ToInt32(systemRow.Attributes["shipJumps"].InnerText);
+                systemData.SolarSystemID = Convert.ToInt32(systemRow.Attributes["solarSystemID"].InnerText);
+                systemData.ShipJumps = Convert.ToInt32(systemRow.Attributes["shipJumps"].InnerText);
                 systemList.Add(systemData);
             }
             mapJumps.MapSystemJumps = systemList.ToArray();
@@ -48,11 +48,11 @@ namespace libeveapi
         /// <summary>
         /// The ID of the solarsystem
         /// </summary>
-        public int solarSystemID;
+        public int SolarSystemID;
 
         /// <summary>
         /// The number of jumps
         /// </summary>
-        public int shipJumps;
+        public int ShipJumps;
     }
 }

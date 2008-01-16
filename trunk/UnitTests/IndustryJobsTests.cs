@@ -23,9 +23,9 @@ namespace UnitTests
 
             Assert.AreEqual(22, jobList.IndustryJobListItems.Length);
 
-            Assert.AreEqual(444, jobList.IndustryJobListItems[0].jobID);
-            Assert.AreEqual(60010783, jobList.IndustryJobListItems[0].containerID);
-            Assert.AreEqual(60010783, jobList.IndustryJobListItems[0].installedItemLocationID);
+            Assert.AreEqual(444, jobList.IndustryJobListItems[0].JobID);
+            Assert.AreEqual(60010783, jobList.IndustryJobListItems[0].ContainerID);
+            Assert.AreEqual(60010783, jobList.IndustryJobListItems[0].InstalledItemLocationID);
         }
 
         [Test]
@@ -35,9 +35,9 @@ namespace UnitTests
 
             Assert.AreEqual(22, jobList.IndustryJobListItems.Length);
 
-            Assert.AreEqual(444, jobList.IndustryJobListItems[0].jobID);
-            Assert.AreEqual(60010783, jobList.IndustryJobListItems[0].containerID);
-            Assert.AreEqual(60010783, jobList.IndustryJobListItems[0].installedItemLocationID);
+            Assert.AreEqual(444, jobList.IndustryJobListItems[0].JobID);
+            Assert.AreEqual(60010783, jobList.IndustryJobListItems[0].ContainerID);
+            Assert.AreEqual(60010783, jobList.IndustryJobListItems[0].InstalledItemLocationID);
         }
 
         [Test]
@@ -56,9 +56,9 @@ namespace UnitTests
             
             for (int i = 0; i < industryJobList.IndustryJobListItems.Length; i++)
             {
-                Assert.AreEqual(industryJobList.IndustryJobListItems[i].jobID, cachedIndustryJobList.IndustryJobListItems[i].jobID);
-                Assert.AreEqual(industryJobList.IndustryJobListItems[i].assemblyLineID, cachedIndustryJobList.IndustryJobListItems[i].assemblyLineID);
-                Assert.AreEqual(industryJobList.IndustryJobListItems[i].completed, cachedIndustryJobList.IndustryJobListItems[i].completed);
+                Assert.AreEqual(industryJobList.IndustryJobListItems[i].JobID, cachedIndustryJobList.IndustryJobListItems[i].JobID);
+                Assert.AreEqual(industryJobList.IndustryJobListItems[i].AssemblyLineID, cachedIndustryJobList.IndustryJobListItems[i].AssemblyLineID);
+                Assert.AreEqual(industryJobList.IndustryJobListItems[i].Completed, cachedIndustryJobList.IndustryJobListItems[i].Completed);
             }
             
         }

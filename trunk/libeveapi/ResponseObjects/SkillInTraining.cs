@@ -10,37 +10,37 @@ namespace libeveapi
     /// </summary>
     public class SkillInTraining : ApiResponse 
     {
-        public bool skillInTraining;
+        public bool SkillCurrentlyInTraining;
         /// <summary>
         /// Server time when skill training completes
         /// Minvalue - when no skill training
         /// </summary>
-        public DateTime trainingEndTime;
+        public DateTime TrainingEndTime;
         /// <summary>
         /// Server time when skill training started
         /// Minvalue - when no skill training
         /// </summary>
-        public DateTime trainingStartTime;
+        public DateTime TrainingStartTime;
         /// <summary>
         /// ID of skill in training
         /// 0 - when no skill training
         /// </summary>
-        public int trainingTypeID;
+        public int TrainingTypeID;
         /// <summary>
         /// Skill Points at training start
         /// 0 - when no skill training
         /// </summary>
-        public int trainingStartSP;
+        public int TrainingStartSP;
         /// <summary>
         /// Skill Points after training end
         /// 0 - when no skill training
         /// </summary>
-        public int trainingDestinationSP;
+        public int TrainingDestinationSP;
         /// <summary>
         /// Skill level being trained
         /// 0 - when no skill training
         /// </summary>
-        public int trainingToLevel;
+        public int TrainingToLevel;
 
         /// <summary>
         /// Create a SkillIntTraining Object by parsing an XmlDocument
@@ -51,24 +51,24 @@ namespace libeveapi
         public static SkillInTraining FromXmlDocument(XmlDocument xmlDoc)
         {
             SkillInTraining skilltraining = new SkillInTraining();
-            skilltraining.skillInTraining = Convert.ToBoolean(Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/skillInTraining").InnerText));
-            if (skilltraining.skillInTraining)
+            skilltraining.SkillCurrentlyInTraining = Convert.ToBoolean(Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/skillInTraining").InnerText));
+            if (skilltraining.SkillCurrentlyInTraining)
             {
-                skilltraining.trainingEndTime = Convert.ToDateTime(xmlDoc.SelectSingleNode("/eveapi/result/trainingEndTime").InnerText);
-                skilltraining.trainingStartTime = Convert.ToDateTime(xmlDoc.SelectSingleNode("/eveapi/result/trainingStartTime").InnerText);
-                skilltraining.trainingTypeID = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/trainingTypeID").InnerText);
-                skilltraining.trainingStartSP = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/trainingStartSP").InnerText);
-                skilltraining.trainingDestinationSP = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/trainingDestinationSP").InnerText);
-                skilltraining.trainingToLevel = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/trainingToLevel").InnerText);
+                skilltraining.TrainingEndTime = Convert.ToDateTime(xmlDoc.SelectSingleNode("/eveapi/result/trainingEndTime").InnerText);
+                skilltraining.TrainingStartTime = Convert.ToDateTime(xmlDoc.SelectSingleNode("/eveapi/result/trainingStartTime").InnerText);
+                skilltraining.TrainingTypeID = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/trainingTypeID").InnerText);
+                skilltraining.TrainingStartSP = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/trainingStartSP").InnerText);
+                skilltraining.TrainingDestinationSP = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/trainingDestinationSP").InnerText);
+                skilltraining.TrainingToLevel = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/trainingToLevel").InnerText);
             }
             else
             {
-                skilltraining.trainingEndTime = DateTime.MinValue;
-                skilltraining.trainingStartTime = DateTime.MinValue;
-                skilltraining.trainingTypeID = 0;
-                skilltraining.trainingStartSP = 0;
-                skilltraining.trainingDestinationSP = 0;
-                skilltraining.trainingToLevel = 0;
+                skilltraining.TrainingEndTime = DateTime.MinValue;
+                skilltraining.TrainingStartTime = DateTime.MinValue;
+                skilltraining.TrainingTypeID = 0;
+                skilltraining.TrainingStartSP = 0;
+                skilltraining.TrainingDestinationSP = 0;
+                skilltraining.TrainingToLevel = 0;
             }
             return skilltraining;
         }

@@ -21,8 +21,8 @@ namespace UnitTests
         {
             CharacterID charId = EveApi.GetCharacterIDName(1234);
 
-            Assert.AreEqual(797400947, charId.CharacterIDItems[0].characterID);
-            Assert.AreEqual("CCP Garthagk", charId.CharacterIDItems[0].name);
+            Assert.AreEqual(797400947, charId.CharacterIDItems[0].CharacterID);
+            Assert.AreEqual("CCP Garthagk", charId.CharacterIDItems[0].Name);
         }
 
         [Test]
@@ -30,8 +30,8 @@ namespace UnitTests
         {
             CharacterID charId = EveApi.GetCharacterIDName("test123");
 
-            Assert.AreEqual(797400947, charId.CharacterIDItems[0].characterID);
-            Assert.AreEqual("CCP Garthagk", charId.CharacterIDItems[0].name);
+            Assert.AreEqual(797400947, charId.CharacterIDItems[0].CharacterID);
+            Assert.AreEqual("CCP Garthagk", charId.CharacterIDItems[0].Name);
         }
     }
 }

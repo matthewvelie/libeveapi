@@ -20,8 +20,8 @@ namespace libeveapi
         /// <summary>
         /// Create an AccountBalance object by parsing an XmlDocument response from the eve api
         /// </summary>
-        /// <param name="xmlDoc"></param>
-        /// <returns></returns>
+        /// <param name="xmlDoc">An XML Document containing Account Balance Information</param>
+        /// <returns><see cref="AccountBalance"/>Returns an AccountBlance Object</returns>
         public static AccountBalance FromXmlDocument(XmlDocument xmlDoc)
         {
             AccountBalance accountBalance = new AccountBalance();
