@@ -33,5 +33,21 @@ namespace UnitTests
             Assert.AreEqual(797400947, charId.CharacterIDItems[0].CharacterID);
             Assert.AreEqual("CCP Garthagk", charId.CharacterIDItems[0].Name);
         }
+
+        [Test]
+        public void PersistCharacterId()
+        {
+            ResponseCache.Clear();
+            CharacterID cid = EveApi.GetCharacterIDName("test");
+            ResponseCache.Save("ResponseCache.xml");
+            ResponseCache.Clear();
+            ResponseCache.Load("ResponseCache.xml");
+            CharacterID ccid = EveApi.GetCharacterIDName("test");
+
+            Assert.AreEqual(cid.CachedUntilLocal, ccid.CachedUntilLocal);
+
+            Assert.AreEqual(cid.CharacterIDItems[0].Name, ccid.CharacterIDItems[0].Name);
+            Assert.AreEqual(cid.CharacterIDItems[0].CharacterID, ccid.CharacterIDItems[0].CharacterID);
+        }
     }
 }
