@@ -22,9 +22,9 @@ namespace UnitTests
             ConquerableStationList stationList = EveApi.GetConquerableStationList();
 
             Assert.AreEqual(233, stationList.conquerableStationList.Length);
-            Assert.AreEqual(60014926, stationList.conquerableStationList[0].stationID);
+            Assert.AreEqual(60014926, stationList.conquerableStationList[0].stationId);
             Assert.AreEqual("The Alamo", stationList.conquerableStationList[0].stationName);
-            Assert.AreEqual(12295, stationList.conquerableStationList[0].stationTypeID);
+            Assert.AreEqual(12295, stationList.conquerableStationList[0].stationTypeId);
         }
 
         [Test]
@@ -43,9 +43,9 @@ namespace UnitTests
 
             for (int i = 0; i < stationList.conquerableStationList.Length; i++)
             {
-                Assert.AreEqual(stationList.conquerableStationList[i].corporationID, cachedstationList.conquerableStationList[i].corporationID);
+                Assert.AreEqual(stationList.conquerableStationList[i].corporationId, cachedstationList.conquerableStationList[i].corporationId);
                 Assert.AreEqual(stationList.conquerableStationList[i].corporationName, cachedstationList.conquerableStationList[i].corporationName);
-                Assert.AreEqual(stationList.conquerableStationList[i].solarSystemID, cachedstationList.conquerableStationList[i].solarSystemID);
+                Assert.AreEqual(stationList.conquerableStationList[i].solarSystemId, cachedstationList.conquerableStationList[i].solarSystemId);
             }
             
         }

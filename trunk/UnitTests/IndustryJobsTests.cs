@@ -19,25 +19,25 @@ namespace UnitTests
         [Test]
         public void GetCharIndustryJobsTest()
         {
-            IndustryJobList jobList = EveApi.GetIndustryJobList(IndustryJobListType.Character, "userID", "characterID", "fullApiKey");
+            IndustryJobList jobList = EveApi.GetIndustryJobList(IndustryJobListType.Character, "userId", "characterId", "fullApiKey");
 
             Assert.AreEqual(22, jobList.IndustryJobListItems.Length);
 
-            Assert.AreEqual(444, jobList.IndustryJobListItems[0].JobID);
-            Assert.AreEqual(60010783, jobList.IndustryJobListItems[0].ContainerID);
-            Assert.AreEqual(60010783, jobList.IndustryJobListItems[0].InstalledItemLocationID);
+            Assert.AreEqual(444, jobList.IndustryJobListItems[0].JobId);
+            Assert.AreEqual(60010783, jobList.IndustryJobListItems[0].ContainerId);
+            Assert.AreEqual(60010783, jobList.IndustryJobListItems[0].InstalledItemLocationId);
         }
 
         [Test]
         public void GetCorpIndustryJobsTest()
         {
-            IndustryJobList jobList = EveApi.GetIndustryJobList(IndustryJobListType.Corporation, "userID", "characterID", "fullApiKey");
+            IndustryJobList jobList = EveApi.GetIndustryJobList(IndustryJobListType.Corporation, "userId", "characterId", "fullApiKey");
 
             Assert.AreEqual(22, jobList.IndustryJobListItems.Length);
 
-            Assert.AreEqual(444, jobList.IndustryJobListItems[0].JobID);
-            Assert.AreEqual(60010783, jobList.IndustryJobListItems[0].ContainerID);
-            Assert.AreEqual(60010783, jobList.IndustryJobListItems[0].InstalledItemLocationID);
+            Assert.AreEqual(444, jobList.IndustryJobListItems[0].JobId);
+            Assert.AreEqual(60010783, jobList.IndustryJobListItems[0].ContainerId);
+            Assert.AreEqual(60010783, jobList.IndustryJobListItems[0].InstalledItemLocationId);
         }
 
         [Test]
@@ -56,8 +56,8 @@ namespace UnitTests
             
             for (int i = 0; i < industryJobList.IndustryJobListItems.Length; i++)
             {
-                Assert.AreEqual(industryJobList.IndustryJobListItems[i].JobID, cachedIndustryJobList.IndustryJobListItems[i].JobID);
-                Assert.AreEqual(industryJobList.IndustryJobListItems[i].AssemblyLineID, cachedIndustryJobList.IndustryJobListItems[i].AssemblyLineID);
+                Assert.AreEqual(industryJobList.IndustryJobListItems[i].JobId, cachedIndustryJobList.IndustryJobListItems[i].JobId);
+                Assert.AreEqual(industryJobList.IndustryJobListItems[i].AssemblyLineId, cachedIndustryJobList.IndustryJobListItems[i].AssemblyLineId);
                 Assert.AreEqual(industryJobList.IndustryJobListItems[i].Completed, cachedIndustryJobList.IndustryJobListItems[i].Completed);
             }
             

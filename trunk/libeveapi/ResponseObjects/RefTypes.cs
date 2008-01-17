@@ -12,7 +12,7 @@ namespace libeveapi
     public class RefTypes : ApiResponse
     {
         /// <summary>
-        /// A reference type is made up of an int, which is the referenceID, and then a string
+        /// A reference type is made up of an int, which is the referenceId, and then a string
         /// which is the name of the reference.  They are stored in a serializable dictionary
         /// for easy searching and saving.
         /// </summary>
@@ -39,17 +39,17 @@ namespace libeveapi
         /// <summary>
         /// Returns the description for the specified reference type id
         /// </summary>
-        /// <param name="referenceTypeID"></param>
+        /// <param name="referenceTypeId"></param>
         /// <returns></returns>
-        public string GetReferenceTypeNameForID(int referenceTypeID)
+        public string GetReferenceTypeNameForId(int referenceTypeId)
         {
             try
             {
-                return ReferenceTypes[referenceTypeID];
+                return ReferenceTypes[referenceTypeId];
             }
             catch (KeyNotFoundException)
             {
-                return "Unknown Reference Type ID";
+                return "Unknown Reference Type Id";
             }
         }
     }

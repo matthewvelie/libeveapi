@@ -52,7 +52,7 @@ namespace libeveapi
         public string Name;
 
         /// <summary>
-        /// ID of the character
+        /// Id of the character
         /// </summary>
         public int CharacterId;
 
@@ -62,7 +62,7 @@ namespace libeveapi
         public string CorporationName;
 
         /// <summary>
-        /// ID of the corporation the character is a member of
+        /// Id of the corporation the character is a member of
         /// </summary>
         public int CorporationId;
     }

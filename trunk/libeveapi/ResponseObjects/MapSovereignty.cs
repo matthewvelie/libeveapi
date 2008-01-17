@@ -30,11 +30,11 @@ namespace libeveapi
             foreach (XmlNode systemRow in xmlDoc.SelectNodes("//rowset[@name='solarSystems']/row"))
             {
                 MapSovereigntyItem sovereigntyData = new MapSovereigntyItem();
-                sovereigntyData.SolarSystemID = Convert.ToInt32(systemRow.Attributes["solarSystemID"].InnerText);
-                sovereigntyData.AllianceID = Convert.ToInt32(systemRow.Attributes["allianceID"].InnerText);
+                sovereigntyData.SolarSystemId = Convert.ToInt32(systemRow.Attributes["solarSystemID"].InnerText);
+                sovereigntyData.AllianceId = Convert.ToInt32(systemRow.Attributes["allianceID"].InnerText);
                 sovereigntyData.ConstellationSovereignty = Convert.ToInt32(systemRow.Attributes["constellationSovereignty"].InnerText);
                 sovereigntyData.SovereigntyLevel = Convert.ToInt32(systemRow.Attributes["sovereigntyLevel"].InnerText);
-                sovereigntyData.FactionID = Convert.ToInt32(systemRow.Attributes["factionID"].InnerText);
+                sovereigntyData.FactionId = Convert.ToInt32(systemRow.Attributes["factionID"].InnerText);
                 sovereigntyData.SolarSystemName = systemRow.Attributes["solarSystemName"].InnerText;
                 sovereigntyList.Add(sovereigntyData);
             }
@@ -52,15 +52,15 @@ namespace libeveapi
         /// <summary>
         /// The unique identification number of a solar system
         /// </summary>
-        public int SolarSystemID;
+        public int SolarSystemId;
 
         /// <summary>
-        /// The ID of the alliance that has sovereignty of this solar system, or 0 if nobody has sovereignty.
+        /// The Id of the alliance that has sovereignty of this solar system, or 0 if nobody has sovereignty.
         /// </summary>
-        public int AllianceID;
+        public int AllianceId;
 
         /// <summary>
-        /// The ID of the alliance that has sovereignty of this constellation, or 0 if nobody has constellation sovereignty.
+        /// The Id of the alliance that has sovereignty of this constellation, or 0 if nobody has constellation sovereignty.
         /// http://myeve.eve-online.com/devblog.asp?a=blog&bid=477
         /// </summary>
         public int ConstellationSovereignty;
@@ -73,7 +73,7 @@ namespace libeveapi
         /// <summary>
         /// The NPC faction that controls this system
         /// </summary>
-        public int FactionID;
+        public int FactionId;
 
         /// <summary>
         /// Name of the solar system

@@ -22,10 +22,10 @@ namespace libeveapi
         /// </summary>
         public DateTime TrainingStartTime;
         /// <summary>
-        /// ID of skill in training
+        /// Id of skill in training
         /// 0 - when no skill training
         /// </summary>
-        public int TrainingTypeID;
+        public int TrainingTypeId;
         /// <summary>
         /// Skill Points at training start
         /// 0 - when no skill training
@@ -56,7 +56,7 @@ namespace libeveapi
             {
                 skilltraining.TrainingEndTime = Convert.ToDateTime(xmlDoc.SelectSingleNode("/eveapi/result/trainingEndTime").InnerText);
                 skilltraining.TrainingStartTime = Convert.ToDateTime(xmlDoc.SelectSingleNode("/eveapi/result/trainingStartTime").InnerText);
-                skilltraining.TrainingTypeID = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/trainingTypeID").InnerText);
+                skilltraining.TrainingTypeId = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/trainingTypeID").InnerText);
                 skilltraining.TrainingStartSP = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/trainingStartSP").InnerText);
                 skilltraining.TrainingDestinationSP = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/trainingDestinationSP").InnerText);
                 skilltraining.TrainingToLevel = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/trainingToLevel").InnerText);
@@ -65,7 +65,7 @@ namespace libeveapi
             {
                 skilltraining.TrainingEndTime = DateTime.MinValue;
                 skilltraining.TrainingStartTime = DateTime.MinValue;
-                skilltraining.TrainingTypeID = 0;
+                skilltraining.TrainingTypeId = 0;
                 skilltraining.TrainingStartSP = 0;
                 skilltraining.TrainingDestinationSP = 0;
                 skilltraining.TrainingToLevel = 0;

@@ -21,8 +21,8 @@ namespace UnitTests
         {
             RefTypes referenceType = EveApi.GetRefTypesList();
 
-            Assert.AreEqual("Undefined", referenceType.GetReferenceTypeNameForID(0) );
-            Assert.AreEqual("Player Trading", referenceType.GetReferenceTypeNameForID(1));
+            Assert.AreEqual("Undefined", referenceType.GetReferenceTypeNameForId(0) );
+            Assert.AreEqual("Player Trading", referenceType.GetReferenceTypeNameForId(1));
         }
 
         [Test]

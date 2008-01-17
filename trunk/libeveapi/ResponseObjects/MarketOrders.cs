@@ -45,9 +45,9 @@ namespace libeveapi
         {
             MarketOrderItem marketItem = new MarketOrderItem();
 
-            marketItem.OrderID = Convert.ToInt32(marketOrderRow.Attributes["orderID"].InnerText);
-            marketItem.CharID = Convert.ToInt64(marketOrderRow.Attributes["charID"].InnerText);
-            marketItem.StationID = Convert.ToInt64(marketOrderRow.Attributes["stationID"].InnerText);
+            marketItem.OrderId = Convert.ToInt32(marketOrderRow.Attributes["orderID"].InnerText);
+            marketItem.CharId = Convert.ToInt64(marketOrderRow.Attributes["charID"].InnerText);
+            marketItem.StationId = Convert.ToInt64(marketOrderRow.Attributes["stationID"].InnerText);
             marketItem.VolEntered = Convert.ToInt64(marketOrderRow.Attributes["volEntered"].InnerText);
             marketItem.VolRemaining = Convert.ToInt64(marketOrderRow.Attributes["volRemaining"].InnerText);
             marketItem.MinVolume = Convert.ToInt64(marketOrderRow.Attributes["minVolume"].InnerText);
@@ -76,7 +76,7 @@ namespace libeveapi
                     break;
             }
 
-            marketItem.TypeID = Convert.ToInt64(marketOrderRow.Attributes["typeID"].InnerText);
+            marketItem.TypeId = Convert.ToInt64(marketOrderRow.Attributes["typeID"].InnerText);
             marketItem.Range = Convert.ToInt32(marketOrderRow.Attributes["range"].InnerText);
             marketItem.AccountKey = Convert.ToInt32(marketOrderRow.Attributes["accountKey"].InnerText);
             marketItem.Duration = Convert.ToInt32(marketOrderRow.Attributes["duration"].InnerText);
@@ -98,17 +98,17 @@ namespace libeveapi
         /// <summary>
         /// Order id, not forever unique but for this pull they will be unique
         /// </summary>
-        public int OrderID;
+        public int OrderId;
 
         /// <summary>
-        /// Character ID of the character who placed the market order
+        /// Character Id of the character who placed the market order
         /// </summary>
-        public long CharID;
+        public long CharId;
 
         /// <summary>
-        /// The ID of the station that the order was placed in
+        /// The Id of the station that the order was placed in
         /// </summary>
-        public long StationID;
+        public long StationId;
 
         /// <summary>
         /// The quantity of the items required/offered when the order was placed
@@ -134,7 +134,7 @@ namespace libeveapi
         /// <summary>
         /// This is the typeId of the item that is being bought/sold
         /// </summary>
-        public long TypeID;
+        public long TypeId;
 
         /// <summary>
         /// This is the range of the order

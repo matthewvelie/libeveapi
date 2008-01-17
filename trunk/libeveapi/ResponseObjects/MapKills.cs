@@ -30,7 +30,7 @@ namespace libeveapi
             foreach (XmlNode systemRow in xmlDoc.SelectNodes("//rowset[@name='solarSystems']/row"))
             {
                 MapKillsItem systemData = new MapKillsItem();
-                systemData.SolarSystemID = Convert.ToInt32(systemRow.Attributes["solarSystemID"].InnerText);
+                systemData.SolarSystemId = Convert.ToInt32(systemRow.Attributes["solarSystemID"].InnerText);
                 systemData.ShipKills = Convert.ToInt32(systemRow.Attributes["shipKills"].InnerText);
                 systemData.FactionKills = Convert.ToInt32(systemRow.Attributes["factionKills"].InnerText);
                 systemData.PodKills = Convert.ToInt32(systemRow.Attributes["podKills"].InnerText);
@@ -48,9 +48,9 @@ namespace libeveapi
     public class MapKillsItem
     {
         /// <summary>
-        /// The ID of the solarsystem
+        /// The Id of the solarsystem
         /// </summary>
-        public int SolarSystemID;
+        public int SolarSystemId;
 
         /// <summary>
         /// The number of kills

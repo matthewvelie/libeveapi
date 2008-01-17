@@ -7,22 +7,22 @@ using System.Text.RegularExpressions;
 namespace libeveapi
 {
     /// <summary>
-    /// Represents a character name and  CharacterID response from the eve api
+    /// Represents a character name and  CharacterId response from the eve api
     /// http://wiki.eve-dev.net/APIv2_Eve_CharacterID_XML
     /// </summary>
-    public class CharacterID : ApiResponse
+    public class CharacterId : ApiResponse
     {
         /// <summary>
         /// The character name and character id that are associated with eachother
         /// </summary>
-        public CharacterIDItem[] CharacterIDItems = new CharacterIDItem[0];
+        public CharacterIdItem[] CharacterIdItems = new CharacterIdItem[0];
 
         /// <summary>
-        /// Returns the characterID and character name that are associated with eachother
+        /// Returns the characterId and character name that are associated with eachother
         /// </summary>
-        /// <param name="xmlDoc">An XML Document containing characterID and character name information</param>
-        /// <returns><see cref="CharacterID"/></returns>
-        public static CharacterID FromXmlDocument(XmlDocument xmlDoc)
+        /// <param name="xmlDoc">An XML Document containing characterId and character name information</param>
+        /// <returns><see cref="CharacterId"/></returns>
+        public static CharacterId FromXmlDocument(XmlDocument xmlDoc)
         {
             //FIX the row:name problem here (HACK!)
             string fixXML = xmlDoc.OuterXml;
@@ -32,32 +32,32 @@ namespace libeveapi
 
             //REAL FIX - We're not using this because if they change then this will break -
             /* XmlNamespaceManager namespaceManager = new XmlNamespaceManager( xmlDoc.NameTable);
-             * namespaceManager.AddNamespace("row", "characterID");
+             * namespaceManager.AddNamespace("row", "characterId");
              * XmlNode n = d.SelectSingleNode("//rowset[@name='characters']/row:name", namespaceManager);
              * Console.WriteLine(n.Attributes["name"].InnerText + " " + n.Attributes["characterID"].InnerText)
              */
 
-            CharacterID charID = new CharacterID();
-            charID.ParseCommonElements(xmlDoc);
+            CharacterId charId = new CharacterId();
+            charId.ParseCommonElements(xmlDoc);
 
-            List<CharacterIDItem> characterList = new List<CharacterIDItem>();
-            foreach (XmlNode charIDRow in xmlDoc.SelectNodes("//rowset[@name='characters']/row"))
+            List<CharacterIdItem> characterList = new List<CharacterIdItem>();
+            foreach (XmlNode charIdRow in xmlDoc.SelectNodes("//rowset[@name='characters']/row"))
             {
-                CharacterIDItem charIDItem = new CharacterIDItem();
-                charIDItem.Name = charIDRow.Attributes["name"].InnerText;
-                charIDItem.CharacterID = Convert.ToInt32(charIDRow.Attributes["characterID"].InnerText);
-                characterList.Add(charIDItem);
+                CharacterIdItem charIdItem = new CharacterIdItem();
+                charIdItem.Name = charIdRow.Attributes["name"].InnerText;
+                charIdItem.CharacterId = Convert.ToInt32(charIdRow.Attributes["characterID"].InnerText);
+                characterList.Add(charIdItem);
             }
-            charID.CharacterIDItems = characterList.ToArray();
+            charId.CharacterIdItems = characterList.ToArray();
 
-            return charID;
+            return charId;
         }
     }
 
     /// <summary>
-    /// An charIDItem associated with a character or corporation
+    /// An charIdItem associated with a character or corporation
     /// </summary>
-    public class CharacterIDItem
+    public class CharacterIdItem
     {
         /// <summary>
         /// The character's name
@@ -65,9 +65,9 @@ namespace libeveapi
         public string Name;
 
         /// <summary>
-        /// The characterID for the character name
+        /// The characterId for the character name
         /// </summary>
-        public int CharacterID;
+        public int CharacterId;
 
     }
 

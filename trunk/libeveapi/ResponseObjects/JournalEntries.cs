@@ -46,14 +46,14 @@ namespace libeveapi
             JournalEntryItem journalEntryItem = new JournalEntryItem();
 
             journalEntryItem.Date = Convert.ToDateTime(journalTransactionRow.Attributes["date"].InnerText);
-            journalEntryItem.RefID = Convert.ToInt64(journalTransactionRow.Attributes["refID"].InnerText);
-            journalEntryItem.RefTypeID = Convert.ToInt64(journalTransactionRow.Attributes["refTypeID"].InnerText);
+            journalEntryItem.RefId = Convert.ToInt64(journalTransactionRow.Attributes["refID"].InnerText);
+            journalEntryItem.RefTypeId = Convert.ToInt64(journalTransactionRow.Attributes["refTypeID"].InnerText);
             journalEntryItem.OwnerName1 = journalTransactionRow.Attributes["ownerName1"].InnerText;
-            journalEntryItem.OwnerID1 = Convert.ToInt64(journalTransactionRow.Attributes["ownerID1"].InnerText);
+            journalEntryItem.OwnerId1 = Convert.ToInt64(journalTransactionRow.Attributes["ownerID1"].InnerText);
             journalEntryItem.OwnerName2 = journalTransactionRow.Attributes["ownerName2"].InnerText;
-            journalEntryItem.OwnerID2 = Convert.ToInt64(journalTransactionRow.Attributes["ownerID2"].InnerText);
+            journalEntryItem.OwnerId2 = Convert.ToInt64(journalTransactionRow.Attributes["ownerID2"].InnerText);
             journalEntryItem.ArgName1 = journalTransactionRow.Attributes["argName1"].InnerText;
-            journalEntryItem.ArgID1 = Convert.ToInt64(journalTransactionRow.Attributes["argID1"].InnerText);
+            journalEntryItem.ArgId1 = Convert.ToInt64(journalTransactionRow.Attributes["argID1"].InnerText);
             journalEntryItem.Amount = Convert.ToDouble(journalTransactionRow.Attributes["amount"].InnerText);
             journalEntryItem.Balance = Convert.ToDouble(journalTransactionRow.Attributes["balance"].InnerText);
             journalEntryItem.Reason = journalTransactionRow.Attributes["reason"].InnerText;
@@ -73,14 +73,14 @@ namespace libeveapi
         public DateTime Date;
 
         /// <summary>
-        /// A unique referenceID for each transaction
+        /// A unique referenceId for each transaction
         /// </summary>
-        public long RefID;
+        public long RefId;
 
         /// <summary>
-        /// The typeID of the item that is referenced in the entry
+        /// The typeId of the item that is referenced in the entry
         /// </summary>
-        public long RefTypeID;
+        public long RefTypeId;
 
         /// <summary>
         /// Name of the person/corp giving money
@@ -88,9 +88,9 @@ namespace libeveapi
         public string OwnerName1;
 
         /// <summary>
-        /// TypeID/CharID of the person/corp giving money
+        /// TypeId/CharId of the person/corp giving money
         /// </summary>
-        public long OwnerID1 ;
+        public long OwnerId1 ;
 
         /// <summary>
         /// Name of the person/corp recieving money
@@ -98,9 +98,9 @@ namespace libeveapi
         public string OwnerName2;
 
         /// <summary>
-        /// TypeID/CharID of the person/corp recieving money
+        /// TypeId/CharId of the person/corp recieving money
         /// </summary>
-        public long OwnerID2;
+        public long OwnerId2;
 
         /// <summary>
         /// This is either the system where the transaction took place
@@ -110,11 +110,11 @@ namespace libeveapi
         public string ArgName1;
 
         /// <summary>
-        /// This is an argument ID that goes with the argument
+        /// This is an argument Id that goes with the argument
         /// Use the data from: http://wiki.eve-dev.net/APIv2_Eve_RefTypes_XML
         /// to determine what this is used for
         /// </summary>
-        public long ArgID1;
+        public long ArgId1;
 
         /// <summary>
         /// The amount of the transaction
@@ -129,7 +129,7 @@ namespace libeveapi
         /// <summary>
         /// This is the note attached to the transaction if any
         /// If exists for bounties this is the list of people killed and how many
-        /// Ex: TypeID:Number;TypeID:Number
+        /// Ex: TypeId:Number;TypeId:Number
         /// </summary>
         public string Reason;
     }
