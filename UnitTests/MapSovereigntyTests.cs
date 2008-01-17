@@ -32,7 +32,7 @@ namespace UnitTests
             for (int i = 0; i < mapSovereignty.MapSystemSovereignty.Length; i++)
             {
                 Assert.AreEqual(mapSovereignty.MapSystemSovereignty[i].ConstellationSovereignty, cachedMapSovereignty.MapSystemSovereignty[i].ConstellationSovereignty);
-                Assert.AreEqual(mapSovereignty.MapSystemSovereignty[i].AllianceID, cachedMapSovereignty.MapSystemSovereignty[i].AllianceID);
+                Assert.AreEqual(mapSovereignty.MapSystemSovereignty[i].AllianceId, cachedMapSovereignty.MapSystemSovereignty[i].AllianceId);
             }
         }
     }

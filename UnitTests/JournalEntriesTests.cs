@@ -23,7 +23,7 @@ namespace UnitTests
 
             Console.WriteLine("'" + journalEntry.JournalEntryItems[0].ArgName1 + "'");
             Assert.AreEqual("", journalEntry.JournalEntryItems[0].ArgName1);
-            Assert.AreEqual(59149, journalEntry.JournalEntryItems[0].RefID);
+            Assert.AreEqual(59149, journalEntry.JournalEntryItems[0].RefId);
             Assert.AreEqual("corpslave", journalEntry.JournalEntryItems[0].OwnerName1);
             Assert.AreEqual("", journalEntry.JournalEntryItems[0].Reason);
         }
@@ -35,7 +35,7 @@ namespace UnitTests
 
             Console.WriteLine("'" + journalEntry.JournalEntryItems[0].ArgName1 + "'");
             Assert.AreEqual("", journalEntry.JournalEntryItems[0].ArgName1);
-            Assert.AreEqual(59149, journalEntry.JournalEntryItems[0].RefID);
+            Assert.AreEqual(59149, journalEntry.JournalEntryItems[0].RefId);
             Assert.AreEqual("corpslave", journalEntry.JournalEntryItems[0].OwnerName1);
             Assert.AreEqual("", journalEntry.JournalEntryItems[0].Reason);
         }

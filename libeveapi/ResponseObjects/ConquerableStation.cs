@@ -44,11 +44,11 @@ namespace libeveapi
         protected static ConquerableStationItem ParseStationRow(XmlNode stationRow)
         {
             ConquerableStationItem conquerableStationItem = new ConquerableStationItem();
-            conquerableStationItem.stationID = Convert.ToInt32(stationRow.Attributes["stationID"].InnerText);
+            conquerableStationItem.stationId = Convert.ToInt32(stationRow.Attributes["stationID"].InnerText);
             conquerableStationItem.stationName = stationRow.Attributes["stationName"].InnerText;
-            conquerableStationItem.stationTypeID = Convert.ToInt32(stationRow.Attributes["stationTypeID"].InnerText);
-            conquerableStationItem.solarSystemID = Convert.ToInt32(stationRow.Attributes["solarSystemID"].InnerText);
-            conquerableStationItem.corporationID = Convert.ToInt32(stationRow.Attributes["corporationID"].InnerText);
+            conquerableStationItem.stationTypeId = Convert.ToInt32(stationRow.Attributes["stationTypeID"].InnerText);
+            conquerableStationItem.solarSystemId = Convert.ToInt32(stationRow.Attributes["solarSystemID"].InnerText);
+            conquerableStationItem.corporationId = Convert.ToInt32(stationRow.Attributes["corporationID"].InnerText);
             conquerableStationItem.corporationName = stationRow.Attributes["corporationName"].InnerText;
 
             return conquerableStationItem;
@@ -61,9 +61,9 @@ namespace libeveapi
     public class ConquerableStationItem
     {
         /// <summary>
-        /// The unique station ID
+        /// The unique station Id
         /// </summary>
-        public int stationID;
+        public int stationId;
 
         /// <summary>
         /// The name of the station (corp gets to name it)
@@ -71,19 +71,19 @@ namespace libeveapi
         public string stationName;
 
         /// <summary>
-        /// The typeID of the station / outpost
+        /// The typeId of the station / outpost
         /// </summary>
-        public int stationTypeID;
+        public int stationTypeId;
 
         /// <summary>
-        /// The solarSystemID that the station / outpost is located in
+        /// The solarSystemId that the station / outpost is located in
         /// </summary>
-        public int solarSystemID;
+        public int solarSystemId;
 
         /// <summary>
         /// The id of the corporation that owns teh station / outpost
         /// </summary>
-        public int corporationID;
+        public int corporationId;
 
         /// <summary>
         /// The name of the corporation that owns the station / outpost

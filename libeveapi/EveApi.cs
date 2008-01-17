@@ -14,7 +14,7 @@ namespace libeveapi
         /// <summary>
         /// Returns a list of all characters on an account
         /// </summary>
-        /// <param name="userId">userID of the account for authentication</param>
+        /// <param name="userId">userId of the account for authentication</param>
         /// <param name="apiKey">limited or full access api key of account</param>
         /// <returns></returns>
         public static CharacterList GetAccountCharacters(string userId, string apiKey)
@@ -41,7 +41,7 @@ namespace libeveapi
         /// <param name="userId">user ID of account for authentication</param>
         /// <param name="characterId">
         /// For character balance: The character you are requesting data for
-        /// For corporation balance: Character ID of a char with director/CEO access in the corp you want the balance for
+        /// For corporation balance: Character Id of a char with director/CEO access in the corp you want the balance for
         /// </param>
         /// <param name="fullApiKey">Full access api key of account</param>
         /// <returns></returns>
@@ -76,8 +76,8 @@ namespace libeveapi
         /// <summary>
         /// Returns a list of starbases owned by a corporation
         /// </summary>
-        /// <param name="userId">user ID of account for authentication</param>
-        /// <param name="characterId">Character ID of a char with director/CEO access in the corp you want the starbases for</param>
+        /// <param name="userId">user Id of account for authentication</param>
+        /// <param name="characterId">Character Id of a char with director/CEO access in the corp you want the starbases for</param>
         /// <param name="fullApiKey">Full access api key of account</param>
         /// <returns></returns>
         public static StarbaseList GetStarbaseList(string userId, string characterId, string fullApiKey)
@@ -102,53 +102,53 @@ namespace libeveapi
         /// </summary>
         /// <param name="charactername">character name string, use to look up character id</param>
         /// <returns></returns>
-        public static CharacterID GetCharacterIDName(string charactername)
+        public static CharacterId GetCharacterIdName(string charactername)
         {
-            string url = String.Format("{0}{1}?names={2}", Constants.ApiPrefix, Constants.CharacterIDName, charactername);
+            string url = String.Format("{0}{1}?names={2}", Constants.ApiPrefix, Constants.CharacterIdName, charactername);
 
             ApiResponse cachedResponse = ResponseCache.Get(url);
             if (cachedResponse != null)
             {
-                return cachedResponse as CharacterID;
+                return cachedResponse as CharacterId;
             }
 
             XmlDocument xmlDoc = Network.GetXml(url);
-            CharacterID charID = CharacterID.FromXmlDocument(xmlDoc);
-            ResponseCache.Set(url, charID);
+            CharacterId charId = CharacterId.FromXmlDocument(xmlDoc);
+            ResponseCache.Set(url, charId);
 
-            return charID;
+            return charId;
         }
 
         /// <summary>
         /// Returns the character id and character name, given the one or the other
         /// </summary>
-        /// <param name="characterID">characterID used to look up character name</param>
+        /// <param name="characterId">characterId used to look up character name</param>
         /// <returns></returns>
-        public static CharacterID GetCharacterIDName(int characterID)
+        public static CharacterId GetCharacterIdName(int characterId)
         {
-            string url = String.Format("{0}{1}?ids={2}", Constants.ApiPrefix, Constants.CharacterIDName, characterID);
+            string url = String.Format("{0}{1}?ids={2}", Constants.ApiPrefix, Constants.CharacterIdName, characterId);
 
             ApiResponse cachedResponse = ResponseCache.Get(url);
             if (cachedResponse != null)
             {
-                return cachedResponse as CharacterID;
+                return cachedResponse as CharacterId;
             }
 
             XmlDocument xmlDoc = Network.GetXml(url);
-            CharacterID charID = CharacterID.FromXmlDocument(xmlDoc);
-            ResponseCache.Set(url, charID);
+            CharacterId charId = CharacterId.FromXmlDocument(xmlDoc);
+            ResponseCache.Set(url, charId);
 
-            return charID;
+            return charId;
         }
 
 
         /// <summary>
         /// Returns the settings and fuel status of a starbase
         /// </summary>
-        /// <param name="userId">user ID of account for authentication</param>
-        /// <param name="characterId">Character ID of a char with director/CEO access in the corp that owns the starbase</param>
+        /// <param name="userId">user Id of account for authentication</param>
+        /// <param name="characterId">Character Id of a char with director/CEO access in the corp that owns the starbase</param>
         /// <param name="fullApiKey">Full access api key of account</param>
-        /// <param name="itemId">Item ID of the starbase as given in the starbase list</param>
+        /// <param name="itemId">Item Id of the starbase as given in the starbase list</param>
         /// <returns></returns>
         public static StarbaseDetail GetStarbaseDetail(string userId, string characterId, string fullApiKey, string itemId)
         {
@@ -192,8 +192,8 @@ namespace libeveapi
         /// Returns a list of assets owned by a character or corporation.
         /// </summary>
         /// <param name="assetListType"><see cref="AssetListType" /></param>
-        /// <param name="userId">userID of account for authentication</param>
-        /// <param name="characterId">CharacterID of character for authentication</param>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
         /// <param name="fullApiKey">Full access API key of account</param>
         /// <returns></returns>
         public static AssetList GetAssetList(AssetListType assetListType, string userId, string characterId, string fullApiKey)
@@ -228,8 +228,8 @@ namespace libeveapi
         /// Returns a list of industrial jobs owned by a character or corporation.
         /// </summary>
         /// <param name="industryJobListType"><see cref="IndustryJobListType" /></param>
-        /// <param name="userId">userID of account for authentication</param>
-        /// <param name="characterId">CharacterID of character for authentication</param>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
         /// <param name="fullApiKey">Full access API key of account</param>
         /// <returns></returns>
         public static IndustryJobList GetIndustryJobList(IndustryJobListType industryJobListType, string userId, string characterId, string fullApiKey)
@@ -264,8 +264,8 @@ namespace libeveapi
         /// Returns a list of journal entries owned by a character or corporation.
         /// </summary>
         /// <param name="journalEntriesType"><see cref="JournalEntryType" /></param>
-        /// <param name="userId">userID of account for authentication</param>
-        /// <param name="characterId">CharacterID of character for authentication</param>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
         /// <param name="fullApiKey">Full access API key of account</param>
         /// <returns></returns>
         public static JournalEntries GetJournalEntryList(JournalEntryType journalEntriesType, string userId, string characterId, string fullApiKey)
@@ -300,8 +300,8 @@ namespace libeveapi
         /// Returns a list of market orders owned by a character or corporation.
         /// </summary>
         /// <param name="marketOrdersType"><see cref="MarketOrderType" /></param>
-        /// <param name="userId">userID of account for authentication</param>
-        /// <param name="characterId">CharacterID of character for authentication</param>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
         /// <param name="fullApiKey">Full access API key of account</param>
         /// <returns></returns>
         public static MarketOrder GetMarketOrderList(MarketOrderType marketOrdersType, string userId, string characterId, string fullApiKey)
@@ -336,8 +336,8 @@ namespace libeveapi
         /// Returns a list of market transactions (wallet transactions) owned by a character or corporation.
         /// </summary>
         /// <param name="walletTransactionType"><see cref="WalletTransactionListType" /></param>
-        /// <param name="userId">userID of account for authentication</param>
-        /// <param name="characterId">CharacterID of character for authentication</param>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
         /// <param name="fullApiKey">Full access API key of account</param>
         /// <returns></returns>
         public static WalletTransactions GetWalletTransactionsList(WalletTransactionListType walletTransactionType, string userId, string characterId, string fullApiKey)
@@ -456,8 +456,8 @@ namespace libeveapi
         /// Returns information on every member in the corporation. Information retrieved
         /// varies on your roles without within the corporation. Not valid for NPC corps.
         /// </summary>
-        /// <param name="userId">user ID of account for authentication</param>
-        /// <param name="characterId">Character ID of a char with director/CEO access in the corp that owns the starbase</param>
+        /// <param name="userId">user Id of account for authentication</param>
+        /// <param name="characterId">Character Id of a char with director/CEO access in the corp that owns the starbase</param>
         /// <param name="fullApiKey">Full access api key of account</param>
         /// <returns></returns>
         public static MemberTracking GetMemberTracking(string userId, string characterId, string fullApiKey)
@@ -480,8 +480,8 @@ namespace libeveapi
         /// <summary>
         /// Returns a detailed description of a character
         /// </summary>
-        /// <param name="userId">userID of account for authentication</param>
-        /// <param name="characterId">CharacterID of character for authentication</param>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
         /// <param name="apiKey">Limited access API key of account</param>
         /// <returns></returns>
         public static CharacterSheet GetCharacterSheet(string userId, string characterId, string apiKey)
@@ -504,8 +504,8 @@ namespace libeveapi
         /// <summary>
         /// Returns a detailed description of a corporation
         /// </summary>
-        /// <param name="userId">userID of account for authentication</param>
-        /// <param name="characterId">CharacterID of character for authentication</param>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
         /// <param name="apiKey">Limited access API key of account</param>
         /// <returns></returns>
         public static CorporationSheet GetCorporationSheet(string userId, string characterId, string apiKey)
@@ -516,8 +516,8 @@ namespace libeveapi
         /// <summary>
         /// Returns a detailed description of a corporation
         /// </summary>
-        /// <param name="userId">userID of account for authentication</param>
-        /// <param name="characterId">CharacterID of character for authentication</param>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
         /// <param name="apiKey">Limited access API key of account</param>
         /// <param name="corporationId">retrieve information on the corporation with this id</param>
         /// <returns></returns>

@@ -105,7 +105,7 @@ namespace libeveapi
     public class FuelListItem
     {
         /// <summary>
-        /// Type ID of the fuel
+        /// Type Id of the fuel
         /// </summary>
         public string TypeId;
 

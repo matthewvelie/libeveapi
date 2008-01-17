@@ -32,7 +32,7 @@ namespace UnitTests
             for (int i = 0; i < mapJumps.MapSystemJumps.Length; i++)
             {
                 Assert.AreEqual(mapJumps.MapSystemJumps[i].ShipJumps, cachedMapJumps.MapSystemJumps[i].ShipJumps);
-                Assert.AreEqual(mapJumps.MapSystemJumps[i].SolarSystemID, cachedMapJumps.MapSystemJumps[i].SolarSystemID);
+                Assert.AreEqual(mapJumps.MapSystemJumps[i].SolarSystemId, cachedMapJumps.MapSystemJumps[i].SolarSystemId);
             }
         }
     }

@@ -35,7 +35,7 @@ namespace libeveapi
         /// </summary>
         public string CorporationName;
         /// <summary>
-        /// The eve generated ID of the corporation
+        /// The eve generated Id of the corporation
         /// </summary>
         public int CorporationId;
         /// <summary>
@@ -170,7 +170,7 @@ namespace libeveapi
     public class SkillItem
     {
         /// <summary>
-        /// TypeID of the skill
+        /// TypeId of the skill
         /// </summary>
         public int TypeId;
         /// <summary>

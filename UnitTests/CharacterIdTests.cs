@@ -19,35 +19,35 @@ namespace UnitTests
         [Test]
         public void TestCharNameToId()
         {
-            CharacterID charId = EveApi.GetCharacterIDName(1234);
+            CharacterId charId = EveApi.GetCharacterIdName(1234);
 
-            Assert.AreEqual(797400947, charId.CharacterIDItems[0].CharacterID);
-            Assert.AreEqual("CCP Garthagk", charId.CharacterIDItems[0].Name);
+            Assert.AreEqual(797400947, charId.CharacterIdItems[0].CharacterId);
+            Assert.AreEqual("CCP Garthagk", charId.CharacterIdItems[0].Name);
         }
 
         [Test]
         public void TestCharIdToName()
         {
-            CharacterID charId = EveApi.GetCharacterIDName("test123");
+            CharacterId charId = EveApi.GetCharacterIdName("test123");
 
-            Assert.AreEqual(797400947, charId.CharacterIDItems[0].CharacterID);
-            Assert.AreEqual("CCP Garthagk", charId.CharacterIDItems[0].Name);
+            Assert.AreEqual(797400947, charId.CharacterIdItems[0].CharacterId);
+            Assert.AreEqual("CCP Garthagk", charId.CharacterIdItems[0].Name);
         }
 
         [Test]
         public void PersistCharacterId()
         {
             ResponseCache.Clear();
-            CharacterID cid = EveApi.GetCharacterIDName("test");
+            CharacterId cid = EveApi.GetCharacterIdName("test");
             ResponseCache.Save("ResponseCache.xml");
             ResponseCache.Clear();
             ResponseCache.Load("ResponseCache.xml");
-            CharacterID ccid = EveApi.GetCharacterIDName("test");
+            CharacterId ccid = EveApi.GetCharacterIdName("test");
 
             Assert.AreEqual(cid.CachedUntilLocal, ccid.CachedUntilLocal);
 
-            Assert.AreEqual(cid.CharacterIDItems[0].Name, ccid.CharacterIDItems[0].Name);
-            Assert.AreEqual(cid.CharacterIDItems[0].CharacterID, ccid.CharacterIDItems[0].CharacterID);
+            Assert.AreEqual(cid.CharacterIdItems[0].Name, ccid.CharacterIdItems[0].Name);
+            Assert.AreEqual(cid.CharacterIdItems[0].CharacterId, ccid.CharacterIdItems[0].CharacterId);
         }
     }
 }

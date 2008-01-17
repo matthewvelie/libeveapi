@@ -25,7 +25,7 @@ namespace UnitTests
             //Attributes of the currently training skill
             Assert.AreEqual("6/21/2007 9:27:50 PM", skillintraining.TrainingEndTime.ToString());
             Assert.AreEqual("6/21/2007 11:00:38 AM", skillintraining.TrainingStartTime.ToString());
-            Assert.AreEqual(3347, skillintraining.TrainingTypeID);
+            Assert.AreEqual(3347, skillintraining.TrainingTypeId);
             Assert.AreEqual(4000, skillintraining.TrainingStartSP);
             Assert.AreEqual(22628, skillintraining.TrainingDestinationSP);
             Assert.AreEqual(2, skillintraining.TrainingToLevel);
@@ -48,7 +48,7 @@ namespace UnitTests
             //Attributes of the currently training skill
             Assert.AreEqual(cached.TrainingEndTime, skillintraining.TrainingEndTime);
             Assert.AreEqual(cached.TrainingStartTime, skillintraining.TrainingStartTime);
-            Assert.AreEqual(cached.TrainingTypeID, skillintraining.TrainingTypeID);
+            Assert.AreEqual(cached.TrainingTypeId, skillintraining.TrainingTypeId);
             Assert.AreEqual(cached.TrainingStartSP, skillintraining.TrainingStartSP);
             Assert.AreEqual(cached.TrainingDestinationSP, skillintraining.TrainingDestinationSP);
             Assert.AreEqual(cached.TrainingToLevel, skillintraining.TrainingToLevel);

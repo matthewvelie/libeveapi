@@ -30,7 +30,7 @@ namespace libeveapi
             foreach (XmlNode systemRow in xmlDoc.SelectNodes("//rowset[@name='solarSystems']/row"))
             {
                 MapSystemItem systemData = new MapSystemItem();
-                systemData.SolarSystemID = Convert.ToInt32(systemRow.Attributes["solarSystemID"].InnerText);
+                systemData.SolarSystemId = Convert.ToInt32(systemRow.Attributes["solarSystemID"].InnerText);
                 systemData.ShipJumps = Convert.ToInt32(systemRow.Attributes["shipJumps"].InnerText);
                 systemList.Add(systemData);
             }
@@ -46,9 +46,9 @@ namespace libeveapi
     public class MapSystemItem
     {
         /// <summary>
-        /// The ID of the solarsystem
+        /// The Id of the solarsystem
         /// </summary>
-        public int SolarSystemID;
+        public int SolarSystemId;
 
         /// <summary>
         /// The number of jumps

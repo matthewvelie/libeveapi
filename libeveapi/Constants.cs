@@ -90,7 +90,7 @@ namespace libeveapi
         /// <summary>
         /// The location of the characterid and name conversion xml file
         /// </summary>
-        public static string CharacterIDName = "/eve/CharacterID.xml.aspx";
+        public static string CharacterIdName = "/eve/CharacterID.xml.aspx";
         /// <summary>
         /// The location of the character sheet xml file
         /// </summary>

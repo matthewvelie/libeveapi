@@ -83,11 +83,11 @@ namespace libeveapi
         public class AssetListItem
         {
             /// <summary>
-            /// Unique ID for this item. This is only guaranteed to be unique within 
-            /// this page load. IDs are recycled over time and it is possible for this 
-            /// to happen. Also, items are not guaranteed to maintain the same itemID 
+            /// Unique Id for this item. This is only guaranteed to be unique within 
+            /// this page load. Ids are recycled over time and it is possible for this 
+            /// to happen. Also, items are not guaranteed to maintain the same itemId 
             /// over time. When they are repackaged, stacks are split or merged, when 
-            /// they're assembled, and other actions can cause itemIDs to change.
+            /// they're assembled, and other actions can cause itemIds to change.
             /// </summary>
             public int ItemId;
 
