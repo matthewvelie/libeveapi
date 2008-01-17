@@ -634,7 +634,7 @@ namespace libeveapi
         /// Retrieve the portrait for a character
         /// </summary>
         /// <param name="characterId">Retrieve the portrait of the character with this id</param>
-        /// <param name="portraitSize">64 or 256</param>
+        /// <param name="portraitSize">Small (64) or Large (256)</param>
         /// <returns></returns>
         public static Image GetCharacterPortrait(int characterId, PortraitSize portraitSize)
         {
