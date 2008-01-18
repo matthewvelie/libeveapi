@@ -50,3 +50,44 @@ public static SkillTree GetSkillTree()
 || Perception|| - || Perception attribute ||
 || Charisma|| - || Charisma attribute ||
 || Unknown|| - || Unknown attribute (shouldn't ever show up) ||
+
+=== Example ===
+{{{
+/// <summary>
+/// Display a skill and its required skills
+/// </summary>
+public static void SkillTreeExample()
+{
+    SkillTree skillTree = EveApi.GetSkillTree();
+
+    // Get skill 3344 and display its name
+    SkillTree.Skill targetSkill = GetSkillByTypeId(3344, skillTree);
+    Console.WriteLine("Skill Name: {0}", targetSkill.TypeName);
+
+    // Display the name and level of each required skill
+    foreach (SkillTree.RequiredSkill requiredSkill in targetSkill.RequiredSkills)
+    {
+        SkillTree.Skill requiredSkillInfo = GetSkillByTypeId(requiredSkill.TypeId, skillTree);
+        Console.WriteLine("Required Skill: {0} Level: {1}", requiredSkillInfo.TypeName, requiredSkill.SkillLevel);
+    }
+}
+
+/// <summary>
+/// Find a Skill in the SkillTree by TypeId
+/// </summary>
+/// <param name="typeId"></param>
+/// <param name="skillTree"></param>
+/// <returns></returns>
+private static SkillTree.Skill GetSkillByTypeId(int typeId, SkillTree skillTree)
+{
+    foreach (SkillTree.Skill skill in skillTree.Skills)
+    {
+        if (skill.TypeId == typeId)
+        {
+            return skill;
+        }
+    }
+
+    return null;
+}
+}}}
