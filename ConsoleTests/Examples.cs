@@ -12,12 +12,29 @@ namespace ConsoleTests
         public static void Main(String[] args)
         {
             UseLocalUrls();
-            CharacterSheetExample();
+            CorporationSheetExample();
         }
 
         public static void UseLocalUrls()
         {
             Constants.ApiPrefix = "http://localhost/eveapi";
+        }
+
+        public static void CorporationSheetExample()
+        {
+            CorporationSheet corporationSheet = EveApi.GetCorporationSheet("userId", "characterId", "apiKey");
+            Console.WriteLine("Corporation Name: {0} Ticker: {1}", corporationSheet.CorporationName, corporationSheet.Ticker);
+            Console.WriteLine("Logo GraphicId: {0}", corporationSheet.Logo.GraphicId);
+
+            foreach (CorporationSheet.Division division in corporationSheet.Divisions)
+            {
+                Console.WriteLine("Division AccountKey: {0} Description: {1}", division.AccountKey, division.Description);
+            }
+
+            foreach (CorporationSheet.WalletDivision walletDivision in corporationSheet.WalletDivisions)
+            {
+                Console.WriteLine("Wallet Division AccountKey: {0} Description: {1}", walletDivision.AccountKey, walletDivision.Description);
+            }
         }
 
         public static void CharacterSheetExample()
