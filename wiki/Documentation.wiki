@@ -8,6 +8,7 @@
   * [AllianceList Alliance List] - A list of all the alliances in the game and their member corporations.
   * [AssetList Asset List] - A detailed list of all a character or corporations assets in the universe.
   * [CharacterList Character List] - The list of characters associated with an account
+  * [CharacterPortrait Character Portrait] - A character's image from the game.
   * [CharacterSheet Character Sheet] - Detailed information about a character
   * [CorporationSheet Corporation Sheet] - Detailed information about a corporation
   * [ErrorList Error List] - A list of all the possible error messages returned by the eve api.
