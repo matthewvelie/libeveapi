@@ -65,3 +65,23 @@ public static CorporationSheet GetCorporationSheet(string userId, string charact
 || Color1 || int || ||
 || Color2 || int || ||
 || Color3 || int || ||
+
+=== Example ===
+{{{
+public static void CorporationSheetExample()
+{
+    CorporationSheet corporationSheet = EveApi.GetCorporationSheet("userId", "characterId", "apiKey");
+    Console.WriteLine("Corporation Name: {0} Ticker: {1}", corporationSheet.CorporationName, corporationSheet.Ticker);
+    Console.WriteLine("Logo GraphicId: {0}", corporationSheet.Logo.GraphicId);
+
+    foreach (CorporationSheet.Division division in corporationSheet.Divisions)
+    {
+        Console.WriteLine("Division AccountKey: {0} Description: {1}", division.AccountKey, division.Description);
+    }
+
+    foreach (CorporationSheet.WalletDivision walletDivision in corporationSheet.WalletDivisions)
+    {
+        Console.WriteLine("Wallet Division AccountKey: {0} Description: {1}", walletDivision.AccountKey, walletDivision.Description);
+    }
+}
+}}}
