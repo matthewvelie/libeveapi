@@ -15,7 +15,7 @@ public static AllianceList GetAllianceList()
 || *Member* || *Type* || *Description ||
 || !AllianceListItems || !AllianceList[] || List of alliances ||
 
-* AllianceListItem object *
+* !AllianceListItem object *
 || *Member* || *Type* || *Description* ||
 || Name || string || full name of the alliance ||
 || !ShortName || string || ticker name of the alliance ||
