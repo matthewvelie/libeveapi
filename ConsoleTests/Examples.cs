@@ -12,7 +12,7 @@ namespace ConsoleTests
         public static void Main(String[] args)
         {
             UseLocalUrls();
-            MemberTrackingExample();
+            SkillTreeExample();
         }
 
         public static void UseLocalUrls()
@@ -20,20 +20,45 @@ namespace ConsoleTests
             Constants.ApiPrefix = "http://localhost/eveapi";
         }
 
-
-public static void MemberTrackingExample()
-{
-    MemberTracking memberTracking = EveApi.GetMemberTracking("userId", "characterId", "fullApiKey");
-    
-    // Output the name and location of all corporation directors
-    foreach (MemberTracking.Member member in memberTracking.Members)
-    {
-        if (member.Roles.HasRole(RoleTypes.Director))
+        public static void SkillTreeExample()
         {
-            Console.WriteLine("Director Name: {0} Location: {1}", member.Name, member.Location);
+            SkillTree skillTree = EveApi.GetSkillTree();
+            SkillTree.Skill targetSkill = GetSkillByTypeId(3344, skillTree);
+            Console.WriteLine("Skill Name: {0}", targetSkill.TypeName);
+
+            foreach (SkillTree.RequiredSkill requiredSkill in targetSkill.RequiredSkills)
+            {
+                SkillTree.Skill requiredSkillInfo = GetSkillByTypeId(requiredSkill.TypeId, skillTree);
+                Console.WriteLine("Required Skill: {0} Level: {1}", requiredSkillInfo.TypeName, requiredSkill.SkillLevel);
+            }
         }
-    }
-}
+
+        private static SkillTree.Skill GetSkillByTypeId(int typeId, SkillTree skillTree)
+        {
+            foreach (SkillTree.Skill skill in skillTree.Skills)
+            {
+                if (skill.TypeId == typeId)
+                {
+                    return skill;
+                }
+            }
+
+            return null;
+        }
+
+        public static void MemberTrackingExample()
+        {
+            MemberTracking memberTracking = EveApi.GetMemberTracking("userId", "characterId", "fullApiKey");
+            
+            // Output the name and location of all corporation directors
+            foreach (MemberTracking.Member member in memberTracking.Members)
+            {
+                if (member.Roles.HasRole(RoleTypes.Director))
+                {
+                    Console.WriteLine("Director Name: {0} Location: {1}", member.Name, member.Location);
+                }
+            }
+        }
 
         public static void CorporationSheetExample()
         {
