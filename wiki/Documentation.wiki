@@ -13,6 +13,7 @@
   * [CorporationSheet Corporation Sheet] - Detailed information about a corporation
   * [ErrorList Error List] - A list of all the possible error messages returned by the eve api.
   * [MemberTracking Member Tracking] - Detailed current information about the members of a corporation.
+  * [SkillTree Skill Tree] - A list of all the skills in the game.
   * [StarbaseDetail Starbase (POS) Details] - Detailed information about a starbase (POS).
   * [StarbaseList Starbase (POS) List] - A list of all starbases (POS's) owned by a corporation.
  # === Reference ===
