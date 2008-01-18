@@ -13,6 +13,7 @@ namespace ConsoleTests
         {
             UseLocalUrls();
             SkillTreeExample();
+            KillLogExample();
         }
 
         public static void UseLocalUrls()
@@ -88,6 +89,12 @@ namespace ConsoleTests
             }
 
             Console.WriteLine("Character Name: {0} Total Skillpoints: {1}", characterSheet.Name, totalSkillpoints);
+        }
+
+        public static void KillLogExample()
+        {
+            KillLog killLog = EveApi.GetKillLog(KillLogType.Character, "userId", "characterId", "apiKey");
+            Console.WriteLine("Total Kills: {0}", killLog.Kills.Length);
         }
 
         public static void PrintAllianceList()

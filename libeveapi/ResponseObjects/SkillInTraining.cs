@@ -51,6 +51,7 @@ namespace libeveapi
         public static SkillInTraining FromXmlDocument(XmlDocument xmlDoc)
         {
             SkillInTraining skilltraining = new SkillInTraining();
+            skilltraining.ParseCommonElements(xmlDoc);
             skilltraining.SkillCurrentlyInTraining = Convert.ToBoolean(Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/skillInTraining").InnerText));
             if (skilltraining.SkillCurrentlyInTraining)
             {
