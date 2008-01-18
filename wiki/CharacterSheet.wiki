@@ -1,0 +1,37 @@
+=== Description ===
+Retrieves detailed information about a character including attributes, implants and skills.
+
+=== Library Call ===
+{{{
+/// <summary>
+/// Returns a detailed description of a character
+/// </summary>
+/// <param name="userId">userId of account for authentication</param>
+/// <param name="characterId">CharacterId of character for authentication</param>
+/// <param name="apiKey">Limited access API key of account</param>
+/// <returns></returns>
+public static CharacterSheet GetCharacterSheet(string userId, string characterId, string apiKey)
+}}}
+
+=== Result ===
+* CharacterSheet object (See ApiResult for inherited members) *
+|| *Member* || *Type* || *Description* ||
+|| CharacterId || int || The eve assigned characterId ||
+|| Name || string || The name of the character ||
+|| Race || string || The race of the character ||
+|| BloodLine || string || The bloodline of the character ||
+|| Gender || string || The gender of the character (currently male/female) ||
+|| CorporationName || string || The name of the character's corporation ||
+|| CorporationId || int || The eve generated id of the character's corporation ||
+|| Balance || double || The character's current wallet balance ||
+|| Intelligence || int || The character's intelligence attribute ||
+|| Memory || int || The character's memory attribute ||
+|| Charisma || int || The character's charisma attribute ||
+|| Perception || int || The character's perception attribute ||
+|| Willpower || int || The characters willpower attribute ||
+|| MemoryBonus || AttributeEnhancer || Memory implant ||
+|| WillpowerBonus|| AttributeEnhancer || Willpower implant ||
+|| PerceptionBonus|| AttributeEnhancer || Perception implant ||
+|| IntelligenceBonus|| AttributeEnhancer || Intelligenceimplant ||
+|| CharismaBonus|| AttributeEnhancer || Charisma implant ||
+|| SkillItemList || SkillItem[] || List of character's skills ||
