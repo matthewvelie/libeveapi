@@ -1,0 +1,41 @@
+=== Description ===
+Retrieves current detailed information about a corporation's members including the ship they are currently piloting and their location.
+
+=== Library Method ===
+{{{
+/// <summary>
+/// Returns information on every member in the corporation. Information retrieved
+/// varies on your roles without within the corporation. Not valid for NPC corps.
+/// </summary>
+/// <param name="userId">user Id of account for authentication</param>
+/// <param name="characterId">Character Id of a char with director/CEO access in the corp that owns the starbase</param>
+/// <param name="fullApiKey">Full access api key of account</param>
+/// <returns></returns>
+public static MemberTracking GetMemberTracking(string userId, string characterId, string fullApiKey)
+}}}
+
+=== Result ===
+* MemberTracking object (See ApiResult for inherited members) *
+|| *Member* || *Type* || *Description* ||
+|| MemberTrackingItems || MemberTrackingItem || Information about a corporation member ||
+
+* MemberTrackingItem object *
+|| *Member* || *Type* || *Description* ||
+|| CharacterId || int || Unique identifier of the member ||
+|| Name || string || member's character name ||
+|| StartDateTime || DateTime || Member's start date with the corporation in CCP time ||
+|| StartDateTimeLocal || DateTime || Member's start date with the corporation in local time ||
+|| BaseId || int || The unique identifier of the member's base station ||
+|| Base || string || Name of the member's base station ||
+|| Title || string || Member's assigned title in the corporation ||
+|| LogonDateTime || DateTime || Date of the member's last log on in CCP time ||
+|| LogonDateTimeLocal || DateTime || Date of the member's last log on in local time ||
+|| LogoffDateTime || DateTime || Date of the member's last log off in CCP time ||
+|| LogoffDateTimeLocal || DateTime || Date of the member's last log off in local time ||
+|| LocationId || int || Unique id of the system where the member is currently located ||
+|| Location || string || Name of the system where the member is currently located ||
+|| ShipTypeId || int || Unique identifier of the ship type the member is currently piloting ||
+|| ShipType || string || Name of the ship type the member is currently piloting ||
+|| RolesMask || string || A bit mask describing the member's roles in the corporation ||
+|| GrantableRoles || string || Depricated ||
+|| Roles || Roles || An object that contains information about the member's roles in the corporation ||
