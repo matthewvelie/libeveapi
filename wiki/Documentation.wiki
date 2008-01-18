@@ -5,6 +5,7 @@
   * [UrlConstants How to get XML Responses from a local web server instead of the eve api]
  # === API Calls ===
   * [AccountBalances Account Balances]
+  * [AllianceList Alliance List]
   * [AssetList Asset List]
   * [CharacterList Character List]
   * [ErrorList Error List]
