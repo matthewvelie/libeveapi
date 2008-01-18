@@ -15,7 +15,7 @@ namespace libeveapi
         /// <summary>
         /// 
         /// </summary>
-        public MemberTrackingItem[] MemberTrackingItems = new MemberTrackingItem[0];
+        public Member[] Members = new Member[0];
 
         /// <summary>
         /// Create a MemberTracking object by parsing an XmlDocument response from the eveapi
@@ -27,10 +27,10 @@ namespace libeveapi
             MemberTracking memberTracking = new MemberTracking();
             memberTracking.ParseCommonElements(xmlDoc);
 
-            List<MemberTrackingItem> parsedMemeberTrackingItems = new List<MemberTrackingItem>();
+            List<Member> parsedMemeberTrackingItems = new List<Member>();
             foreach (XmlNode row in xmlDoc.SelectNodes("//rowset[@name='members']/row"))
             {
-                MemberTrackingItem mti = new MemberTrackingItem();
+                Member mti = new Member();
                 mti.CharacterId = Convert.ToInt32(row.Attributes["characterID"].InnerText);
                 mti.Name = row.Attributes["name"].InnerText;
                 mti.BaseId = Convert.ToInt32(row.Attributes["baseID"].InnerText);
@@ -53,123 +53,125 @@ namespace libeveapi
                 parsedMemeberTrackingItems.Add(mti);
             }
 
-            memberTracking.MemberTrackingItems = parsedMemeberTrackingItems.ToArray();
+            memberTracking.Members = parsedMemeberTrackingItems.ToArray();
             return memberTracking;
         }
-    }
-
-    /// <summary>
-    /// Information about an individual member of the corporation.
-    /// </summary>
-    public class MemberTrackingItem
-    {
-        /// <summary>
-        /// Unique identifier of the pilot.
-        /// </summary>
-        public int CharacterId;
 
         /// <summary>
-        /// Name of the pilot
+        /// Information about an individual member of the corporation.
         /// </summary>
-        public string Name;
-
-        /// <summary>
-        /// Pilot's start date with the corporation
-        /// </summary>
-        public DateTime StartDateTime;
-
-        /// <summary>
-        /// Pilot's start date with the corporation in local time
-        /// </summary>
-        public DateTime StartDateTimeLocal;
-
-        /// <summary>
-        /// The unique identifier of the station the pilot's 
-        /// base station.
-        /// </summary>
-        public int BaseId;
-
-        /// <summary>
-        /// The human readable description of the pilot's base 
-        /// station.
-        /// </summary>
-        public string Base;
-
-        /// <summary>
-        /// Pilot's assigned title in the corporation
-        /// </summary>
-        public string Title;
-
-        /// <summary>
-        /// Timestamp of pilot's last logon
-        /// </summary>
-        public DateTime LogonDateTime;
-
-        /// <summary>
-        /// Timestamp of pilot's last logon in local time
-        /// </summary>
-        public DateTime LogonDateTimeLocal;
-
-        /// <summary>
-        /// Timestamp of pilot's last logoff
-        /// </summary>
-        public DateTime LogoffDateTime;
-
-        /// <summary>
-        /// Timestamp of pilot's last logoff in local time
-        /// </summary>
-        public DateTime LogoffDateTimeLocal;
-
-        /// <summary>
-        /// The unique id of the system where the pilot is currently located
-        /// </summary>
-        public int LocationId;
-
-        /// <summary>
-        /// A human readable description of the current location of the pilot
-        /// </summary>
-        public string Location;
-
-        /// <summary>
-        /// The unique identifier of the ship type the pilot is 
-        /// currently flying
-        /// </summary>
-        public int ShipTypeId;
-
-        /// <summary>
-        /// The human readable description of the type of ship the 
-        /// pilot is currently flying
-        /// </summary>
-        public string ShipType;
-
-        /// <summary>
-        /// A mask describing the pilot's current roles in the corporation
-        /// </summary>
-        public string RolesMask;
-
-        /// <summary>
-        /// Depricated
-        /// </summary>
-        public string GrantableRoles;
-
-        /// <summary>
-        /// This pilot's roles in the corporation
-        /// </summary>
-        protected Roles roles;
-        /// <summary>
-        /// This pilot's roles in the corporation
-        /// </summary>
-        public Roles Roles
+        public class Member
         {
-            get
-            {
-                if (this.roles == null)
-                {
-                    this.roles = new Roles(this.RolesMask);
-                }
+            /// <summary>
+            /// Unique identifier of the pilot.
+            /// </summary>
+            public int CharacterId;
 
-                return this.roles;
+            /// <summary>
+            /// Name of the pilot
+            /// </summary>
+            public string Name;
+
+            /// <summary>
+            /// Pilot's start date with the corporation
+            /// </summary>
+            public DateTime StartDateTime;
+
+            /// <summary>
+            /// Pilot's start date with the corporation in local time
+            /// </summary>
+            public DateTime StartDateTimeLocal;
+
+            /// <summary>
+            /// The unique identifier of the station the pilot's 
+            /// base station.
+            /// </summary>
+            public int BaseId;
+
+            /// <summary>
+            /// The human readable description of the pilot's base 
+            /// station.
+            /// </summary>
+            public string Base;
+
+            /// <summary>
+            /// Pilot's assigned title in the corporation
+            /// </summary>
+            public string Title;
+
+            /// <summary>
+            /// Timestamp of pilot's last logon
+            /// </summary>
+            public DateTime LogonDateTime;
+
+            /// <summary>
+            /// Timestamp of pilot's last logon in local time
+            /// </summary>
+            public DateTime LogonDateTimeLocal;
+
+            /// <summary>
+            /// Timestamp of pilot's last logoff
+            /// </summary>
+            public DateTime LogoffDateTime;
+
+            /// <summary>
+            /// Timestamp of pilot's last logoff in local time
+            /// </summary>
+            public DateTime LogoffDateTimeLocal;
+
+            /// <summary>
+            /// The unique id of the system where the pilot is currently located
+            /// </summary>
+            public int LocationId;
+
+            /// <summary>
+            /// A human readable description of the current location of the pilot
+            /// </summary>
+            public string Location;
+
+            /// <summary>
+            /// The unique identifier of the ship type the pilot is 
+            /// currently flying
+            /// </summary>
+            public int ShipTypeId;
+
+            /// <summary>
+            /// The human readable description of the type of ship the 
+            /// pilot is currently flying
+            /// </summary>
+            public string ShipType;
+
+            /// <summary>
+            /// A mask describing the pilot's current roles in the corporation
+            /// </summary>
+            public string RolesMask;
+
+            /// <summary>
+            /// Depricated
+            /// </summary>
+            public string GrantableRoles;
+
+            /// <summary>
+            /// This pilot's roles in the corporation
+            /// </summary>
+            protected Roles roles;
+            /// <summary>
+            /// This pilot's roles in the corporation
+            /// </summary>
+            public Roles Roles
+            {
+                get
+                {
+                    if (this.roles == null)
+                    {
+                        this.roles = new Roles(this.RolesMask);
+                    }
+
+                    return this.roles;
+                }
             }
         }
     }
+
+   
 }

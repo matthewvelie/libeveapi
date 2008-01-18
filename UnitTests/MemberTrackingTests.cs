@@ -22,9 +22,9 @@ namespace UnitTests
             ResponseCache.Clear();
             MemberTracking memberTracking = EveApi.GetMemberTracking("userId", "characterId", "fullApiKey");
 
-            Assert.AreEqual(memberTracking.MemberTrackingItems.Length, 2);
+            Assert.AreEqual(memberTracking.Members.Length, 2);
 
-            MemberTrackingItem mti = memberTracking.MemberTrackingItems[0];
+            MemberTracking.Member mti = memberTracking.Members[0];
             Assert.AreEqual(150336922, mti.CharacterId);
             Assert.AreEqual("corpexport", mti.Name);
             Assert.AreEqual(0, mti.BaseId);
@@ -60,12 +60,12 @@ namespace UnitTests
             MemberTracking cachedMemberTracking = EveApi.GetMemberTracking("userId", "characterId", "fullApiKey");
 
             Assert.AreEqual(memberTracking.CachedUntilLocal, cachedMemberTracking.CachedUntilLocal);
-            Assert.AreEqual(memberTracking.MemberTrackingItems.Length, cachedMemberTracking.MemberTrackingItems.Length);
+            Assert.AreEqual(memberTracking.Members.Length, cachedMemberTracking.Members.Length);
 
-            for (int i = 0; i < memberTracking.MemberTrackingItems.Length; i++)
+            for (int i = 0; i < memberTracking.Members.Length; i++)
             {
-                MemberTrackingItem mti = memberTracking.MemberTrackingItems[i];
-                MemberTrackingItem cmti = cachedMemberTracking.MemberTrackingItems[i];
+                MemberTracking.Member mti = memberTracking.Members[i];
+                MemberTracking.Member cmti = cachedMemberTracking.Members[i];
 
                 Assert.AreEqual(mti.CharacterId, cmti.CharacterId);
                 Assert.AreEqual(mti.Name, cmti.Name);
