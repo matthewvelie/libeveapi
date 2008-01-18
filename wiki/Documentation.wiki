@@ -3,7 +3,7 @@
   * [HowToUseTheLibrary How to use the library]
   * [Security Security]
   * [UrlConstants How to get XML Responses from a local web server instead of the eve api]
- # === Supported Eve Api Calls ===
+ # === Supported Eve Api Requests ===
   * [AccountBalances Account Balances] - Information about a character or corporation's accounts.
   * [AllianceList Alliance List] - A list of all the alliances in the game and their member corporations.
   * [AssetList Asset List] - A detailed list of all a character or corporations assets in the universe.
