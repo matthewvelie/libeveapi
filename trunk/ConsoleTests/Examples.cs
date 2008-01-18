@@ -12,12 +12,38 @@ namespace ConsoleTests
         public static void Main(String[] args)
         {
             UseLocalUrls();
-
+            CharacterSheetExample();
         }
 
         public static void UseLocalUrls()
         {
             Constants.ApiPrefix = "http://localhost/eveapi";
+        }
+
+        public static void CharacterSheetExample()
+        {
+            CharacterSheet characterSheet = EveApi.GetCharacterSheet("userId", "characterId", "apiKey");
+            
+            long totalSkillpoints = 0;
+            foreach (CharacterSheet.SkillItem skillItem in characterSheet.SkillItemList)
+            {
+                totalSkillpoints += skillItem.Skillpoints;
+            }
+
+            Console.WriteLine("Character Name: {0} Total Skillpoints: {1}", characterSheet.Name, totalSkillpoints);
+        }
+
+        public static void PrintAllianceList()
+        {
+            AllianceList allianceList = EveApi.GetAllianceList();
+            foreach (AllianceList.AllianceListItem ali in allianceList.AllianceListItems)
+            {
+                Console.WriteLine("Alliance name: {0} members: {1}", ali.Name, ali.MemberCount);
+                foreach (AllianceList.CorporationListItem cli in ali.CorporationListItems)
+                {
+                    Console.WriteLine("Member Corporation Id: {0} Started: {1}", cli.CorporationId, cli.StartDate);
+                }
+            }
         }
 
         public static void PrintStarbaseList()

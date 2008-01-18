@@ -162,43 +162,43 @@ namespace libeveapi
                 ae.Value = Convert.ToInt32(enhancer.SelectSingleNode("./augmentatorValue").InnerText);
             }
         }
-    }
 
-    /// <summary>
-    /// Stores valid information about each skill in the character sheet
-    /// </summary>
-    public class SkillItem
-    {
         /// <summary>
-        /// TypeId of the skill
+        /// Stores valid information about each skill in the character sheet
         /// </summary>
-        public int TypeId;
-        /// <summary>
-        /// Current number of skillpoints the character has in the skill
-        /// </summary>
-        public long Skillpoints;
-        /// <summary>
-        /// The highest completed level of the skill
-        /// </summary>
-        public int Level;
-        /// <summary>
-        /// Flag if the skill is an unpublished skill
-        /// </summary>
-        public string Unpublished;
-    }
+        public class SkillItem
+        {
+            /// <summary>
+            /// TypeId of the skill
+            /// </summary>
+            public int TypeId;
+            /// <summary>
+            /// Current number of skillpoints the character has in the skill
+            /// </summary>
+            public long Skillpoints;
+            /// <summary>
+            /// The highest completed level of the skill
+            /// </summary>
+            public int Level;
+            /// <summary>
+            /// Flag if the skill is an unpublished skill
+            /// </summary>
+            public string Unpublished;
+        }
 
-    /// <summary>
-    /// Contains information about each attributeEnhancer (implant)
-    /// </summary>
-    public class AttributeEnhancer
-    {
         /// <summary>
-        /// The name of the implant
+        /// Contains information about each attributeEnhancer (implant)
         /// </summary>
-        public string Name = string.Empty;
-        /// <summary>
-        /// The implant's effect on that attribute
-        /// </summary>
-        public int Value = 0;
+        public class AttributeEnhancer
+        {
+            /// <summary>
+            /// The name of the implant
+            /// </summary>
+            public string Name = string.Empty;
+            /// <summary>
+            /// The implant's effect on that attribute
+            /// </summary>
+            public int Value = 0;
+        }
     }
 }

@@ -10,24 +10,94 @@ namespace libeveapi
     /// </summary>
     public class CorporationSheet : ApiResponse
     {
+        /// <summary>
+        /// Unique identifier for the corporation
+        /// </summary>
         public int CorporationId;
+
+        /// <summary>
+        /// Name of the corporation
+        /// </summary>
         public string CorporationName;
+
+        /// <summary>
+        /// Stock ticker symbol for the corporation
+        /// </summary>
         public string Ticker;
+
+        /// <summary>
+        /// The characterId of the character that is CEO of the corporation
+        /// </summary>
         public int CeoId;
+
+        /// <summary>
+        /// The name of the character that is CEO of the corporation
+        /// </summary>
         public string CeoName;
+
+        /// <summary>
+        /// The unique id of the station where the corporation is based
+        /// </summary>
         public int StationId;
+
+        /// <summary>
+        /// The name of the station where the corporation is based
+        /// </summary>
         public string StationName;
+
+        /// <summary>
+        /// A description of the corporation as set by the corporation
+        /// </summary>
         public string Description;
+
+        /// <summary>
+        /// A url to the corporation's web site
+        /// </summary>
         public string Url;
+
+        /// <summary>
+        ///  	 The unique identifier of this corporation's alliance
+        /// </summary>
         public int AllianceId;
+
+        /// <summary>
+        /// The name of this corporation's alliance
+        /// </summary>
         public string AllianceName;
+
+        /// <summary>
+        /// The tax rate of the corporation
+        /// </summary>
         public double TaxRate;
+
+        /// <summary>
+        /// The current number of pilots in the corporation
+        /// </summary>
         public int MemberCount;
+
+        /// <summary>
+        /// The current maximum number of pilots the corporation can contain
+        /// </summary>
         public int MemberLimit;
+
+        /// <summary>
+        /// The current number of outstanding shares of the corporation
+        /// </summary>
         public long Shares;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Division[] Divisions = new Division[0];
+
+        /// <summary>
+        /// 
+        /// </summary>
         public WalletDivision[] WalletDivisions = new WalletDivision[0];
+
+        /// <summary>
+        /// An object describing the corporation logo
+        /// </summary>
         public CorpLogo Logo = new CorpLogo();
 
         internal static CorporationSheet FromXmlDocument(XmlDocument xmlDoc)
@@ -55,7 +125,7 @@ namespace libeveapi
             foreach (XmlNode row in xmlDoc.SelectNodes("//rowset[@name='divisions']/row"))
             {
                 Division division = new Division();
-                division.AccountKey = Convert.ToInt64(row.Attributes["accountKey"].InnerText);
+                division.AccountKey = Convert.ToInt32(row.Attributes["accountKey"].InnerText);
                 division.Description = row.Attributes["description"].InnerText;
                 parsedDivisions.Add(division);
             }
@@ -65,7 +135,7 @@ namespace libeveapi
             foreach (XmlNode row in xmlDoc.SelectNodes("//rowset[@name='walletDivisions']/row"))
             {
                 WalletDivision walletDivision = new WalletDivision();
-                walletDivision.AccountKey = Convert.ToInt64(row.Attributes["accountKey"].InnerText);
+                walletDivision.AccountKey = Convert.ToInt32(row.Attributes["accountKey"].InnerText);
                 walletDivision.Description = row.Attributes["description"].InnerText;
                 parsedWalletDivisions.Add(walletDivision);
             }
@@ -84,13 +154,13 @@ namespace libeveapi
 
         public class Division
         {
-            public long AccountKey;
+            public int AccountKey;
             public string Description;
         }
 
         public class WalletDivision
         {
-            public long AccountKey;
+            public int AccountKey;
             public string Description;
         }
 
