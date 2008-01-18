@@ -44,7 +44,7 @@ public static CharacterSheet GetCharacterSheet(string userId, string characterId
 * !SkillItem object *
 || *Member* || *Type* || *Description* ||
 || !TypeId || int || Unique identifier for this skill type ||
-|| !Skillpoints || long || Character's current number of skillpoints in the skill ||
+|| Skillpoints || long || Character's current number of skillpoints in the skill ||
 || Level || int || The highest completed level of the skill ||
 || Unpublished || string || Flag if the skill is an unpublished skill ||
 
