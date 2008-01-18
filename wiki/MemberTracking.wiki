@@ -36,6 +36,6 @@ public static MemberTracking GetMemberTracking(string userId, string characterId
 || Location || string || Name of the system where the member is currently located ||
 || ShipTypeId || int || Unique identifier of the ship type the member is currently piloting ||
 || ShipType || string || Name of the ship type the member is currently piloting ||
-|| RolesMask || string || A bit mask describing the member's roles in the corporation ||
+|| RolesMask || string || A bit mask describing the member's roles in the corporation. See CorpRoles. ||
 || GrantableRoles || string || Depricated ||
-|| Roles || Roles || An object that contains information about the member's roles in the corporation ||
+|| [Roles Roles] || Roles || An object that contains information about the member's roles in the corporation. ||
