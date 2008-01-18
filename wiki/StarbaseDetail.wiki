@@ -1,7 +1,7 @@
 === Description ===
 Contains the settings and fuel status of a starbase
 
-=== Eve Api Call ===
+=== Library Method ===
 {{{
 /// <summary>
 /// Returns the settings and fuel status of a starbase
