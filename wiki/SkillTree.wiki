@@ -11,7 +11,7 @@ public static SkillTree GetSkillTree()
 }}}
 
 === Result ===
-* !SkillTree object (See ApiResult for inherited members)
+* !SkillTree object (See ApiResponse for inherited members)
 || *Member* || *Type* || *Description* ||
 || Skills || Skill[] || List of all skills ||
 || !SkillGroups || !SkillGroup[] || List of skill category groups ||
