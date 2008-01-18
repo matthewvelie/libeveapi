@@ -7,23 +7,46 @@ Retrieves information about every character skill.
 /// Gets a data structure containing information on every skill in the game.
 /// </summary>
 /// <returns></returns>
-public static SkillTree GetSkillTree()
+public static !SkillTree !GetSkillTree()
 }}}
 
 === Result ===
-* SkillTree object (See ApiResult for inherited members)
+* !SkillTree object (See ApiResult for inherited members)
 || *Member* || *Type* || *Description* ||
 || Skills || Skill[] || List of all skills ||
-|| SkillGroups || SkillGroup[] || List of skill category groups ||
+|| !SkillGroups || !SkillGroup[] || List of skill category groups ||
 
 * Skill object *
 || *Member* || *Type* || *Description* ||
-|| TypeName || string || Name of the skill ||
-|| GroupId || int || Unique identifier for the group this skill belongs to ||
-|| TypeId || int || Unique identifier for this skill type ||
+|| !TypeName || string || Name of the skill ||
+|| !GroupId || int || Unique identifier for the group this skill belongs to ||
+|| !TypeId || int || Unique identifier for this skill type ||
 || Description || string || information about the skill ||
 || Rank || int || The training time multiplier of the skill ||
-|| RequiredSkills || RequiredSkill[] || The skills required to train this skill ||
-|| PrimaryAttribute || AttributeType || The attrbute that has the most effect on the amount of time required to train this skill. ||
-|| SecondaryAttribute || AttrubuteType || The attribute that has the second most effect of the amount of time required to train this skill. ||
-|| SkillBonuses || SkillBonus[] || The bonuses gained from training this skill. ||
+|| !RequiredSkills || !RequiredSkill[] || The skills required to train this skill ||
+|| !PrimaryAttribute || !AttributeType || The attrbute that has the most effect on the amount of time required to train this skill. ||
+|| !SecondaryAttribute || !AttributeType || The attribute that has the second most effect of the amount of time required to train this skill. ||
+|| !SkillBonuses || !SkillBonus[] || The bonuses gained from training this skill. ||
+
+* RequiredSkill object *
+|| *Member* || *Type* || *Description* ||
+|| TypeId || int || The unique identifier of this skill type. ||
+|| !SkillLevel || int || This skill level is required to train the parent skill. ||
+
+* SkillGroup object *
+|| *Member* || *Type* || *Description* ||
+|| !GroupName || string || The name of this skill group. ||
+|| !GroupId || int || The unique identifier for this skill group. ||
+
+* !SkillBonus object *
+|| *Member* || *Type* || *Description* ||
+|| !BonusType || string || Description of the bonus ||
+|| !BonusValue || double || The amount of bonus gained from each level of the skill trained. ||
+
+* !AttributeType enumeration *
+|| Member || Value || Description ||
+|| Memory || - || Memory attribute ||
+|| Intelligence|| - || Intelligence attribute ||
+|| Perception|| - || Perception attribute ||
+|| Charisma|| - || Charisma attribute ||
+|| Unknown|| - || Unknown attribute (shouldn't ever show up) ||
