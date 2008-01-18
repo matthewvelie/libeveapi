@@ -12,13 +12,28 @@ namespace ConsoleTests
         public static void Main(String[] args)
         {
             UseLocalUrls();
-            CorporationSheetExample();
+            MemberTrackingExample();
         }
 
         public static void UseLocalUrls()
         {
             Constants.ApiPrefix = "http://localhost/eveapi";
         }
+
+
+public static void MemberTrackingExample()
+{
+    MemberTracking memberTracking = EveApi.GetMemberTracking("userId", "characterId", "fullApiKey");
+    
+    // Output the name and location of all corporation directors
+    foreach (MemberTracking.Member member in memberTracking.Members)
+    {
+        if (member.Roles.HasRole(RoleTypes.Director))
+        {
+            Console.WriteLine("Director Name: {0} Location: {1}", member.Name, member.Location);
+        }
+    }
+}
 
         public static void CorporationSheetExample()
         {
