@@ -28,7 +28,7 @@ public static !SkillTree !GetSkillTree()
 || !SecondaryAttribute || !AttributeType || The attribute that has the second most effect of the amount of time required to train this skill. ||
 || !SkillBonuses || !SkillBonus[] || The bonuses gained from training this skill. ||
 
-* RequiredSkill object *
+* !RequiredSkill object *
 || *Member* || *Type* || *Description* ||
 || TypeId || int || The unique identifier of this skill type. ||
 || !SkillLevel || int || This skill level is required to train the parent skill. ||
