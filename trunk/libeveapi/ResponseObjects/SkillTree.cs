@@ -70,32 +70,97 @@ namespace libeveapi
 
         public class Skill
         {
+            /// <summary>
+            /// Name of the skill
+            /// </summary>
             public string TypeName;
+
+            /// <summary>
+            /// Unique identifier for the group this skill belongs to
+            /// </summary>
             public int GroupId;
+
+            /// <summary>
+            /// Unique identifier for this skill type
+            /// </summary>
             public int TypeId;
+
+            /// <summary>
+            /// information about the skill
+            /// </summary>
             public string Description;
+
+            /// <summary>
+            /// The training time multiplier of the skill
+            /// </summary>
             public int Rank;
+
+            /// <summary>
+            /// The skills required to train this skill
+            /// </summary>
             public RequiredSkill[] RequiredSkills = new RequiredSkill[0];
+
+            /// <summary>
+            /// The attrbute that has the most effect on the amount of time required to train this skill.
+            /// </summary>
             public AttributeType PrimaryAttribute;
+
+            /// <summary>
+            /// The attribute that has the second most effect of the amount of time required to train this skill.
+            /// </summary>
             public AttributeType SecondaryAttribute;
+
+            /// <summary>
+            /// The bonuses gained from training this skill.
+            /// </summary>
             public SkillBonus[] SkillBonuses = new SkillBonus[0];
         }
 
+        /// <summary>
+        /// A skill required to train the parent skill
+        /// </summary>
         public class RequiredSkill
         {
+            /// <summary>
+            /// The unique identifier of this skill type.
+            /// </summary>
             public int TypeId;
+
+            /// <summary>
+            /// This skill level is required to train the parent skill.
+            /// </summary>
             public int SkillLevel;
         }
 
+        /// <summary>
+        /// A group of related skills
+        /// </summary>
         public class SkillGroup
         {
+            /// <summary>
+            /// The name of this skill group.
+            /// </summary>
             public string GroupName;
+
+            /// <summary>
+            /// The unique identifier for this skill group.
+            /// </summary>
             public int GroupId;
         }
 
+        /// <summary>
+        /// A bonus gained from training the parent skill
+        /// </summary>
         public class SkillBonus
         {
+            /// <summary>
+            /// Description of the bonus
+            /// </summary>
             public string BonusType;
+
+            /// <summary>
+            /// The amount of bonus gained from each level of the skill trained.
+            /// </summary>
             public double BonusValue;
         }
 
@@ -121,7 +186,7 @@ namespace libeveapi
 
             return AttributeType.Unknown;
         }
-
+        
         public enum AttributeType
         {
             Memory,
