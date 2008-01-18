@@ -33,7 +33,7 @@ public static SkillTree GetSkillTree()
 || TypeId || int || The unique identifier of this skill type. ||
 || !SkillLevel || int || This skill level is required to train the parent skill. ||
 
-* SkillGroup object *
+* !SkillGroup object *
 || *Member* || *Type* || *Description* ||
 || !GroupName || string || The name of this skill group. ||
 || !GroupId || int || The unique identifier for this skill group. ||
