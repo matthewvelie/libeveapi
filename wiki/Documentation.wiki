@@ -4,14 +4,15 @@
   * [Security Security]
   * [UrlConstants How to get XML Responses from a local web server instead of the eve api]
  # === API Calls ===
-  * [AccountBalances Account Balances]
-  * [AllianceList Alliance List]
-  * [AssetList Asset List]
-  * [CharacterList Character List]
-  * [CharacterSheet Character Sheet]
-  * [ErrorList Error List]
-  * [StarbaseDetail Starbase (POS) Details]
-  * [StarbaseList Starbase (POS) List]
+  * [AccountBalances Account Balances] - Information about a character or corporation's accounts.
+  * [AllianceList Alliance List] - A list of all the alliances in the game and their member corporations.
+  * [AssetList Asset List] - A detailed list of all a character or corporations assets in the universe.
+  * [CharacterList Character List] - The list of characters associated with an account
+  * [CharacterSheet Character Sheet] - Detailed information about a character
+  * [CorporationSheet Corporation Sheet] - Detailed information about a corporation
+  * [ErrorList Error List] - A list of all the possible error messages returned by the eve api.
+  * [StarbaseDetail Starbase (POS) Details] - Detailed information about a starbase (POS).
+  * [StarbaseList Starbase (POS) List] - A list of all starbases (POS's) owned by a corporation.
  # === Reference ===
   * [ApiResponse The ApiResponse base class]
   * [Roles Roles class] - A pilot's roles in a corporation.
