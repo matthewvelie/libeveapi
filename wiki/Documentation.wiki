@@ -12,6 +12,7 @@
   * [CharacterSheet Character Sheet] - Detailed information about a character
   * [CorporationSheet Corporation Sheet] - Detailed information about a corporation
   * [ErrorList Error List] - A list of all the possible error messages returned by the eve api.
+  * [MemberTracking Member Tracking] - Detailed current information about the members of a corporation.
   * [StarbaseDetail Starbase (POS) Details] - Detailed information about a starbase (POS).
   * [StarbaseList Starbase (POS) List] - A list of all starbases (POS's) owned by a corporation.
  # === Reference ===
