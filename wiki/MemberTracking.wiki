@@ -25,7 +25,7 @@ public static MemberTracking GetMemberTracking(string userId, string characterId
 || Name || string || member's character name ||
 || !StartDateTime || !DateTime || Member's start date with the corporation in CCP time ||
 || !StartDateTimeLocal || !DateTime || Member's start date with the corporation in local time ||
-|| BaseId || int || The unique identifier of the member's base station ||
+|| !BaseId || int || The unique identifier of the member's base station ||
 || Base || string || Name of the member's base station ||
 || Title || string || Member's assigned title in the corporation ||
 || !LogonDateTime || !DateTime || Date of the member's last log on in CCP time ||
