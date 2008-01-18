@@ -8,6 +8,7 @@
   * [AllianceList Alliance List]
   * [AssetList Asset List]
   * [CharacterList Character List]
+  * [CharacterSheet Character Sheet]
   * [ErrorList Error List]
   * [StarbaseDetail Starbase (POS) Details]
   * [StarbaseList Starbase (POS) List]
