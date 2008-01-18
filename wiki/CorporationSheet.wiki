@@ -1,0 +1,46 @@
+=== Description ===
+Retrieves a detailed description of a corporation.
+
+=== Library Methods ===
+{{{
+/// <summary>
+/// Returns a detailed description of a character's corporation
+/// </summary>
+/// <param name="userId">userId of account for authentication</param>
+/// <param name="characterId">CharacterId of character for authentication</param>
+/// <param name="apiKey">Limited access API key of account</param>
+/// <returns></returns>
+public static CorporationSheet GetCorporationSheet(string userId, string characterId, string apiKey)
+
+/// <summary>
+/// Returns a detailed description of any corporation
+/// </summary>
+/// <param name="userId">userId of account for authentication</param>
+/// <param name="characterId">CharacterId of character for authentication</param>
+/// <param name="apiKey">Limited access API key of account</param>
+/// <param name="corporationId">retrieve information on the corporation with this id</param>
+/// <returns></returns>
+public static CorporationSheet GetCorporationSheet(string userId, string characterId, string apiKey, string corporationId)
+}}}
+
+=== Result ===
+* CorporationSheet object (See ApiResult for inherited members) *
+|| Member || Type || Description ||
+|| CoporationId || int || Unique identifier for the corporation ||
+|| CorporationName || string || Name of the corporation ||
+|| Ticker || string || Stock ticker symbol for the corporation ||
+|| CeoId || int || The characterId of the character that is CEO of the corporation ||
+|| CeoName || string || The name of the character that is CEO of the corporation ||
+|| StationId || int || The unique id of the station where the corporation is based ||
+|| StationName || string || The name of the station where the corporation is based ||
+|| Description || string || A description of the corporation as set by the corporation ||
+|| Url || string || A url to the corporation's web site ||
+|| AllianceId || int || The unique identifier of this corporation's alliance ||
+|| AllianceName || string || The name of this corporation's alliance ||
+|| TaxRate || double || The tax rate of the corporation ||
+|| MemberCount || int || The current number of pilots in the corporation ||
+|| MemberLimit || int || The current maximum number of pilots the corporation can contain ||
+|| Shares || int || The current number of outstanding shares of the corporation ||
+|| Divisions || Division || ||
+|| WalletDivisions || WalletDivision || ||
+|| Logo || CorpLogo || An object describing the corporation logo ||
