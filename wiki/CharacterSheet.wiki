@@ -14,41 +14,52 @@ public static CharacterSheet GetCharacterSheet(string userId, string characterId
 }}}
 
 === Result ===
-* CharacterSheet object (See ApiResult for inherited members) *
+* !CharacterSheet object (See ApiResult for inherited members) *
 || *Member* || *Type* || *Description* ||
-|| CharacterId || int || The eve assigned characterId ||
+|| !CharacterId || int || The eve assigned characterId ||
 || Name || string || The name of the character ||
 || Race || string || The race of the character ||
-|| BloodLine || string || The bloodline of the character ||
+|| !BloodLine || string || The bloodline of the character ||
 || Gender || string || The gender of the character (currently male/female) ||
-|| CorporationName || string || The name of the character's corporation ||
-|| CorporationId || int || The eve generated id of the character's corporation ||
+|| !CorporationName || string || The name of the character's corporation ||
+|| !CorporationId || int || The eve generated id of the character's corporation ||
 || Balance || double || The character's current wallet balance ||
 || Intelligence || int || The character's intelligence attribute ||
 || Memory || int || The character's memory attribute ||
 || Charisma || int || The character's charisma attribute ||
 || Perception || int || The character's perception attribute ||
 || Willpower || int || The characters willpower attribute ||
-|| MemoryBonus || AttributeEnhancer || Memory implant ||
-|| WillpowerBonus|| AttributeEnhancer || Willpower implant ||
-|| PerceptionBonus|| AttributeEnhancer || Perception implant ||
-|| IntelligenceBonus|| AttributeEnhancer || Intelligenceimplant ||
-|| CharismaBonus|| AttributeEnhancer || Charisma implant ||
-|| SkillItemList || SkillItem[] || List of character's skills ||
+|| !MemoryBonus || !AttributeEnhancer || Memory implant ||
+|| !WillpowerBonus|| !AttributeEnhancer || Willpower implant ||
+|| !PerceptionBonus|| !AttributeEnhancer || Perception implant ||
+|| !IntelligenceBonus|| !AttributeEnhancer || Intelligence implant ||
+|| !CharismaBonus|| !AttributeEnhancer || Charisma implant ||
+|| !SkillItemList || !SkillItem[] || List of character's skills ||
 
-* AttributeEnhancer object *
+* !AttributeEnhancer object *
 || *Member* || *Type* || *Description* ||
 || Name || string || The name of the implant ||
 || Value || int || The implant's attribute modifier value ||
 
-* SkillItem object *
+* !SkillItem object *
 || *Member* || *Type* || *Description* ||
-|| TypeId || int || Unique identifier for this skill type ||
-|| Skillpoints || long || Character's current number of skillpoints in the skill ||
+|| !TypeId || int || Unique identifier for this skill type ||
+|| !Skillpoints || long || Character's current number of skillpoints in the skill ||
 || Level || int || The highest completed level of the skill ||
 || Unpublished || string || Flag if the skill is an unpublished skill ||
 
 === Example ===
 {{{
+public static void CharacterSheetExample()
+{
+    CharacterSheet characterSheet = EveApi.GetCharacterSheet("userId", "characterId", "apiKey");
+    
+    long totalSkillpoints = 0;
+    foreach (CharacterSheet.SkillItem skillItem in characterSheet.SkillItemList)
+    {
+        totalSkillpoints += skillItem.Skillpoints;
+    }
 
+    Console.WriteLine("Character Name: {0} Total Skillpoints: {1}", characterSheet.Name, totalSkillpoints);
+}
 }}}
