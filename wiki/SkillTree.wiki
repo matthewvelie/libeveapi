@@ -7,7 +7,7 @@ Retrieves information about every character skill.
 /// Gets a data structure containing information on every skill in the game.
 /// </summary>
 /// <returns></returns>
-public static !SkillTree !GetSkillTree()
+public static SkillTree GetSkillTree()
 }}}
 
 === Result ===
