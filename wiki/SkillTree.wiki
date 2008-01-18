@@ -1,0 +1,29 @@
+=== Description ===
+Retrieves information about every character skill.
+
+=== Library Method ===
+{{{
+/// <summary>
+/// Gets a data structure containing information on every skill in the game.
+/// </summary>
+/// <returns></returns>
+public static SkillTree GetSkillTree()
+}}}
+
+=== Result ===
+* SkillTree object (See ApiResult for inherited members)
+|| *Member* || *Type* || *Description* ||
+|| Skills || Skill[] || List of all skills ||
+|| SkillGroups || SkillGroup[] || List of skill category groups ||
+
+* Skill object *
+|| *Member* || *Type* || *Description* ||
+|| TypeName || string || Name of the skill ||
+|| GroupId || int || Unique identifier for the group this skill belongs to ||
+|| TypeId || int || Unique identifier for this skill type ||
+|| Description || string || information about the skill ||
+|| Rank || int || The training time multiplier of the skill ||
+|| RequiredSkills || RequiredSkill[] || The skills required to train this skill ||
+|| PrimaryAttribute || AttributeType || The attrbute that has the most effect on the amount of time required to train this skill. ||
+|| SecondaryAttribute || AttrubuteType || The attribute that has the second most effect of the amount of time required to train this skill. ||
+|| SkillBonuses || SkillBonus[] || The bonuses gained from training this skill. ||
