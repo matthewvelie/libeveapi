@@ -24,23 +24,44 @@ public static CorporationSheet GetCorporationSheet(string userId, string charact
 }}}
 
 === Result ===
-* CorporationSheet object (See ApiResult for inherited members) *
+* !CorporationSheet object (See ApiResult for inherited members) *
 || Member || Type || Description ||
-|| CoporationId || int || Unique identifier for the corporation ||
-|| CorporationName || string || Name of the corporation ||
+|| !CoporationId || int || Unique identifier for the corporation ||
+|| !CorporationName || string || Name of the corporation ||
 || Ticker || string || Stock ticker symbol for the corporation ||
-|| CeoId || int || The characterId of the character that is CEO of the corporation ||
-|| CeoName || string || The name of the character that is CEO of the corporation ||
-|| StationId || int || The unique id of the station where the corporation is based ||
-|| StationName || string || The name of the station where the corporation is based ||
+|| !CeoId || int || The characterId of the character that is CEO of the corporation ||
+|| !CeoName || string || The name of the character that is CEO of the corporation ||
+|| !StationId || int || The unique id of the station where the corporation is based ||
+|| !StationName || string || The name of the station where the corporation is based ||
 || Description || string || A description of the corporation as set by the corporation ||
-|| Url || string || A url to the corporation's web site ||
-|| AllianceId || int || The unique identifier of this corporation's alliance ||
-|| AllianceName || string || The name of this corporation's alliance ||
-|| TaxRate || double || The tax rate of the corporation ||
-|| MemberCount || int || The current number of pilots in the corporation ||
-|| MemberLimit || int || The current maximum number of pilots the corporation can contain ||
+|| !Url || string || A url to the corporation's web site ||
+|| !AllianceId || int || The unique identifier of this corporation's alliance ||
+|| !AllianceName || string || The name of this corporation's alliance ||
+|| !TaxRate || double || The tax rate of the corporation ||
+|| !MemberCount || int || The current number of pilots in the corporation ||
+|| !MemberLimit || int || The current maximum number of pilots the corporation can contain ||
 || Shares || int || The current number of outstanding shares of the corporation ||
-|| Divisions || Division || ||
-|| WalletDivisions || WalletDivision || ||
-|| Logo || CorpLogo || An object describing the corporation logo ||
+|| Divisions || Division[] || ||
+|| !WalletDivisions[] || !WalletDivision || ||
+|| Logo || !CorpLogo || An object describing the corporation logo ||
+
+* Division object *
+|| *Member* || *Type* || *Description* ||
+|| !AccountKey || int || ||
+|| Description || string || ||
+
+* !WalletDivision object *
+|| *Member* || *Type* || *Description* ||
+|| !AccountKey || int || ||
+|| Description || string || ||
+
+
+* !CorpLogo object *
+|| *Member* || *Type* || *Description* ||
+|| !GraphicId || int || ||
+|| Shape1 || int || ||
+|| Shape2 || int || ||
+|| Shape3 || int || ||
+|| Color1 || int || ||
+|| Color2 || int || ||
+|| Color3 || int || ||
