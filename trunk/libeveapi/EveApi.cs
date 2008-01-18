@@ -225,6 +225,64 @@ namespace libeveapi
         }
 
         /// <summary>
+        /// Retrieves the Kill Log for a character or corporation
+        /// </summary>
+        /// <param name="killLogType">KillLogType -- Character/Corporation which kill log do you want to retrieve</param>
+        /// <param name="userId">User ID for authentication</param>
+        /// <param name="characterId">The character your requesting data for</param>
+        /// <param name="fullApiKey">Full Api Key for the account</param>
+        /// <param name="beforeKillID">Returns the most recent kills before the specified Kill ID - used for scrolling back through the log</param>
+        /// <returns>Kill Log object containing the array of kills</returns>
+        public static KillLog GetKillLog(KillLogType killLogType, string userId, string characterId, string fullApiKey, int beforeKillID)
+        {
+            string apiPath = string.Empty;
+            switch (killLogType)
+            {
+                case KillLogType.Character:
+                    apiPath = Constants.CharKillLog;
+                    break;
+                case KillLogType.Corporation:
+                    apiPath = Constants.CorpKillLog;
+                    break;
+            }
+
+            string url = string.Empty;
+            if (beforeKillID == 0)
+            {
+                url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}&version=2", Constants.ApiPrefix, apiPath, userId, characterId, fullApiKey);
+            }
+            else
+            {
+                url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}&beforeKillID={5}&version=2", Constants.ApiPrefix, apiPath, userId, characterId, fullApiKey, beforeKillID);
+            }
+
+            ApiResponse cachedResponse = ResponseCache.Get(url);
+            if (cachedResponse != null)
+            {
+                return cachedResponse as KillLog;
+            }
+
+            XmlDocument xmlDoc = Network.GetXml(url);
+            KillLog killLog = KillLog.FromXmlDocument(xmlDoc);
+            ResponseCache.Set(url, killLog);
+
+            return killLog;
+        }
+
+        /// <summary>
+        /// Retrieves the Kill Log for a character or corporation
+        /// </summary>
+        /// <param name="killLogType">KillLogType -- Character/Corporation which kill log do you want to retrieve</param>
+        /// <param name="userId">User ID for authentication</param>
+        /// <param name="characterId">The character your requesting data for</param>
+        /// <param name="fullApiKey">Full Api Key for the account</param>
+        /// <returns>Kill Log object containing the array of kills</returns>
+        public static KillLog GetKillLog(KillLogType killLogType, string userId, string characterId, string fullApiKey)
+        {
+            return GetKillLog(killLogType, userId, characterId, fullApiKey, 0);
+        }
+
+        /// <summary>
         /// Returns a list of industrial jobs owned by a character or corporation.
         /// </summary>
         /// <param name="industryJobListType"><see cref="IndustryJobListType" /></param>

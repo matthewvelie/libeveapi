@@ -47,5 +47,5 @@
       </row>
     </rowset>
   </result>
-  <cachedUntil>2007-12-10 18:26:58</cachedUntil>
+  <cachedUntil>2007-12-10 19:26:58</cachedUntil>
 </eveapi>

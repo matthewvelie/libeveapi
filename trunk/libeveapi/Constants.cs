@@ -122,7 +122,11 @@ namespace libeveapi
         /// <summary>
         /// The location of the characters killlog xml file
         /// </summary>
-        public static string KillLog = "/char/Killlog.xml.aspx";
+        public static string CharKillLog = "/char/Killlog.xml.aspx";
+        /// <summary>
+        /// The location of the corporation killlog xml file
+        /// </summary>
+        public static string CorpKillLog = "/corp/Killlog.xml.aspx";
         /// <summary>
         /// The location of the characters current skill in training xml file
         /// </summary>

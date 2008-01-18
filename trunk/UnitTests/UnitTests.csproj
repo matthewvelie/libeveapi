@@ -22,7 +22,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -43,6 +43,7 @@
     <Compile Include="CharacterListTests.cs" />
     <Compile Include="CharacterSheetTests.cs" />
     <Compile Include="ConquerableStationTests.cs" />
+    <Compile Include="KillLogTests.cs" />
     <Compile Include="MapSovereigntyTests.cs" />
     <Compile Include="MapKillsTests.cs" />
     <Compile Include="CorporationSheetTests.cs" />
