@@ -12,8 +12,7 @@ namespace ConsoleTests
         public static void Main(String[] args)
         {
             UseLocalUrls();
-            SkillTreeExample();
-            KillLogExample();
+            ConquerableStationListExample();
         }
 
         public static void UseLocalUrls()
@@ -21,12 +20,27 @@ namespace ConsoleTests
             Constants.ApiPrefix = "http://localhost/eveapi";
         }
 
+        public static void ConquerableStationListExample()
+        {
+            ConquerableStationList csl = EveApi.GetConquerableStationList();
+            foreach (ConquerableStationList.ConquerableStation station in csl.ConquerableStations)
+            {
+                Console.WriteLine("Station Name: {0} Corporation Name: {1}", station.StationName, station.CorporationName);
+            }
+        }
+
+        /// <summary>
+        /// Display a skill and its required skills
+        /// </summary>
         public static void SkillTreeExample()
         {
             SkillTree skillTree = EveApi.GetSkillTree();
+
+            // Get skill 3344 and display its name
             SkillTree.Skill targetSkill = GetSkillByTypeId(3344, skillTree);
             Console.WriteLine("Skill Name: {0}", targetSkill.TypeName);
 
+            // Display the name and level of each required skill
             foreach (SkillTree.RequiredSkill requiredSkill in targetSkill.RequiredSkills)
             {
                 SkillTree.Skill requiredSkillInfo = GetSkillByTypeId(requiredSkill.TypeId, skillTree);
@@ -34,6 +48,12 @@ namespace ConsoleTests
             }
         }
 
+        /// <summary>
+        /// Find a Skill in the SkillTree by TypeId
+        /// </summary>
+        /// <param name="typeId"></param>
+        /// <param name="skillTree"></param>
+        /// <returns></returns>
         private static SkillTree.Skill GetSkillByTypeId(int typeId, SkillTree skillTree)
         {
             foreach (SkillTree.Skill skill in skillTree.Skills)

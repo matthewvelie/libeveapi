@@ -21,10 +21,10 @@ namespace UnitTests
         {
             ConquerableStationList stationList = EveApi.GetConquerableStationList();
 
-            Assert.AreEqual(233, stationList.conquerableStationList.Length);
-            Assert.AreEqual(60014926, stationList.conquerableStationList[0].stationId);
-            Assert.AreEqual("The Alamo", stationList.conquerableStationList[0].stationName);
-            Assert.AreEqual(12295, stationList.conquerableStationList[0].stationTypeId);
+            Assert.AreEqual(233, stationList.ConquerableStations.Length);
+            Assert.AreEqual(60014926, stationList.ConquerableStations[0].StationId);
+            Assert.AreEqual("The Alamo", stationList.ConquerableStations[0].StationName);
+            Assert.AreEqual(12295, stationList.ConquerableStations[0].StationTypeId);
         }
 
         [Test]
@@ -41,11 +41,11 @@ namespace UnitTests
             Assert.AreEqual(stationList.CachedUntilLocal, cachedstationList.CachedUntilLocal);
 
 
-            for (int i = 0; i < stationList.conquerableStationList.Length; i++)
+            for (int i = 0; i < stationList.ConquerableStations.Length; i++)
             {
-                Assert.AreEqual(stationList.conquerableStationList[i].corporationId, cachedstationList.conquerableStationList[i].corporationId);
-                Assert.AreEqual(stationList.conquerableStationList[i].corporationName, cachedstationList.conquerableStationList[i].corporationName);
-                Assert.AreEqual(stationList.conquerableStationList[i].solarSystemId, cachedstationList.conquerableStationList[i].solarSystemId);
+                Assert.AreEqual(stationList.ConquerableStations[i].CorporationId, cachedstationList.ConquerableStations[i].CorporationId);
+                Assert.AreEqual(stationList.ConquerableStations[i].CorporationName, cachedstationList.ConquerableStations[i].CorporationName);
+                Assert.AreEqual(stationList.ConquerableStations[i].SolarSystemId, cachedstationList.ConquerableStations[i].SolarSystemId);
             }
             
         }
