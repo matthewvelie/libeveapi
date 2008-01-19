@@ -10,6 +10,7 @@
   * [CharacterList Character List] - The list of characters associated with an account
   * [CharacterPortrait Character Portrait] - A character's image from the game.
   * [CharacterSheet Character Sheet] - Detailed information about a character
+  * [ConquerableStationList Conquerable Station List] - The list of all conquerable stations in the universe.
   * [CorporationSheet Corporation Sheet] - Detailed information about a corporation
   * [ErrorList Error List] - A list of all the possible error messages returned by the eve api.
   * [MemberTracking Member Tracking] - Detailed current information about the members of a corporation.
