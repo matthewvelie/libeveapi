@@ -23,3 +23,15 @@ public static ConquerableStationList GetConquerableStationList()
 || !SolarSystemId || int || The unique identifier of the solar system where the station is located ||
 || !CorporationId || int || The unique identifier of the corporation that owns the station ||
 || !CorporationName || string || The name of the corporation that owns the station ||
+
+=== Example ===
+{{{
+public static void ConquerableStationListExample()
+{
+    ConquerableStationList csl = EveApi.GetConquerableStationList();
+    foreach (ConquerableStationList.ConquerableStation station in csl.ConquerableStations)
+    {
+        Console.WriteLine("Station Name: {0} Corporation Name: {1}", station.StationName, station.CorporationName);
+    }
+}
+}}}
