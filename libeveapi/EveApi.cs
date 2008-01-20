@@ -16,11 +16,25 @@ namespace libeveapi
         /// Sets a proxy server for the connection to run through
         /// </summary>
         /// <param name="url">The url for the proxy server</param>
-        /// <param name="int port">The port for the proxy server</param>
+        /// <param name="port">The port for the proxy server</param>
         /// <returns></returns>
         public static void SetProxy(string url, int port)
         {
             Network.eveNetworkClientSettings.proxy = new WebProxy(url, port);
+        }
+
+        /// <summary>
+        /// Sets a proxy server for the connection to run through
+        /// </summary>
+        /// <param name="url">The url for the proxy server</param>
+        /// <param name="port">The port for the proxy server</param>
+        /// <param name="username">The username for the proxy server</param>
+        /// <param name="password">The password for the proxy server</param>
+        /// <returns></returns>
+        public static void SetProxy(string url, int port, string username, string password)
+        {
+            Network.eveNetworkClientSettings.proxy = new WebProxy(url, port);
+            Network.eveNetworkClientSettings.proxy.Credentials = new NetworkCredential(username, password);
         }
 
         /// <summary>
