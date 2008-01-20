@@ -6,7 +6,7 @@ using System.Xml;
 namespace libeveapi
 {
     /// <summary>
-    /// Represents the number of kills per system from the eve api
+    /// Returns a list of solarsystems and what faction or alliance controls them.
     /// http://wiki.eve-dev.net/APIv2_Map_Kills_XML
     /// </summary>
     public class MapSovereignty : ApiResponse
@@ -14,7 +14,7 @@ namespace libeveapi
         /// <summary>
         /// 
         /// </summary>
-        public MapSovereigntyItem[] MapSystemSovereignty = new MapSovereigntyItem[0];
+        public MapSovereigntyItem[] MapSystemSovereigntyItems = new MapSovereigntyItem[0];
 
         /// <summary>
         /// Create an Mapkills object by parsing an XmlDocument response from the eve api
@@ -38,7 +38,7 @@ namespace libeveapi
                 sovereigntyData.SolarSystemName = systemRow.Attributes["solarSystemName"].InnerText;
                 sovereigntyList.Add(sovereigntyData);
             }
-            mapSovereignty.MapSystemSovereignty = sovereigntyList.ToArray();
+            mapSovereignty.MapSystemSovereigntyItems = sovereigntyList.ToArray();
 
             return mapSovereignty;
         }
