@@ -20,9 +20,9 @@ public static CharacterList GetAccountCharacters(int userId, string apiKey)
 * !CharacterList.!CharacterListItem Object *
 || Member || Type || Description ||
 || Name || string || Name of the character ||
-|| !CharacterId || string || ID of the character ||
+|| !CharacterId || int || ID of the character ||
 || !CorporationName || string || Name of the character's corporation ||
-|| !CorporationId || string || ID of the character's corporation ||
+|| !CorporationId || int || ID of the character's corporation ||
 
 === Example ===
 {{{
