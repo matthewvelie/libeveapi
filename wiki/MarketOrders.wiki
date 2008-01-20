@@ -57,3 +57,19 @@ public static MarketOrder GetMarketOrderList(MarketOrderType marketOrdersType, s
 || *Member* || *Value* || *Description* ||
 || Corporation || - || Retrieve the market order list for a corporation ||
 || Character || - || Retrieve the market order list for a character ||
+
+=== Example === 
+{{{
+
+public static void MarketOrders()
+{
+    MarketOrders orders = EveApi.GetMarketOrderList(MarketOrdersListType.Character, "userId", "characterId", "fullApiKey");
+    foreach (MarketOrderItem item in orders.MarketOrderItems)
+    {
+        if (item.OrderType == MarketOrderType.Sell && item.TypeId == 123)
+        {
+            Console.WriteLine("Item 123 is for sale at: {0}", item.StationId);
+        }
+    }
+}
+}}}
