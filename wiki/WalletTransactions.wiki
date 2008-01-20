@@ -53,3 +53,31 @@ public static WalletTransactions GetWalletTransactionsList(WalletTransactionList
 || *Member* || *Value* || *Description* ||
 || Corporation || - || Transaction list for a corporation ||
 || Character || - || Transaction list for a character ||
+
+=== Example ===
+{{{
+public static void WalletTransactionsExample()
+{
+    bool done = false;
+    int lastEntrySeen = 0;
+
+    while (!done)
+    {
+        WalletTransactions transactions = EveApi.GetWalletTransactionsList(WalletTransactionListType.Character, 0, 0, "fullApiKey", lastEntrySeen);
+        DisplayWalletTransactions(transactions);
+        lastEntrySeen += transactions.WalletTransactionItems.Length;
+        if (transactions.WalletTransactionItems.Length < 1000)
+        {
+            done = true;
+        }
+    }
+}
+
+public static void DisplayWalletTransactions(WalletTransactions transactions)
+{
+    foreach (WalletTransactionItem transaction in transactions.WalletTransactionItems)
+    {
+        Console.WriteLine("Date: {0} Quantity: {1} Price: {2}", transaction.TransactionDateTimeLocal, transaction.Quantity, transaction.Price);
+    }
+}
+}}}
