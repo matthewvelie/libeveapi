@@ -9,7 +9,7 @@ Returns a list of all the characters on an account.
 /// <param name="userId">userID of the account for authentication</param>
 /// <param name="apiKey">limited or full access api key of account</param>
 /// <returns></returns>
-public static CharacterList GetAccountCharacters(string userId, string apiKey)
+public static CharacterList GetAccountCharacters(int userId, string apiKey)
 }}}
 
 === Result ===
@@ -17,7 +17,7 @@ public static CharacterList GetAccountCharacters(string userId, string apiKey)
 || Member || Type || Description ||
 || !CharacterListItems || !CharacterListItem[] || The characters from this list ||
 
-* !CharacterListItem Object *
+* !CharacterList.!CharacterListItem Object *
 || Member || Type || Description ||
 || Name || string || Name of the character ||
 || !CharacterId || string || ID of the character ||
@@ -27,9 +27,10 @@ public static CharacterList GetAccountCharacters(string userId, string apiKey)
 === Example ===
 {{{
 public static void PrintCharacterList()
+public static void PrintCharacterList()
 {
-    CharacterList characterList = EveApi.GetAccountCharacters("userId", "apiKey");
-    foreach (CharacterListItem cli in characterList.CharacterListItems)
+    CharacterList characterList = EveApi.GetAccountCharacters(453245, "apiKey");
+    foreach (CharacterList.CharacterListItem cli in characterList.CharacterListItems)
     {
         Console.WriteLine("Name: {0} Corporation: {1}", cli.Name, cli.CorporationName);
     }
