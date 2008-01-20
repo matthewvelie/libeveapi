@@ -275,7 +275,7 @@ namespace ConsoleTests
         public static void PrintStarbaseList()
         {
             StarbaseList starbaseList = EveApi.GetStarbaseList(5385, 5431487, "fullApiKey");
-            foreach (StarbaseListItem sli in starbaseList.StarbaseListItems)
+            foreach (StarbaseList.StarbaseListItem sli in starbaseList.StarbaseListItems)
             {
                 Console.WriteLine("ItemID: {0} LocationID: {1} State: {2}", sli.ItemId, sli.LocationId, sli.State);
             }

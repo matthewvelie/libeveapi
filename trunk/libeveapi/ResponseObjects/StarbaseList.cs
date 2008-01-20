@@ -63,87 +63,87 @@ namespace libeveapi
             starbaseList.StarbaseListItems = starbaseListItems.ToArray();
             return starbaseList;
         }
-    }
-
-    /// <summary>
-    /// Represents a single starbase in the starbase list
-    /// </summary>
-    public class StarbaseListItem
-    {
-        /// <summary>
-        /// Unique identifier for this starbase
-        /// </summary>
-        public int ItemId;
 
         /// <summary>
-        /// Control tower type id
+        /// Represents a single starbase in the starbase list
         /// </summary>
-        public int TypeId;
+        public class StarbaseListItem
+        {
+            /// <summary>
+            /// Unique identifier for this starbase
+            /// </summary>
+            public int ItemId;
+
+            /// <summary>
+            /// Control tower type id
+            /// </summary>
+            public int TypeId;
+
+            /// <summary>
+            /// The id of the system where the starbase is located
+            /// </summary>
+            public int LocationId;
+
+            /// <summary>
+            /// The id of the moon where the starbase is located
+            /// </summary>
+            public int MoonId;
+
+            /// <summary>
+            /// See <see cref="StarbaseState"/> for full descriptions of each starbase state
+            /// </summary>
+            public StarbaseState State;
+
+            /// <summary>
+            /// See <see cref="StarbaseState"/> for the potential meanings of StateTimestamp
+            /// </summary>
+            public DateTime StateTimestamp;
+
+            /// <summary>
+            /// See <see cref="StarbaseState"/> for the potential meanings of OnlineTimestamp
+            /// </summary>
+            public DateTime OnlineTimestamp;
+
+            /// <summary>
+            /// StateTimestamp in local time
+            /// </summary>
+            public DateTime StateTimestampLocal;
+
+            /// <summary>
+            /// OnlineTimestamp in local time
+            /// </summary>
+            public DateTime OnlineTimestampLocal;
+        }
 
         /// <summary>
-        /// The id of the system where the starbase is located
+        /// This represents the current state of the starbase, of which there are
+        /// four different valid states.
         /// </summary>
-        public int LocationId;
+        public enum StarbaseState
+        {
+            /// <summary>
+            /// Starbase is anchored or offline
+            /// if offline then it went offline at StateTimestamp
+            /// </summary>
+            AnchoredOrOffline = 1,
 
-        /// <summary>
-        /// The id of the moon where the starbase is located
-        /// </summary>
-        public int MoonId;
+            /// <summary>
+            /// Starbase is in the process of coming online
+            /// Will be online at time OnlineTimestamp
+            /// </summary>
+            Onlining = 2,
 
-        /// <summary>
-        /// See <see cref="StarbaseState"/> for full descriptions of each starbase state
-        /// </summary>
-        public StarbaseState State;
+            /// <summary>
+            /// Starbase in in reinforced mode
+            /// Until time StateTimestamp
+            /// </summary>
+            Reinforced = 3,
 
-        /// <summary>
-        /// See <see cref="StarbaseState"/> for the potential meanings of StateTimestamp
-        /// </summary>
-        public DateTime StateTimestamp;
-
-        /// <summary>
-        /// See <see cref="StarbaseState"/> for the potential meanings of OnlineTimestamp
-        /// </summary>
-        public DateTime OnlineTimestamp;
-
-        /// <summary>
-        /// StateTimestamp in local time
-        /// </summary>
-        public DateTime StateTimestampLocal;
-
-        /// <summary>
-        /// OnlineTimestamp in local time
-        /// </summary>
-        public DateTime OnlineTimestampLocal;
-    }
-
-    /// <summary>
-    /// This represents the current state of the starbase, of which there are
-    /// four different valid states.
-    /// </summary>
-    public enum StarbaseState
-    {
-        /// <summary>
-        /// Starbase is anchored or offline
-        /// if offline then it went offline at StateTimestamp
-        /// </summary>
-        AnchoredOrOffline = 1,
-
-        /// <summary>
-        /// Starbase is in the process of coming online
-        /// Will be online at time OnlineTimestamp
-        /// </summary>
-        Onlining = 2,
-
-        /// <summary>
-        /// Starbase in in reinforced mode
-        /// Until time StateTimestamp
-        /// </summary>
-        Reinforced = 3,
-
-        /// <summary>
-        /// Starbase is online
-        /// Continuously since time OnlineTimestamp
-        /// </summary>
-        Online = 4
+            /// <summary>
+            /// Starbase is online
+            /// Continuously since time OnlineTimestamp
+            /// </summary>
+            Online = 4
+        }
     }
 }
