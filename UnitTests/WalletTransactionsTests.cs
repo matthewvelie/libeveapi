@@ -19,7 +19,7 @@ namespace UnitTests
         [Test]
         public void GetCharWalletTransactionsTest()
         {
-            WalletTransactions walletTransactions = EveApi.GetWalletTransactionsList(WalletTransactionListType.Character, "userId", "charId", "apiKey");
+            WalletTransactions walletTransactions = EveApi.GetWalletTransactionsList(WalletTransactionListType.Character, 0, 0, "apiKey");
 
             Assert.AreEqual(4, walletTransactions.WalletTransactionItems.Length);
             Assert.AreEqual(619, walletTransactions.WalletTransactionItems[0].TransactionId);
@@ -36,11 +36,11 @@ namespace UnitTests
         {
             ResponseCache.Clear();
 
-            WalletTransactions walletTransactions = EveApi.GetWalletTransactionsList(WalletTransactionListType.Corporation, "userId", "charId", "apiKey");
+            WalletTransactions walletTransactions = EveApi.GetWalletTransactionsList(WalletTransactionListType.Corporation, 0, 0, "apiKey");
             ResponseCache.Save("ResponseCache.xml");
             ResponseCache.Clear();
             ResponseCache.Load("ResponseCache.xml");
-            WalletTransactions cachedwalletTransactions = EveApi.GetWalletTransactionsList(WalletTransactionListType.Corporation, "userId", "charId", "apiKey");
+            WalletTransactions cachedwalletTransactions = EveApi.GetWalletTransactionsList(WalletTransactionListType.Corporation, 0, 0, "apiKey");
 
             Assert.AreEqual(walletTransactions.CachedUntilLocal, cachedwalletTransactions.CachedUntilLocal);
 

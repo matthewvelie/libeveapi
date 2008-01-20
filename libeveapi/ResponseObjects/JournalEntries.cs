@@ -45,15 +45,16 @@ namespace libeveapi
         {
             JournalEntryItem journalEntryItem = new JournalEntryItem();
 
-            journalEntryItem.Date = Convert.ToDateTime(journalTransactionRow.Attributes["date"].InnerText);
-            journalEntryItem.RefId = Convert.ToInt64(journalTransactionRow.Attributes["refID"].InnerText);
-            journalEntryItem.RefTypeId = Convert.ToInt64(journalTransactionRow.Attributes["refTypeID"].InnerText);
+            journalEntryItem.Date = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(journalTransactionRow.Attributes["date"].InnerText);
+            journalEntryItem.DateLocal = TimeUtilities.ConvertCCPToLocalTime(journalEntryItem.Date);
+            journalEntryItem.RefId = Convert.ToInt32(journalTransactionRow.Attributes["refID"].InnerText);
+            journalEntryItem.RefTypeId = Convert.ToInt32(journalTransactionRow.Attributes["refTypeID"].InnerText);
             journalEntryItem.OwnerName1 = journalTransactionRow.Attributes["ownerName1"].InnerText;
-            journalEntryItem.OwnerId1 = Convert.ToInt64(journalTransactionRow.Attributes["ownerID1"].InnerText);
+            journalEntryItem.OwnerId1 = Convert.ToInt32(journalTransactionRow.Attributes["ownerID1"].InnerText);
             journalEntryItem.OwnerName2 = journalTransactionRow.Attributes["ownerName2"].InnerText;
-            journalEntryItem.OwnerId2 = Convert.ToInt64(journalTransactionRow.Attributes["ownerID2"].InnerText);
+            journalEntryItem.OwnerId2 = Convert.ToInt32(journalTransactionRow.Attributes["ownerID2"].InnerText);
             journalEntryItem.ArgName1 = journalTransactionRow.Attributes["argName1"].InnerText;
-            journalEntryItem.ArgId1 = Convert.ToInt64(journalTransactionRow.Attributes["argID1"].InnerText);
+            journalEntryItem.ArgId1 = Convert.ToInt32(journalTransactionRow.Attributes["argID1"].InnerText);
             journalEntryItem.Amount = Convert.ToDouble(journalTransactionRow.Attributes["amount"].InnerText);
             journalEntryItem.Balance = Convert.ToDouble(journalTransactionRow.Attributes["balance"].InnerText);
             journalEntryItem.Reason = journalTransactionRow.Attributes["reason"].InnerText;
@@ -73,14 +74,19 @@ namespace libeveapi
         public DateTime Date;
 
         /// <summary>
+        /// The date / time of the entry in local time
+        /// </summary>
+        public DateTime DateLocal;
+
+        /// <summary>
         /// A unique referenceId for each transaction
         /// </summary>
-        public long RefId;
+        public int RefId;
 
         /// <summary>
         /// The typeId of the item that is referenced in the entry
         /// </summary>
-        public long RefTypeId;
+        public int RefTypeId;
 
         /// <summary>
         /// Name of the person/corp giving money
@@ -90,7 +96,7 @@ namespace libeveapi
         /// <summary>
         /// TypeId/CharId of the person/corp giving money
         /// </summary>
-        public long OwnerId1 ;
+        public int OwnerId1;
 
         /// <summary>
         /// Name of the person/corp recieving money
@@ -100,7 +106,7 @@ namespace libeveapi
         /// <summary>
         /// TypeId/CharId of the person/corp recieving money
         /// </summary>
-        public long OwnerId2;
+        public int OwnerId2;
 
         /// <summary>
         /// This is either the system where the transaction took place
@@ -114,7 +120,7 @@ namespace libeveapi
         /// Use the data from: http://wiki.eve-dev.net/APIv2_Eve_RefTypes_XML
         /// to determine what this is used for
         /// </summary>
-        public long ArgId1;
+        public int ArgId1;
 
         /// <summary>
         /// The amount of the transaction

@@ -19,7 +19,7 @@ namespace UnitTests
         [Test]
         public void GetCharJournalEntriesTest()
         {
-            JournalEntries journalEntry = EveApi.GetJournalEntryList(JournalEntryType.Character, "userId", "charId", "apiKey");
+            JournalEntries journalEntry = EveApi.GetJournalEntryList(JournalEntryType.Character, 0, 0, "apiKey");
 
             Console.WriteLine("'" + journalEntry.JournalEntryItems[0].ArgName1 + "'");
             Assert.AreEqual("", journalEntry.JournalEntryItems[0].ArgName1);
@@ -31,7 +31,7 @@ namespace UnitTests
         [Test]
         public void GetCorpJournalEntriesTest()
         {
-            JournalEntries journalEntry = EveApi.GetJournalEntryList(JournalEntryType.Corporation, "userId", "charId", "apiKey");
+            JournalEntries journalEntry = EveApi.GetJournalEntryList(JournalEntryType.Corporation, 0, 0, "apiKey");
 
             Console.WriteLine("'" + journalEntry.JournalEntryItems[0].ArgName1 + "'");
             Assert.AreEqual("", journalEntry.JournalEntryItems[0].ArgName1);
@@ -45,11 +45,11 @@ namespace UnitTests
         {
             ResponseCache.Clear();
 
-            JournalEntries journalEntry = EveApi.GetJournalEntryList(JournalEntryType.Corporation, "userId", "charId", "apiKey");
+            JournalEntries journalEntry = EveApi.GetJournalEntryList(JournalEntryType.Corporation, 0, 0, "apiKey");
             ResponseCache.Save("ResponseCache.xml");
             ResponseCache.Clear();
             ResponseCache.Load("ResponseCache.xml");
-            JournalEntries cachedJournalEntry = EveApi.GetJournalEntryList(JournalEntryType.Corporation, "userId", "charId", "apiKey");
+            JournalEntries cachedJournalEntry = EveApi.GetJournalEntryList(JournalEntryType.Corporation, 0, 0, "apiKey");
 
             Assert.AreEqual(journalEntry.CachedUntilLocal, cachedJournalEntry.CachedUntilLocal);
 

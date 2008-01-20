@@ -326,7 +326,21 @@ namespace libeveapi
         /// <param name="characterId">CharacterId of character for authentication</param>
         /// <param name="fullApiKey">Full access API key of account</param>
         /// <returns></returns>
-        public static JournalEntries GetJournalEntryList(JournalEntryType journalEntriesType, string userId, string characterId, string fullApiKey)
+        public static JournalEntries GetJournalEntryList(JournalEntryType journalEntriesType, int userId, int characterId, string fullApiKey)
+        {
+            return GetJournalEntryList(journalEntriesType, userId, characterId, fullApiKey, 0);
+        }
+
+        /// <summary>
+        /// Returns a list of journal entries owned by a character or corporation.
+        /// </summary>
+        /// <param name="journalEntriesType"><see cref="JournalEntryType" /></param>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullApiKey">Full access API key of account</param>
+        /// <param name="beforeRefId">Retrieve entries after this refId</param>
+        /// <returns></returns>
+        public static JournalEntries GetJournalEntryList(JournalEntryType journalEntriesType, int userId, int characterId, string fullApiKey, int beforeRefId)
         {
             string apiPath = string.Empty;
             switch (journalEntriesType)
@@ -340,7 +354,11 @@ namespace libeveapi
             }
 
             string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}", Constants.ApiPrefix, apiPath, userId, characterId, fullApiKey);
-            
+            if (beforeRefId != 0)
+            {
+                url += String.Format("&beforeRefID={0}", beforeRefId);
+            }
+
             ApiResponse cachedResponse = ResponseCache.Get(url);
             if (cachedResponse != null)
             {
@@ -398,7 +416,21 @@ namespace libeveapi
         /// <param name="characterId">CharacterId of character for authentication</param>
         /// <param name="fullApiKey">Full access API key of account</param>
         /// <returns></returns>
-        public static WalletTransactions GetWalletTransactionsList(WalletTransactionListType walletTransactionType, string userId, string characterId, string fullApiKey)
+        public static WalletTransactions GetWalletTransactionsList(WalletTransactionListType walletTransactionType, int userId, int characterId, string fullApiKey)
+        {
+            return GetWalletTransactionsList(walletTransactionType, userId, characterId, fullApiKey, 0);
+        }
+
+        /// <summary>
+        /// Returns a list of market transactions (wallet transactions) owned by a character or corporation.
+        /// </summary>
+        /// <param name="walletTransactionType"><see cref="WalletTransactionListType" /></param>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullApiKey">Full access API key of account</param>
+        /// <param name="beforeTransId">retrieve up to 1000 entries after this transactionId</param>
+        /// <returns></returns>
+        public static WalletTransactions GetWalletTransactionsList(WalletTransactionListType walletTransactionType, int userId, int characterId, string fullApiKey, int beforeTransId)
         {
             string apiPath = string.Empty;
             switch (walletTransactionType)

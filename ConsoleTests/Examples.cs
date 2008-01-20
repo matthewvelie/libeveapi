@@ -12,12 +12,62 @@ namespace ConsoleTests
         public static void Main(String[] args)
         {
             UseLocalUrls();
-            SkillInTrainingExample();
+            WalletTransactionsExample();
         }
 
         public static void UseLocalUrls()
         {
             Constants.ApiPrefix = "http://localhost/eveapi";
+        }
+
+        public static void WalletTransactionsExample()
+        {
+            bool done = false;
+            int lastEntrySeen = 0;
+
+            while (!done)
+            {
+                WalletTransactions transactions = EveApi.GetWalletTransactionsList(WalletTransactionListType.Character, 0, 0, "fullApiKey", lastEntrySeen);
+                DisplayWalletTransactions(transactions);
+                lastEntrySeen += transactions.WalletTransactionItems.Length;
+                if (transactions.WalletTransactionItems.Length < 1000)
+                {
+                    done = true;
+                }
+            }
+        }
+
+        public static void DisplayWalletTransactions(WalletTransactions transactions)
+        {
+            foreach (WalletTransactionItem transaction in transactions.WalletTransactionItems)
+            {
+                Console.WriteLine("Date: {0} Quantity: {1} Price: {2}", transaction.TransactionDateTimeLocal, transaction.Quantity, transaction.Price);
+            }
+        }
+
+        public static void JournalExample()
+        {
+            bool done = false;
+            int lastEntrySeen = 0;
+
+            while (!done)
+            {
+                JournalEntries entries = EveApi.GetJournalEntryList(JournalEntryType.Character, 0, 0, "fullApiKey", lastEntrySeen);
+                DisplayJournalEntries(entries);
+                lastEntrySeen += entries.JournalEntryItems.Length;
+                if (entries.JournalEntryItems.Length < 1000)
+                {
+                    done = true;
+                }
+            }
+        }
+
+        public static void DisplayJournalEntries(JournalEntries entries)
+        {
+            foreach (JournalEntryItem item in entries.JournalEntryItems)
+            {
+                Console.WriteLine("Date: {0} Amount: {1} Balance: {2}", item.DateLocal, item.Amount, item.Balance);
+            }
         }
 
         public static void SkillInTrainingExample()
