@@ -12,12 +12,24 @@ namespace ConsoleTests
         public static void Main(String[] args)
         {
             UseLocalUrls();
-            MapSovereigntyExample();
+            MapKills();
         }
 
         public static void UseLocalUrls()
         {
             Constants.ApiPrefix = "http://localhost/eveapi";
+        }
+
+        public static void MapKills()
+        {
+            MapKills mapKills = EveApi.GetMapKills();
+            foreach (MapKillsItem item in mapKills.MapSystemKills)
+            {
+                if (item.ShipKills > 5)
+                {
+                    Console.WriteLine("{0} is a bad place to be right now", item.SolarSystemId);
+                }
+            }
         }
 
         public static void MapSovereigntyExample()
