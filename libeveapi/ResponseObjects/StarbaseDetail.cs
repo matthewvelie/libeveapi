@@ -97,21 +97,21 @@ namespace libeveapi
 
             return starbaseDetail;
         }
-    }
-
-    /// <summary>
-    /// Represents a type of fuel present in the starbase
-    /// </summary>
-    public class FuelListItem
-    {
-        /// <summary>
-        /// Type Id of the fuel
-        /// </summary>
-        public string TypeId;
 
         /// <summary>
-        /// Number of units of the fuel remaining
+        /// Represents a type of fuel present in the starbase
         /// </summary>
-        public long Quantity;
+        public class FuelListItem
+        {
+            /// <summary>
+            /// Type Id of the fuel
+            /// </summary>
+            public string TypeId;
+
+            /// <summary>
+            /// Number of units of the fuel remaining
+            /// </summary>
+            public long Quantity;
+        }
     }
 }
