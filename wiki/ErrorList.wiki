@@ -1,7 +1,7 @@
 === Description ===
 A list of error codes that can be returned by the EVE API servers
 
-=== Eve Api Call ===
+=== Library Method ===
 {{{
 /// <summary>
 /// Returns a list of error codes that can be returned by the EVE API servers
