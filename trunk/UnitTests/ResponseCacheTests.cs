@@ -54,6 +54,9 @@ namespace UnitTests
         public void UsingStreams()
         {
             ResponseCache.Clear();
+            string errorListLocation = Constants.ErrorList;
+            Constants.ErrorList = "/ErrorListNotExpired.xml.aspx";
+
             ErrorList errorList = EveApi.GetErrorList();
 
             using (Stream s = new FileStream("ResponseCache.xml", FileMode.Create))
@@ -71,6 +74,10 @@ namespace UnitTests
             ErrorList cached = EveApi.GetErrorList();
 
             Assert.AreEqual(errorList.CachedUntilLocal, cached.CachedUntilLocal);
+            Assert.AreEqual(false, errorList.FromCache);
+            Assert.AreEqual(true, cached.FromCache);
+
+            Constants.ErrorList = errorListLocation;
         }
     }
 }

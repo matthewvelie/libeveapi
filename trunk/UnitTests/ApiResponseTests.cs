@@ -20,6 +20,7 @@ namespace UnitTests
         [Test]
         public void CommonElementParsing()
         {
+            ResponseCache.Clear();
             CharacterList characterList = EveApi.GetAccountCharacters(432435, "apiKey");
 
             DateTime currentTime = new DateTime(2007, 12, 12, 11, 48, 50);
@@ -29,6 +30,7 @@ namespace UnitTests
             Assert.AreEqual(cachedUntil, characterList.CachedUntil);
             Assert.AreEqual(currentTime.ToLocalTime(), characterList.CurrentTimeLocal);
             Assert.AreEqual(cachedUntil.ToLocalTime(), characterList.CachedUntilLocal);
+            Assert.AreEqual(false, characterList.FromCache);
         }
 
         [Test]
