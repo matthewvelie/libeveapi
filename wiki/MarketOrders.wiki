@@ -21,6 +21,7 @@ public static MarketOrder GetMarketOrderList(MarketOrderType marketOrdersType, s
 
 * !MarketOrderItem object *
 || *Member* || *Type* || *Description* ||
+|| !OrderType || !MarketOrderType || Order Type (Buy or Sell) ||
 || !OrderId || int || Order id, not forever unique but for this pull they will be unique ||
 || !CharId || int || Character Id of the character who placed the market order || 
 || !StationId || int || The Id of the station that the order was placed in ||
@@ -37,4 +38,3 @@ public static MarketOrder GetMarketOrderList(MarketOrderType marketOrdersType, s
 || Bid || bool || If true this is a bid or buy order, else it is a sell order  ||
 || Issued || !DateTime || This is when the order was issued ||
 || !IssuedLocal || !DateTime || This is when the order was issued in local time ||
-
