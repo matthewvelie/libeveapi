@@ -26,11 +26,11 @@ public static JournalEntries GetJournalEntryList(JournalEntryType journalEntries
 }}}
 
 === Result ===
-* !JornalEntries object (See ApiResponse for inherited members) *
+* !JornalEntries class (See ApiResponse for inherited members) *
 || *Member* || *Type* || *Description* ||
 || !JournalEntryItems || !JournalEntryItem[] || List of journal entries ||
 
-* !JornalEntryItem*
+* !JornalEntries.!JornalEntryItem class*
 || *Member* || *Type* || *Description* ||
 || Date || !DateTime || The date / time of the entry in CCP time ||
 || !DateLocal || !DateTime || The date / time of the entry in local time ||
