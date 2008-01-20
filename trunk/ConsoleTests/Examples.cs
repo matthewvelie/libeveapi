@@ -24,7 +24,7 @@ namespace ConsoleTests
 
         public static void MarketOrders()
         {
-            MarketOrders orders = EveApi.GetMarketOrderList(MarketOrdersListType.Character, "userId", "characterId", "fullApiKey");
+            MarketOrders orders = EveApi.GetMarketOrderList(MarketOrdersListType.Character, 0, 0, "fullApiKey");
             foreach (MarketOrderItem item in orders.MarketOrderItems)
             {
                 if (item.OrderType == MarketOrderType.Sell && item.TypeId == 123)

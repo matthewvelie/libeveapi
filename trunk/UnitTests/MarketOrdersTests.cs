@@ -19,7 +19,7 @@ namespace UnitTests
         [Test]
         public void GetCharMarketOrdersTest()
         {
-            MarketOrder marketOrder = EveApi.GetMarketOrderList(MarketOrderType.Character, 432435, 346, "apiKey");   
+            MarketOrders marketOrder = EveApi.GetMarketOrderList(MarketOrdersListType.Character, 432435, 346, "apiKey");   
 
             Assert.AreEqual(9, marketOrder.MarketOrderItems.Length);
             Assert.AreEqual(150208955, marketOrder.MarketOrderItems[0].CharId);
@@ -31,7 +31,7 @@ namespace UnitTests
         [Test]
         public void GetCorpMarketOrdersTest()
         {
-            MarketOrder marketOrder = EveApi.GetMarketOrderList(MarketOrderType.Corporation, 432435, 346, "apiKey");
+            MarketOrders marketOrder = EveApi.GetMarketOrderList(MarketOrdersListType.Corporation, 432435, 346, "apiKey");
 
             Assert.AreEqual(9, marketOrder.MarketOrderItems.Length);
             Assert.AreEqual(150208955, marketOrder.MarketOrderItems[0].CharId);
@@ -44,11 +44,11 @@ namespace UnitTests
         {
             ResponseCache.Clear();
 
-            MarketOrder marketOrder = EveApi.GetMarketOrderList(MarketOrderType.Corporation, 432435, 346, "apiKey");
+            MarketOrders marketOrder = EveApi.GetMarketOrderList(MarketOrdersListType.Corporation, 432435, 346, "apiKey");
             ResponseCache.Save("ResponseCache.xml");
             ResponseCache.Clear();
             ResponseCache.Load("ResponseCache.xml");
-            MarketOrder cachedmarketOrder = EveApi.GetMarketOrderList(MarketOrderType.Corporation, 432435, 346, "apiKey");
+            MarketOrders cachedmarketOrder = EveApi.GetMarketOrderList(MarketOrdersListType.Corporation, 432435, 346, "apiKey");
 
             Assert.AreEqual(marketOrder.CachedUntilLocal, cachedmarketOrder.CachedUntilLocal);
 
