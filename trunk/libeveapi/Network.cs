@@ -38,6 +38,12 @@ namespace libeveapi
             return Image.FromStream(s, true, true);
         }
 
+        /// <summary>
+        /// This function takes in a url and will return a stream of data from that url
+        /// Also takes into account the user-agent settings and any proxy settings
+        /// </summary>
+        /// <param name="url">The url of the image file to retrieve</param>
+        /// <returns>A stream of data</returns>
         private static Stream openUrl(string url)
         {
             WebClient wc = new WebClient();
@@ -49,10 +55,19 @@ namespace libeveapi
             return wc.OpenRead(url);
         }
 
-
+        /// <summary>
+        /// All advanced network settings go here
+        /// </summary>
         public class eveNetworkClientSettings
         {
+            /// <summary>
+            /// The default proxy is null, meaning no proxy in use
+            /// </summary>
             public static WebProxy proxy = null;
+
+            /// <summary>
+            /// The base userAgent string to be used by the program
+            /// </summary>
             public static string userAgent = "libEveApi/1";
         }
     }
