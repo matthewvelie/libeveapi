@@ -41,7 +41,7 @@ public static IndustryJobList GetIndustryJobList(IndustryJobListType industryJob
 || !TimeMultiplier || double || This is the TE multiplier of the station ||
 || !CharTimeMultiplier || double || The TE multiplier that id done by the character's skills ||
 || !InstalledItemTypeId || int || This is the typeId of the item that was installed (a blueprint) ||
-|| !OutputTypeId || int || his is the typeId of what will be outputted when the item is finished doing whatever it is doing.  For research this will be the blueprint itself, for manufacturing this will be the item ||
+|| !OutputTypeId || int || This is the typeId of what will be outputted when the item is finished doing whatever it is doing.  For research this will be the blueprint itself, for manufacturing this will be the item ||
 || !ContainerTypeId || int || This is the lab the items are currently in Can be looked up like any typeId, usually a mobile lab or something similar ||
 || !InstalledItemCopy || bool || This value is a bool value, if the blueprint installed was a copy or not. ||
 || Completed || bool || This is a boolean value if the item has completed or not ||
