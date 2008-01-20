@@ -21,7 +21,8 @@ if (File.exists(responseCacheFilename ))
 }}}
  # Make an API call. If there is a valid (not expired) cached version of the response then that version will be returned automatically. If there is no cached version, or the cached version is no longer valid then a network call to the eve api will be made and the response will be cached.
 {{{
-CharacterList characterList = EveApi.GetAccountCharacters("userId", "apiKey");
+// GetAccountCharacters(userId, apiKey)
+CharacterList characterList = EveApi.GetAccountCharacters(123, "apiKey");
 }}}
  # Save the ResponseCache to a file before exiting the application.
 {{{
