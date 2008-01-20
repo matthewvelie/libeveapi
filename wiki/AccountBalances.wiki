@@ -22,7 +22,7 @@ public static AccountBalance GetAccountBalance(AccountBalanceType accountBalance
 || Member || Type || Description ||
 || !AccountBalanceItems || !AccountBalanceItem[] || The accounts associated with this character or corporation ||
 
-* !AccountBalanceItem Object *
+* !AccountBalance.!AccountBalanceItem Object *
 || Member || Type || Description ||
 || !AccountId || int || ID number of the account ||
 || !AccountKey || int || Account Identifier. For Characters: always 1000. For Corp: the wallet division ||
@@ -38,7 +38,7 @@ public static AccountBalance GetAccountBalance(AccountBalanceType accountBalance
 public static void PrintAccounts()
 {
     AccountBalance accountBalance = EveApi.GetAccountBalance(AccountBalanceType.Corporation, 1234, 2567, "fullApiKey");
-    foreach (AccountBalanceItem abi in accountBalance.AccountBalanceItems)
+    foreach (AccountBalance.AccountBalanceItem abi in accountBalance.AccountBalanceItems)
     {
         Console.WriteLine("id: {0} key: {1} balance: {2}", abi.AccountId, abi.AccountKey, abi.Balance);
     }
