@@ -12,12 +12,21 @@ namespace ConsoleTests
         public static void Main(String[] args)
         {
             UseLocalUrls();
-            MapKills();
+            MapJumps();
         }
 
         public static void UseLocalUrls()
         {
             Constants.ApiPrefix = "http://localhost/eveapi";
+        }
+
+        public static void MapJumps()
+        {
+            MapJumps mapJumps = EveApi.GetMapJumps();
+            foreach (MapSystemItem system in mapJumps.MapSystemJumps)
+            {
+                Console.WriteLine("System: {0} Number of Jumps: {1}", system.SolarSystemId, system.ShipJumps);
+            }
         }
 
         public static void MapKills()
