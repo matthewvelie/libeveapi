@@ -22,14 +22,14 @@ namespace UnitTests
             StarbaseList starbaseList = EveApi.GetStarbaseList(432435, 234523, "apiKey");
 
             Assert.AreEqual(4, starbaseList.StarbaseListItems.Length);
-            StarbaseListItem sli;
+            StarbaseList.StarbaseListItem sli;
 
             sli = starbaseList.StarbaseListItems[0];
             Assert.AreEqual(150354725, sli.ItemId);
             Assert.AreEqual(12235, sli.TypeId);
             Assert.AreEqual(30000380, sli.LocationId);
             Assert.AreEqual(40023754, sli.MoonId);
-            Assert.AreEqual(StarbaseState.Online, sli.State);
+            Assert.AreEqual(StarbaseList.StarbaseState.Online, sli.State);
             Assert.AreEqual(new DateTime(0001, 01, 01, 00, 00, 00), sli.StateTimestamp);
             Assert.AreEqual(new DateTime(2007, 08, 06, 13, 43, 16), sli.OnlineTimestamp);
         }
