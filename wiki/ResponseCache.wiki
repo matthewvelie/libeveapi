@@ -2,7 +2,7 @@
 A class for caching responses from the eve api.
 
 == Thread Safety ==
-All !ResponseCache methods are thread safe. Any operation that mutates the cache is wrapped in a lock.
+All !ResponseCache methods are thread safe.
 
 == Methods ==
 || *Name* || *Description* ||
