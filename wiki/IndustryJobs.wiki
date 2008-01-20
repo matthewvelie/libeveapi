@@ -60,7 +60,7 @@ public static IndustryJobList GetIndustryJobList(IndustryJobListType industryJob
 || !PauseProductionTimeLocal || !DateTime || ||
 
 * !IndustryJobListType enumeration *
-|| Member || Value || Description ||
+|| *Member* || *Value* || *Description* ||
 || Corporation || - || Retrieve jobs for the corporation ||
 || Character || - || Retrieve jobs for the character ||
 
