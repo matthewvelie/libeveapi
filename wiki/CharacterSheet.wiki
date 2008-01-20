@@ -1,7 +1,7 @@
 === Description ===
 Retrieves detailed information about a character including attributes, implants and skills.
 
-=== Library Call ===
+=== Library Method ===
 {{{
 /// <summary>
 /// Returns a detailed description of a character
