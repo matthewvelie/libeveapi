@@ -12,12 +12,18 @@ namespace ConsoleTests
         public static void Main(String[] args)
         {
             UseLocalUrls();
-            WalletTransactionsExample();
+            RefTypesExaple();
         }
 
         public static void UseLocalUrls()
         {
             Constants.ApiPrefix = "http://localhost/eveapi";
+        }
+
+        public static void RefTypesExaple()
+        {
+            RefTypes refTypes = EveApi.GetRefTypesList();
+            Console.WriteLine("Type {0} Name {1}", 1, refTypes.GetReferenceTypeNameForId(1));
         }
 
         public static void WalletTransactionsExample()
