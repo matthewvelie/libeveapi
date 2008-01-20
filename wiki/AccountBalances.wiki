@@ -14,7 +14,7 @@ Returns the ISK balance of a character or corporation.
 /// </param>
 /// <param name="fullApiKey">Full access api key of account</param>
 /// <returns></returns>
-public static AccountBalance GetAccountBalance(AccountBalanceType accountBalanceType, string userId, string characterId, string fullApiKey)
+public static AccountBalance GetAccountBalance(AccountBalanceType accountBalanceType, int userId, int characterId, string fullApiKey)
 }}}
 
 === Result ===
