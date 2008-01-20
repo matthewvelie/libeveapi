@@ -19,7 +19,7 @@ namespace UnitTests
         [Test]
         public void GetCharacterList()
         {
-            CharacterList characterList = EveApi.GetAccountCharacters("asdf", "asdf");
+            CharacterList characterList = EveApi.GetAccountCharacters(756567, "asdf");
 
             Assert.AreEqual(3, characterList.CharacterListItems.Length);
 
@@ -33,12 +33,12 @@ namespace UnitTests
         public void CharacterListPersist()
         {
             ResponseCache.Clear();
-            CharacterList characterList = EveApi.GetAccountCharacters("asdf", "asdf");
+            CharacterList characterList = EveApi.GetAccountCharacters(342535, "asdf");
 
             ResponseCache.Save("ResponseCache.xml");
             ResponseCache.Clear();
             ResponseCache.Load("ResponseCache.xml");
-            CharacterList cachedCharacterList = EveApi.GetAccountCharacters("asdf", "asdf");
+            CharacterList cachedCharacterList = EveApi.GetAccountCharacters(3245345, "asdf");
 
             Assert.AreEqual(characterList.CachedUntilLocal, cachedCharacterList.CachedUntilLocal);
             Assert.AreEqual(cachedCharacterList.CharacterListItems.Length, characterList.CharacterListItems.Length);

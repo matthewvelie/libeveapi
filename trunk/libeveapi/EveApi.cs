@@ -39,7 +39,7 @@ namespace libeveapi
         /// <returns></returns>
         public static void SetUserAgent(string userAgent)
         {
-            Network.eveNetworkClientSettings.userAgent = "libEveApi/1 (" + url + ")";
+            Network.eveNetworkClientSettings.userAgent = "libEveApi/1 (" + userAgent + ")";
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace libeveapi
         /// <param name="userId">userId of the account for authentication</param>
         /// <param name="apiKey">limited or full access api key of account</param>
         /// <returns></returns>
-        public static CharacterList GetAccountCharacters(string userId, string apiKey)
+        public static CharacterList GetAccountCharacters(int userId, string apiKey)
         {
             string url = String.Format("{0}{1}?userID={2}&apiKey={3}", Constants.ApiPrefix, Constants.CharacterList, userId, apiKey);
 
@@ -76,7 +76,7 @@ namespace libeveapi
         /// </param>
         /// <param name="fullApiKey">Full access api key of account</param>
         /// <returns></returns>
-        public static AccountBalance GetAccountBalance(AccountBalanceType accountBalanceType, string userId, string characterId, string fullApiKey)
+        public static AccountBalance GetAccountBalance(AccountBalanceType accountBalanceType, int userId, int characterId, string fullApiKey)
         {
             string apiPath = string.Empty;
             switch (accountBalanceType)
@@ -111,7 +111,7 @@ namespace libeveapi
         /// <param name="characterId">Character Id of a char with director/CEO access in the corp you want the starbases for</param>
         /// <param name="fullApiKey">Full access api key of account</param>
         /// <returns></returns>
-        public static StarbaseList GetStarbaseList(string userId, string characterId, string fullApiKey)
+        public static StarbaseList GetStarbaseList(int userId, int characterId, string fullApiKey)
         {
             string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}&version=2", Constants.ApiPrefix, Constants.StarbaseList, userId, characterId, fullApiKey);
 
@@ -181,7 +181,7 @@ namespace libeveapi
         /// <param name="fullApiKey">Full access api key of account</param>
         /// <param name="itemId">Item Id of the starbase as given in the starbase list</param>
         /// <returns></returns>
-        public static StarbaseDetail GetStarbaseDetail(string userId, string characterId, string fullApiKey, string itemId)
+        public static StarbaseDetail GetStarbaseDetail(int userId, int characterId, string fullApiKey, int itemId)
         {
             string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}&itemID={5}&version=2", Constants.ApiPrefix, Constants.StarbaseDetails, userId, characterId, fullApiKey, itemId);
 
@@ -227,7 +227,7 @@ namespace libeveapi
         /// <param name="characterId">CharacterId of character for authentication</param>
         /// <param name="fullApiKey">Full access API key of account</param>
         /// <returns></returns>
-        public static AssetList GetAssetList(AssetListType assetListType, string userId, string characterId, string fullApiKey)
+        public static AssetList GetAssetList(AssetListType assetListType, int userId, int characterId, string fullApiKey)
         {
             string apiPath = string.Empty;
             switch (assetListType)
@@ -264,7 +264,7 @@ namespace libeveapi
         /// <param name="fullApiKey">Full Api Key for the account</param>
         /// <param name="beforeKillID">Returns the most recent kills before the specified Kill ID - used for scrolling back through the log</param>
         /// <returns>Kill Log object containing the array of kills</returns>
-        public static KillLog GetKillLog(KillLogType killLogType, string userId, string characterId, string fullApiKey, int beforeKillID)
+        public static KillLog GetKillLog(KillLogType killLogType, int userId, int characterId, string fullApiKey, int beforeKillID)
         {
             string apiPath = string.Empty;
             switch (killLogType)
@@ -308,7 +308,7 @@ namespace libeveapi
         /// <param name="characterId">The character your requesting data for</param>
         /// <param name="fullApiKey">Full Api Key for the account</param>
         /// <returns>Kill Log object containing the array of kills</returns>
-        public static KillLog GetKillLog(KillLogType killLogType, string userId, string characterId, string fullApiKey)
+        public static KillLog GetKillLog(KillLogType killLogType, int userId, int characterId, string fullApiKey)
         {
             return GetKillLog(killLogType, userId, characterId, fullApiKey, 0);
         }
@@ -321,7 +321,7 @@ namespace libeveapi
         /// <param name="characterId">CharacterId of character for authentication</param>
         /// <param name="fullApiKey">Full access API key of account</param>
         /// <returns></returns>
-        public static IndustryJobList GetIndustryJobList(IndustryJobListType industryJobListType, string userId, string characterId, string fullApiKey)
+        public static IndustryJobList GetIndustryJobList(IndustryJobListType industryJobListType, int userId, int characterId, string fullApiKey)
         {
             string apiPath = string.Empty;
             switch (industryJobListType)
@@ -411,7 +411,7 @@ namespace libeveapi
         /// <param name="characterId">CharacterId of character for authentication</param>
         /// <param name="fullApiKey">Full access API key of account</param>
         /// <returns></returns>
-        public static MarketOrder GetMarketOrderList(MarketOrderType marketOrdersType, string userId, string characterId, string fullApiKey)
+        public static MarketOrder GetMarketOrderList(MarketOrderType marketOrdersType, int userId, int characterId, string fullApiKey)
         {
             string apiPath = string.Empty;
             switch (marketOrdersType)
@@ -581,7 +581,7 @@ namespace libeveapi
         /// <param name="characterId">Character Id of a char with director/CEO access in the corp that owns the starbase</param>
         /// <param name="fullApiKey">Full access api key of account</param>
         /// <returns></returns>
-        public static MemberTracking GetMemberTracking(string userId, string characterId, string fullApiKey)
+        public static MemberTracking GetMemberTracking(int userId, int characterId, string fullApiKey)
         {
             string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}&version=1", Constants.ApiPrefix, Constants.MemberTracking, userId, characterId, fullApiKey);
 
@@ -605,7 +605,7 @@ namespace libeveapi
         /// <param name="characterId">CharacterId of character for authentication</param>
         /// <param name="apiKey">Limited access API key of account</param>
         /// <returns></returns>
-        public static CharacterSheet GetCharacterSheet(string userId, string characterId, string apiKey)
+        public static CharacterSheet GetCharacterSheet(int userId, int characterId, string apiKey)
         {
             string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}", Constants.ApiPrefix, Constants.CharacterSheet, userId, characterId, apiKey);
 
@@ -629,9 +629,9 @@ namespace libeveapi
         /// <param name="characterId">CharacterId of character for authentication</param>
         /// <param name="apiKey">Limited access API key of account</param>
         /// <returns></returns>
-        public static CorporationSheet GetCorporationSheet(string userId, string characterId, string apiKey)
+        public static CorporationSheet GetCorporationSheet(int userId, int characterId, string apiKey)
         {
-            return GetCorporationSheet(userId, characterId, apiKey, null);
+            return GetCorporationSheet(userId, characterId, apiKey, 0);
         }
 
         /// <summary>
@@ -642,11 +642,11 @@ namespace libeveapi
         /// <param name="apiKey">Limited access API key of account</param>
         /// <param name="corporationId">retrieve information on the corporation with this id</param>
         /// <returns></returns>
-        public static CorporationSheet GetCorporationSheet(string userId, string characterId, string apiKey, string corporationId)
+        public static CorporationSheet GetCorporationSheet(int userId, int characterId, string apiKey, int corporationId)
         {
             string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}", Constants.ApiPrefix, Constants.CorporationSheet, userId, characterId, apiKey);
 
-            if (!String.IsNullOrEmpty(corporationId))
+            if (corporationId != 0)
             {
                 url = String.Format("{0}&corporationID={1}", url, corporationId);
             }
@@ -734,7 +734,7 @@ namespace libeveapi
         /// <param name="characterId">Character Id of the character to get skill info for</param>
         /// <param name="apiKey">limited access API key of Account</param>
         /// <returns></returns>
-        public static SkillInTraining GetSkillInTraining(string userId, string characterId, string apiKey)
+        public static SkillInTraining GetSkillInTraining(int userId, int characterId, string apiKey)
         {
             string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}", Constants.ApiPrefix, Constants.SkillInTraining, userId, characterId, apiKey);
 

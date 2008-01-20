@@ -21,7 +21,7 @@ namespace UnitTests
         {
             ResponseCache.Clear();
 
-            CharacterSheet cs = EveApi.GetCharacterSheet("userId", "characterId", "apiKey");
+            CharacterSheet cs = EveApi.GetCharacterSheet(432435, 234523, "apiKey");
 
             Assert.AreEqual(150337897, cs.CharacterId);
             Assert.AreEqual("corpslave", cs.Name);
@@ -59,11 +59,11 @@ namespace UnitTests
         public void CharacterSheetPersist()
         {
             ResponseCache.Clear();
-            CharacterSheet cs = EveApi.GetCharacterSheet("userId", "characterId", "apiKey");
+            CharacterSheet cs = EveApi.GetCharacterSheet(432435, 234523, "apiKey");
             ResponseCache.Save("ResponseCache.xml");
             ResponseCache.Clear();
             ResponseCache.Load("ResponseCache.xml");
-            CharacterSheet cached = EveApi.GetCharacterSheet("userId", "characterId", "apiKey");
+            CharacterSheet cached = EveApi.GetCharacterSheet(432435, 234523, "apiKey");
 
             Assert.AreEqual(cached.CachedUntilLocal, cs.CachedUntilLocal);
 

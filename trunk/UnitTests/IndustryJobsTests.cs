@@ -19,7 +19,7 @@ namespace UnitTests
         [Test]
         public void GetCharIndustryJobsTest()
         {
-            IndustryJobList jobList = EveApi.GetIndustryJobList(IndustryJobListType.Character, "userId", "characterId", "fullApiKey");
+            IndustryJobList jobList = EveApi.GetIndustryJobList(IndustryJobListType.Character, 432435, 234523, "fullApiKey");
 
             Assert.AreEqual(22, jobList.IndustryJobListItems.Length);
 
@@ -31,7 +31,7 @@ namespace UnitTests
         [Test]
         public void GetCorpIndustryJobsTest()
         {
-            IndustryJobList jobList = EveApi.GetIndustryJobList(IndustryJobListType.Corporation, "userId", "characterId", "fullApiKey");
+            IndustryJobList jobList = EveApi.GetIndustryJobList(IndustryJobListType.Corporation, 432435, 234523, "fullApiKey");
 
             Assert.AreEqual(22, jobList.IndustryJobListItems.Length);
 
@@ -45,11 +45,11 @@ namespace UnitTests
         {
             ResponseCache.Clear();
 
-            IndustryJobList industryJobList = EveApi.GetIndustryJobList(IndustryJobListType.Corporation, "userId", "charId", "apiKey");
+            IndustryJobList industryJobList = EveApi.GetIndustryJobList(IndustryJobListType.Corporation, 432435, 346, "apiKey");
             ResponseCache.Save("ResponseCache.xml");
             ResponseCache.Clear();
             ResponseCache.Load("ResponseCache.xml");
-            IndustryJobList cachedIndustryJobList = EveApi.GetIndustryJobList(IndustryJobListType.Corporation, "userId", "charId", "apiKey");
+            IndustryJobList cachedIndustryJobList = EveApi.GetIndustryJobList(IndustryJobListType.Corporation, 432435, 346, "apiKey");
 
             Assert.AreEqual(industryJobList.CachedUntilLocal, cachedIndustryJobList.CachedUntilLocal);
 

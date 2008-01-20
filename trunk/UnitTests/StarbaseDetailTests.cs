@@ -20,7 +20,7 @@ namespace UnitTests
         public void GetStarbaseDetail()
         {
             ResponseCache.Clear();
-            StarbaseDetail starbaseDetail = EveApi.GetStarbaseDetail("userId", "characterId", "fullApiKey", "itemId");
+            StarbaseDetail starbaseDetail = EveApi.GetStarbaseDetail(4532453, 543453, "fullApiKey", 453453);
 
             Assert.AreEqual("3", starbaseDetail.UsageFlags);
             Assert.AreEqual("0", starbaseDetail.DeployFlags);
@@ -43,13 +43,13 @@ namespace UnitTests
         public void StarbaseDetailPersist()
         {
             ResponseCache.Clear();
-            StarbaseDetail starbaseDetail = EveApi.GetStarbaseDetail("userId", "characterId", "fullApiKey", "itemId");
+            StarbaseDetail starbaseDetail = EveApi.GetStarbaseDetail(432435, 234523, "fullApiKey", 25245);
 
             ResponseCache.Save("ResponseCache.xml");
             ResponseCache.Clear();
             ResponseCache.Load("ResponseCache.xml");
 
-            StarbaseDetail cachedStarbaseDetail = EveApi.GetStarbaseDetail("userId", "characterId", "fullApiKey", "itemId");
+            StarbaseDetail cachedStarbaseDetail = EveApi.GetStarbaseDetail(432435, 234523, "fullApiKey", 25245);
 
             Assert.AreEqual(starbaseDetail.CachedUntilLocal, cachedStarbaseDetail.CachedUntilLocal);
 

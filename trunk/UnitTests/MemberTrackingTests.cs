@@ -20,7 +20,7 @@ namespace UnitTests
         public void GetMemberTracking()
         {
             ResponseCache.Clear();
-            MemberTracking memberTracking = EveApi.GetMemberTracking("userId", "characterId", "fullApiKey");
+            MemberTracking memberTracking = EveApi.GetMemberTracking(432435, 234523, "fullApiKey");
 
             Assert.AreEqual(memberTracking.Members.Length, 2);
 
@@ -52,12 +52,12 @@ namespace UnitTests
         public void MemberTrackingPersist()
         {
             ResponseCache.Clear();
-            MemberTracking memberTracking = EveApi.GetMemberTracking("userId", "characterId", "fullApiKey");
+            MemberTracking memberTracking = EveApi.GetMemberTracking(432435, 234523, "fullApiKey");
 
             ResponseCache.Save("ResponseCache.xml");
             ResponseCache.Clear();
             ResponseCache.Load("ResponseCache.xml");
-            MemberTracking cachedMemberTracking = EveApi.GetMemberTracking("userId", "characterId", "fullApiKey");
+            MemberTracking cachedMemberTracking = EveApi.GetMemberTracking(432435, 234523, "fullApiKey");
 
             Assert.AreEqual(memberTracking.CachedUntilLocal, cachedMemberTracking.CachedUntilLocal);
             Assert.AreEqual(memberTracking.Members.Length, cachedMemberTracking.Members.Length);

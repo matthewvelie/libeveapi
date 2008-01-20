@@ -19,7 +19,7 @@ namespace UnitTests
         [Test]
         public void GetAssetList()
         {
-            AssetList assetList = EveApi.GetAssetList(AssetListType.Corporation, "userId", "characterId", "apiKey");
+            AssetList assetList = EveApi.GetAssetList(AssetListType.Corporation, 432435, 234523, "apiKey");
 
             AssetList.AssetListItem parent = GetAsset(197977287, assetList.AssetListItems);
             AssetList.AssetListItem child = GetAsset(331125392, parent.Contents);
@@ -34,11 +34,11 @@ namespace UnitTests
         public void PersistAssetList()
         {
             ResponseCache.Clear();
-            AssetList assetList = EveApi.GetAssetList(AssetListType.Corporation, "userId", "characterId", "apiKey");
+            AssetList assetList = EveApi.GetAssetList(AssetListType.Corporation, 432435, 234523, "apiKey");
             ResponseCache.Save("ResponseCache.xml");
             ResponseCache.Clear();
             ResponseCache.Load("ResponseCache.xml");
-            AssetList cachedAssetList = EveApi.GetAssetList(AssetListType.Corporation, "userId", "characterId", "apiKey");
+            AssetList cachedAssetList = EveApi.GetAssetList(AssetListType.Corporation, 432435, 234523, "apiKey");
 
             Assert.AreEqual(assetList.CachedUntilLocal, cachedAssetList.CachedUntilLocal);
 
