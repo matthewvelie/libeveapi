@@ -14,7 +14,7 @@ public static CharacterSheet GetCharacterSheet(int userId, int characterId, stri
 }}}
 
 === Result ===
-* !CharacterSheet object (See ApiResponse for inherited members) *
+* !CharacterSheet class (See ApiResponse for inherited members) *
 || *Member* || *Type* || *Description* ||
 || !CharacterId || int || The eve assigned characterId ||
 || Name || string || The name of the character ||
@@ -36,12 +36,12 @@ public static CharacterSheet GetCharacterSheet(int userId, int characterId, stri
 || !CharismaBonus|| !AttributeEnhancer || Charisma implant ||
 || !SkillItemList || !SkillItem[] || List of character's skills ||
 
-* !AttributeEnhancer object *
+* !CharacterSheet.!AttributeEnhancer class *
 || *Member* || *Type* || *Description* ||
 || Name || string || The name of the implant ||
 || Value || int || The implant's attribute modifier value ||
 
-* !SkillItem object *
+* !CharacterSheet.!SkillItem class *
 || *Member* || *Type* || *Description* ||
 || !TypeId || int || Unique identifier for this skill type ||
 || Skillpoints || long || Character's current number of skillpoints in the skill ||
@@ -52,7 +52,7 @@ public static CharacterSheet GetCharacterSheet(int userId, int characterId, stri
 {{{
 public static void CharacterSheetExample()
 {
-    CharacterSheet characterSheet = EveApi.GetCharacterSheet("userId", "characterId", "apiKey");
+    CharacterSheet characterSheet = EveApi.GetCharacterSheet(123, 456, "apiKey");
     
     long totalSkillpoints = 0;
     foreach (CharacterSheet.SkillItem skillItem in characterSheet.SkillItemList)
