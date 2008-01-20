@@ -67,7 +67,7 @@ namespace libeveapi
             IndustryJobListItem.InstalledItemTypeId = Convert.ToInt32(industryJobRow.Attributes["installedItemTypeID"].InnerText);
             IndustryJobListItem.OutputTypeId = Convert.ToInt32(industryJobRow.Attributes["outputTypeID"].InnerText);
             IndustryJobListItem.ContainerTypeId = Convert.ToInt32(industryJobRow.Attributes["containerTypeID"].InnerText);
-            IndustryJobListItem.InstalledItemCopy = Convert.ToInt32(industryJobRow.Attributes["installedItemCopy"].InnerText);
+            IndustryJobListItem.InstalledItemCopy = Convert.ToBoolean(Convert.ToInt32(industryJobRow.Attributes["installedItemCopy"].InnerText));
             IndustryJobListItem.Completed = Convert.ToBoolean(Convert.ToInt32(industryJobRow.Attributes["completed"].InnerText));
             IndustryJobListItem.CompletedSuccessfully = Convert.ToBoolean(Convert.ToInt32(industryJobRow.Attributes["completedSuccessfully"].InnerText));
             IndustryJobListItem.InstalledItemFlag = Convert.ToInt32(industryJobRow.Attributes["installedItemFlag"].InnerText);
@@ -225,9 +225,9 @@ namespace libeveapi
             public int ContainerTypeId;
 
             /// <summary>
-            /// 
+            /// This is a bool value if the blueprint installed is a copy or not
             /// </summary>
-            public int InstalledItemCopy;
+            public bool InstalledItemCopy;
 
             /// <summary>
             /// This is a boolean value if the item has completed or not
