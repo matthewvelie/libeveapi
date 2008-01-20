@@ -11,15 +11,15 @@ Returns a list of market orders that are either not expired or have expired in t
 /// <param name="characterId">CharacterId of character for authentication</param>
 /// <param name="fullApiKey">Full access API key of account</param>
 /// <returns></returns>
-public static MarketOrder GetMarketOrderList(MarketOrderType marketOrdersType, string userId, string characterId, string fullApiKey)
+public static MarketOrder GetMarketOrderList(MarketOrderType marketOrdersType, int userId, int characterId, string fullApiKey)
 }}}
 
 === Results ===
-* !MarketOrders object (See ApiResult for inherited members) *
+* !MarketOrders class (See ApiResult for inherited members) *
 || *Member* || *Type* || *Description* ||
 || !MarketOrderItems || !MarketOrderItem || List of market orders ||
 
-* !MarketOrderItem object *
+* !MarketOrders.!MarketOrderItem class*
 || *Member* || *Type* || *Description* ||
 || !OrderType || !MarketOrderType || Order Type (Buy or Sell) ||
 || !OrderId || int || Order id, not forever unique but for this pull they will be unique ||
@@ -39,7 +39,7 @@ public static MarketOrder GetMarketOrderList(MarketOrderType marketOrdersType, s
 || Issued || !DateTime || This is when the order was issued ||
 || !IssuedLocal || !DateTime || This is when the order was issued in local time ||
 
-* !MarketOrderState enumeration *
+* !MarketOrders.!MarketOrderState enumeration *
 || *Member* || *Value* || *Description* ||
 || !OpenActive || 0 || If the market order is still active and up on the market ||
 || Closed || 1 || The order has been closed ||
@@ -48,25 +48,24 @@ public static MarketOrder GetMarketOrderList(MarketOrderType marketOrdersType, s
 || Pending || 4 ||  The order is currently pending, and not on the market||
 || !CharacterDeleted || 5 || The character that this order was associated with has been deleted ||
 
-* !MarketOrderState enumeration *
+* !MarketOrders.!MarketOrderState enumeration *
 || *Member* || *Value* || *Description* ||
 || Buy || - || Denotes a buy order ||
 || Sell || - || Denotes a sell order ||
 
-* !MarketOrdersListTypeenumeration *
+* !MarketOrdersListType enumeration *
 || *Member* || *Value* || *Description* ||
 || Corporation || - || Retrieve the market order list for a corporation ||
 || Character || - || Retrieve the market order list for a character ||
 
 === Example === 
 {{{
-
-public static void MarketOrders()
+public static void MarketOrdersExample()
 {
-    MarketOrders orders = EveApi.GetMarketOrderList(MarketOrdersListType.Character, "userId", "characterId", "fullApiKey");
-    foreach (MarketOrderItem item in orders.MarketOrderItems)
+    MarketOrders orders = EveApi.GetMarketOrderList(MarketOrdersListType.Character, 0, 0, "fullApiKey");
+    foreach (MarketOrders.MarketOrderItem item in orders.MarketOrderItems)
     {
-        if (item.OrderType == MarketOrderType.Sell && item.TypeId == 123)
+        if (item.OrderType == MarketOrders.MarketOrderType.Sell && item.TypeId == 123)
         {
             Console.WriteLine("Item 123 is for sale at: {0}", item.StationId);
         }
