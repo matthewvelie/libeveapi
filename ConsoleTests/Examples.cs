@@ -13,7 +13,7 @@ namespace ConsoleTests
         {
             UseLocalUrls();
             EveApi.SetProxy("localhost", 8080);
-            MapJumps();
+            KillLog();
         }
 
         public static void UseLocalUrls()
@@ -21,6 +21,18 @@ namespace ConsoleTests
             Constants.ApiPrefix = "http://localhost/eveapi";
         }
 
+        public static void KillLog()
+        {
+            KillLog killLog = EveApi.GetKillLog(KillLogType.Character, 0, 0, "fullApiKey");
+            KillLog.Kill kill = killLog.Kills[0];
+
+            Console.WriteLine("{0} was killed at {1} in system {2}", kill.Victim.CharacterName, kill.KillTimeLocal, kill.SolarSystemId);
+            Console.WriteLine("The attackers were:");
+            foreach (KillLog.Attacker attacker in kill.Attackers)
+            {
+                Console.WriteLine("{0} from corporation {1}", attacker.CharacterName, attacker.CorporationName);
+            }
+        }
 
         public static void MarketOrders()
         {
