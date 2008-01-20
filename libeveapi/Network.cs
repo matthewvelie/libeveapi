@@ -21,9 +21,7 @@ namespace libeveapi
         /// <returns></returns>
         public static XmlDocument GetXml(string url)
         {
-            WebClient wc = new WebClient();
-            wc.Headers.Add("user-agent", "libEveApi/1");
-            Stream s = wc.OpenRead(url);
+            Stream s = openUrl(url);
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(s);
             return xmlDoc;
@@ -36,10 +34,26 @@ namespace libeveapi
         /// <returns>An image object containing the image from the url</returns>
         public static Image GetImage(string url)
         {
-            WebClient wc = new WebClient();
-            wc.Headers.Add("user-agent", "libEveApi/1");
-            Stream s = wc.OpenRead(url);
+            Stream s = openUrl(url);
             return Image.FromStream(s, true, true);
+        }
+
+        private static Stream openUrl(string url)
+        {
+            WebClient wc = new WebClient();
+            wc.Headers.Add("user-agent", Network.eveNetworkClientSettings.userAgent);
+            if (Network.eveNetworkClientSettings.proxy != null)
+            {
+                wc.Proxy = Network.eveNetworkClientSettings.proxy;
+            }
+            return wc.OpenRead(url);
+        }
+
+
+        public class eveNetworkClientSettings
+        {
+            public static WebProxy proxy = null;
+            public static string userAgent = "libEveApi/1";
         }
     }
 }
