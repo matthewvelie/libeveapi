@@ -10,7 +10,7 @@ namespace libeveapi
     /// Represents a character name and  CharacterId response from the eve api
     /// http://wiki.eve-dev.net/APIv2_Eve_CharacterID_XML
     /// </summary>
-    public class CharacterId : ApiResponse
+    public class CharacterIdName : ApiResponse
     {
         /// <summary>
         /// The character name and character id that are associated with eachother
@@ -22,7 +22,7 @@ namespace libeveapi
         /// </summary>
         /// <param name="xmlDoc">An XML Document containing characterId and character name information</param>
         /// <returns><see cref="CharacterId"/></returns>
-        public static CharacterId FromXmlDocument(XmlDocument xmlDoc)
+        public static CharacterIdName FromXmlDocument(XmlDocument xmlDoc)
         {
             //FIX the row:name problem here (HACK!)
             string fixXML = xmlDoc.OuterXml;
@@ -37,7 +37,7 @@ namespace libeveapi
              * Console.WriteLine(n.Attributes["name"].InnerText + " " + n.Attributes["characterID"].InnerText)
              */
 
-            CharacterId charId = new CharacterId();
+            CharacterIdName charId = new CharacterIdName();
             charId.ParseCommonElements(xmlDoc);
 
             List<CharacterIdItem> characterList = new List<CharacterIdItem>();

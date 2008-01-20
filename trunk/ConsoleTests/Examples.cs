@@ -20,6 +20,12 @@ namespace ConsoleTests
             Constants.ApiPrefix = "http://localhost/eveapi";
         }
 
+        public static int GetCharacterIdByName(string characterName)
+        {
+            CharacterIdName characterId = EveApi.GetCharacterIdName(characterName);
+            return characterId.CharacterIdItems[0].CharacterId;
+        }
+
         public static void RefTypesExaple()
         {
             RefTypes refTypes = EveApi.GetRefTypesList();
