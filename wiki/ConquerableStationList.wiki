@@ -11,11 +11,11 @@ public static ConquerableStationList GetConquerableStationList()
 }}}
 
 === Result ===
-* !ConquerableStationList object (See ApiResponse for inherited members) *
+* !ConquerableStationList class (See ApiResponse for inherited members) *
 || *Member* || *Type* || *Description* ||
 || !ConquerableStations || !ConquerableStation[] || List of conquerable stations ||
 
-* !ConquerableStation object *
+* !ConquerableStationList.!ConquerableStation class*
 || *Member* || *Type* || *Description* ||
 || !StationId || int || Unique identifier for the station ||
 || !StationName || string || Name of the station ||
