@@ -27,11 +27,11 @@ public static WalletTransactions GetWalletTransactionsList(WalletTransactionList
 }}}
 
 == Results ===
-* !WalletTransactionsobject (See ApiResponse for inherited members)*
+* !WalletTransactions class (See ApiResponse for inherited members)*
 || *Member* || *Type* || *Description ||
 || !WalletTransactionItems || !WalletTransactionItem[] || List of alliances ||
 
-* !WalletTransactionItem object *
+* !WalletTransactions.!WalletTransactionItem class *
 || *Member* || *Type* || *Description* ||
 || !TransactionDateTime || !DateTime || This is the date and time when the transaction took place in ccp time ||
 || !TransactionDateTimeLocal || !DateTime || This is the date and time when the transaction took place in local time ||
@@ -75,7 +75,7 @@ public static void WalletTransactionsExample()
 
 public static void DisplayWalletTransactions(WalletTransactions transactions)
 {
-    foreach (WalletTransactionItem transaction in transactions.WalletTransactionItems)
+    foreach (WalletTransactions.WalletTransactionItem transaction in transactions.WalletTransactionItems)
     {
         Console.WriteLine("Date: {0} Quantity: {1} Price: {2}", transaction.TransactionDateTimeLocal, transaction.Quantity, transaction.Price);
     }
