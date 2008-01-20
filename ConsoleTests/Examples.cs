@@ -46,10 +46,10 @@ namespace ConsoleTests
             }
         }
 
-        public static void MapJumps()
+        public static void MapJumpsExample()
         {
             MapJumps mapJumps = EveApi.GetMapJumps();
-            foreach (MapSystemItem system in mapJumps.MapSystemJumps)
+            foreach (MapJumps.MapSystemItem system in mapJumps.MapSystemJumps)
             {
                 Console.WriteLine("System: {0} Number of Jumps: {1}", system.SolarSystemId, system.ShipJumps);
             }
