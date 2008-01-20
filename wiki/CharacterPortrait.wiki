@@ -3,7 +3,7 @@ Retrieves the character's portrait from the EVE servers
 
 *NOTE:These images are NOT cached by the library it is up to the client application to cache the library.*
 
-=== Eve Api Call ===
+=== Library Method ===
 {{{
 /// <summary>
 /// Retrieve the portrait for a character
