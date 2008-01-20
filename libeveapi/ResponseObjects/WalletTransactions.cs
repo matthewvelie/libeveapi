@@ -72,91 +72,91 @@ namespace libeveapi
 
             return walletTransactionItem;
         }
-    }
-
-    /// <summary>
-    /// Contains information about one wallet transaction
-    /// </summary>
-    public class WalletTransactionItem
-    {
-        /// <summary>
-        /// This is the date and time when the transaction took place in ccp time
-        /// </summary>
-        public DateTime TransactionDateTime;
 
         /// <summary>
-        /// This is the date and time when the transaction took place in local time
+        /// Contains information about one wallet transaction
         /// </summary>
-        public DateTime TransactionDateTimeLocal;
+        public class WalletTransactionItem
+        {
+            /// <summary>
+            /// This is the date and time when the transaction took place in ccp time
+            /// </summary>
+            public DateTime TransactionDateTime;
 
-        /// <summary>
-        /// This is the transactionId that is assigned to the transaction
-        /// </summary>
-        public int TransactionId;
+            /// <summary>
+            /// This is the date and time when the transaction took place in local time
+            /// </summary>
+            public DateTime TransactionDateTimeLocal;
 
-        /// <summary>
-        /// This is the quantity of the item
-        /// </summary>
-        public int Quantity;
+            /// <summary>
+            /// This is the transactionId that is assigned to the transaction
+            /// </summary>
+            public int TransactionId;
 
-        /// <summary>
-        /// This is the name of the item in the transaction
-        /// </summary>
-        public string TypeName;
+            /// <summary>
+            /// This is the quantity of the item
+            /// </summary>
+            public int Quantity;
 
-        /// <summary>
-        /// This is the typeId of the item referenced in the transaction
-        /// </summary>
-        public int TypeId;
+            /// <summary>
+            /// This is the name of the item in the transaction
+            /// </summary>
+            public string TypeName;
 
-        /// <summary>
-        /// This is the price of the item in the transaction
-        /// </summary>
-        public double Price;
+            /// <summary>
+            /// This is the typeId of the item referenced in the transaction
+            /// </summary>
+            public int TypeId;
 
-        /// <summary>
-        /// The client's Id
-        /// </summary>
-        public int ClientId;
+            /// <summary>
+            /// This is the price of the item in the transaction
+            /// </summary>
+            public double Price;
 
-        /// <summary>
-        /// The client's name
-        /// </summary>
-        public string ClientName;
+            /// <summary>
+            /// The client's Id
+            /// </summary>
+            public int ClientId;
 
-        /// <summary>
-        /// The character who initiated the transaction's id 
-        /// This is only present when viewing corp transactions, otherwise
-        /// it is assumed to be the character accessing the data
-        /// </summary>
-        public int CharacterId;
+            /// <summary>
+            /// The client's name
+            /// </summary>
+            public string ClientName;
 
-        /// <summary>
-        /// The character who initiated the transaction's name 
-        /// This is only present when viewing corp transactions, otherwise
-        /// it is assumed to be the character accessing the data
-        /// </summary>
-        public string CharacterName;
+            /// <summary>
+            /// The character who initiated the transaction's id 
+            /// This is only present when viewing corp transactions, otherwise
+            /// it is assumed to be the character accessing the data
+            /// </summary>
+            public int CharacterId;
 
-        /// <summary>
-        /// The Id of the station where the transaction took place
-        /// </summary>
-        public int StationId;
+            /// <summary>
+            /// The character who initiated the transaction's name 
+            /// This is only present when viewing corp transactions, otherwise
+            /// it is assumed to be the character accessing the data
+            /// </summary>
+            public string CharacterName;
 
-        /// <summary>
-        /// The name of the station where the transaction took place
-        /// </summary>
-        public string StationName;
+            /// <summary>
+            /// The Id of the station where the transaction took place
+            /// </summary>
+            public int StationId;
 
-        /// <summary>
-        /// This is the type of transaction type, sell or buy
-        /// </summary>
-        public string TransactionType;
+            /// <summary>
+            /// The name of the station where the transaction took place
+            /// </summary>
+            public string StationName;
 
-        /// <summary>
-        /// This is who the transaction was for (personal or corporation)
-        /// </summary>
-        public string TransactionFor;
+            /// <summary>
+            /// This is the type of transaction type, sell or buy
+            /// </summary>
+            public string TransactionType;
+
+            /// <summary>
+            /// This is who the transaction was for (personal or corporation)
+            /// </summary>
+            public string TransactionFor;
+        }
     }
 
     /// <summary>

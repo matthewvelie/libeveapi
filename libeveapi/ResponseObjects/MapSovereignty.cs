@@ -42,42 +42,42 @@ namespace libeveapi
 
             return mapSovereignty;
         }
-    }
-
-    /// <summary>
-    /// The information for a system with one jump or more
-    /// </summary>
-    public class MapSovereigntyItem
-    {
-        /// <summary>
-        /// The unique identification number of a solar system
-        /// </summary>
-        public int SolarSystemId;
 
         /// <summary>
-        /// The Id of the alliance that has sovereignty of this solar system, or 0 if nobody has sovereignty.
+        /// The information for a system with one jump or more
         /// </summary>
-        public int AllianceId;
+        public class MapSovereigntyItem
+        {
+            /// <summary>
+            /// The unique identification number of a solar system
+            /// </summary>
+            public int SolarSystemId;
 
-        /// <summary>
-        /// The Id of the alliance that has sovereignty of this constellation, or 0 if nobody has constellation sovereignty.
-        /// http://myeve.eve-online.com/devblog.asp?a=blog&bid=477
-        /// </summary>
-        public int ConstellationSovereignty;
+            /// <summary>
+            /// The Id of the alliance that has sovereignty of this solar system, or 0 if nobody has sovereignty.
+            /// </summary>
+            public int AllianceId;
 
-        /// <summary>
-        /// The level of sovernty
-        /// </summary>
-        public int SovereigntyLevel;
+            /// <summary>
+            /// The Id of the alliance that has sovereignty of this constellation, or 0 if nobody has constellation sovereignty.
+            /// http://myeve.eve-online.com/devblog.asp?a=blog&bid=477
+            /// </summary>
+            public int ConstellationSovereignty;
 
-        /// <summary>
-        /// The NPC faction that controls this system
-        /// </summary>
-        public int FactionId;
+            /// <summary>
+            /// The level of sovernty
+            /// </summary>
+            public int SovereigntyLevel;
 
-        /// <summary>
-        /// Name of the solar system
-        /// </summary>
-        public string SolarSystemName;
+            /// <summary>
+            /// The NPC faction that controls this system
+            /// </summary>
+            public int FactionId;
+
+            /// <summary>
+            /// Name of the solar system
+            /// </summary>
+            public string SolarSystemName;
+        }
     }
 }
