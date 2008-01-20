@@ -11,11 +11,11 @@ public static MapKills GetMapKills()
 }}}
 
 === Results ===
-* !MapKills object (See ApiResponse for inherited members) *
+* !MapKills class (See ApiResponse for inherited members) *
 || *Member* || *Type* || *Description* ||
 || !MapSystemKills || !MapKillsItem || List of kills information for each system ||
 
-* !MapKillsItem object *
+* !MapKills.!MapKillsItem class*
 || *Member* || *Type* || *Description* ||
 || !SolarSystemId || int || The Id of the solarsystem ||
 || !ShipKills || int || The number of kills ||
@@ -24,10 +24,10 @@ public static MapKills GetMapKills()
 
 === Example ===
 {{{
-public static void MapKills()
+public static void MapKillsExample()
 {
     MapKills mapKills = EveApi.GetMapKills();
-    foreach (MapKillsItem item in mapKills.MapSystemKills)
+    foreach (MapKills.MapKillsItem item in mapKills.MapSystemKills)
     {
         if (item.ShipKills > 5)
         {
