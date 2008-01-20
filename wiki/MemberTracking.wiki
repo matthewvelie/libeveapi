@@ -15,11 +15,11 @@ public static MemberTracking GetMemberTracking(string userId, string characterId
 }}}
 
 === Result ===
-* !MemberTracking object (See ApiResult for inherited members) *
+* !MemberTracking class (See ApiResult for inherited members) *
 || *Member* || *Type* || *Description* ||
 || Members|| Member || Information about a corporation member ||
 
-* Member object *
+* Member class *
 || *Member* || *Type* || *Description* ||
 || !CharacterId || int || Unique identifier of the member ||
 || Name || string || member's character name ||
