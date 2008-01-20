@@ -39,31 +39,31 @@ namespace libeveapi
 
             return characterList;
         }
-    }
-
-    /// <summary>
-    /// Represents a character from the account character list
-    /// </summary>
-    public class CharacterListItem
-    {
-        /// <summary>
-        /// Name of the character
-        /// </summary>
-        public string Name;
 
         /// <summary>
-        /// Id of the character
+        /// Represents a character from the account character list
         /// </summary>
-        public int CharacterId;
+        public class CharacterListItem
+        {
+            /// <summary>
+            /// Name of the character
+            /// </summary>
+            public string Name;
 
-        /// <summary>
-        /// Name of the corporation the character is a member of
-        /// </summary>
-        public string CorporationName;
+            /// <summary>
+            /// Id of the character
+            /// </summary>
+            public int CharacterId;
 
-        /// <summary>
-        /// Id of the corporation the character is a member of
-        /// </summary>
-        public int CorporationId;
+            /// <summary>
+            /// Name of the corporation the character is a member of
+            /// </summary>
+            public string CorporationName;
+
+            /// <summary>
+            /// Id of the corporation the character is a member of
+            /// </summary>
+            public int CorporationId;
+        }
     }
 }
