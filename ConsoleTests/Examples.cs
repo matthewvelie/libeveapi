@@ -21,6 +21,19 @@ namespace ConsoleTests
             Constants.ApiPrefix = "http://localhost/eveapi";
         }
 
+
+        public static void MarketOrders()
+        {
+            MarketOrders orders = EveApi.GetMarketOrderList(MarketOrdersListType.Character, "userId", "characterId", "fullApiKey");
+            foreach (MarketOrderItem item in orders.MarketOrderItems)
+            {
+                if (item.OrderType == MarketOrderType.Sell && item.TypeId == 123)
+                {
+                    Console.WriteLine("Item 123 is for sale at: {0}", item.StationId);
+                }
+            }
+        }
+
         public static void MapJumps()
         {
             MapJumps mapJumps = EveApi.GetMapJumps();

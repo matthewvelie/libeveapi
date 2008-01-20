@@ -6,10 +6,10 @@ using System.Xml;
 namespace libeveapi
 {
     /// <summary>
-    /// Represents a character or corporation AccountBalance response from the eve api
+    /// Returns a list of market orders that are either not expired or have expired in the past week (at most).
     /// http://wiki.eve-dev.net/APIv2_Corp_MarketOrders_XML
     /// </summary>
-    public class MarketOrder : ApiResponse
+    public class MarketOrders : ApiResponse
     {
         /// <summary>
         /// 
@@ -21,9 +21,9 @@ namespace libeveapi
         /// </summary>
         /// <param name="xmlDoc"></param>
         /// <returns></returns>
-        public static MarketOrder FromXmlDocument(XmlDocument xmlDoc)
+        public static MarketOrders FromXmlDocument(XmlDocument xmlDoc)
         {
-            MarketOrder MarketOrderList = new MarketOrder();
+            MarketOrders MarketOrderList = new MarketOrders();
             MarketOrderList.ParseCommonElements(xmlDoc);
 
             List<MarketOrderItem> orders = new List<MarketOrderItem>();
@@ -55,22 +55,22 @@ namespace libeveapi
             switch (Convert.ToInt32(marketOrderRow.Attributes["orderState"].InnerText))
             {
                 case 0:
-                    marketItem.OrderState = marketOrderState.OpenActive;
+                    marketItem.OrderState = MarketOrderState.OpenActive;
                     break;
                 case 1:
-                    marketItem.OrderState = marketOrderState.Closed;
+                    marketItem.OrderState = MarketOrderState.Closed;
                     break;
                 case 2:
-                    marketItem.OrderState = marketOrderState.ExpiredFulfilled;
+                    marketItem.OrderState = MarketOrderState.ExpiredFulfilled;
                     break;
                 case 3:
-                    marketItem.OrderState = marketOrderState.Canceled;
+                    marketItem.OrderState = MarketOrderState.Canceled;
                     break;
                 case 4:
-                    marketItem.OrderState = marketOrderState.Pending;
+                    marketItem.OrderState = MarketOrderState.Pending;
                     break;
                 case 5:
-                    marketItem.OrderState = marketOrderState.CharacterDeleted;
+                    marketItem.OrderState = MarketOrderState.CharacterDeleted;
                     break;
                 default:
                     break;
@@ -83,7 +83,16 @@ namespace libeveapi
             marketItem.Escrow = Convert.ToDouble(marketOrderRow.Attributes["escrow"].InnerText);
             marketItem.Price = Convert.ToDouble(marketOrderRow.Attributes["price"].InnerText);
             marketItem.Bid = Convert.ToBoolean(Convert.ToInt32(marketOrderRow.Attributes["bid"].InnerText));
-            marketItem.Issued = Convert.ToDateTime(marketOrderRow.Attributes["issued"].InnerText);
+            marketItem.Issued = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(marketOrderRow.Attributes["issued"].InnerText);
+            marketItem.IssuedLocal = TimeUtilities.ConvertCCPToLocalTime(marketItem.Issued);
+            if (marketItem.Bid)
+            {
+                marketItem.OrderType = MarketOrderType.Buy;
+            }
+            else
+            {
+                marketItem.OrderType = MarketOrderType.Sell;
+            }
 
             return marketItem;
         }
@@ -94,7 +103,11 @@ namespace libeveapi
     /// </summary>
     public class MarketOrderItem
     {
-        
+        /// <summary>
+        /// Order type (Buy or Sell)
+        /// </summary>
+        public MarketOrderType OrderType;
+
         /// <summary>
         /// Order id, not forever unique but for this pull they will be unique
         /// </summary>
@@ -129,7 +142,7 @@ namespace libeveapi
         /// <summary>
         /// See <see cref="marketOrderState"/> for full descriptions of each order state
         /// </summary>
-        public marketOrderState OrderState;
+        public MarketOrderState OrderState;
 
         /// <summary>
         /// This is the typeId of the item that is being bought/sold
@@ -176,13 +189,18 @@ namespace libeveapi
         /// This is when the order was issued
         /// </summary>
         public DateTime Issued;
+
+        /// <summary>
+        /// This is when the order was issued in local time
+        /// </summary>
+        public DateTime IssuedLocal;
     }
 
     /// <summary>
     /// This is the current state of the market order, letting you know if the
     /// item is still on the market or not.
     /// </summary>
-    public enum marketOrderState
+    public enum MarketOrderState
     {
         /// <summary>
         /// If the market order is still active and up on the market
@@ -215,10 +233,23 @@ namespace libeveapi
         CharacterDeleted = 5
     }
 
+    public enum MarketOrderType
+    {
+        /// <summary>
+        /// Denotes a buy order
+        /// </summary>
+        Buy,
+
+        /// <summary>
+        /// Denotes a sell order
+        /// </summary>
+        Sell
+    }
+
     /// <summary>
     /// If this is a corporation or (peronal) character market order
     /// </summary>
-    public enum MarketOrderType
+    public enum MarketOrdersListType
     {
         /// <summary>
         /// A corporation market order
