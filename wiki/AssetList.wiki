@@ -1,7 +1,7 @@
 === Description ===
 A list of assets owned by a character or corporation.
 
-=== Eve Api Call ===
+=== Library Method ===
 {{{
 /// <summary>
 /// Returns a list of assets owned by a character or corporation.
