@@ -25,7 +25,7 @@ public static CorporationSheet GetCorporationSheet(int userId, int characterId, 
 
 === Result ===
 * !CorporationSheet class (See ApiResult for inherited members) *
-|| Member || Type || Description ||
+|| *Member* || *Type* || *Description* ||
 || !CoporationId || int || Unique identifier for the corporation ||
 || !CorporationName || string || Name of the corporation ||
 || Ticker || string || Stock ticker symbol for the corporation ||
