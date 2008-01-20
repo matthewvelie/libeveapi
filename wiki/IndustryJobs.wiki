@@ -54,6 +54,10 @@ public static IndustryJobList GetIndustryJobList(IndustryJobListType industryJob
 || !BeginProductionTime || !DateTime || When production time started (different than install time if a queue) ||
 || !EndProductionTime || !DateTime || When the job will be finished ||
 || !PauseProductionTime || !DateTime || ||
+|| !InstallTimeLocal || !DateTime || When this item was installed in local time ||
+|| !BeginProductionTimeLocal || !DateTime || When production time started in local time (different than install time if a queue) ||
+|| !EndProductionTimeLocal || !DateTime || When the job will be finished in local time ||
+|| !PauseProductionTimeLocal || !DateTime || ||
 
 * !IndustryJobListType enumeration *
 || Member || Value || Description ||
