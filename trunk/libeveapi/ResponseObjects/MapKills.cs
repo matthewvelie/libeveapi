@@ -40,31 +40,33 @@ namespace libeveapi
 
             return mapKills;
         }
+
+        /// <summary>
+        /// The information for a system with one jump or more
+        /// </summary>
+        public class MapKillsItem
+        {
+            /// <summary>
+            /// The Id of the solarsystem
+            /// </summary>
+            public int SolarSystemId;
+
+            /// <summary>
+            /// The number of kills
+            /// </summary>
+            public int ShipKills;
+
+            /// <summary>
+            /// The number of kills
+            /// </summary>
+            public int FactionKills;
+
+            /// <summary>
+            /// The number of kills
+            /// </summary>
+            public int PodKills;
+        }
     }
 
-    /// <summary>
-    /// The information for a system with one jump or more
-    /// </summary>
-    public class MapKillsItem
-    {
-        /// <summary>
-        /// The Id of the solarsystem
-        /// </summary>
-        public int SolarSystemId;
-
-        /// <summary>
-        /// The number of kills
-        /// </summary>
-        public int ShipKills;
-
-        /// <summary>
-        /// The number of kills
-        /// </summary>
-        public int FactionKills;
-
-        /// <summary>
-        /// The number of kills
-        /// </summary>
-        public int PodKills;
-    }
+    
 }
