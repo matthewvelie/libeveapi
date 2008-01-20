@@ -1,5 +1,5 @@
 === Description ===
-Represents a character name and  CharacterId response from the eve api
+Represents a character name and !CharacterId response from the eve api
 
 === Library Methods ===
 {{{
