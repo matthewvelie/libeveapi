@@ -1,4 +1,7 @@
 #labels Featured
+== Documentation ==
+The [Documentation Documentation] page contains detailed descriptions and examples of all library functions.
+
 == General Setup == 
  * Download and extract the library, be sure to keep the .XML file with the .DLL file. This will enable extended intellisense information which makes using the library a whole lot easier.
  * In your application project, add a reference to the .DLL file
