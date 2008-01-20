@@ -17,7 +17,7 @@ public static MemberTracking GetMemberTracking(int userId, int characterId, stri
 === Result ===
 * !MemberTracking class (See ApiResult for inherited members) *
 || *Member* || *Type* || *Description* ||
-|| Members|| Member || Information about a corporation member ||
+|| Members|| Member[] || Information about a corporation member ||
 
 * Member class *
 || *Member* || *Type* || *Description* ||
