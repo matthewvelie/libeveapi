@@ -11,11 +11,11 @@ public static MapJumps GetMapJumps()
 }}}
 
 === Results ===
-* !MapJumps object (See ApiResult for inherited members) *
+* !MapJumps class (See ApiResult for inherited members) *
 || *Member* || *Type* || *Description* ||
 || !MapSystemJumps || !MapSystemItem[] || List of jumps per system ||
 
-* !MapSystemItem object *
+* !MapSystemItem class *
 || *Member* || *Type* || *Description* ||
 || !SolarSystemId || int || The Id of the solar system ||
 || !ShipJumps || int || The number of jumps to/from the system ||
