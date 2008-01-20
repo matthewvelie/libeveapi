@@ -1,7 +1,7 @@
 === Description ===
 Returns a list of all the characters on an account.
 
-=== Eve Api Method ===
+=== Library Method ===
 {{{
 /// <summary>
 /// Returns a list of all characters on an account
