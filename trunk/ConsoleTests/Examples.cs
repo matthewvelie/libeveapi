@@ -132,7 +132,7 @@ namespace ConsoleTests
 
         public static void DisplayJournalEntries(JournalEntries entries)
         {
-            foreach (JournalEntryItem item in entries.JournalEntryItems)
+            foreach (JournalEntries.JournalEntryItem item in entries.JournalEntryItems)
             {
                 Console.WriteLine("Date: {0} Amount: {1} Balance: {2}", item.DateLocal, item.Amount, item.Balance);
             }
