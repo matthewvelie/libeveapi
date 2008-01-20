@@ -61,8 +61,8 @@ public static IndustryJobList GetIndustryJobList(IndustryJobListType industryJob
 
 * !IndustryJobListType enumeration *
 || *Member* || *Value* || *Description* ||
-|| Corporation || - || Retrieve jobs for the corporation ||
-|| Character || - || Retrieve jobs for the character ||
+|| Corporation || - || Retrieve jobs for a corporation ||
+|| Character || - || Retrieve jobs for a character ||
 
 === Example ===
 {{{
