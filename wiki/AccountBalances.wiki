@@ -24,8 +24,8 @@ public static AccountBalance GetAccountBalance(AccountBalanceType accountBalance
 
 * !AccountBalanceItem Object *
 || Member || Type || Description ||
-|| !AccountId || string || ID number of the account ||
-|| !AccountKey || string || Account Identifier. For Characters: always 1000. For Corp: the wallet division ||
+|| !AccountId || int || ID number of the account ||
+|| !AccountKey || int || Account Identifier. For Characters: always 1000. For Corp: the wallet division ||
 || Balance || double || The amount of ISK in the account ||
 
 * !AccountBalanceType Enumeration *
