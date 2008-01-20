@@ -285,8 +285,8 @@ namespace ConsoleTests
         {
             StarbaseDetail starbaseDetail = EveApi.GetStarbaseDetail(45353, 45317, "fullApiKey", 43534);
             Console.WriteLine("usageFlags: {0} deployFlags: {1}", starbaseDetail.UsageFlags, starbaseDetail.DeployFlags);
-            
-            foreach (FuelListItem fli in starbaseDetail.FuelList)
+
+            foreach (StarbaseDetail.FuelListItem fli in starbaseDetail.FuelList)
             {
                 Console.WriteLine("TypeID: {0} Quantity: {1}", fli.TypeId, fli.Quantity);
             }
