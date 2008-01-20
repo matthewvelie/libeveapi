@@ -26,52 +26,52 @@ public static KillLog GetKillLog(KillLogType killLogType, int userId, int charac
 }}}
 
 === Results ===
-* KillLog object (See ApiResult for inherited members) *
+* !KillLog object (See ApiResult for inherited members) *
 || *Member* || *Type* || *Description* ||
 || Kills || Kill[] || List of kills ||
 
 * Kill object *
 || *Member* || *Type* || *Description* ||
-|| KillId || int || Unique kill ID for this kill. This is to be used as the input for beforeKillID if you need to scroll back. This is globally unique and can be used for uniquely identifying a kill to other killboards.||
-|| SolarSystemId || int || The ID of the solar system this kill occurred in. ||
-|| KillTime || DateTime || What time the event occurred. ||
-|| KillTimeLocal || DateTime || What time the event occurred in local time ||
-|| MoonId || int || In some situations, this is present to define what moon a kill occurred at. Note that this is generally only present in situations where the loss is a POS structure. It is not guaranteed to be populated. ||
-|| Victim || VictimPilot || object containing data about the victim ||
+|| !KillId || int || Unique kill ID for this kill. This is to be used as the input for beforeKillID if you need to scroll back. This is globally unique and can be used for uniquely identifying a kill to other killboards.||
+|| !SolarSystemId || int || The ID of the solar system this kill occurred in. ||
+|| !KillTime || !DateTime || What time the event occurred. ||
+|| !KillTimeLocal || !DateTime || What time the event occurred in local time ||
+|| !MoonId || int || In some situations, this is present to define what moon a kill occurred at. Note that this is generally only present in situations where the loss is a POS structure. It is not guaranteed to be populated. ||
+|| Victim || !VictimPilot || object containing data about the victim ||
 || Attackers || Attacker || list of objects containing data about the attackers ||
 || Items || Item[] || List of items lost in the kill ||
 
 *Pilot base class*
 || *Member* || *Type* || *Description* ||
-|| CharacterId || int || Character's ID. Fairly self-explanatory. Can be 0 in which case this kill was not done by a character and instead was done by a corporation. In the victim case, this implies it is a structure loss.||
-|| CharacterName || string || If present, the name of the above characterID.||
-|| CorporationId || int || The ID of the corporation. This will always be present, as there is always a corporation behind the victim, whether it is the corporation itself or simply someone in that corporation. ||
-|| CorporationName || string || The name of the above corporation. ||
-|| AllianceId || int || If not 0, this is the ID of the alliance the corporation belongs to. ||
-|| AllianceName || string || The name of the alliance associated with the kill.||
-|| ShipTypeId || int || The item lost. This could be a ship as suggested by the name but can potentially be anything that generates a kill event.||
+|| !CharacterId || int || Character's ID. Fairly self-explanatory. Can be 0 in which case this kill was not done by a character and instead was done by a corporation. In the victim case, this implies it is a structure loss.||
+|| !CharacterName || string || If present, the name of the above characterID.||
+|| !CorporationId || int || The ID of the corporation. This will always be present, as there is always a corporation behind the victim, whether it is the corporation itself or simply someone in that corporation. ||
+|| !CorporationName || string || The name of the above corporation. ||
+|| !AllianceId || int || If not 0, this is the ID of the alliance the corporation belongs to. ||
+|| !AllianceName || string || The name of the alliance associated with the kill.||
+|| !ShipTypeId || int || The item lost. This could be a ship as suggested by the name but can potentially be anything that generates a kill event.||
 
-*VictimPilot object (See Pilot base class for inherited members)*
+*!VictimPilot object (See Pilot base class for inherited members)*
 || *Member* || *Type* || *Description* ||
-|| DamageTaken || int ||  How much damage the victim took before succumbing to fiery defeat and humiliation. Please note that this damage is calculated after resists. It does give you a decent idea of how much they were tanking, however. ||
+|| !DamageTaken || int ||  How much damage the victim took before succumbing to fiery defeat and humiliation. Please note that this damage is calculated after resists. It does give you a decent idea of how much they were tanking, however. ||
 
 *Attacker object (See Pilot base class for inherited members)*
 || *Member* || *Type* || *Description* ||
-|| SecurityStatus || double ||The security status of the aggressor at the time of this kill. ||
-|| DamageDone || int || The amount of damage done to the victim. This is post-resists damage done.||
-|| FinalBlow || bool || Whether or not this aggressor is attributed with the so-called "final blow." ||
-|| WeaponTypeId || int || What weapon we decided to show this person as using. Often a weapon, sometimes a ship or missile, rarely a fish ||
+|| !SecurityStatus || double ||The security status of the aggressor at the time of this kill. ||
+|| !DamageDone || int || The amount of damage done to the victim. This is post-resists damage done.||
+|| !FinalBlow || bool || Whether or not this aggressor is attributed with the so-called "final blow." ||
+|| !WeaponTypeId || int || What weapon we decided to show this person as using. Often a weapon, sometimes a ship or missile, rarely a fish ||
 
 *Item object*
 || *Member* || *Type* || *Description* ||
-|| TypeId || int ||The typeID of this item, references the invTypes table ||
-|| Flag || InventoryFlag || See InventoryFlags for details ||
-|| QtyDropped || int || How many of this item were dropped. If the user had multiple stacks, we compress the total number of dropped items to just one stack for space purposes. ||
-|| QtyDestroyed || int ||How many of this item fell victim to atomic dispersal and other sad little ends that such things can meet. ||
-|| Container || bool || True if the destoryed item contained other items. ||
-|| ContainedItems || Item[] || List of contained items. ||
+|| !TypeId || int ||The typeID of this item, references the invTypes table ||
+|| Flag || !InventoryFlag || See InventoryFlags for details ||
+|| !QtyDropped || int || How many of this item were dropped. If the user had multiple stacks, we compress the total number of dropped items to just one stack for space purposes. ||
+|| !QtyDestroyed || int ||How many of this item fell victim to atomic dispersal and other sad little ends that such things can meet. ||
+|| Container || bool || True if the destroyed item contained other items. ||
+|| !ContainedItems || Item[] || List of contained items. ||
 
-*KillLogType enumeration *
+*!KillLogType enumeration *
 || *Member* || *Value* || *Description* ||
 || Corporation || - || Retrieve kill log for a corporation. ||
 || Character || - || Retrieve kill log for a character. ||
