@@ -11,38 +11,38 @@ Contains the settings and fuel status of a starbase
 /// <param name="fullApiKey">Full access api key of account</param>
 /// <param name="itemId">Item ID of the starbase as given in the starbase list</param>
 /// <returns></returns>
-public static StarbaseDetail GetStarbaseDetail(string userId, string characterId, string fullApiKey, string itemId)
+public static StarbaseDetail GetStarbaseDetail(int userId, int characterId, string fullApiKey, int itemId)
 }}}
 
 === Result ===
-* StarbaseDetail Object (See ApiResponse for inherited members) *
+* !StarbaseDetail class (See ApiResponse for inherited members) *
 || Member || Type || Description ||
-|| UsageFlags || string || ||
-|| DeployFlags || string || ||
-|| AllowCorporationMembers || bool || Allow corporation members access inside the forcefield bubble ||
-|| AllowAllianceMembers || bool || Allow alliance members access inside the forcefield bubble ||
-|| ClaimSovereignty || bool || Is this starbase claiming sovernty (only in 0.0) ||
-|| OnStandingDropEnabled || bool || Attack if target standing is dropping ||
-|| OnStandingDropStanding|| string|| Attack if target standing is below this ||
-|| OnStatusDropEnabled|| bool || Attack if target is status is dropping ||
-|| OnStatusDropStanding|| string|| Attack if target status is below this ||
-|| OnAgressionEnabled|| bool || Attack if target has aggressed ||
-|| OnCorporationWarEnabled|| bool || Attack if target is a wartarget ||
-|| FuelList || FuelListItem[] || List of fuels present in the starbase ||
+|| !UsageFlags || string || ||
+|| !DeployFlags || string || ||
+|| !AllowCorporationMembers || bool || Allow corporation members access inside the forcefield bubble ||
+|| !AllowAllianceMembers || bool || Allow alliance members access inside the forcefield bubble ||
+|| !ClaimSovereignty || bool || Is this starbase claiming sovernty (only in 0.0) ||
+|| !OnStandingDropEnabled || bool || Attack if target standing is dropping ||
+|| !OnStandingDropStanding|| string|| Attack if target standing is below this ||
+|| !OnStatusDropEnabled|| bool || Attack if target is status is dropping ||
+|| !OnStatusDropStanding|| string|| Attack if target status is below this ||
+|| !OnAgressionEnabled|| bool || Attack if target has aggressed ||
+|| !OnCorporationWarEnabled|| bool || Attack if target is a wartarget ||
+|| !FuelList || !FuelListItem[] || List of fuels present in the starbase ||
 
-* FuelListItem Object *
+* !StarbaseDetail.!FuelListItem Object *
 || Member || Type || Description ||
-|| TypeId || string || typeID of the fuel ||
+|| !TypeId || string || typeID of the fuel ||
 || Quantity || long || Number of units of the fuel remaining ||
 
 === Example ===
 {{{
 public static void PrintStarbaseDetail()
 {
-    StarbaseDetail starbaseDetail = EveApi.GetStarbaseDetail("userId", "characterId", "fullApiKey", "itemId");
+    StarbaseDetail starbaseDetail = EveApi.GetStarbaseDetail(45353, 45317, "fullApiKey", 43534);
     Console.WriteLine("usageFlags: {0} deployFlags: {1}", starbaseDetail.UsageFlags, starbaseDetail.DeployFlags);
-    
-    foreach (FuelListItem fli in starbaseDetail.FuelList)
+
+    foreach (StarbaseDetail.FuelListItem fli in starbaseDetail.FuelList)
     {
         Console.WriteLine("TypeID: {0} Quantity: {1}", fli.TypeId, fli.Quantity);
     }
