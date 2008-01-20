@@ -10,11 +10,11 @@ Contains the Current Skill in Training
         /// <param name="characterId">Character Id of the character to get skill info for</param>
         /// <param name="apiKey">limited access API key of Account</param>
         /// <returns></returns>
-        public static SkillInTraining GetSkillInTraining(string userId, string characterId, string apiKey)
+        public static SkillInTraining GetSkillInTraining(int userId, int characterId, string apiKey)
 }}}
 
 === Result ===
-* !SkillInTraining object (See ApiResponse for inherited members) *
+* !SkillInTraining class (See ApiResponse for inherited members) *
 || *Member* || *Type* || *Descripton* ||
 || !SkillCurrentlyInTraining || bool || True if a skill is currently training, false is no skill is training ||
 || !TrainingEndTime || !DateTime || Server time when skill training completes in ccp time Minvalue - when no skill training||
@@ -30,7 +30,7 @@ Contains the Current Skill in Training
 {{{
 public static void SkillInTrainingExample()
 {
-    SkillInTraining skillInTraining = EveApi.GetSkillInTraining("userId", "characterId", "apiKey");
+    SkillInTraining skillInTraining = EveApi.GetSkillInTraining(123, 456, "apiKey");
     if (skillInTraining.SkillCurrentlyInTraining)
     {
         Console.WriteLine("Training of skill: {0} will finish at {1}", skillInTraining.TrainingTypeId, skillInTraining.TrainingEndTimeLocal);
