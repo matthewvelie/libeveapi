@@ -28,7 +28,7 @@ public static MarketOrder GetMarketOrderList(MarketOrdersListType marketOrdersLi
 || !VolEntered || long || The quantity of the items required/offered when the order was placed ||
 || !VolRemaining || long || The quantitiy of items that are still for sale/ still required ||
 || !MinVolume || long || For bids (buy orders) the minimum quantity that must be sold in one sale so that the order is accepted. ||
-|| !OrderState || MarketOrderState || See MarketOrderState for full descriptions of each order state ||
+|| !OrderState || !MarketOrderState || See MarketOrderState for full descriptions of each order state ||
 || !TypeId || int || This is the typeId of the item that is being bought/sold ||
 || Range || int || This is the range of the order For sell orders it is always 32767 For buy orders it is either -1 = station, 0 = solar system Any number above 1 is number of jumps in region And 32767 means region ||
 || !AccountKey || int || This is which wallet the order is using, for a personal order this will always be 1000, for corporation orders it can be 1000-1006 depending on which wallet is being used||
