@@ -707,18 +707,6 @@ namespace libeveapi
             string url = String.Format("{0}?c={1}&s={2}", Constants.ImageFullURL, characterId.ToString(), imageSize.ToString());
             return Network.GetImage(url);
         }
-
-        /// <summary>
-        /// Convert a CCP DateTime to local time
-        /// </summary>
-        /// <param name="ccpCurrentTime">CCP server current datetime</param>
-        /// <param name="ccpDateTime">the datetime to convert to local</param>
-        /// <returns></returns>
-        public static DateTime CCPDateTimeToLocal(DateTime ccpCurrentTime, DateTime ccpDateTime)
-        {
-            TimeSpan offset = DateTime.Now.Subtract(ccpCurrentTime);
-            return ccpDateTime.Add(offset);
-        }
     }
 
     /// <summary>

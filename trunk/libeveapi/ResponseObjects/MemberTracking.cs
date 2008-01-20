@@ -43,12 +43,12 @@ namespace libeveapi
                 mti.RolesMask = row.Attributes["roles"].InnerText;
                 mti.GrantableRoles = row.Attributes["grantableRoles"].InnerText;
 
-                DateTime.TryParse(row.Attributes["startDateTime"].InnerText, out mti.StartDateTime);
-                DateTime.TryParse(row.Attributes["logonDateTime"].InnerText, out mti.LogonDateTime);
-                DateTime.TryParse(row.Attributes["logoffDateTime"].InnerText, out mti.LogoffDateTime);
-                mti.StartDateTimeLocal = EveApi.CCPDateTimeToLocal(memberTracking.CurrentTime, mti.StartDateTimeLocal);
-                mti.LogonDateTimeLocal = EveApi.CCPDateTimeToLocal(memberTracking.CurrentTime, mti.LogonDateTimeLocal);
-                mti.LogoffDateTimeLocal = EveApi.CCPDateTimeToLocal(memberTracking.CurrentTime, mti.LogoffDateTimeLocal);
+                mti.StartDateTime = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(row.Attributes["startDateTime"].InnerText);
+                mti.LogonDateTime = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(row.Attributes["logonDateTime"].InnerText);
+                mti.LogoffDateTime = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(row.Attributes["logoffDateTime"].InnerText);
+                mti.StartDateTimeLocal = TimeUtilities.ConvertCCPToLocalTime(mti.StartDateTime);
+                mti.LogonDateTimeLocal = TimeUtilities.ConvertCCPToLocalTime(mti.LogonDateTime);
+                mti.LogoffDateTimeLocal = TimeUtilities.ConvertCCPToLocalTime(mti.LogoffDateTime);
 
                 parsedMemeberTrackingItems.Add(mti);
             }

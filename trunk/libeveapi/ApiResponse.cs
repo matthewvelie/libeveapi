@@ -78,14 +78,15 @@ namespace libeveapi
         /// <returns></returns>
         public void ParseCommonElements(XmlDocument xmlDoc)
         {
-            DateTime.TryParse(xmlDoc.GetElementsByTagName("currentTime")[0].InnerText, out this.CurrentTime);
-            DateTime.TryParse(xmlDoc.GetElementsByTagName("cachedUntil")[0].InnerText, out this.CachedUntil);
             this.ResponseXml = xmlDoc;
+            string currentTimeCCPString = xmlDoc.SelectSingleNode("/eveapi/currentTime").InnerText;
+            string cachedUntilCCPString = xmlDoc.SelectSingleNode("/eveapi/cachedUntil").InnerText;
 
-            TimeSpan cachedTimeSpan = CachedUntil.Subtract(CurrentTime);
-            this.CachedUntilLocal = DateTime.Now.Add(cachedTimeSpan);
+            this.CurrentTime = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(currentTimeCCPString);
+            this.CachedUntil = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(cachedUntilCCPString);
 
-            this.CurrentTimeLocal = EveApi.CCPDateTimeToLocal(this.CurrentTime, this.CurrentTime);
+            this.CurrentTimeLocal = TimeUtilities.ConvertCCPToLocalTime(this.CurrentTime);
+            this.CachedUntilLocal = TimeUtilities.ConvertCCPToLocalTime(this.CachedUntil);
 
             XmlNodeList errors = xmlDoc.GetElementsByTagName("error");
             if (errors.Count > 0)

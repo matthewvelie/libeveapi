@@ -23,16 +23,17 @@ namespace libeveapi
                 ali.AllianceId = Convert.ToInt32(allianceRow.Attributes["allianceID"].InnerText);
                 ali.ExecutorCorpId = Convert.ToInt32(allianceRow.Attributes["executorCorpID"].InnerText);
                 ali.MemberCount = Convert.ToInt32(allianceRow.Attributes["memberCount"].InnerText);
-                DateTime.TryParse(allianceRow.Attributes["startDate"].InnerText, out ali.StartDate);
-                ali.StartDateLocal = EveApi.CCPDateTimeToLocal(allianceList.CurrentTime, ali.StartDate);
+                ali.StartDate = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(allianceRow.Attributes["startDate"].InnerText);
+                ali.StartDateLocal = TimeUtilities.ConvertCCPToLocalTime(ali.StartDate);
 
                 List<CorporationListItem> parsedCorporationListItems = new List<CorporationListItem>();
                 foreach (XmlNode corpRow in allianceRow.SelectNodes("rowset[@name='memberCorporations']/row"))
                 {
                     CorporationListItem cli = new CorporationListItem();
                     cli.CorporationId = Convert.ToInt32(corpRow.Attributes["corporationID"].InnerText);
-                    DateTime.TryParse(corpRow.Attributes["startDate"].InnerText, out cli.StartDate);
-                    cli.StartDateLocal = EveApi.CCPDateTimeToLocal(allianceList.CurrentTime, cli.StartDate);
+                    cli.StartDate = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(corpRow.Attributes["startDate"].InnerText);
+                    cli.StartDateLocal = TimeUtilities.ConvertCCPToLocalTime(cli.StartDate);
+
                     parsedCorporationListItems.Add(cli);
                 }
                 ali.CorporationListItems = parsedCorporationListItems.ToArray();

@@ -74,15 +74,15 @@ namespace libeveapi
             IndustryJobListItem.OutputFlag = Convert.ToInt32(industryJobRow.Attributes["outputFlag"].InnerText);
             IndustryJobListItem.ActivityId = Convert.ToInt32(industryJobRow.Attributes["activityID"].InnerText);
             IndustryJobListItem.CompletedStatus = Convert.ToInt32(industryJobRow.Attributes["completedStatus"].InnerText);
-            IndustryJobListItem.InstallTime = Convert.ToDateTime(industryJobRow.Attributes["installTime"].InnerText);
-            IndustryJobListItem.BeginProductionTime = Convert.ToDateTime(industryJobRow.Attributes["beginProductionTime"].InnerText);
-            IndustryJobListItem.EndProductionTime = Convert.ToDateTime(industryJobRow.Attributes["endProductionTime"].InnerText);
-            IndustryJobListItem.PauseProductionTime = Convert.ToDateTime(industryJobRow.Attributes["pauseProductionTime"].InnerText);
+            IndustryJobListItem.InstallTime = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(industryJobRow.Attributes["installTime"].InnerText);
+            IndustryJobListItem.BeginProductionTime = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(industryJobRow.Attributes["beginProductionTime"].InnerText);
+            IndustryJobListItem.EndProductionTime = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(industryJobRow.Attributes["endProductionTime"].InnerText);
+            IndustryJobListItem.PauseProductionTime = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(industryJobRow.Attributes["pauseProductionTime"].InnerText);
 
-            IndustryJobListItem.InstallTimeLocal = EveApi.CCPDateTimeToLocal(industryJobList.CurrentTime, IndustryJobListItem.InstallTime);
-            IndustryJobListItem.BeginProductionTimeLocal = EveApi.CCPDateTimeToLocal(industryJobList.CurrentTime, IndustryJobListItem.BeginProductionTime);
-            IndustryJobListItem.EndProductionTimeLocal = EveApi.CCPDateTimeToLocal(industryJobList.CurrentTime, IndustryJobListItem.EndProductionTime);
-            IndustryJobListItem.PauseProductionTimeLocal = EveApi.CCPDateTimeToLocal(industryJobList.CurrentTime, IndustryJobListItem.PauseProductionTime);
+            IndustryJobListItem.InstallTimeLocal = TimeUtilities.ConvertCCPToLocalTime(IndustryJobListItem.InstallTime);
+            IndustryJobListItem.BeginProductionTimeLocal = TimeUtilities.ConvertCCPToLocalTime(IndustryJobListItem.BeginProductionTime);
+            IndustryJobListItem.EndProductionTimeLocal = TimeUtilities.ConvertCCPToLocalTime(IndustryJobListItem.EndProductionTime);
+            IndustryJobListItem.PauseProductionTimeLocal = TimeUtilities.ConvertCCPToLocalTime(IndustryJobListItem.PauseProductionTime);
 
             return IndustryJobListItem;
         }

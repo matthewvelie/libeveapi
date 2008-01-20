@@ -27,7 +27,7 @@ namespace UnitTests
             System.Threading.Thread.Sleep(100);
             ErrorList errorList2 = EveApi.GetErrorList();
 
-            Assert.AreNotEqual(errorList.CachedUntilLocal, errorList2.CachedUntilLocal);
+            Assert.AreEqual(errorList.CachedUntilLocal, errorList2.CachedUntilLocal);
 
             Constants.ErrorList = errorListLocation;
         }

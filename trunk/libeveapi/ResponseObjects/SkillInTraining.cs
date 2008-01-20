@@ -10,17 +10,30 @@ namespace libeveapi
     /// </summary>
     public class SkillInTraining : ApiResponse 
     {
+        /// <summary>
+        /// True if a skill is currently training, false is no skill is training
+        /// </summary>
         public bool SkillCurrentlyInTraining;
         /// <summary>
-        /// Server time when skill training completes
+        /// Server time when skill training completes in ccp time
         /// Minvalue - when no skill training
         /// </summary>
         public DateTime TrainingEndTime;
         /// <summary>
-        /// Server time when skill training started
+        /// Server time when skill training started in ccp time
         /// Minvalue - when no skill training
         /// </summary>
         public DateTime TrainingStartTime;
+        /// <summary>
+        /// Server time when skill training completes in local time
+        /// Minvalue - when no skill training
+        /// </summary>
+        public DateTime TrainingEndTimeLocal;
+        /// <summary>
+        /// Server time when skill training started in local time
+        /// Minvalue - when no skill training
+        /// </summary>
+        public DateTime TrainingStartTimeLocal;
         /// <summary>
         /// Id of skill in training
         /// 0 - when no skill training
@@ -55,17 +68,22 @@ namespace libeveapi
             skilltraining.SkillCurrentlyInTraining = Convert.ToBoolean(Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/skillInTraining").InnerText));
             if (skilltraining.SkillCurrentlyInTraining)
             {
-                skilltraining.TrainingEndTime = Convert.ToDateTime(xmlDoc.SelectSingleNode("/eveapi/result/trainingEndTime").InnerText);
-                skilltraining.TrainingStartTime = Convert.ToDateTime(xmlDoc.SelectSingleNode("/eveapi/result/trainingStartTime").InnerText);
+                skilltraining.TrainingEndTime = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(xmlDoc.SelectSingleNode("/eveapi/result/trainingEndTime").InnerText);
+                skilltraining.TrainingStartTime = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(xmlDoc.SelectSingleNode("/eveapi/result/trainingStartTime").InnerText);
                 skilltraining.TrainingTypeId = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/trainingTypeID").InnerText);
                 skilltraining.TrainingStartSP = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/trainingStartSP").InnerText);
                 skilltraining.TrainingDestinationSP = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/trainingDestinationSP").InnerText);
                 skilltraining.TrainingToLevel = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/trainingToLevel").InnerText);
+
+                skilltraining.TrainingEndTimeLocal = TimeUtilities.ConvertCCPToLocalTime(skilltraining.TrainingEndTime);
+                skilltraining.TrainingStartTimeLocal = TimeUtilities.ConvertCCPToLocalTime(skilltraining.TrainingStartTimeLocal);
             }
             else
             {
                 skilltraining.TrainingEndTime = DateTime.MinValue;
                 skilltraining.TrainingStartTime = DateTime.MinValue;
+                skilltraining.TrainingEndTimeLocal = DateTime.MinValue;
+                skilltraining.TrainingStartTimeLocal = DateTime.MinValue;
                 skilltraining.TrainingTypeId = 0;
                 skilltraining.TrainingStartSP = 0;
                 skilltraining.TrainingDestinationSP = 0;
