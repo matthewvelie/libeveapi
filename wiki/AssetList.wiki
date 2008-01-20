@@ -38,17 +38,17 @@ public static AssetList GetAssetList(AssetListType assetListType, int userId, in
 {{{
 public static void PrintAllAssets()
 {
-    AssetList assetList = EveApi.GetAssetList(AssetListType.Corporation, "userId", "characterId", "fullApiKey");
-    foreach (AssetListItem ali in assetList.AssetListItems)
+    AssetList assetList = EveApi.GetAssetList(AssetListType.Corporation, 1237, 453, "fullApiKey");
+    foreach (AssetList.AssetListItem ali in assetList.AssetListItems)
     {
         PrintAsset(ali);
     }
 }
 
-public static void PrintAsset(AssetListItem ali)
+public static void PrintAsset(AssetList.AssetListItem ali)
 {
     Console.WriteLine("itemID: {0} quantity: {1}", ali.ItemId, ali.Quantity);
-    foreach (AssetListItem childAsset in ali.Contents)
+    foreach (AssetList.AssetListItem childAsset in ali.Contents)
     {
         PrintAsset(childAsset);
     }
