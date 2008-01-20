@@ -25,3 +25,19 @@ Contains the Current Skill in Training
 || !TrainingStartSP || int || Skill Points at training start 0 - when no skill training ||
 || !TrainingDestinationSP || int || Skill Points after training end 0 - when no skill training ||
 || !TrainingToLevel || int || Skill level being trained 0 - when no skill training ||
+
+=== Example ===
+{{{
+public static void SkillInTrainingExample()
+{
+    SkillInTraining skillInTraining = EveApi.GetSkillInTraining("userId", "characterId", "apiKey");
+    if (skillInTraining.SkillCurrentlyInTraining)
+    {
+        Console.WriteLine("Training of skill: {0} will finish at {1}", skillInTraining.TrainingTypeId, skillInTraining.TrainingEndTimeLocal);
+    }
+    else
+    {
+        Console.WriteLine("You should start a skill training!");
+    }
+}
+}}}
