@@ -11,7 +11,7 @@ A list of assets owned by a character or corporation.
 /// <param name="characterId">CharacterID of character for authentication</param>
 /// <param name="fullApiKey">Full access API key of account</param>
 /// <returns></returns>
-public static AssetList GetAssetList(AssetListType assetListType, string userId, string characterId, string fullApiKey)
+public static AssetList GetAssetList(AssetListType assetListType, int userId, int characterId, string fullApiKey)
 }}}
 
 === Result ===
