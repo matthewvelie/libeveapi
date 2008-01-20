@@ -23,12 +23,12 @@ namespace UnitTests
             SkillInTraining skillintraining = EveApi.GetSkillInTraining("asdf","asdf","asdf");
 
             //Attributes of the currently training skill
-            Assert.AreEqual("6/21/2007 9:27:50 PM", skillintraining.TrainingEndTime.ToString());
-            Assert.AreEqual("6/21/2007 11:00:38 AM", skillintraining.TrainingStartTime.ToString());
-            Assert.AreEqual(3347, skillintraining.TrainingTypeId);
-            Assert.AreEqual(4000, skillintraining.TrainingStartSP);
-            Assert.AreEqual(22628, skillintraining.TrainingDestinationSP);
-            Assert.AreEqual(2, skillintraining.TrainingToLevel);
+            Assert.AreEqual(new DateTime(2008, 01, 24, 23, 11, 16), skillintraining.TrainingEndTime);
+            Assert.AreEqual(new DateTime(2008, 01, 16, 05, 21, 58), skillintraining.TrainingStartTime);
+            Assert.AreEqual(24241, skillintraining.TrainingTypeId);
+            Assert.AreEqual(90510, skillintraining.TrainingStartSP);
+            Assert.AreEqual(512000, skillintraining.TrainingDestinationSP);
+            Assert.AreEqual(5, skillintraining.TrainingToLevel);
             Assert.AreEqual(true, skillintraining.SkillCurrentlyInTraining);
         }
 

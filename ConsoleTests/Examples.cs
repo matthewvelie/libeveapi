@@ -12,7 +12,7 @@ namespace ConsoleTests
         public static void Main(String[] args)
         {
             UseLocalUrls();
-            IndustryJobListExample();
+            SkillInTrainingExample();
         }
 
         public static void UseLocalUrls()
@@ -20,6 +20,18 @@ namespace ConsoleTests
             Constants.ApiPrefix = "http://localhost/eveapi";
         }
 
+        public static void SkillInTrainingExample()
+        {
+            SkillInTraining skillInTraining = EveApi.GetSkillInTraining("userId", "characterId", "apiKey");
+            if (skillInTraining.SkillCurrentlyInTraining)
+            {
+                Console.WriteLine("Training of skill: {0} will finish at {1}", skillInTraining.TrainingTypeId, skillInTraining.TrainingEndTimeLocal);
+            }
+            else
+            {
+                Console.WriteLine("You should start a skill training!");
+            }
+        }
         public static void IndustryJobListExample()
         {
             IndustryJobList ijl = EveApi.GetIndustryJobList(IndustryJobListType.Corporation, "userId", "characterId", "fullApiKey");

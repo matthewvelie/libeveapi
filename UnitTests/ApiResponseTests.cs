@@ -27,6 +27,8 @@ namespace UnitTests
 
             Assert.AreEqual(currentTime, characterList.CurrentTime);
             Assert.AreEqual(cachedUntil, characterList.CachedUntil);
+            Assert.AreEqual(currentTime.ToLocalTime(), characterList.CurrentTimeLocal);
+            Assert.AreEqual(cachedUntil.ToLocalTime(), characterList.CachedUntilLocal);
         }
 
         [Test]

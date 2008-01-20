@@ -33,11 +33,11 @@ namespace libeveapi
                 starbase.TypeId = Convert.ToInt32(starbaseNode.Attributes["typeID"].InnerText);
                 starbase.LocationId = Convert.ToInt32(starbaseNode.Attributes["locationID"].InnerText);
                 starbase.MoonId = Convert.ToInt32(starbaseNode.Attributes["moonID"].InnerText);
-                DateTime.TryParse(starbaseNode.Attributes["stateTimestamp"].InnerText, out starbase.StateTimestamp);
-                DateTime.TryParse(starbaseNode.Attributes["onlineTimestamp"].InnerText, out starbase.OnlineTimestamp);
+                starbase.StateTimestamp = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(starbaseNode.Attributes["stateTimestamp"].InnerText);
+                starbase.OnlineTimestamp = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(starbaseNode.Attributes["onlineTimestamp"].InnerText);
 
-                starbase.StateTimestampLocal = EveApi.CCPDateTimeToLocal(starbaseList.CurrentTime, starbase.StateTimestamp);
-                starbase.OnlineTimestampLocal = EveApi.CCPDateTimeToLocal(starbaseList.CurrentTime, starbase.OnlineTimestamp);
+                starbase.StateTimestampLocal = TimeUtilities.ConvertCCPToLocalTime(starbase.StateTimestamp);
+                starbase.OnlineTimestampLocal = TimeUtilities.ConvertCCPToLocalTime(starbase.OnlineTimestamp);
                 
                 switch (Convert.ToInt32(starbaseNode.Attributes["state"].InnerText))
                 {

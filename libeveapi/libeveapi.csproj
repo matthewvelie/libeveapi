@@ -66,6 +66,7 @@
     <Compile Include="ResponseObjects\WalletTransactions.cs" />
     <Compile Include="Roles.cs" />
     <Compile Include="SerializableDictionary.cs" />
+    <Compile Include="TimeUtilities.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
