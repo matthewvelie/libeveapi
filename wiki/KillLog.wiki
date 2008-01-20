@@ -64,12 +64,12 @@ public static KillLog GetKillLog(KillLogType killLogType, int userId, int charac
 
 *Item object*
 || *Member* || *Type* || *Description* ||
-|| TypeId || int || ||
+|| TypeId || int ||The typeID of this item, references the invTypes table ||
 || Flag || InventoryFlag || See InventoryFlags for details ||
-|| QtyDropped || int || ||
-|| QtyDestroyed || int || ||
-|| Container || bool || ||
-|| ContainedItems || Item[] || ||
+|| QtyDropped || int || How many of this item were dropped. If the user had multiple stacks, we compress the total number of dropped items to just one stack for space purposes. ||
+|| QtyDestroyed || int ||How many of this item fell victim to atomic dispersal and other sad little ends that such things can meet. ||
+|| Container || bool || True if the destoryed item contained other items. ||
+|| ContainedItems || Item[] || List of contained items. ||
 
 *KillLogType enumeration *
 || *Member* || *Value* || *Description* ||
