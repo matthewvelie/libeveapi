@@ -20,7 +20,7 @@ namespace UnitTests
         public void GetSkillInTraining()
         {
             ResponseCache.Clear();
-            SkillInTraining skillintraining = EveApi.GetSkillInTraining("asdf","asdf","asdf");
+            SkillInTraining skillintraining = EveApi.GetSkillInTraining(456456,456436,"asdf");
 
             //Attributes of the currently training skill
             Assert.AreEqual(new DateTime(2008, 01, 24, 23, 11, 16), skillintraining.TrainingEndTime);
@@ -36,11 +36,11 @@ namespace UnitTests
         public void PersistSkillInTraining()
         {
             ResponseCache.Clear();
-            SkillInTraining skillintraining = EveApi.GetSkillInTraining("asdf", "asdf", "asdf");
+            SkillInTraining skillintraining = EveApi.GetSkillInTraining(56456, 4564356, "asdf");
             ResponseCache.Save("ResponseCache.xml");
             ResponseCache.Clear();
             ResponseCache.Load("ResponseCache.xml");
-            SkillInTraining cached = EveApi.GetSkillInTraining("asdf", "asdf", "asdf");
+            SkillInTraining cached = EveApi.GetSkillInTraining(4563456, 36456, "asdf");
 
             //Test the Cache Time
             Assert.AreEqual(skillintraining.CachedUntilLocal, cached.CachedUntilLocal);

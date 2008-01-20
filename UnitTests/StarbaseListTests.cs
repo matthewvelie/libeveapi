@@ -19,7 +19,7 @@ namespace UnitTests
         [Test]
         public void GetStarbaseList()
         {
-            StarbaseList starbaseList = EveApi.GetStarbaseList("userId", "characterId", "apiKey");
+            StarbaseList starbaseList = EveApi.GetStarbaseList(432435, 234523, "apiKey");
 
             Assert.AreEqual(4, starbaseList.StarbaseListItems.Length);
             StarbaseListItem sli;
@@ -38,12 +38,12 @@ namespace UnitTests
         public void StarbaseListPersist()
         {
             ResponseCache.Clear();
-            StarbaseList starbaseList = EveApi.GetStarbaseList("userId", "characterId", "apiKey");
+            StarbaseList starbaseList = EveApi.GetStarbaseList(432435, 234523, "apiKey");
             ResponseCache.Save("ResponseCache.xml");
             ResponseCache.Clear();
             ResponseCache.Load("ResponseCache.xml");
 
-            StarbaseList cachedStarbaseList = EveApi.GetStarbaseList("userId", "characterId", "apiKey");
+            StarbaseList cachedStarbaseList = EveApi.GetStarbaseList(432435, 234523, "apiKey");
 
             Assert.AreEqual(starbaseList.CachedUntilLocal, cachedStarbaseList.CachedUntilLocal);
 

@@ -12,6 +12,7 @@ namespace ConsoleTests
         public static void Main(String[] args)
         {
             UseLocalUrls();
+            EveApi.SetProxy("localhost", 8080);
             MapJumps();
         }
 
@@ -114,7 +115,7 @@ namespace ConsoleTests
 
         public static void SkillInTrainingExample()
         {
-            SkillInTraining skillInTraining = EveApi.GetSkillInTraining("userId", "characterId", "apiKey");
+            SkillInTraining skillInTraining = EveApi.GetSkillInTraining(1234, 5678, "apiKey");
             if (skillInTraining.SkillCurrentlyInTraining)
             {
                 Console.WriteLine("Training of skill: {0} will finish at {1}", skillInTraining.TrainingTypeId, skillInTraining.TrainingEndTimeLocal);
@@ -126,7 +127,7 @@ namespace ConsoleTests
         }
         public static void IndustryJobListExample()
         {
-            IndustryJobList ijl = EveApi.GetIndustryJobList(IndustryJobListType.Corporation, "userId", "characterId", "fullApiKey");
+            IndustryJobList ijl = EveApi.GetIndustryJobList(IndustryJobListType.Corporation, 1234, 5678, "fullApiKey");
             foreach (IndustryJobListItem item in ijl.IndustryJobListItems)
             {
                 if (item.Completed)
@@ -185,7 +186,7 @@ namespace ConsoleTests
 
         public static void MemberTrackingExample()
         {
-            MemberTracking memberTracking = EveApi.GetMemberTracking("userId", "characterId", "fullApiKey");
+            MemberTracking memberTracking = EveApi.GetMemberTracking(1234, 5678, "fullApiKey");
             
             // Output the name and location of all corporation directors
             foreach (MemberTracking.Member member in memberTracking.Members)
@@ -199,7 +200,7 @@ namespace ConsoleTests
 
         public static void CorporationSheetExample()
         {
-            CorporationSheet corporationSheet = EveApi.GetCorporationSheet("userId", "characterId", "apiKey");
+            CorporationSheet corporationSheet = EveApi.GetCorporationSheet(452453, 452452, "apiKey");
             Console.WriteLine("Corporation Name: {0} Ticker: {1}", corporationSheet.CorporationName, corporationSheet.Ticker);
             Console.WriteLine("Logo GraphicId: {0}", corporationSheet.Logo.GraphicId);
 
@@ -216,7 +217,7 @@ namespace ConsoleTests
 
         public static void CharacterSheetExample()
         {
-            CharacterSheet characterSheet = EveApi.GetCharacterSheet("userId", "characterId", "apiKey");
+            CharacterSheet characterSheet = EveApi.GetCharacterSheet(4378412, 453272742, "apiKey");
             
             long totalSkillpoints = 0;
             foreach (CharacterSheet.SkillItem skillItem in characterSheet.SkillItemList)
@@ -229,7 +230,7 @@ namespace ConsoleTests
 
         public static void KillLogExample()
         {
-            KillLog killLog = EveApi.GetKillLog(KillLogType.Character, "userId", "characterId", "apiKey");
+            KillLog killLog = EveApi.GetKillLog(KillLogType.Character, 4532132, 4537, "apiKey");
             Console.WriteLine("Total Kills: {0}", killLog.Kills.Length);
         }
 
@@ -248,7 +249,7 @@ namespace ConsoleTests
 
         public static void PrintStarbaseList()
         {
-            StarbaseList starbaseList = EveApi.GetStarbaseList("userId", "characterId", "fullApiKey");
+            StarbaseList starbaseList = EveApi.GetStarbaseList(5385, 5431487, "fullApiKey");
             foreach (StarbaseListItem sli in starbaseList.StarbaseListItems)
             {
                 Console.WriteLine("ItemID: {0} LocationID: {1} State: {2}", sli.ItemId, sli.LocationId, sli.State);
@@ -257,7 +258,7 @@ namespace ConsoleTests
 
         public static void PrintStarbaseDetail()
         {
-            StarbaseDetail starbaseDetail = EveApi.GetStarbaseDetail("userId", "characterId", "fullApiKey", "itemId");
+            StarbaseDetail starbaseDetail = EveApi.GetStarbaseDetail(45353, 45317, "fullApiKey", 43534);
             Console.WriteLine("usageFlags: {0} deployFlags: {1}", starbaseDetail.UsageFlags, starbaseDetail.DeployFlags);
             
             foreach (FuelListItem fli in starbaseDetail.FuelList)
@@ -274,7 +275,7 @@ namespace ConsoleTests
 
         public static void PrintAllAssets()
         {
-            AssetList assetList = EveApi.GetAssetList(AssetListType.Corporation, "userId", "characterId", "fullApiKey");
+            AssetList assetList = EveApi.GetAssetList(AssetListType.Corporation, 1237, 453, "fullApiKey");
             foreach (AssetList.AssetListItem ali in assetList.AssetListItems)
             {
                 PrintAsset(ali);

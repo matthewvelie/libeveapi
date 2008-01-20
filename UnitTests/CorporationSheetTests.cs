@@ -20,11 +20,11 @@ namespace UnitTests
         public void GetCorporationSheet()
         {
             ResponseCache.Clear();
-            CorporationSheet cs = EveApi.GetCorporationSheet("userId", "characterId", "apiKey");
+            CorporationSheet cs = EveApi.GetCorporationSheet(432435, 234523, "apiKey");
             testCorporationSheet(cs);
 
             ResponseCache.Clear();
-            CorporationSheet cs2 = EveApi.GetCorporationSheet("userId", "characterId", "apiKey", "corporationId");
+            CorporationSheet cs2 = EveApi.GetCorporationSheet(432435, 234523, "apiKey", 2345);
             testCorporationSheet(cs2);
         }
 
@@ -67,11 +67,11 @@ namespace UnitTests
         public void CorporationSheetPersist()
         {
             ResponseCache.Clear();
-            CorporationSheet cs = EveApi.GetCorporationSheet("userId", "characterId", "apiKey");
+            CorporationSheet cs = EveApi.GetCorporationSheet(432435, 234523, "apiKey");
             ResponseCache.Save("ResponseCache.xml");
             ResponseCache.Clear();
             ResponseCache.Load("ResponseCache.xml");
-            CorporationSheet cached = EveApi.GetCorporationSheet("userId", "characterId", "apiKey");
+            CorporationSheet cached = EveApi.GetCorporationSheet(432435, 234523, "apiKey");
 
             Assert.AreEqual(cs.CachedUntilLocal, cached.CachedUntilLocal);
 

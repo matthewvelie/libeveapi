@@ -19,7 +19,7 @@ namespace UnitTests
         [Test]
         public void GetKillLog()
         {
-            KillLog killLog = EveApi.GetKillLog(KillLogType.Character, "userId", "charId", "apiKey");
+            KillLog killLog = EveApi.GetKillLog(KillLogType.Character, 432435, 346, "apiKey");
 
             KillLog.Kill firstKill = getKill(63, killLog.Kills);
             KillLog.Kill secondKill = getKill(62, killLog.Kills);
@@ -88,11 +88,11 @@ namespace UnitTests
         public void PersistKillLog()
         {
             ResponseCache.Clear();
-            KillLog killLog = EveApi.GetKillLog(KillLogType.Character, "userId", "charId", "apiKey");
+            KillLog killLog = EveApi.GetKillLog(KillLogType.Character, 432435, 346, "apiKey");
             ResponseCache.Save("ResponseCache.xml");
             ResponseCache.Clear();
             ResponseCache.Load("ResponseCache.xml");
-            KillLog cachedKillLog = EveApi.GetKillLog(KillLogType.Character, "userId", "charId", "apiKey");
+            KillLog cachedKillLog = EveApi.GetKillLog(KillLogType.Character, 432435, 346, "apiKey");
 
             Assert.AreEqual(killLog.CachedUntilLocal, cachedKillLog.CachedUntilLocal);
 

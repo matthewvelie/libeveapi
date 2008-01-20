@@ -19,7 +19,7 @@ namespace UnitTests
         [Test]
         public void GetCharAccountBalanceTest()
         {
-            AccountBalance accountBalance = EveApi.GetAccountBalance(AccountBalanceType.Character, "userId", "charId", "apiKey");
+            AccountBalance accountBalance = EveApi.GetAccountBalance(AccountBalanceType.Character, 453254, 453453, "apiKey");
 
             Assert.AreEqual(1, accountBalance.AccountBalanceItems.Length);
             Assert.AreEqual(4807144, accountBalance.AccountBalanceItems[0].AccountId);
@@ -30,7 +30,7 @@ namespace UnitTests
         [Test]
         public void GetCorpAccountBalanceTest()
         {
-            AccountBalance accountBalance = EveApi.GetAccountBalance(AccountBalanceType.Corporation, "userId", "charId", "apiKey");
+            AccountBalance accountBalance = EveApi.GetAccountBalance(AccountBalanceType.Corporation, 543453, 453453, "apiKey");
 
             Assert.AreEqual(7, accountBalance.AccountBalanceItems.Length);
 
@@ -52,11 +52,11 @@ namespace UnitTests
         {
             ResponseCache.Clear();
 
-            AccountBalance accountBalance = EveApi.GetAccountBalance(AccountBalanceType.Corporation, "userId", "charId", "apiKey");
+            AccountBalance accountBalance = EveApi.GetAccountBalance(AccountBalanceType.Corporation, 432435, 346, "apiKey");
             ResponseCache.Save("ResponseCache.xml");
             ResponseCache.Clear();
             ResponseCache.Load("ResponseCache.xml");
-            AccountBalance cachedAccountBalance = EveApi.GetAccountBalance(AccountBalanceType.Corporation, "userId", "charId", "apiKey");
+            AccountBalance cachedAccountBalance = EveApi.GetAccountBalance(AccountBalanceType.Corporation, 432435, 346, "apiKey");
 
             Assert.AreEqual(accountBalance.CachedUntilLocal, cachedAccountBalance.CachedUntilLocal);
 
