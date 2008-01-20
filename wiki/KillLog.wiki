@@ -1,0 +1,42 @@
+=== Description ===
+Log of 25 most recent kills for a character or 100 most recent for corporation
+
+=== Library Methods ===
+{{{
+/// <summary>
+/// Retrieves the Kill Log for a character or corporation
+/// </summary>
+/// <param name="killLogType">KillLogType -- Character/Corporation which kill log do you want to retrieve</param>
+/// <param name="userId">User ID for authentication</param>
+/// <param name="characterId">The character your requesting data for</param>
+/// <param name="fullApiKey">Full Api Key for the account</param>
+/// <returns>Kill Log object containing the array of kills</returns>
+public static KillLog GetKillLog(KillLogType killLogType, int userId, int characterId, string fullApiKey)
+
+/// <summary>
+/// Retrieves the Kill Log for a character or corporation
+/// </summary>
+/// <param name="killLogType">KillLogType -- Character/Corporation which kill log do you want to retrieve</param>
+/// <param name="userId">User ID for authentication</param>
+/// <param name="characterId">The character your requesting data for</param>
+/// <param name="fullApiKey">Full Api Key for the account</param>
+/// <param name="beforeKillID">Returns the most recent kills before the specified Kill ID - used for scrolling back through the log</param>
+/// <returns>Kill Log object containing the array of kills</returns>
+public static KillLog GetKillLog(KillLogType killLogType, int userId, int characterId, string fullApiKey, int beforeKillID)
+}}}
+
+=== Results ===
+* KillLog object (See ApiResult for inherited members) *
+|| *Member* || *Type* || *Description* ||
+|| Kills || Kill[] || List of kills ||
+
+* Kill object *
+|| *Member* || *Type* || *Description* ||
+|| KillId || int || Unique kill ID for this kill. This is to be used as the input for beforeKillID if you need to scroll back. This is globally unique and can be used for uniquely identifying a kill to other killboards.||
+|| SolarSystemId || int || The ID of the solar system this kill occurred in. ||
+|| KillTime || DateTime || What time the event occurred. ||
+|| KillTimeLocal || DateTime || What time the event occurred in local time ||
+|| MoonId || int || In some situations, this is present to define what moon a kill occurred at. Note that this is generally only present in situations where the loss is a POS structure. It is not guaranteed to be populated. ||
+|| Victim || VictimPilot || object containing data about the victim ||
+|| Attackers || Attacker || list of objects containing data about the attackers ||
+|| Items || Item[] || List of items lost in the kill ||
