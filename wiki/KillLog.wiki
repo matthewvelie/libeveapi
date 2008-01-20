@@ -40,3 +40,38 @@ public static KillLog GetKillLog(KillLogType killLogType, int userId, int charac
 || Victim || VictimPilot || object containing data about the victim ||
 || Attackers || Attacker || list of objects containing data about the attackers ||
 || Items || Item[] || List of items lost in the kill ||
+
+*Pilot base class*
+|| *Member* || *Type* || *Description* ||
+|| CharacterId || int || ||
+|| CharacterName || string || ||
+|| CorporationId || int || ||
+|| CorporationName || string || ||
+|| AllianceId || int || ||
+|| AllianceName || string || ||
+|| ShipTypeId || int || ||
+
+*VictimPilot object (See Pilot base class for inherited members)*
+|| *Member* || *Type* || *Description* ||
+|| DamageTaken || int || ||
+
+*Attacker object (See Pilot base class for inherited members)*
+|| *Member* || *Type* || *Description* ||
+|| SecurityStatus || double || ||
+|| DamageDone || int || ||
+|| FinalBlow || bool || ||
+|| WeaponTypeId || int || ||
+
+*Item object*
+|| *Member* || *Type* || *Description* ||
+|| TypeId || int || ||
+|| Flag || InventoryFlag || See InventoryFlags for details ||
+|| QtyDropped || int || ||
+|| QtyDestroyed || int || ||
+|| Container || bool || ||
+|| ContainedItems || Item[] || ||
+
+*KillLogType enumeration *
+|| *Member* || *Value* || *Description* ||
+|| Corporation || - || Retrieve kill log for a corporation. ||
+|| Character || - || Retrieve kill log for a character. ||
