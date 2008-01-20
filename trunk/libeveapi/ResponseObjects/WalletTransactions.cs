@@ -6,7 +6,7 @@ using System.Xml;
 namespace libeveapi
 {
     /// <summary>
-    /// Represents a character or corporation AccountBalance response from the eve api
+    /// Returns market transactions for a character.
     /// http://wiki.eve-dev.net/APIv2_Char_MarketTransactions_XML
     /// </summary>
     public class WalletTransactions : ApiResponse
@@ -43,33 +43,34 @@ namespace libeveapi
         /// <returns></returns>
         protected static WalletTransactionItem ParseTransactionRow(XmlNode walletTransactionRow)
         {
-            WalletTransactionItem WalletTransactionItem = new WalletTransactionItem();
+            WalletTransactionItem walletTransactionItem = new WalletTransactionItem();
 
-            WalletTransactionItem.TransactionDateTime = Convert.ToDateTime(walletTransactionRow.Attributes["transactionDateTime"].InnerText);
-            WalletTransactionItem.TransactionId = Convert.ToInt32(walletTransactionRow.Attributes["transactionID"].InnerText);
-            WalletTransactionItem.Quantity = Convert.ToInt32(walletTransactionRow.Attributes["quantity"].InnerText);
-            WalletTransactionItem.TypeName = walletTransactionRow.Attributes["typeName"].InnerText;
-            WalletTransactionItem.TypeId = Convert.ToInt64(walletTransactionRow.Attributes["typeID"].InnerText);
-            WalletTransactionItem.Price = (float)Convert.ToDouble(walletTransactionRow.Attributes["price"].InnerText);
-            WalletTransactionItem.ClientId = Convert.ToInt64(walletTransactionRow.Attributes["clientID"].InnerText);
-            WalletTransactionItem.ClientName = walletTransactionRow.Attributes["clientName"].InnerText;
+            walletTransactionItem.TransactionDateTime = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(walletTransactionRow.Attributes["transactionDateTime"].InnerText);
+            walletTransactionItem.TransactionDateTimeLocal = TimeUtilities.ConvertCCPToLocalTime(walletTransactionItem.TransactionDateTime);
+            walletTransactionItem.TransactionId = Convert.ToInt32(walletTransactionRow.Attributes["transactionID"].InnerText);
+            walletTransactionItem.Quantity = Convert.ToInt32(walletTransactionRow.Attributes["quantity"].InnerText);
+            walletTransactionItem.TypeName = walletTransactionRow.Attributes["typeName"].InnerText;
+            walletTransactionItem.TypeId = Convert.ToInt32(walletTransactionRow.Attributes["typeID"].InnerText);
+            walletTransactionItem.Price = (float)Convert.ToDouble(walletTransactionRow.Attributes["price"].InnerText);
+            walletTransactionItem.ClientId = Convert.ToInt32(walletTransactionRow.Attributes["clientID"].InnerText);
+            walletTransactionItem.ClientName = walletTransactionRow.Attributes["clientName"].InnerText;
             
             //These are only present in the corp version
             if (walletTransactionRow.Attributes.GetNamedItem("characterID") != null)
             {
-                WalletTransactionItem.CharacterId = Convert.ToInt64(walletTransactionRow.Attributes["characterID"].InnerText);
+                walletTransactionItem.CharacterId = Convert.ToInt32(walletTransactionRow.Attributes["characterID"].InnerText);
             }
             if (walletTransactionRow.Attributes.GetNamedItem("characterName") != null)
             {
-                WalletTransactionItem.CharacterName = walletTransactionRow.Attributes["characterName"].InnerText;
+                walletTransactionItem.CharacterName = walletTransactionRow.Attributes["characterName"].InnerText;
             }
 
-            WalletTransactionItem.StationId = Convert.ToInt64(walletTransactionRow.Attributes["stationID"].InnerText);
-            WalletTransactionItem.StationName = walletTransactionRow.Attributes["stationName"].InnerText;
-            WalletTransactionItem.TransactionType = walletTransactionRow.Attributes["transactionType"].InnerText;
-            WalletTransactionItem.TransactionFor = walletTransactionRow.Attributes["transactionFor"].InnerText;
+            walletTransactionItem.StationId = Convert.ToInt32(walletTransactionRow.Attributes["stationID"].InnerText);
+            walletTransactionItem.StationName = walletTransactionRow.Attributes["stationName"].InnerText;
+            walletTransactionItem.TransactionType = walletTransactionRow.Attributes["transactionType"].InnerText;
+            walletTransactionItem.TransactionFor = walletTransactionRow.Attributes["transactionFor"].InnerText;
 
-            return WalletTransactionItem;
+            return walletTransactionItem;
         }
     }
 
@@ -79,9 +80,14 @@ namespace libeveapi
     public class WalletTransactionItem
     {
         /// <summary>
-        /// This is the date and time when the transaction took place
+        /// This is the date and time when the transaction took place in ccp time
         /// </summary>
         public DateTime TransactionDateTime;
+
+        /// <summary>
+        /// This is the date and time when the transaction took place in local time
+        /// </summary>
+        public DateTime TransactionDateTimeLocal;
 
         /// <summary>
         /// This is the transactionId that is assigned to the transaction
@@ -101,7 +107,7 @@ namespace libeveapi
         /// <summary>
         /// This is the typeId of the item referenced in the transaction
         /// </summary>
-        public long TypeId;
+        public int TypeId;
 
         /// <summary>
         /// This is the price of the item in the transaction
@@ -111,7 +117,7 @@ namespace libeveapi
         /// <summary>
         /// The client's Id
         /// </summary>
-        public long ClientId;
+        public int ClientId;
 
         /// <summary>
         /// The client's name
@@ -123,7 +129,7 @@ namespace libeveapi
         /// This is only present when viewing corp transactions, otherwise
         /// it is assumed to be the character accessing the data
         /// </summary>
-        public long CharacterId;
+        public int CharacterId;
 
         /// <summary>
         /// The character who initiated the transaction's name 
@@ -135,7 +141,7 @@ namespace libeveapi
         /// <summary>
         /// The Id of the station where the transaction took place
         /// </summary>
-        public long StationId;
+        public int StationId;
 
         /// <summary>
         /// The name of the station where the transaction took place
