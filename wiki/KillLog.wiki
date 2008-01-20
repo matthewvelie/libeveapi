@@ -49,11 +49,11 @@ public static KillLog GetKillLog(KillLogType killLogType, int userId, int charac
 || CorporationName || string || The name of the above corporation. ||
 || AllianceId || int || If not 0, this is the ID of the alliance the corporation belongs to. ||
 || AllianceName || string || The name of the alliance associated with the kill.||
-|| ShipTypeId || int || How much damage the victim took before succumbing to fiery defeat and humiliation. Please note that this damage is calculated after resists. It does give you a decent idea of how much they were tanking, however.||
+|| ShipTypeId || int || The item lost. This could be a ship as suggested by the name but can potentially be anything that generates a kill event.||
 
 *VictimPilot object (See Pilot base class for inherited members)*
 || *Member* || *Type* || *Description* ||
-|| DamageTaken || int || The item lost. This could be a ship as suggested by the name but can potentially be anything that generates a kill event. ||
+|| DamageTaken || int ||  How much damage the victim took before succumbing to fiery defeat and humiliation. Please note that this damage is calculated after resists. It does give you a decent idea of how much they were tanking, however. ||
 
 *Attacker object (See Pilot base class for inherited members)*
 || *Member* || *Type* || *Description* ||
