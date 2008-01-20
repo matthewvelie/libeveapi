@@ -14,7 +14,7 @@ public static CharacterSheet GetCharacterSheet(int userId, int characterId, stri
 }}}
 
 === Result ===
-* !CharacterSheet object (See ApiResult for inherited members) *
+* !CharacterSheet object (See ApiResponse for inherited members) *
 || *Member* || *Type* || *Description* ||
 || !CharacterId || int || The eve assigned characterId ||
 || Name || string || The name of the character ||
