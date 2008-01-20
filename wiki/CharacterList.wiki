@@ -13,11 +13,11 @@ public static CharacterList GetAccountCharacters(int userId, string apiKey)
 }}}
 
 === Result ===
-* !CharacterList Object (See ApiResponse for inherited members) *
+* !CharacterList class (See ApiResponse for inherited members) *
 || Member || Type || Description ||
 || !CharacterListItems || !CharacterListItem[] || The characters from this list ||
 
-* !CharacterList.!CharacterListItem Object *
+* !CharacterList.!CharacterListItem class *
 || Member || Type || Description ||
 || Name || string || Name of the character ||
 || !CharacterId || int || ID of the character ||
