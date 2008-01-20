@@ -15,23 +15,23 @@ public static StarbaseList GetStarbaseList(int userId, int characterId, string f
 
 === Result ===
 * !StarbaseList class (See ApiResponse for inherited members) *
-|| Member || Type || Description ||
+|| *Member* || *Type* || *Description* ||
 || !StarbaseListItems || !StarbaseListItem[] || The starbases contained in the list ||
 
 * !StarbaseList.!StarbaseListItem class *
-|| Member || Type || Description ||
+|| *Member* || *Type* || *Description* ||
 || !ItemId || string || Unique identifier for the starbase ||
 || !TypeId || string || Control tower type id ||
 || !LocationId || string || ID of the system containing the starbase ||
 || !MoonId || string || ID of the moon where the starbase is located ||
 || State || !StarbaseState || See !StarbaseState documentation ||
-|| !StateTimestamp || DateTime || See !StarbaseState documentation (CCP Time) ||
-|| !OnlineTimestamp || DateTime || See !StarbaseState documentation (CCP Time) ||
-|| !StateTimestampLocal || DateTime || The !StateTimestamp in local time ||
-|| !OnlineTimeStampLocal || DateTime || The !OnlineTimestamp in local time ||
+|| !StateTimestamp || !DateTime || See !StarbaseState documentation (CCP Time) ||
+|| !OnlineTimestamp || !DateTime || See !StarbaseState documentation (CCP Time) ||
+|| !StateTimestampLocal || !DateTime || The !StateTimestamp in local time ||
+|| !OnlineTimeStampLocal || !DateTime || The !OnlineTimestamp in local time ||
 
 * !StarbaseList.!StarbaseState Enumeration *
-|| Member || Value || Description ||
+|| *Member* || *Value* || *Description* ||
 || !AnchoredOrOffline || 1 || Starbase is anchored or offline if offline then it went offline at !StateTimestamp ||
 || Onlining || 2 || Starbase is in the process of coming online and will be online at time !OnlineTimestamp ||
 || Reinforced || 3 || Starbase in in reinforced mode until time !StateTimestamp ||
