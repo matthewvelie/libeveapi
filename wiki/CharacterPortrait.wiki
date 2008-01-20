@@ -15,5 +15,9 @@ public static Image GetCharacterPortrait(int characterId, PortraitSize portraitS
 }}}
 
 === Result ===
+http://msdn2.microsoft.com/en-us/library/system.drawing.image(VS.80).aspx
 
 === Example ===
+{{{
+Image image = EveApi.GetCharacterPortrait(1234, PortraitSize.Small);
+}}}
