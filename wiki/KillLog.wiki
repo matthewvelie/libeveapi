@@ -26,11 +26,11 @@ public static KillLog GetKillLog(KillLogType killLogType, int userId, int charac
 }}}
 
 === Results ===
-* !KillLog object (See ApiResponse for inherited members) *
+* !KillLog class (See ApiResponse for inherited members) *
 || *Member* || *Type* || *Description* ||
 || Kills || Kill[] || List of kills ||
 
-* Kill object *
+* !KillLog.Kill class *
 || *Member* || *Type* || *Description* ||
 || !KillId || int || Unique kill ID for this kill. This is to be used as the input for beforeKillID if you need to scroll back. This is globally unique and can be used for uniquely identifying a kill to other killboards.||
 || !SolarSystemId || int || The ID of the solar system this kill occurred in. ||
@@ -51,18 +51,18 @@ public static KillLog GetKillLog(KillLogType killLogType, int userId, int charac
 || !AllianceName || string || The name of the alliance associated with the kill.||
 || !ShipTypeId || int || The item lost. This could be a ship as suggested by the name but can potentially be anything that generates a kill event.||
 
-*!VictimPilot object (See Pilot base class for inherited members)*
+*!KillLog.!VictimPilot class (See Pilot base class for inherited members)*
 || *Member* || *Type* || *Description* ||
 || !DamageTaken || int ||  How much damage the victim took before succumbing to fiery defeat and humiliation. Please note that this damage is calculated after resists. It does give you a decent idea of how much they were tanking, however. ||
 
-*Attacker object (See Pilot base class for inherited members)*
+*!KillLog.Attacker class (See Pilot base class for inherited members)*
 || *Member* || *Type* || *Description* ||
 || !SecurityStatus || double ||The security status of the aggressor at the time of this kill. ||
 || !DamageDone || int || The amount of damage done to the victim. This is post-resists damage done.||
 || !FinalBlow || bool || Whether or not this aggressor is attributed with the so-called "final blow." ||
 || !WeaponTypeId || int || What weapon we decided to show this person as using. Often a weapon, sometimes a ship or missile, rarely a fish ||
 
-*Item object*
+*!KillLog.Item class *
 || *Member* || *Type* || *Description* ||
 || !TypeId || int ||The typeID of this item, references the invTypes table ||
 || Flag || !InventoryFlag || See InventoryFlags for details ||
