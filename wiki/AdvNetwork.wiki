@@ -13,6 +13,8 @@ To use a proxy server use the code below before calling any network connections.
 {{{
 //Set proxy server to localhost:8080
 EveApi.SetProxy("localhost", 8080);
+//or with username/password
+EveApi.SetProxy("localhost", 8080, "username", "password");
 }}}
 This will set the library to use "localhost" as the server and 8080 as the port for the proxy server.  All internet traffic will be forwarded through this proxy server.  At current time only proxy's which do not require usernames and passwords are supported.
 
