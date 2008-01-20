@@ -43,17 +43,17 @@ public static KillLog GetKillLog(KillLogType killLogType, int userId, int charac
 
 *Pilot base class*
 || *Member* || *Type* || *Description* ||
-|| CharacterId || int || ||
-|| CharacterName || string || ||
-|| CorporationId || int || ||
-|| CorporationName || string || ||
-|| AllianceId || int || ||
-|| AllianceName || string || ||
-|| ShipTypeId || int || ||
+|| CharacterId || int || Character's ID. Fairly self-explanatory. Can be 0 in which case this kill was not done by a character and instead was done by a corporation. In the victim case, this implies it is a structure loss.||
+|| CharacterName || string || If present, the name of the above characterID.||
+|| CorporationId || int || The ID of the corporation. This will always be present, as there is always a corporation behind the victim, whether it is the corporation itself or simply someone in that corporation. ||
+|| CorporationName || string || The name of the above corporation. ||
+|| AllianceId || int || If not 0, this is the ID of the alliance the corporation belongs to. ||
+|| AllianceName || string || The name of the alliance associated with the kill.||
+|| ShipTypeId || int || How much damage the victim took before succumbing to fiery defeat and humiliation. Please note that this damage is calculated after resists. It does give you a decent idea of how much they were tanking, however.||
 
 *VictimPilot object (See Pilot base class for inherited members)*
 || *Member* || *Type* || *Description* ||
-|| DamageTaken || int || ||
+|| DamageTaken || int || The item lost. This could be a ship as suggested by the name but can potentially be anything that generates a kill event. ||
 
 *Attacker object (See Pilot base class for inherited members)*
 || *Member* || *Type* || *Description* ||
