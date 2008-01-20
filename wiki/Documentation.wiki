@@ -17,6 +17,7 @@
   * [ErrorList Error List] - A list of all the possible error messages returned by the eve api.
   * [IndustryJobs Industry Job List] - Industry jobs that have been performed or are currently in progress.
   * [JournalEntries Journal Entries] - A list of journal entries for a corporation or character.
+  * [MarketOrders Market Orders] - A list of market orders by a character or corporation.
   * [MapJumps Map: Jumps] - Represents the number of jumps per system from the eve api.
   * [MapKills Map: Kills] - Represents the number of kills per system from the eve api.
   * [MapSovereignty Map: Sovereignty] - Returns a list of solarsystems and what faction or alliance controls them.
