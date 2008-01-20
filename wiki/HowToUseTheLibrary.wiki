@@ -11,7 +11,7 @@
 {{{
 using libeveapi;
 }}}
- # Load the ResponseCache from a file before making any API calls.
+ # Load the ResponseCache from a file before making any API calls.  This is used when the program shuts down, so all responses will still be cached when the program restarts.
 {{{
 string responseCacheFilename = "ResponseCache.xml";
 if (File.exists(responseCacheFilename ))
