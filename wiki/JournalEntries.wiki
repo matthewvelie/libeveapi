@@ -11,7 +11,18 @@ Represents a character or corporation journal entry from the eve api
 /// <param name="characterId">CharacterId of character for authentication</param>
 /// <param name="fullApiKey">Full access API key of account</param>
 /// <returns></returns>
-public static JournalEntries GetJournalEntryList(JournalEntryType journalEntriesType, string userId, string characterId, string fullApiKey)
+public static JournalEntries GetJournalEntryList(JournalEntryType journalEntriesType, int userId, int characterId, string fullApiKey)
+
+/// <summary>
+/// Returns a list of journal entries owned by a character or corporation.
+/// </summary>
+/// <param name="journalEntriesType"><see cref="JournalEntryType" /></param>
+/// <param name="userId">userId of account for authentication</param>
+/// <param name="characterId">CharacterId of character for authentication</param>
+/// <param name="fullApiKey">Full access API key of account</param>
+/// <param name="beforeRefId">Retrieve entries after this refId</param>
+/// <returns></returns>
+public static JournalEntries GetJournalEntryList(JournalEntryType journalEntriesType, int userId, int characterId, string fullApiKey, int beforeRefId)
 }}}
 
 === Result ===
@@ -39,3 +50,23 @@ public static JournalEntries GetJournalEntryList(JournalEntryType journalEntries
 || *Member* || *Value* || *Description* ||
 || Corporation || - || Corporation journal ||
 || Character || - || Character journal ||
+
+=== Example ===
+{{{
+public static void JournalExample()
+{
+    bool done = false;
+    int lastEntrySeen = 0;
+
+    while (!done)
+    {
+        JournalEntries entries = EveApi.GetJournalEntryList(JournalEntryType.Character, 0, 0, "fullApiKey", lastEntrySeen);
+        DisplayJournalEntries(entries);
+        lastEntrySeen += entries.JournalEntryItems.Length;
+        if (entries.JournalEntryItems.Length < 1000)
+        {
+            done = true;
+        }
+    }
+}
+}}}
