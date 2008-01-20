@@ -55,10 +55,10 @@ namespace ConsoleTests
             }
         }
 
-        public static void MapKills()
+        public static void MapKillsExample()
         {
             MapKills mapKills = EveApi.GetMapKills();
-            foreach (MapKillsItem item in mapKills.MapSystemKills)
+            foreach (MapKills.MapKillsItem item in mapKills.MapSystemKills)
             {
                 if (item.ShipKills > 5)
                 {
