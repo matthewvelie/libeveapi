@@ -34,12 +34,12 @@ namespace ConsoleTests
             }
         }
 
-        public static void MarketOrders()
+        public static void MarketOrdersExample()
         {
             MarketOrders orders = EveApi.GetMarketOrderList(MarketOrdersListType.Character, 0, 0, "fullApiKey");
-            foreach (MarketOrderItem item in orders.MarketOrderItems)
+            foreach (MarketOrders.MarketOrderItem item in orders.MarketOrderItems)
             {
-                if (item.OrderType == MarketOrderType.Sell && item.TypeId == 123)
+                if (item.OrderType == MarketOrders.MarketOrderType.Sell && item.TypeId == 123)
                 {
                     Console.WriteLine("Item 123 is for sale at: {0}", item.StationId);
                 }
