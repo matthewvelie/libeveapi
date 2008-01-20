@@ -23,17 +23,17 @@ namespace libeveapi
         /// <returns><see cref="IndustryJobList"/></returns>
         public static IndustryJobList FromXmlDocument(XmlDocument xmlDoc)
         {
-            IndustryJobList IndustryJobList = new IndustryJobList();
-            IndustryJobList.ParseCommonElements(xmlDoc);
+            IndustryJobList industryJobList = new IndustryJobList();
+            industryJobList.ParseCommonElements(xmlDoc);
 
             List<IndustryJobListItem> jobs = new List<IndustryJobListItem>();
             foreach (XmlNode node in xmlDoc.SelectNodes("//rowset[@name='jobs']/row"))
             {
-                jobs.Add(ParseIndustryJobRow(node));
+                jobs.Add(ParseIndustryJobRow(node, industryJobList));
             }
-            IndustryJobList.IndustryJobListItems = jobs.ToArray();
+            industryJobList.IndustryJobListItems = jobs.ToArray();
 
-            return IndustryJobList;
+            return industryJobList;
         }
 
         /// <summary>
@@ -41,32 +41,32 @@ namespace libeveapi
         /// </summary>
         /// <param name="industryJobRow">An xml row containing an industry job</param>
         /// <returns></returns>
-        protected static IndustryJobListItem ParseIndustryJobRow(XmlNode industryJobRow)
+        protected static IndustryJobListItem ParseIndustryJobRow(XmlNode industryJobRow, IndustryJobList industryJobList)
         {
             IndustryJobListItem IndustryJobListItem = new IndustryJobListItem();
 
             IndustryJobListItem.JobId = Convert.ToInt32(industryJobRow.Attributes["jobID"].InnerText);
-            IndustryJobListItem.AssemblyLineId = Convert.ToInt64(industryJobRow.Attributes["assemblyLineID"].InnerText);
-            IndustryJobListItem.ContainerId = Convert.ToInt64(industryJobRow.Attributes["containerID"].InnerText);
-            IndustryJobListItem.InstalledItemId = Convert.ToInt64(industryJobRow.Attributes["installedItemID"].InnerText);
-            IndustryJobListItem.InstalledItemLocationId = Convert.ToInt64(industryJobRow.Attributes["installedItemLocationID"].InnerText);
+            IndustryJobListItem.AssemblyLineId = Convert.ToInt32(industryJobRow.Attributes["assemblyLineID"].InnerText);
+            IndustryJobListItem.ContainerId = Convert.ToInt32(industryJobRow.Attributes["containerID"].InnerText);
+            IndustryJobListItem.InstalledItemId = Convert.ToInt32(industryJobRow.Attributes["installedItemID"].InnerText);
+            IndustryJobListItem.InstalledItemLocationId = Convert.ToInt32(industryJobRow.Attributes["installedItemLocationID"].InnerText);
             IndustryJobListItem.InstalledItemQuantity = Convert.ToInt32(industryJobRow.Attributes["installedItemQuantity"].InnerText);
             IndustryJobListItem.InstalledItemProductivityLevel = Convert.ToInt32(industryJobRow.Attributes["installedItemProductivityLevel"].InnerText);
             IndustryJobListItem.InstalledItemMaterialLevel = Convert.ToInt32(industryJobRow.Attributes["installedItemMaterialLevel"].InnerText);
             IndustryJobListItem.InstalledItemLicensedProductionRunsRemaining = Convert.ToInt32(industryJobRow.Attributes["installedItemLicensedProductionRunsRemaining"].InnerText);
-            IndustryJobListItem.OutputLocationId = Convert.ToInt64(industryJobRow.Attributes["outputLocationID"].InnerText);
-            IndustryJobListItem.InstallerId = Convert.ToInt64(industryJobRow.Attributes["installerID"].InnerText);
+            IndustryJobListItem.OutputLocationId = Convert.ToInt32(industryJobRow.Attributes["outputLocationID"].InnerText);
+            IndustryJobListItem.InstallerId = Convert.ToInt32(industryJobRow.Attributes["installerID"].InnerText);
             IndustryJobListItem.Runs = Convert.ToInt32(industryJobRow.Attributes["runs"].InnerText);
             IndustryJobListItem.LicensedProductionRuns = Convert.ToInt32(industryJobRow.Attributes["licensedProductionRuns"].InnerText);
-            IndustryJobListItem.InstalledInSolarSystemId = Convert.ToInt64(industryJobRow.Attributes["installedInSolarSystemID"].InnerText);
-            IndustryJobListItem.ContainerLocationId = Convert.ToInt64(industryJobRow.Attributes["containerLocationID"].InnerText);
+            IndustryJobListItem.InstalledInSolarSystemId = Convert.ToInt32(industryJobRow.Attributes["installedInSolarSystemID"].InnerText);
+            IndustryJobListItem.ContainerLocationId = Convert.ToInt32(industryJobRow.Attributes["containerLocationID"].InnerText);
             IndustryJobListItem.MaterialMultiplier = (float)Convert.ToDouble(industryJobRow.Attributes["materialMultiplier"].InnerText);
             IndustryJobListItem.CharMaterialMultiplier = (float)Convert.ToDouble(industryJobRow.Attributes["charMaterialMultiplier"].InnerText);
             IndustryJobListItem.TimeMultiplier = (float)Convert.ToDouble(industryJobRow.Attributes["timeMultiplier"].InnerText);
             IndustryJobListItem.CharTimeMultiplier = (float)Convert.ToDouble(industryJobRow.Attributes["charTimeMultiplier"].InnerText);
-            IndustryJobListItem.InstalledItemTypeId = Convert.ToInt64(industryJobRow.Attributes["installedItemTypeID"].InnerText);
-            IndustryJobListItem.OutputTypeId = Convert.ToInt64(industryJobRow.Attributes["outputTypeID"].InnerText);
-            IndustryJobListItem.ContainerTypeId = Convert.ToInt64(industryJobRow.Attributes["containerTypeID"].InnerText);
+            IndustryJobListItem.InstalledItemTypeId = Convert.ToInt32(industryJobRow.Attributes["installedItemTypeID"].InnerText);
+            IndustryJobListItem.OutputTypeId = Convert.ToInt32(industryJobRow.Attributes["outputTypeID"].InnerText);
+            IndustryJobListItem.ContainerTypeId = Convert.ToInt32(industryJobRow.Attributes["containerTypeID"].InnerText);
             IndustryJobListItem.InstalledItemCopy = Convert.ToInt32(industryJobRow.Attributes["installedItemCopy"].InnerText);
             IndustryJobListItem.Completed = Convert.ToBoolean(Convert.ToInt32(industryJobRow.Attributes["completed"].InnerText));
             IndustryJobListItem.CompletedSuccessfully = Convert.ToBoolean(Convert.ToInt32(industryJobRow.Attributes["completedSuccessfully"].InnerText));
@@ -78,6 +78,11 @@ namespace libeveapi
             IndustryJobListItem.BeginProductionTime = Convert.ToDateTime(industryJobRow.Attributes["beginProductionTime"].InnerText);
             IndustryJobListItem.EndProductionTime = Convert.ToDateTime(industryJobRow.Attributes["endProductionTime"].InnerText);
             IndustryJobListItem.PauseProductionTime = Convert.ToDateTime(industryJobRow.Attributes["pauseProductionTime"].InnerText);
+
+            IndustryJobListItem.InstallTimeLocal = EveApi.CCPDateTimeToLocal(industryJobList.CurrentTime, IndustryJobListItem.InstallTime);
+            IndustryJobListItem.BeginProductionTimeLocal = EveApi.CCPDateTimeToLocal(industryJobList.CurrentTime, IndustryJobListItem.BeginProductionTime);
+            IndustryJobListItem.EndProductionTimeLocal = EveApi.CCPDateTimeToLocal(industryJobList.CurrentTime, IndustryJobListItem.EndProductionTime);
+            IndustryJobListItem.PauseProductionTimeLocal = EveApi.CCPDateTimeToLocal(industryJobList.CurrentTime, IndustryJobListItem.PauseProductionTime);
 
             return IndustryJobListItem;
         }
@@ -97,12 +102,12 @@ namespace libeveapi
         /// <summary>
         /// This is the assembly line that it is installed into if in a station
         /// </summary>
-        public long AssemblyLineId;
+        public int AssemblyLineId;
 
         /// <summary>
         /// 
         /// </summary>
-        public long ContainerId;
+        public int ContainerId;
 
         /// <summary>
         /// This is the itemId of the item that was
@@ -110,12 +115,12 @@ namespace libeveapi
         /// isnt really useful as it can change, but it will link back
         /// to something in your asset list (hopefully)
         /// </summary>
-        public long InstalledItemId;
+        public int InstalledItemId;
 
         /// <summary>
         /// This is the locationId of where the item was installed
         /// </summary>
-        public long InstalledItemLocationId;
+        public int InstalledItemLocationId;
 
         /// <summary>
         /// This is how many of the item were installed, (usually 1)
@@ -143,12 +148,12 @@ namespace libeveapi
         /// <summary>
         /// This is where the output of the job will be placed
         /// </summary>
-        public long OutputLocationId;
+        public int OutputLocationId;
 
         /// <summary>
         /// The characterId of the person who installed the job
         /// </summary>
-        public long InstallerId;
+        public int InstallerId;
 
 
         /// <summary>
@@ -166,43 +171,43 @@ namespace libeveapi
         /// <summary>
         /// This is the solarsystemId of where the job was installed
         /// </summary>
-        public long InstalledInSolarSystemId;
+        public int InstalledInSolarSystemId;
 
 
         /// <summary>
         /// Where the container is located at, usually a moon or station.
         /// </summary>
-        public long ContainerLocationId;
+        public int ContainerLocationId;
 
 
         /// <summary>
         /// This is the ME multiplier from the installation place.
         /// </summary>
-        public float MaterialMultiplier;
+        public double MaterialMultiplier;
 
 
         /// <summary>
         /// This is the ME multiplier that id done by the character's skills
         /// </summary>
-        public float CharMaterialMultiplier;
+        public double CharMaterialMultiplier;
 
 
         /// <summary>
         /// This is the TE multiplier of the station
         /// </summary>
-        public float TimeMultiplier;
+        public double TimeMultiplier;
 
 
         /// <summary>
         /// The TE multiplier that id done by the character's skills
         /// </summary>
-        public float CharTimeMultiplier;
+        public double CharTimeMultiplier;
 
 
         /// <summary>
         /// This is the typeId of the item that was installed (a blueprint)
         /// </summary>
-        public long InstalledItemTypeId;
+        public int InstalledItemTypeId;
 
 
         /// <summary>
@@ -210,7 +215,7 @@ namespace libeveapi
         /// is finished doing whatever it is doing.  For research this will
         /// be the blueprint itself, for manufacturing this will be the item
         /// </summary>
-        public long OutputTypeId;
+        public int OutputTypeId;
 
 
         /// <summary>
@@ -218,7 +223,7 @@ namespace libeveapi
         /// Can be looked up like any typeId, usually a mobile lab 
         /// or something similar
         /// </summary>
-        public long ContainerTypeId;
+        public int ContainerTypeId;
 
         /// <summary>
         /// 
@@ -257,17 +262,17 @@ namespace libeveapi
         public int CompletedStatus;
 
         /// <summary>
-        /// When this item was installed
+        /// When this item was installed in ccp time
         /// </summary>
         public DateTime InstallTime;
 
         /// <summary>
-        /// When production time started (different than install time if a queue)
+        /// When production time started in ccp time (different than install time if a queue)
         /// </summary>
         public DateTime BeginProductionTime;
 
         /// <summary>
-        /// When the job will be finished
+        /// When the job will be finished in ccp time.
         /// </summary>
         public DateTime EndProductionTime;
 
@@ -275,6 +280,26 @@ namespace libeveapi
         /// 
         /// </summary>
         public DateTime PauseProductionTime;
+
+        /// <summary>
+        /// When this item was installed in local time.
+        /// </summary>
+        public DateTime InstallTimeLocal;
+
+        /// <summary>
+        /// When production time started in local time (different than install time if a queue)
+        /// </summary>
+        public DateTime BeginProductionTimeLocal;
+
+        /// <summary>
+        /// When the job will be finished in local time.
+        /// </summary>
+        public DateTime EndProductionTimeLocal;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public DateTime PauseProductionTimeLocal;
     }
 
     /// <summary>
