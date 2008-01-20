@@ -57,10 +57,10 @@ public static KillLog GetKillLog(KillLogType killLogType, int userId, int charac
 
 *Attacker object (See Pilot base class for inherited members)*
 || *Member* || *Type* || *Description* ||
-|| SecurityStatus || double || ||
-|| DamageDone || int || ||
-|| FinalBlow || bool || ||
-|| WeaponTypeId || int || ||
+|| SecurityStatus || double ||The security status of the aggressor at the time of this kill. ||
+|| DamageDone || int || The amount of damage done to the victim. This is post-resists damage done.||
+|| FinalBlow || bool || Whether or not this aggressor is attributed with the so-called "final blow." ||
+|| WeaponTypeId || int || What weapon we decided to show this person as using. Often a weapon, sometimes a ship or missile, rarely a fish ||
 
 *Item object*
 || *Member* || *Type* || *Description* ||
