@@ -15,7 +15,7 @@ namespace libeveapi
         /// <summary>
         /// The character name and character id that are associated with eachother
         /// </summary>
-        public CharacterIdItem[] CharacterIdItems = new CharacterIdItem[0];
+        public CharacterIdNameItem[] CharacterIdItems = new CharacterIdNameItem[0];
 
         /// <summary>
         /// Returns the characterId and character name that are associated with eachother
@@ -40,10 +40,10 @@ namespace libeveapi
             CharacterIdName charId = new CharacterIdName();
             charId.ParseCommonElements(xmlDoc);
 
-            List<CharacterIdItem> characterList = new List<CharacterIdItem>();
+            List<CharacterIdNameItem> characterList = new List<CharacterIdNameItem>();
             foreach (XmlNode charIdRow in xmlDoc.SelectNodes("//rowset[@name='characters']/row"))
             {
-                CharacterIdItem charIdItem = new CharacterIdItem();
+                CharacterIdNameItem charIdItem = new CharacterIdNameItem();
                 charIdItem.Name = charIdRow.Attributes["name"].InnerText;
                 charIdItem.CharacterId = Convert.ToInt32(charIdRow.Attributes["characterID"].InnerText);
                 characterList.Add(charIdItem);
@@ -52,23 +52,22 @@ namespace libeveapi
 
             return charId;
         }
-    }
-
-    /// <summary>
-    /// An charIdItem associated with a character or corporation
-    /// </summary>
-    public class CharacterIdItem
-    {
-        /// <summary>
-        /// The character's name
-        /// </summary>
-        public string Name;
 
         /// <summary>
-        /// The characterId for the character name
+        /// An charIdItem associated with a character or corporation
         /// </summary>
-        public int CharacterId;
+        public class CharacterIdNameItem
+        {
+            /// <summary>
+            /// The character's name
+            /// </summary>
+            public string Name;
 
+            /// <summary>
+            /// The characterId for the character name
+            /// </summary>
+            public int CharacterId;
+
+        }
     }
-
 }
