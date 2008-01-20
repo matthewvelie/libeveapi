@@ -1,5 +1,6 @@
 #labels Featured
  # === General ===
+  * Acknowledgements
   * [HowToUseTheLibrary How to use the library]
   * [Security Security]
   * [UrlConstants How to get XML Responses from a local web server instead of the eve api]
