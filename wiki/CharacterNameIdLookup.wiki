@@ -20,11 +20,11 @@ public static CharacterIdName GetCharacterIdName(string charactername)
 
 
 === Results ===
-* !CharacterIdName object (See ApiResponse for inherited members) *
+* !CharacterIdName class (See ApiResponse for inherited members) *
 || *Member* || *Type* || *Description* ||
 || !CharacterIdItems || !CharacterIdItem[] || The character name and character id that are associated with each other ||
 
-* !CharacterIdName.!CharacterIdItem object *
+* !CharacterIdName.!CharacterIdItem class *
 || *Member* || *Type* || *Description* ||
 || Name || string || The character's name ||
 || !CharacterId || int || the characterId associated with the character name ||
