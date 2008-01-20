@@ -10,7 +10,7 @@ Retrieves a detailed description of a corporation.
 /// <param name="characterId">CharacterId of character for authentication</param>
 /// <param name="apiKey">Limited access API key of account</param>
 /// <returns></returns>
-public static CorporationSheet GetCorporationSheet(string userId, string characterId, string apiKey)
+public static CorporationSheet GetCorporationSheet(int userId, int characterId, string apiKey)
 
 /// <summary>
 /// Returns a detailed description of any corporation
@@ -20,11 +20,11 @@ public static CorporationSheet GetCorporationSheet(string userId, string charact
 /// <param name="apiKey">Limited access API key of account</param>
 /// <param name="corporationId">retrieve information on the corporation with this id</param>
 /// <returns></returns>
-public static CorporationSheet GetCorporationSheet(string userId, string characterId, string apiKey, string corporationId)
+public static CorporationSheet GetCorporationSheet(int userId, int characterId, string apiKey, string corporationId)
 }}}
 
 === Result ===
-* !CorporationSheet object (See ApiResult for inherited members) *
+* !CorporationSheet class (See ApiResult for inherited members) *
 || Member || Type || Description ||
 || !CoporationId || int || Unique identifier for the corporation ||
 || !CorporationName || string || Name of the corporation ||
@@ -45,18 +45,18 @@ public static CorporationSheet GetCorporationSheet(string userId, string charact
 || !WalletDivisions[] || !WalletDivision || ||
 || Logo || !CorpLogo || An object describing the corporation logo ||
 
-* Division object *
+* !CorporationSheet.Division class *
 || *Member* || *Type* || *Description* ||
 || !AccountKey || int || ||
 || Description || string || ||
 
-* !WalletDivision object *
+* !CorporationSheet.!WalletDivision class *
 || *Member* || *Type* || *Description* ||
 || !AccountKey || int || ||
 || Description || string || ||
 
 
-* !CorpLogo object *
+* !CorporationSheet.!CorpLogo class *
 || *Member* || *Type* || *Description* ||
 || !GraphicId || int || ||
 || Shape1 || int || ||
@@ -70,7 +70,7 @@ public static CorporationSheet GetCorporationSheet(string userId, string charact
 {{{
 public static void CorporationSheetExample()
 {
-    CorporationSheet corporationSheet = EveApi.GetCorporationSheet("userId", "characterId", "apiKey");
+    CorporationSheet corporationSheet = EveApi.GetCorporationSheet(123, 456, "apiKey");
     Console.WriteLine("Corporation Name: {0} Ticker: {1}", corporationSheet.CorporationName, corporationSheet.Ticker);
     Console.WriteLine("Logo GraphicId: {0}", corporationSheet.Logo.GraphicId);
 
