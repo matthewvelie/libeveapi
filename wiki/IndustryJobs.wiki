@@ -50,10 +50,10 @@ public static IndustryJobList GetIndustryJobList(IndustryJobListType industryJob
 || !OutputFlag || int || See InventoryFlags ||
 || !ActivityId || int || This is what kind of activity was going on with the item 3 = Time Efficiency, 4 = Material Research ||
 || !CompletedStatus || int || 1 = delivered, 2 = aborted, 3 = GM aborted, 4 = inflight unanchored, 5 = destroyed, 0 = failed ||
-|| !InstallTime || DateTime || When this item was installed ||
-|| !BeginProductionTime || DateTime || When production time started (different than install time if a queue) ||
-|| !EndProductionTime || DateTime || When the job will be finished ||
-|| !PauseProductionTime || DateTime || ||
+|| !InstallTime || !DateTime || When this item was installed ||
+|| !BeginProductionTime || !DateTime || When production time started (different than install time if a queue) ||
+|| !EndProductionTime || !DateTime || When the job will be finished ||
+|| !PauseProductionTime || !DateTime || ||
 
 * !IndustryJobListType enumeration *
 || Member || Value || Description ||
