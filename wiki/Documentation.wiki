@@ -27,7 +27,7 @@
   * [StarbaseDetail Starbase (POS) Details] - Detailed information about a starbase (POS).
   * [StarbaseList Starbase (POS) List] - A list of all starbases (POS's) owned by a corporation.
  # === Reference ===
-  * [ApiReference EVE API Reference] - A (semi-complete) reference of the EVE Api that the library uses to grab data]
+  * [APIReference EVE API Reference] - A (semi-complete) reference of the EVE Api that the library uses to grab data]
   * [ApiResponse The ApiResponse base class]
   * [Roles Roles class] - A pilot's roles in a corporation.
   * [CorpRoles Corporation roles explained]
