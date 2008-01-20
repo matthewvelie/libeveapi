@@ -428,12 +428,12 @@ namespace libeveapi
         public static MarketOrder GetMarketOrderList(MarketOrderType marketOrdersType, int userId, int characterId, string fullApiKey)
         {
             string apiPath = string.Empty;
-            switch (marketOrdersType)
+            switch (marketOrdersListType)
             {
-                case MarketOrderType.Character:
+                case MarketOrdersListType.Character:
                     apiPath = Constants.CharMarketOrders;
                     break;
-                case MarketOrderType.Corporation:
+                case MarketOrdersListType.Corporation:
                     apiPath = Constants.CorpMarketOrders;
                     break;
             }
@@ -443,11 +443,11 @@ namespace libeveapi
             ApiResponse cachedResponse = ResponseCache.Get(url);
             if (cachedResponse != null)
             {
-                return cachedResponse as MarketOrder;
+                return cachedResponse as MarketOrders;
             }
 
             XmlDocument xmlDoc = Network.GetXml(url);
-            MarketOrder marketOrderList = MarketOrder.FromXmlDocument(xmlDoc);
+            MarketOrders marketOrderList = MarketOrders.FromXmlDocument(xmlDoc);
             ResponseCache.Set(url, marketOrderList);
 
             return marketOrderList;
