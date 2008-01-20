@@ -15,17 +15,17 @@ public static MapJumps GetMapJumps()
 || *Member* || *Type* || *Description* ||
 || !MapSystemJumps || !MapSystemItem[] || List of jumps per system ||
 
-* !MapSystemItem class *
+* !MapJumps.!MapSystemItem class *
 || *Member* || *Type* || *Description* ||
 || !SolarSystemId || int || The Id of the solar system ||
 || !ShipJumps || int || The number of jumps to/from the system ||
 
 === Example ===
 {{{
-public static void MapJumps()
+public static void MapJumpsExample()
 {
     MapJumps mapJumps = EveApi.GetMapJumps();
-    foreach (MapSystemItem system in mapJumps.MapSystemJumps)
+    foreach (MapJumps.MapSystemItem system in mapJumps.MapSystemJumps)
     {
         Console.WriteLine("System: {0} Number of Jumps: {1}", system.SolarSystemId, system.ShipJumps);
     }
