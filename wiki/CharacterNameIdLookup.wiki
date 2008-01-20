@@ -24,7 +24,7 @@ public static CharacterIdName GetCharacterIdName(string charactername)
 || *Member* || *Type* || *Description* ||
 || !CharacterIdItems || !CharacterIdItem[] || The character name and character id that are associated with each other ||
 
-* !CharacterIdItem object *
+* !CharacterIdName.!CharacterIdItem object *
 || *Member* || *Type* || *Description* ||
 || Name || string || The character's name ||
 || !CharacterId || int || the characterId associated with the character name ||
