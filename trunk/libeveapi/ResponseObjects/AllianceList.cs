@@ -7,6 +7,9 @@ namespace libeveapi
 {
     public class AllianceList : ApiResponse
     {
+        /// <summary>
+        /// List of alliances
+        /// </summary>
         public AllianceListItem[] AllianceListItems = new AllianceListItem[0];
 
         internal static AllianceList FromXmlDocument(XmlDocument xmlDoc)
@@ -47,20 +50,62 @@ namespace libeveapi
 
         public class AllianceListItem
         {
+            /// <summary>
+            /// full name of the alliance
+            /// </summary>
             public string Name;
+
+            /// <summary>
+            /// ticker name of the alliance
+            /// </summary>
             public string ShortName;
+
+            /// <summary>
+            /// unique identifier for this alliance
+            /// </summary>
             public int AllianceId;
+
+            /// <summary>
+            /// unique identifier of executor corporation
+            /// </summary>
             public int ExecutorCorpId;
+
+            /// <summary>
+            /// Current number of pilots in the alliance
+            /// </summary>
             public int MemberCount;
+
+            /// <summary>
+            /// Date the alliance was created in CCP time
+            /// </summary>
             public DateTime StartDate;
+
+            /// <summary>
+            /// Date the alliance was created in local time
+            /// </summary>
             public DateTime StartDateLocal;
+
+            /// <summary>
+            /// List of member corporations
+            /// </summary>
             public CorporationListItem[] CorporationListItems;
         }
 
         public class CorporationListItem
         {
+            /// <summary>
+            /// unique identifier for the corporation
+            /// </summary>
             public int CorporationId;
+
+            /// <summary>
+            /// date the corporation joined the alliance in CCP time
+            /// </summary>
             public DateTime StartDate;
+
+            /// <summary>
+            /// date the corporation joined the alliance in local time
+            /// </summary>
             public DateTime StartDateLocal;
         }
     }
