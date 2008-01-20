@@ -15,7 +15,7 @@ public static IndustryJobList GetIndustryJobList(IndustryJobListType industryJob
 }}}
 
 === Result ===
-* !IndustryJobList object (See ApiResult for inherited members) *
+* !IndustryJobList object (See ApiResponse for inherited members) *
 || *Member* || *Type* || *Description* ||
 || !IndustryJobItems || !IndustryJobItem[] || List of industry jobs ||
 
@@ -63,3 +63,18 @@ public static IndustryJobList GetIndustryJobList(IndustryJobListType industryJob
 || Member || Value || Description ||
 || Corporation || - || Retrieve jobs for the corporation ||
 || Character || - || Retrieve jobs for the character ||
+
+=== Example ===
+{{{
+public static void IndustryJobListExample()
+{
+    IndustryJobList ijl = EveApi.GetIndustryJobList(IndustryJobListType.Corporation, "userId", "characterId", "fullApiKey");
+    foreach (IndustryJobListItem item in ijl.IndustryJobListItems)
+    {
+        if (item.Completed)
+        {
+            Console.WriteLine("Completed JobId: {0} Installed at location: {1}", item.JobId, item.InstalledItemLocationId);
+        }
+    }
+}
+}}}
