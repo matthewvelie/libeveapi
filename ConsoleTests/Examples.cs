@@ -153,7 +153,7 @@ namespace ConsoleTests
         public static void IndustryJobListExample()
         {
             IndustryJobList ijl = EveApi.GetIndustryJobList(IndustryJobListType.Corporation, 1234, 5678, "fullApiKey");
-            foreach (IndustryJobListItem item in ijl.IndustryJobListItems)
+            foreach (IndustryJobList.IndustryJobListItem item in ijl.IndustryJobListItems)
             {
                 if (item.Completed)
                 {
