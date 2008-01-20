@@ -15,6 +15,7 @@
   * [ErrorList Error List] - A list of all the possible error messages returned by the eve api.
   * [IndustryJobs Industry Job List] - Industry jobs that have been performed or are currently in progress.
   * [MemberTracking Member Tracking] - Detailed current information about the members of a corporation.
+  * [SkillInTraining Skill In Training] - Information about the skill a character is currently training.
   * [SkillTree Skill Tree] - A list of all the skills in the game.
   * [StarbaseDetail Starbase (POS) Details] - Detailed information about a starbase (POS).
   * [StarbaseList Starbase (POS) List] - A list of all starbases (POS's) owned by a corporation.
