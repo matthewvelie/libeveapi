@@ -1,0 +1,28 @@
+=== Description ===
+Returns market/wallet transactions for a character.
+("Market" and "Wallet" are used interchangeably)
+
+=== Library Method ===
+
+== Results ===
+* !WalletTransactionsobject (See ApiResponse for inherited members)*
+|| *Member* || *Type* || *Description ||
+|| !WalletTransactionItems || !WalletTransactionItem[] || List of alliances ||
+
+* !WalletTransactionItem object *
+|| *Member* || *Type* || *Description* ||
+|| TransactionDateTime || DateTime || This is the date and time when the transaction took place in ccp time ||
+|| TransactionDateTimeLocal || DateTime || This is the date and time when the transaction took place in local time ||
+|| TransactionId || int || This is the transactionId that is assigned to the transaction ||
+|| Quantity || int || This is the quantity of the item ||
+|| TypeName || string || This is the name of the item in the transaction ||
+|| TypeId || int || This is the typeId of the item referenced in the transaction ||
+|| Price || double || This is the price of the item in the transaction ||
+|| ClientId || int || The client's Id ||
+|| ClientName || string || The client's name ||
+|| CharacterId || int || The character who initiated the transaction's id  This is only present when viewing corp transactions, otherwise it is assumed to be the character accessing the data||
+|| CharacterName || string || The character who initiated the transaction's name  This is only present when viewing corp transactions, otherwise it is assumed to be the character accessing the data||
+|| StationId || int || The Id of the station where the transaction took place ||
+|| StationName || string || The name of the station where the transaction took place ||
+|| TransactionType || string || This is the type of transaction type, sell or buy ||
+|| TransactionFor || string || This is who the transaction was for (personal or corporation) ||
