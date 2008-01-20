@@ -18,11 +18,11 @@ public static AccountBalance GetAccountBalance(AccountBalanceType accountBalance
 }}}
 
 === Result ===
-* !AccountBalance Object (See ApiResponse for inherited members) *
+* !AccountBalance class (See ApiResponse for inherited members) *
 || Member || Type || Description ||
 || !AccountBalanceItems || !AccountBalanceItem[] || The accounts associated with this character or corporation ||
 
-* !AccountBalance.!AccountBalanceItem Object *
+* !AccountBalance.!AccountBalanceItem class *
 || Member || Type || Description ||
 || !AccountId || int || ID number of the account ||
 || !AccountKey || int || Account Identifier. For Characters: always 1000. For Corp: the wallet division ||
