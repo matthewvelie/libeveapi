@@ -1,7 +1,7 @@
 === Description ===
 Returns the ISK balance of a character or corporation.
 
-=== Eve Api Call ===
+=== Library Method ===
 {{{
 /// <summary>
 /// Returns the ISK balance of a corporation or character
