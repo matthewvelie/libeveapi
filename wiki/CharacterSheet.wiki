@@ -10,7 +10,7 @@ Retrieves detailed information about a character including attributes, implants 
 /// <param name="characterId">CharacterId of character for authentication</param>
 /// <param name="apiKey">Limited access API key of account</param>
 /// <returns></returns>
-public static CharacterSheet GetCharacterSheet(string userId, string characterId, string apiKey)
+public static CharacterSheet GetCharacterSheet(int userId, int characterId, string apiKey)
 }}}
 
 === Result ===
