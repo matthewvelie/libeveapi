@@ -24,10 +24,28 @@ namespace UnitTests
             string errorListLocation = Constants.ErrorList;
             Constants.ErrorList = "/ErrorListExpired.xml.aspx";
             ErrorList errorList = EveApi.GetErrorList();
-            System.Threading.Thread.Sleep(100);
             ErrorList errorList2 = EveApi.GetErrorList();
 
-            Assert.AreEqual(errorList.CachedUntilLocal, errorList2.CachedUntilLocal);
+            Assert.AreEqual(false, errorList.FromCache);
+            Assert.AreEqual(false, errorList2.FromCache);
+
+            Constants.ErrorList = errorListLocation;
+        }
+
+        [Test]
+        public void NotExpiredApiResponse()
+        {
+            ResponseCache.Clear();
+            string errorListLocation = Constants.ErrorList;
+            Constants.ErrorList = "/ErrorListNotExpired.xml.aspx";
+
+            ErrorList errorList = EveApi.GetErrorList();
+            bool errorListFromCache = errorList.FromCache;
+
+            ErrorList errorList2 = EveApi.GetErrorList();
+
+            Assert.AreEqual(false, errorListFromCache);
+            Assert.AreEqual(true, errorList2.FromCache);
 
             Constants.ErrorList = errorListLocation;
         }

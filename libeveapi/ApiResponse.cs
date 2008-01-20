@@ -65,10 +65,17 @@ namespace libeveapi
         public DateTime CachedUntilLocal;
 
         /// <summary>
-        /// 
+        /// The raw xml response from the api
         /// </summary>
         [XmlElement]
         public XmlDocument ResponseXml;
+
+        /// <summary>
+        /// True if this data came from the cache
+        /// False if this data came directly from the eve api
+        /// </summary>
+        [XmlElement]
+        public bool FromCache = false;
 
         /// <summary>
         /// This parses out all of the elements that are common to each one of the xml files,
