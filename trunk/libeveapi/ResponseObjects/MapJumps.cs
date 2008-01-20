@@ -38,21 +38,21 @@ namespace libeveapi
 
             return mapJumps;
         }
-    }
-
-    /// <summary>
-    /// The information for a system with one jump or more
-    /// </summary>
-    public class MapSystemItem
-    {
-        /// <summary>
-        /// The Id of the solarsystem
-        /// </summary>
-        public int SolarSystemId;
 
         /// <summary>
-        /// The number of jumps
+        /// The information for a system with one jump or more
         /// </summary>
-        public int ShipJumps;
+        public class MapSystemItem
+        {
+            /// <summary>
+            /// The Id of the solarsystem
+            /// </summary>
+            public int SolarSystemId;
+
+            /// <summary>
+            /// The number of jumps
+            /// </summary>
+            public int ShipJumps;
+        }
     }
 }
