@@ -425,7 +425,7 @@ namespace libeveapi
         /// <param name="characterId">CharacterId of character for authentication</param>
         /// <param name="fullApiKey">Full access API key of account</param>
         /// <returns></returns>
-        public static MarketOrder GetMarketOrderList(MarketOrderType marketOrdersType, int userId, int characterId, string fullApiKey)
+        public static MarketOrders GetMarketOrderList(MarketOrdersListType marketOrdersListType, int userId, int characterId, string fullApiKey)
         {
             string apiPath = string.Empty;
             switch (marketOrdersListType)
