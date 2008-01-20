@@ -11,12 +11,12 @@ public static SkillTree GetSkillTree()
 }}}
 
 === Result ===
-* !SkillTree object (See ApiResponse for inherited members)
+* !SkillTree class (See ApiResponse for inherited members)
 || *Member* || *Type* || *Description* ||
 || Skills || Skill[] || List of all skills ||
 || !SkillGroups || !SkillGroup[] || List of skill category groups ||
 
-* Skill object *
+* !SkillTree.Skill class*
 || *Member* || *Type* || *Description* ||
 || !TypeName || string || Name of the skill ||
 || !GroupId || int || Unique identifier for the group this skill belongs to ||
@@ -28,22 +28,22 @@ public static SkillTree GetSkillTree()
 || !SecondaryAttribute || !AttributeType || The attribute that has the second most effect of the amount of time required to train this skill. ||
 || !SkillBonuses || !SkillBonus[] || The bonuses gained from training this skill. ||
 
-* !RequiredSkill object *
+* !SkillTree.!RequiredSkill class *
 || *Member* || *Type* || *Description* ||
 || TypeId || int || The unique identifier of this skill type. ||
 || !SkillLevel || int || This skill level is required to train the parent skill. ||
 
-* !SkillGroup object *
+* !SkillTree.!SkillGroup class*
 || *Member* || *Type* || *Description* ||
 || !GroupName || string || The name of this skill group. ||
 || !GroupId || int || The unique identifier for this skill group. ||
 
-* !SkillBonus object *
+* !SkillTree.!SkillBonus class *
 || *Member* || *Type* || *Description* ||
 || !BonusType || string || Description of the bonus ||
 || !BonusValue || double || The amount of bonus gained from each level of the skill trained. ||
 
-* !AttributeType enumeration *
+* !SkillTree.!AttributeType enumeration *
 || Member || Value || Description ||
 || Memory || - || Memory attribute ||
 || Intelligence|| - || Intelligence attribute ||
