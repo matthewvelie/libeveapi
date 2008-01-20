@@ -1,0 +1,56 @@
+=== Description ===
+Represents a industry jobs that have been performed and are currently in progress response from the eve api.
+
+=== Library Method ===
+{{{
+/// <summary>
+/// Returns a list of industrial jobs owned by a character or corporation.
+/// </summary>
+/// <param name="industryJobListType"><see cref="IndustryJobListType" /></param>
+/// <param name="userId">userId of account for authentication</param>
+/// <param name="characterId">CharacterId of character for authentication</param>
+/// <param name="fullApiKey">Full access API key of account</param>
+/// <returns></returns>
+public static IndustryJobList GetIndustryJobList(IndustryJobListType industryJobListType, string userId, string characterId, string fullApiKey)
+}}}
+
+=== Result ===
+* IndustryJobList object (See ApiResult for inherited members) *
+|| *Member* || *Type* || *Description* ||
+|| IndustryJobItems || IndustryJobItem[] || List of industry jobs ||
+
+* IndustryJobItem object *
+|| *Member* || *Type* || *Description* ||
+|| JobId || int || This is the unique job id that is assigned to the job by the eve system||
+|| AssemblyLineId || int || This is the assembly line that it is installed into if in a station ||
+|| ContainerId || int || ||
+|| InstalledItemId || int || This is the itemId of the item that was installed for whatever factory job was happening, this isnt really useful as it can change, but it will link back to something in your asset list (hopefully)||
+|| InstalledItemLocationId || int || This is the locationId of where the item was installed ||
+|| InstalledItemQuantity || int || This is how many of the item were installed, (usually 1) ||
+|| InstalledItemProductivityLevel || int || This is the blueprints Productivity Level (TE) ||
+|| InstalledItemMaterialLevel || int || This is the blueprints Material Level (ME) ||
+|| InstalledItemLicensedProductionRunsRemaining || int || This is how many production runs are left on the  blueprint that was installed.  A -1 represents a BPO with unlimited copies left. ||
+|| OutputLocationId || int || This is where the output of the job will be placed ||
+|| InstallerId || int || The characterId of the person who installed the job ||
+|| Runs || int || This is how many runs of the object are being made. ||
+|| LicensedProductionRuns || int || ||
+|| InstalledInSolarSystemId || int || This is the solarsystemId of where the job was installed ||
+|| ContainerLocationId || int || ||
+|| MaterialMultiplier || double || ||
+|| CharMaterialMultiplier || double || ||
+|| TimeMultiplier || double || ||
+|| CharTimeMultiplier || double || ||
+|| InstalledItemTypeId || int || ||
+|| OutputTypeId || int || ||
+|| ContainerTypeId || int || ||
+|| InstalledItemCopy || int || ||
+|| Completed || bool || ||
+|| CompletedSuccessfully || bool || ||
+|| InstalledItemFlag || int || See InventoryFlags ||
+|| OutputFlag || int || See InventoryFlags ||
+|| ActivityId || int || ||
+|| CompletedStatus || int || ||
+|| InstallTime || DateTime || ||
+|| BeginProductionTime || DateTime || ||
+|| EndProductionTime || DateTime || ||
+|| PauseProductionTime || DateTime || ||
