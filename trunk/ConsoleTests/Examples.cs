@@ -12,12 +12,24 @@ namespace ConsoleTests
         public static void Main(String[] args)
         {
             UseLocalUrls();
-            ConquerableStationListExample();
+            IndustryJobListExample();
         }
 
         public static void UseLocalUrls()
         {
             Constants.ApiPrefix = "http://localhost/eveapi";
+        }
+
+        public static void IndustryJobListExample()
+        {
+            IndustryJobList ijl = EveApi.GetIndustryJobList(IndustryJobListType.Corporation, "userId", "characterId", "fullApiKey");
+            foreach (IndustryJobListItem item in ijl.IndustryJobListItems)
+            {
+                if (item.Completed)
+                {
+                    Console.WriteLine("Completed JobId: {0} Installed at location: {1}", item.JobId, item.InstalledItemLocationId);
+                }
+            }
         }
 
         public static void ConquerableStationListExample()
