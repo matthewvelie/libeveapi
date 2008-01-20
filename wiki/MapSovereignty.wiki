@@ -11,11 +11,11 @@ public static MapSovereignty GetMapSovereignty()
 }}}
 
 === Result ===
-* !MapSovereignty object (See ApiResult for inherited members) *
+* !MapSovereignty class (See ApiResult for inherited members) *
 || *Member* || *Type* || *Description* ||
 || M!apSystemSovereigntyItems || !MapSovereigntyItem[] || List of systems and their sovereignty status ||
 
-* !MapSovereigntyItem object *
+* !MapSovereignty.!MapSovereigntyItem class *
 || *Member* || *Type* || *Description* ||
 || !SolarSystemId || int || The unique identification number of a solar system ||
 || !AllianceId || int || The Id of the alliance that has sovereignty of this solar system, or 0 if nobody has sovereignty. ||
@@ -29,7 +29,7 @@ public static MapSovereignty GetMapSovereignty()
 public static void MapSovereigntyExample()
 {
     MapSovereignty ms = EveApi.GetMapSovereignty();
-    foreach (MapSovereigntyItem msi in ms.MapSystemSovereigntyItems)
+    foreach (MapSovereignty.MapSovereigntyItem msi in ms.MapSystemSovereigntyItems)
     {
         Console.WriteLine("System Name: {0} Sovereignty Level: {1}", msi.SolarSystemName, msi.SovereigntyLevel);
     }
