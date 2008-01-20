@@ -102,18 +102,18 @@ namespace libeveapi
         /// </summary>
         /// <param name="charactername">character name string, use to look up character id</param>
         /// <returns></returns>
-        public static CharacterId GetCharacterIdName(string charactername)
+        public static CharacterIdName GetCharacterIdName(string charactername)
         {
             string url = String.Format("{0}{1}?names={2}", Constants.ApiPrefix, Constants.CharacterIdName, charactername);
 
             ApiResponse cachedResponse = ResponseCache.Get(url);
             if (cachedResponse != null)
             {
-                return cachedResponse as CharacterId;
+                return cachedResponse as CharacterIdName;
             }
 
             XmlDocument xmlDoc = Network.GetXml(url);
-            CharacterId charId = CharacterId.FromXmlDocument(xmlDoc);
+            CharacterIdName charId = CharacterIdName.FromXmlDocument(xmlDoc);
             ResponseCache.Set(url, charId);
 
             return charId;
@@ -124,18 +124,18 @@ namespace libeveapi
         /// </summary>
         /// <param name="characterId">characterId used to look up character name</param>
         /// <returns></returns>
-        public static CharacterId GetCharacterIdName(int characterId)
+        public static CharacterIdName GetCharacterIdName(int characterId)
         {
             string url = String.Format("{0}{1}?ids={2}", Constants.ApiPrefix, Constants.CharacterIdName, characterId);
 
             ApiResponse cachedResponse = ResponseCache.Get(url);
             if (cachedResponse != null)
             {
-                return cachedResponse as CharacterId;
+                return cachedResponse as CharacterIdName;
             }
 
             XmlDocument xmlDoc = Network.GetXml(url);
-            CharacterId charId = CharacterId.FromXmlDocument(xmlDoc);
+            CharacterIdName charId = CharacterIdName.FromXmlDocument(xmlDoc);
             ResponseCache.Set(url, charId);
 
             return charId;

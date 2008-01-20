@@ -27,7 +27,7 @@ namespace libeveapi
     [XmlInclude(typeof(CorporationSheet))]
     [XmlInclude(typeof(SkillInTraining))]
     [XmlInclude(typeof(AllianceList))]
-    [XmlInclude(typeof(CharacterId))]
+    [XmlInclude(typeof(CharacterIdName))]
     [XmlInclude(typeof(KillLog))]
     public class ApiResponse
     {
