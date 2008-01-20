@@ -11,7 +11,7 @@ public static ErrorList GetErrorList()
 }}}
 
 === Result ===
-* ErrorList class (See ApiResponse for inherited members) *
+* !ErrorList class (See ApiResponse for inherited members) *
 || Member || Type || Description ||
 || !GetMessageForErrorCode(string errorCode) || method || Returns the description for the specified error code ||
 
