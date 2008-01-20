@@ -8,6 +8,7 @@
   * [AllianceList Alliance List] - A list of all the alliances in the game and their member corporations.
   * [AssetList Asset List] - A detailed list of all a character or corporations assets in the universe.
   * [CharacterList Character List] - The list of characters associated with an account
+  * [CharacterNameIdLookup Character Name / ID Lookup] - Find a character name using a character id or vice versa.
   * [CharacterPortrait Character Portrait] - A character's image from the game.
   * [CharacterSheet Character Sheet] - Detailed information about a character
   * [ConquerableStationList Conquerable Station List] - The list of all conquerable stations in the universe.
