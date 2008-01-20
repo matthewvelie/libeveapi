@@ -29,10 +29,10 @@ namespace UnitTests
 
             Assert.AreEqual(mapSovereignty.CachedUntilLocal, cachedMapSovereignty.CachedUntilLocal);
 
-            for (int i = 0; i < mapSovereignty.MapSystemSovereignty.Length; i++)
+            for (int i = 0; i < mapSovereignty.MapSystemSovereigntyItems.Length; i++)
             {
-                Assert.AreEqual(mapSovereignty.MapSystemSovereignty[i].ConstellationSovereignty, cachedMapSovereignty.MapSystemSovereignty[i].ConstellationSovereignty);
-                Assert.AreEqual(mapSovereignty.MapSystemSovereignty[i].AllianceId, cachedMapSovereignty.MapSystemSovereignty[i].AllianceId);
+                Assert.AreEqual(mapSovereignty.MapSystemSovereigntyItems[i].ConstellationSovereignty, cachedMapSovereignty.MapSystemSovereigntyItems[i].ConstellationSovereignty);
+                Assert.AreEqual(mapSovereignty.MapSystemSovereigntyItems[i].AllianceId, cachedMapSovereignty.MapSystemSovereigntyItems[i].AllianceId);
             }
         }
     }

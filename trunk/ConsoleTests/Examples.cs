@@ -12,12 +12,21 @@ namespace ConsoleTests
         public static void Main(String[] args)
         {
             UseLocalUrls();
-            RefTypesExaple();
+            MapSovereigntyExample();
         }
 
         public static void UseLocalUrls()
         {
             Constants.ApiPrefix = "http://localhost/eveapi";
+        }
+
+        public static void MapSovereigntyExample()
+        {
+            MapSovereignty ms = EveApi.GetMapSovereignty();
+            foreach (MapSovereigntyItem msi in ms.MapSystemSovereigntyItems)
+            {
+                Console.WriteLine("System Name: {0} Sovereignty Level: {1}", msi.SolarSystemName, msi.SovereigntyLevel);
+            }
         }
 
         public static int GetCharacterIdByName(string characterName)
