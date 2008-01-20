@@ -5,7 +5,7 @@
 
 
 == URLS ==
-CharacterSheet.xml.aspx
+IndustryJobs.xml.aspx
 
 == Overview ==
 
@@ -22,7 +22,7 @@ CharacterSheet.xml.aspx
 
 = Details =
 
-Long description of the stuff here
+Contains the industrial activities of the character
 
 == Input ==
 || *Name* || *Type* || *Description* ||
@@ -32,7 +32,7 @@ Long description of the stuff here
 
 
 == Output ==
-
+Output contains detailed information about the item that is in the job, where it was and where it will be placed after.
 
 === Sample XML ===
 {{{
