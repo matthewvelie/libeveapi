@@ -61,83 +61,83 @@ namespace libeveapi
 
             return journalEntryItem;
         }
-    }
-
-    /// <summary>
-    /// Contains the data for one journal entry item
-    /// </summary>
-    public class JournalEntryItem
-    {
-        /// <summary>
-        /// The date / time of the entry
-        /// </summary>
-        public DateTime Date;
 
         /// <summary>
-        /// The date / time of the entry in local time
+        /// Contains the data for one journal entry item
         /// </summary>
-        public DateTime DateLocal;
+        public class JournalEntryItem
+        {
+            /// <summary>
+            /// The date / time of the entry
+            /// </summary>
+            public DateTime Date;
 
-        /// <summary>
-        /// A unique referenceId for each transaction
-        /// </summary>
-        public int RefId;
+            /// <summary>
+            /// The date / time of the entry in local time
+            /// </summary>
+            public DateTime DateLocal;
 
-        /// <summary>
-        /// The typeId of the item that is referenced in the entry
-        /// </summary>
-        public int RefTypeId;
+            /// <summary>
+            /// A unique referenceId for each transaction
+            /// </summary>
+            public int RefId;
 
-        /// <summary>
-        /// Name of the person/corp giving money
-        /// </summary>
-        public string OwnerName1;
+            /// <summary>
+            /// The typeId of the item that is referenced in the entry
+            /// </summary>
+            public int RefTypeId;
 
-        /// <summary>
-        /// TypeId/CharId of the person/corp giving money
-        /// </summary>
-        public int OwnerId1;
+            /// <summary>
+            /// Name of the person/corp giving money
+            /// </summary>
+            public string OwnerName1;
 
-        /// <summary>
-        /// Name of the person/corp recieving money
-        /// </summary>
-        public string OwnerName2;
+            /// <summary>
+            /// TypeId/CharId of the person/corp giving money
+            /// </summary>
+            public int OwnerId1;
 
-        /// <summary>
-        /// TypeId/CharId of the person/corp recieving money
-        /// </summary>
-        public int OwnerId2;
+            /// <summary>
+            /// Name of the person/corp recieving money
+            /// </summary>
+            public string OwnerName2;
 
-        /// <summary>
-        /// This is either the system where the transaction took place
-        /// For example when recieving bounties, or "EVE System" if used
-        /// for other items like buying and selling
-        /// </summary>
-        public string ArgName1;
+            /// <summary>
+            /// TypeId/CharId of the person/corp recieving money
+            /// </summary>
+            public int OwnerId2;
 
-        /// <summary>
-        /// This is an argument Id that goes with the argument
-        /// Use the data from: http://wiki.eve-dev.net/APIv2_Eve_RefTypes_XML
-        /// to determine what this is used for
-        /// </summary>
-        public int ArgId1;
+            /// <summary>
+            /// This is either the system where the transaction took place
+            /// For example when recieving bounties, or "EVE System" if used
+            /// for other items like buying and selling
+            /// </summary>
+            public string ArgName1;
 
-        /// <summary>
-        /// The amount of the transaction
-        /// </summary>
-        public double Amount;
+            /// <summary>
+            /// This is an argument Id that goes with the argument
+            /// Use the data from: http://wiki.eve-dev.net/APIv2_Eve_RefTypes_XML
+            /// to determine what this is used for
+            /// </summary>
+            public int ArgId1;
 
-        /// <summary>
-        /// The balance left in the account after the transaction
-        /// </summary>
-        public double Balance;
+            /// <summary>
+            /// The amount of the transaction
+            /// </summary>
+            public double Amount;
 
-        /// <summary>
-        /// This is the note attached to the transaction if any
-        /// If exists for bounties this is the list of people killed and how many
-        /// Ex: TypeId:Number;TypeId:Number
-        /// </summary>
-        public string Reason;
+            /// <summary>
+            /// The balance left in the account after the transaction
+            /// </summary>
+            public double Balance;
+
+            /// <summary>
+            /// This is the note attached to the transaction if any
+            /// If exists for bounties this is the list of people killed and how many
+            /// Ex: TypeId:Number;TypeId:Number
+            /// </summary>
+            public string Reason;
+        }
     }
 
     /// <summary>
