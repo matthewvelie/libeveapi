@@ -11,7 +11,7 @@ public static RefTypes GetRefTypesList()
 }}}
 
 === Result ===
-* !RefTypes object (See ApiResponse for inherited members) *
+* !RefTypes class (See ApiResponse for inherited members) *
 || *Member* || *Type* || *Description* ||
 || string !GetReferenceTypeNameForId(int referenceTypeId) || Method || Returns the description for the specified reference type id ||
 
