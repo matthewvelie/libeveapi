@@ -1,6 +1,9 @@
 == Description ==
 A class for caching responses from the eve api.
 
+== Thread Safety ==
+All ResponseCache methods are thread safe. Any operation that mutates the cache is wrapped in a lock.
+
 == Methods ==
 || Name || Description ||
 || void Save(string filePath) || Save the response cache to this filename ||
