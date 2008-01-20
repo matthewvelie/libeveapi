@@ -11,7 +11,7 @@ Retrieves current detailed information about a corporation's members including t
 /// <param name="characterId">Character Id of a char with director/CEO access in the corp that owns the starbase</param>
 /// <param name="fullApiKey">Full access api key of account</param>
 /// <returns></returns>
-public static MemberTracking GetMemberTracking(string userId, string characterId, string fullApiKey)
+public static MemberTracking GetMemberTracking(int userId, int characterId, string fullApiKey)
 }}}
 
 === Result ===
@@ -44,7 +44,7 @@ public static MemberTracking GetMemberTracking(string userId, string characterId
 {{{
 public static void MemberTrackingExample()
 {
-    MemberTracking memberTracking = EveApi.GetMemberTracking("userId", "characterId", "fullApiKey");
+    MemberTracking memberTracking = EveApi.GetMemberTracking(123, 456, "fullApiKey");
     
     // Output the name and location of all corporation directors
     foreach (MemberTracking.Member member in memberTracking.Members)
