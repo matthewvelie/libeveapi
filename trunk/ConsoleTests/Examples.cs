@@ -70,7 +70,7 @@ namespace ConsoleTests
         public static void MapSovereigntyExample()
         {
             MapSovereignty ms = EveApi.GetMapSovereignty();
-            foreach (MapSovereigntyItem msi in ms.MapSystemSovereigntyItems)
+            foreach (MapSovereignty.MapSovereigntyItem msi in ms.MapSystemSovereigntyItems)
             {
                 Console.WriteLine("System Name: {0} Sovereignty Level: {1}", msi.SolarSystemName, msi.SovereigntyLevel);
             }
@@ -107,7 +107,7 @@ namespace ConsoleTests
 
         public static void DisplayWalletTransactions(WalletTransactions transactions)
         {
-            foreach (WalletTransactionItem transaction in transactions.WalletTransactionItems)
+            foreach (WalletTransactions.WalletTransactionItem transaction in transactions.WalletTransactionItems)
             {
                 Console.WriteLine("Date: {0} Quantity: {1} Price: {2}", transaction.TransactionDateTimeLocal, transaction.Quantity, transaction.Price);
             }
