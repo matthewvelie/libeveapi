@@ -27,7 +27,6 @@ public static CharacterList GetAccountCharacters(int userId, string apiKey)
 === Example ===
 {{{
 public static void PrintCharacterList()
-public static void PrintCharacterList()
 {
     CharacterList characterList = EveApi.GetAccountCharacters(453245, "apiKey");
     foreach (CharacterList.CharacterListItem cli in characterList.CharacterListItems)
