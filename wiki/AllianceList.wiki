@@ -15,7 +15,7 @@ public static AllianceList GetAllianceList()
 || *Member* || *Type* || *Description ||
 || !AllianceListItems || !AllianceList[] || List of alliances ||
 
-* !AllianceListItem object *
+* !AllianceList.!AllianceListItem object *
 || *Member* || *Type* || *Description* ||
 || Name || string || full name of the alliance ||
 || !ShortName || string || ticker name of the alliance ||
@@ -26,7 +26,7 @@ public static AllianceList GetAllianceList()
 || !StartDateLocal || !DateTime || Date the alliance was created in local time ||
 || !CorporationListItems || !CorporationListItem[] || List of member corporations ||
 
-* !CorporationListItem object *
+* !AllianceList.!CorporationListItem object *
 || *Member* || *Type* || *Description* ||
 || !CorporationId || int || unique identifier for the corporation ||
 || !StartDate || !DateTime || date the corporation joined the alliance in CCP time ||
