@@ -38,3 +38,22 @@ public static MarketOrder GetMarketOrderList(MarketOrderType marketOrdersType, s
 || Bid || bool || If true this is a bid or buy order, else it is a sell order  ||
 || Issued || !DateTime || This is when the order was issued ||
 || !IssuedLocal || !DateTime || This is when the order was issued in local time ||
+
+* !MarketOrderState enumeration *
+|| *Member* || *Value* || *Description* ||
+|| !OpenActive || 0 || If the market order is still active and up on the market ||
+|| Closed || 1 || The order has been closed ||
+|| !ExpiredFulfilled || 2 || The order has expired, or has been fufilled so it is no longer active ||
+|| Canceled || 3 || The order was canceled ||
+|| Pending || 4 ||  The order is currently pending, and not on the market||
+|| !CharacterDeleted || 5 || The character that this order was associated with has been deleted ||
+
+* !MarketOrderState enumeration *
+|| *Member* || *Value* || *Description* ||
+|| Buy || - || Denotes a buy order ||
+|| Sell || - || Denotes a sell order ||
+
+* !MarketOrdersListTypeenumeration *
+|| *Member* || *Value* || *Description* ||
+|| Corporation || - || Retrieve the market order list for a corporation ||
+|| Character || - || Retrieve the market order list for a character ||
