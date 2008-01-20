@@ -17,6 +17,7 @@
   * [JournalEntries Journal Entries] - A list of journal entries for a corporation or character.
   * [WalletTransactions Market / Wallet Transactions] - Market / Wallet transactions for a character or corporation.
   * [MemberTracking Member Tracking] - Detailed current information about the members of a corporation.
+  * [RefTypes RefTypes List] - A list of the reference types used in journal entries.
   * [SkillInTraining Skill In Training] - Information about the skill a character is currently training.
   * [SkillTree Skill Tree] - A list of all the skills in the game.
   * [StarbaseDetail Starbase (POS) Details] - Detailed information about a starbase (POS).
