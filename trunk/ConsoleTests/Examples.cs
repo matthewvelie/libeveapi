@@ -12,8 +12,14 @@ namespace ConsoleTests
         public static void Main(String[] args)
         {
             UseLocalUrls();
-            EveApi.SetProxy("localhost", 8080);
-            KillLog();
+            ErrorList errorList = EveApi.GetErrorList();
+            ResponseCache.Clear();
+            string errorListLocation = Constants.ErrorList;
+            Constants.ErrorList = "/ErrorListNotExpired.xml.aspx";
+            errorList = EveApi.GetErrorList();
+            ErrorList errorList2 = EveApi.GetErrorList();
+
+            Constants.ErrorList = errorListLocation;
         }
 
         public static void UseLocalUrls()

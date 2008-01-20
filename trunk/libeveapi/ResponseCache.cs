@@ -58,6 +58,7 @@ namespace libeveapi
                     return null;
                 }
 
+                cachedResponse.FromCache = true;
                 return cachedResponse;
             }
 
