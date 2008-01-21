@@ -79,6 +79,9 @@ namespace libeveapi
                 case 1:
                     IndustryJobListItem.Activity = Activities.Manufacturing;
                     break;
+                case 2:
+                    IndustryJobListItem.Activity = Activities.TechnologyResearch;
+                    break;
                 case 3:
                     IndustryJobListItem.Activity = Activities.TimeEfficiency;
                     break;
@@ -87,6 +90,12 @@ namespace libeveapi
                     break;
                 case 5:
                     IndustryJobListItem.Activity = Activities.Copying;
+                    break;
+                case 6:
+                    IndustryJobListItem.Activity = Activities.Duplicating;
+                    break;
+                case 7:
+                    IndustryJobListItem.Activity = Activities.ReverseEngineering;
                     break;
                 case 8:
                     IndustryJobListItem.Activity = Activities.Invention;
@@ -404,6 +413,10 @@ namespace libeveapi
         /// </summary>
         Manufacturing = 1,
         /// <summary>
+        /// Researching Technology (not in game at current)
+        /// </summary>
+        TechnologyResearch = 2,
+        /// <summary>
         /// Time Efficiency Research
         /// </summary>
         TimeEfficiency = 3,
@@ -415,6 +428,14 @@ namespace libeveapi
         /// Blueprint Copying
         /// </summary>
         Copying = 5,
+        /// <summary>
+        /// Blueprint Duplication (not in gate at current)
+        /// </summary>
+        Duplicating = 6,
+        /// <summary>
+        /// Reverse Engineering (not in game at current)
+        /// </summary>
+        ReverseEngineering = 7,
         /// <summary>
         /// Blueprint Invention
         /// </summary>
