@@ -73,7 +73,53 @@ namespace libeveapi
             IndustryJobListItem.InstalledItemFlag = Convert.ToInt32(industryJobRow.Attributes["installedItemFlag"].InnerText);
             IndustryJobListItem.OutputFlag = Convert.ToInt32(industryJobRow.Attributes["outputFlag"].InnerText);
             IndustryJobListItem.ActivityId = Convert.ToInt32(industryJobRow.Attributes["activityID"].InnerText);
-            IndustryJobListItem.CompletedStatus = Convert.ToInt32(industryJobRow.Attributes["completedStatus"].InnerText);
+
+            switch (Convert.ToInt32(industryJobRow.Attributes["activityID"].InnerText))
+            {
+                case 1:
+                    IndustryJobListItem.Activity = Activities.Manufacturing;
+                    break;
+                case 3:
+                    IndustryJobListItem.Activity = Activities.TimeEfficiency;
+                    break;
+                case 4:
+                    IndustryJobListItem.Activity = Activities.MaterialEfficiency;
+                    break;
+                case 5:
+                    IndustryJobListItem.Activity = Activities.Copying;
+                    break;
+                case 8:
+                    IndustryJobListItem.Activity = Activities.Invention;
+                    break;
+                default:
+                    IndustryJobListItem.Activity = Activities.Unknown;
+                    break;
+            }
+
+            switch (Convert.ToInt32(industryJobRow.Attributes["completedStatus"].InnerText))
+            {
+                case 0:
+                    IndustryJobListItem.CompletedStatus = IndustryJobCompletedStatuses.Failed;
+                    break;
+                case 1:
+                    IndustryJobListItem.CompletedStatus = IndustryJobCompletedStatuses.Delivered;
+                    break;
+                case 2:
+                    IndustryJobListItem.CompletedStatus = IndustryJobCompletedStatuses.Aborted;
+                    break;
+                case 3:
+                    IndustryJobListItem.CompletedStatus = IndustryJobCompletedStatuses.GM_Aborted;
+                    break;
+                case 4:
+                    IndustryJobListItem.CompletedStatus = IndustryJobCompletedStatuses.Unachored;
+                    break;
+                case 5:
+                    IndustryJobListItem.CompletedStatus = IndustryJobCompletedStatuses.Destroyed;
+                    break;
+                default:
+                    break;
+            }
+            
             IndustryJobListItem.InstallTime = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(industryJobRow.Attributes["installTime"].InnerText);
             IndustryJobListItem.BeginProductionTime = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(industryJobRow.Attributes["beginProductionTime"].InnerText);
             IndustryJobListItem.EndProductionTime = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(industryJobRow.Attributes["endProductionTime"].InnerText);
@@ -142,7 +188,6 @@ namespace libeveapi
             /// with unlimited copies left.
             /// </summary>
             public int InstalledItemLicensedProductionRunsRemaining;
-
 
             /// <summary>
             /// This is where the output of the job will be placed
@@ -251,14 +296,15 @@ namespace libeveapi
 
             /// <summary>
             /// This is what kind of activity was going on with the item
-            /// 3 = Time Efficiency, 4 = Material Research
+            /// 1 = ,3 = Time Efficiency, 4 = Material Research, 8 =
             /// </summary>
             public int ActivityId;
+            public Activities Activity;
 
             /// <summary>
-            /// 1 = delivered, 2 = aborted, 3 = GM aborted, 4 = inflight unanchored, 5 = destroyed, 0 = failed
+            /// Status of the item when it was completed
             /// </summary>
-            public int CompletedStatus;
+            public IndustryJobCompletedStatuses CompletedStatus;
 
             /// <summary>
             /// When this item was installed in ccp time
@@ -315,5 +361,67 @@ namespace libeveapi
         /// This is a personal job for the Character
         /// </summary>
         Character
+    }
+
+    /// <summary>
+    /// This represents the status of a job once completed
+    /// </summary>
+    public enum IndustryJobCompletedStatuses
+    {
+        /// <summary>
+        /// It was completed; however, the job failed (invention)
+        /// </summary>
+        Failed = 0,
+        /// <summary>
+        /// The job was completed and delivered successfully
+        /// </summary>
+        Delivered = 1,
+        /// <summary>
+        /// The job was completed, because it was aborted
+        /// </summary>
+        Aborted = 2,
+        /// <summary>
+        /// A GM Completed/Aborted the job
+        /// </summary>
+        GM_Aborted = 3,
+        /// <summary>
+        /// The job was completed because the item it was in was unanchored
+        /// </summary>
+        Unachored = 4,
+        /// <summary>
+        /// The job is considered completed because the item was destroyed (mobile lab, etc).
+        /// </summary>
+        Destroyed = 5
+    }
+
+    /// <summary>
+    /// The different activities that can occur for an S&I job
+    /// </summary>
+    public enum Activities
+    {
+        /// <summary>
+        /// Manufacturing
+        /// </summary>
+        Manufacturing = 1,
+        /// <summary>
+        /// Time Efficiency Research
+        /// </summary>
+        TimeEfficiency = 3,
+        /// <summary>
+        /// Material Efficiency Research
+        /// </summary>
+        MaterialEfficiency = 4,
+        /// <summary>
+        /// Blueprint Copying
+        /// </summary>
+        Copying = 5,
+        /// <summary>
+        /// Blueprint Invention
+        /// </summary>
+        Invention = 8,
+        /// <summary>
+        /// Unknown type of job
+        /// </summary>
+        Unknown = 0
     }
 }
