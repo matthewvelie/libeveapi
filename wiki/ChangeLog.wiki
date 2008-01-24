@@ -7,7 +7,7 @@ A list of all of the changes to the API is found here since version 1.0.0.
 
 
 == 1.0.1 - 1/20/2008 ==
- * A minor revision to the industry job list.  Enums are now used for ActivityID which determines which activity is currently happening with the job.  This is used in addition to the integer value provided.  Also an enum for IndustryJobCompletedStatuses has been created to better manage what was the completed state of the object.
+ * A minor revision to the industry job list.  Enums are now used for ActivityID which determines which activity is currently happening with the job.  This is used in addition to the integer value provided.  Also an enum for !IndustryJobCompletedStatuses has been created to better manage what was the completed state of the object.
 
 == 1.0.0 - 1/20/2008 ==
  * The 1.0 release is now out and should be stable, and implement all off the different EVE Api items, along with caching.
