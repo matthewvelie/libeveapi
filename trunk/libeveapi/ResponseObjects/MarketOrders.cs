@@ -139,7 +139,7 @@ namespace libeveapi
             public long MinVolume;
 
             /// <summary>
-            /// See <see cref="marketOrderState"/> for full descriptions of each order state
+            /// See <see cref="MarketOrderState"/> for full descriptions of each order state
             /// </summary>
             public MarketOrderState OrderState;
 
@@ -232,6 +232,9 @@ namespace libeveapi
             CharacterDeleted = 5
         }
 
+        /// <summary>
+        /// What type of order was it on the market, buy or sell
+        /// </summary>
         public enum MarketOrderType
         {
             /// <summary>

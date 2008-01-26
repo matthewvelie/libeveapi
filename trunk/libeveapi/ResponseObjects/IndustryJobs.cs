@@ -40,6 +40,7 @@ namespace libeveapi
         /// Create an IndustryJobListItem by parsing a single row
         /// </summary>
         /// <param name="industryJobRow">An xml row containing an industry job</param>
+        /// <param name="industryJobList"></param>
         /// <returns></returns>
         protected static IndustryJobListItem ParseIndustryJobRow(XmlNode industryJobRow, IndustryJobList industryJobList)
         {
@@ -305,9 +306,12 @@ namespace libeveapi
 
             /// <summary>
             /// This is what kind of activity was going on with the item
-            /// 1 = ,3 = Time Efficiency, 4 = Material Research, 8 =
+            /// (use enum Activities)
             /// </summary>
             public int ActivityId;
+            /// <summary>
+            /// ENUM of what activity is currently being done
+            /// </summary>
             public Activities Activity;
 
             /// <summary>
@@ -404,7 +408,7 @@ namespace libeveapi
     }
 
     /// <summary>
-    /// The different activities that can occur for an S&I job
+    /// The different activities that can occur for an Science and Industry job
     /// </summary>
     public enum Activities
     {

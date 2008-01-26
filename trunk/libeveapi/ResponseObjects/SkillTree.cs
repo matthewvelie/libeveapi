@@ -5,8 +5,14 @@ using System.Xml;
 
 namespace libeveapi
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class SkillTree : ApiResponse
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public Skill[] Skills = new Skill[0];
         public SkillGroup[] SkillGroups = new SkillGroup[0];
 
@@ -68,6 +74,9 @@ namespace libeveapi
             return skillTree;
         }
 
+        /// <summary>
+        /// Information about a EVE Skill
+        /// </summary>
         public class Skill
         {
             /// <summary>
@@ -187,13 +196,34 @@ namespace libeveapi
             return AttributeType.Unknown;
         }
         
+        /// <summary>
+        /// Different types of character attributes
+        /// </summary>
         public enum AttributeType
         {
+            /// <summary>
+            /// The memory attribute
+            /// </summary>
             Memory,
+            /// <summary>
+            /// The Willpower attribute
+            /// </summary>
             Willpower,
+            /// <summary>
+            /// The Intelligence attribute
+            /// </summary>
             Intelligence,
+            /// <summary>
+            /// The Perception attribute
+            /// </summary>
             Perception,
+            /// <summary>
+            /// The Charisma attribute
+            /// </summary>
             Charisma,
+            /// <summary>
+            /// What is this attribute?
+            /// </summary>
             Unknown
         }
     }
