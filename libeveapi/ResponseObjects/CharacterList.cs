@@ -45,25 +45,46 @@ namespace libeveapi
         /// </summary>
         public class CharacterListItem
         {
+            private string name;
+            private int characterId;
+            private string corporationName;
+            private int corporationId;
+
             /// <summary>
             /// Name of the character
             /// </summary>
-            public string Name;
+            public string Name
+            {
+                get { return name; }
+                set { name = value; }
+            }
 
             /// <summary>
             /// Id of the character
             /// </summary>
-            public int CharacterId;
+            public int CharacterId
+            {
+                get { return characterId; }
+                set { characterId = value; }
+            }
 
             /// <summary>
             /// Name of the corporation the character is a member of
             /// </summary>
-            public string CorporationName;
+            public string CorporationName
+            {
+                get { return corporationName; }
+                set { corporationName = value; }
+            }
 
             /// <summary>
             /// Id of the corporation the character is a member of
             /// </summary>
-            public int CorporationId;
+            public int CorporationId
+            {
+                get { return corporationId; }
+                set { corporationId = value; }
+            }
         }
     }
 }
