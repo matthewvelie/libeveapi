@@ -47,6 +47,17 @@ namespace libeveapi
         /// <returns>ApiResponse if cached ApiResponse is valid, null if it is expired</returns>
         internal static ApiResponse Get(string url)
         {
+            return Get(url, false);
+        }
+
+        /// <summary>
+        /// Get an ApiResponse from the cache
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns>ApiResponse if cached ApiResponse is valid, null if it is expired</returns>
+        internal static ApiResponse Get(string url, bool ignoreCacheUntil)
+        {
             url = SHA1HashString(url);
 
             if (hashTable.Contains(url))
