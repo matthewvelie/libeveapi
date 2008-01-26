@@ -21,7 +21,7 @@ namespace libeveapi
         /// Returns the characterId and character name that are associated with eachother
         /// </summary>
         /// <param name="xmlDoc">An XML Document containing characterId and character name information</param>
-        /// <returns><see cref="CharacterId"/></returns>
+        /// <returns><see cref="CharacterIdName"/></returns>
         public static CharacterIdName FromXmlDocument(XmlDocument xmlDoc)
         {
             //FIX the row:name problem here (HACK!)

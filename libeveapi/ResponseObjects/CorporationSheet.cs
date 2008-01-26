@@ -152,26 +152,68 @@ namespace libeveapi
             return corporationSheet;
         }
 
+        /// <summary>
+        /// Information about a corporate division
+        /// </summary>
         public class Division
         {
+            /// <summary>
+            /// The account key used to access the corporate division
+            /// </summary>
             public int AccountKey;
+            /// <summary>
+            /// The name of hte division
+            /// </summary>
             public string Description;
         }
 
+        /// <summary>
+        /// The different corporation wallet divisions
+        /// </summary>
         public class WalletDivision
         {
+            /// <summary>
+            /// The account key used to access this division
+            /// </summary>
             public int AccountKey;
+            /// <summary>
+            /// The name given to the wallet
+            /// </summary>
             public string Description;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public class CorpLogo
         {
+            /// <summary>
+            /// 
+            /// </summary>
             public int GraphicId;
+            /// <summary>
+            /// 
+            /// </summary>
             public int Shape1;
+            /// <summary>
+            /// 
+            /// </summary>
             public int Shape2;
+            /// <summary>
+            /// 
+            /// </summary>
             public int Shape3;
+            /// <summary>
+            /// 
+            /// </summary>
             public int Color1;
+            /// <summary>
+            /// 
+            /// </summary>
             public int Color2;
+            /// <summary>
+            /// 
+            /// </summary>
             public int Color3;
         }
     }
