@@ -12,13 +12,12 @@ namespace ConsoleTests
         public static void Main(String[] args)
         {
             UseLocalUrls();
-            IndustryJobList jobList = EveApi.GetIndustryJobList(IndustryJobListType.Character, 432435, 234523, "fullApiKey");
-
-            //Assert.AreEqual(22, jobList.IndustryJobListItems.Length);
-
-            //Assert.AreEqual(444, jobList.IndustryJobListItems[0].JobId);
-            //Assert.AreEqual(60010783, jobList.IndustryJobListItems[0].ContainerId);
-            //Assert.AreEqual(60010783, jobList.IndustryJobListItems[0].InstalledItemLocationId);
+            ResponseCache.Clear();
+            AllianceList al = EveApi.GetAllianceList();
+            ResponseCache.Save("ResponseCache.xml");
+            ResponseCache.Clear();
+            ResponseCache.Load("ResponseCache.xml");
+            AllianceList cal = EveApi.GetAllianceList();
         }
 
         public static void UseLocalUrls()
