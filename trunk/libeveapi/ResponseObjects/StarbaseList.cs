@@ -10,10 +10,16 @@ namespace libeveapi
     /// </summary>
     public class StarbaseList : ApiResponse
     {
+        private StarbaseListItem[] starbaseListItems = new StarbaseListItem[0];
+
         /// <summary>
         /// List of all the starbases owned by this corporation
         /// </summary>
-        public StarbaseListItem[] StarbaseListItems = new StarbaseListItem[0];
+        public StarbaseListItem[] StarbaseListItems
+        {
+            get { return starbaseListItems; }
+            set { starbaseListItems = value; }
+        }
 
         /// <summary>
         /// Create a StarbaseList by parsing an XmlDocument response from the eveapi
@@ -69,50 +75,96 @@ namespace libeveapi
         /// </summary>
         public class StarbaseListItem
         {
+            private int itemId;
+            private int typeId;
+            private int locationId;
+            private int moonId;
+            private StarbaseState state;
+            private DateTime stateTimestamp;
+            private DateTime onlineTimestamp;
+            private DateTime stateTimestampLocal;
+            private DateTime onlineTimestampLocal;
+
             /// <summary>
             /// Unique identifier for this starbase
             /// </summary>
-            public int ItemId;
+            public int ItemId
+            {
+                get { return itemId; }
+                set { itemId = value; }
+            }
 
             /// <summary>
             /// Control tower type id
             /// </summary>
-            public int TypeId;
+            public int TypeId
+            {
+                get { return typeId; }
+                set { typeId = value; }
+            }
 
             /// <summary>
             /// The id of the system where the starbase is located
             /// </summary>
-            public int LocationId;
+            public int LocationId
+            {
+                get { return locationId; }
+                set { locationId = value; }
+            }
 
             /// <summary>
             /// The id of the moon where the starbase is located
             /// </summary>
-            public int MoonId;
+            public int MoonId
+            {
+                get { return moonId; }
+                set { moonId = value; }
+            }
 
             /// <summary>
             /// See <see cref="StarbaseState"/> for full descriptions of each starbase state
             /// </summary>
-            public StarbaseState State;
+            public StarbaseState State
+            {
+                get { return state; }
+                set { state = value; }
+            }
 
             /// <summary>
             /// See <see cref="StarbaseState"/> for the potential meanings of StateTimestamp
             /// </summary>
-            public DateTime StateTimestamp;
+            public DateTime StateTimestamp
+            {
+                get { return stateTimestamp; }
+                set { stateTimestamp = value; }
+            }
 
             /// <summary>
             /// See <see cref="StarbaseState"/> for the potential meanings of OnlineTimestamp
             /// </summary>
-            public DateTime OnlineTimestamp;
+            public DateTime OnlineTimestamp
+            {
+                get { return onlineTimestamp; }
+                set { onlineTimestamp = value; }
+            }
 
             /// <summary>
             /// StateTimestamp in local time
             /// </summary>
-            public DateTime StateTimestampLocal;
+            public DateTime StateTimestampLocal
+            {
+                get { return stateTimestampLocal; }
+                set { stateTimestampLocal = value; }
+            }
 
             /// <summary>
             /// OnlineTimestamp in local time
             /// </summary>
-            public DateTime OnlineTimestampLocal;
+            public DateTime OnlineTimestampLocal
+            {
+                get { return onlineTimestampLocal; }
+                set { onlineTimestampLocal = value; }
+            }
         }
 
         /// <summary>
