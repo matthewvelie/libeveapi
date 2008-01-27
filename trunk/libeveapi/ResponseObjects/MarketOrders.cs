@@ -11,10 +11,16 @@ namespace libeveapi
     /// </summary>
     public class MarketOrders : ApiResponse
     {
+        private MarketOrderItem[] marketOrderItems = new MarketOrderItem[0];
+
         /// <summary>
         /// 
         /// </summary>
-        public MarketOrderItem[] MarketOrderItems = new MarketOrderItem[0];
+        public MarketOrderItem[] MarketOrderItems
+        {
+            get { return marketOrderItems; }
+            set { marketOrderItems = value; }
+        }
 
         /// <summary>
         /// Create an MarketOrderList by parsing an XmlDocument response from the eveapi
@@ -102,51 +108,105 @@ namespace libeveapi
         /// </summary>
         public class MarketOrderItem
         {
+            public MarketOrderType orderType;
+            public int orderId;
+            public long charId;
+            public long stationId;
+            public long volEntered;
+            public long volRemaining;
+            public long minVolume;
+            public MarketOrderState orderState;
+            public long typeId;
+            public int range;
+            public int accountKey;
+            public int duration;
+            public double escrow;
+            public double price;
+            public bool bid;
+            public DateTime issued;
+            public DateTime issuedLocal;
+
             /// <summary>
             /// Order type (Buy or Sell)
             /// </summary>
-            public MarketOrderType OrderType;
+            public MarketOrderType OrderType
+            {
+                get { return orderType; }
+                set { orderType = value; }
+            }
 
             /// <summary>
             /// Order id, not forever unique but for this pull they will be unique
             /// </summary>
-            public int OrderId;
+            public int OrderId
+            {
+                get { return orderId; }
+                set { orderId = value; }
+            }
 
             /// <summary>
             /// Character Id of the character who placed the market order
             /// </summary>
-            public long CharId;
+            public long CharId
+            {
+                get { return charId; }
+                set { charId = value; }
+            }
 
             /// <summary>
             /// The Id of the station that the order was placed in
             /// </summary>
-            public long StationId;
+            public long StationId
+            {
+                get { return stationId; }
+                set { stationId = value; }
+            }
 
             /// <summary>
             /// The quantity of the items required/offered when the order was placed
             /// </summary>
-            public long VolEntered;
+            public long VolEntered
+            {
+                get { return volEntered; }
+                set { volEntered = value; }
+            }
 
             /// <summary>
             /// The quantitiy of items that are still for sale/ still required
             /// </summary>
-            public long VolRemaining;
+            public long VolRemaining
+            {
+                get { return volRemaining; }
+                set { volRemaining = value; }
+            }
 
             /// <summary>
             /// For bids (buy orders) the minimum quantity that must be sold in one
             /// sale so that the order is accepted.
             /// </summary>
-            public long MinVolume;
+            public long MinVolume
+            {
+                get { return minVolume; }
+                set { minVolume = value; }
+            }
 
             /// <summary>
             /// See <see cref="MarketOrderState"/> for full descriptions of each order state
             /// </summary>
-            public MarketOrderState OrderState;
+            public MarketOrderState OrderState
+            {
+                get { return orderState; }
+                set { orderState = value; }
+            }
 
             /// <summary>
             /// This is the typeId of the item that is being bought/sold
             /// </summary>
-            public long TypeId;
+            public long TypeId
+            {
+                get { return typeId; }
+                set { typeId = value; }
+            }
 
             /// <summary>
             /// This is the range of the order
@@ -155,44 +215,76 @@ namespace libeveapi
             /// Any number above 1 is number of jumps in region
             /// And 32767 means region
             /// </summary>
-            public int Range;
+            public int Range
+            {
+                get { return range; }
+                set { range = value; }
+            }
 
             /// <summary>
             /// This is which wallet the order is using, for a personal order
             /// this will always be 1000, for corporation orders it can be 1000-1006
             /// depending on which wallet is being used
             /// </summary>
-            public int AccountKey;
+            public int AccountKey
+            {
+                get { return accountKey; }
+                set { accountKey = value; }
+            }
 
             /// <summary>
             /// How many days this order is good for. Expiration is issued + duration in days
             /// </summary>
-            public int Duration;
+            public int Duration
+            {
+                get { return duration; }
+                set { duration = value; }
+            }
 
             /// <summary>
             /// How much ISK is in escrow. Valid for buy orders only (I believe).
             /// </summary>
-            public double Escrow;
+            public double Escrow
+            {
+                get { return escrow; }
+                set { escrow = value; }
+            }
 
             /// <summary>
             /// The cost per unit for this order
             /// </summary>
-            public double Price;
+            public double Price
+            {
+                get { return price; }
+                set { price = value; }
+            }
 
             /// <summary>
             /// If true this is a bid or buy order, else it is a sell order
             /// </summary>
-            public bool Bid;
+            public bool Bid
+            {
+                get { return bid; }
+                set { bid = value; }
+            }
 
             /// <summary>
             /// This is when the order was issued
             /// </summary>
-            public DateTime Issued;
+            public DateTime Issued
+            {
+                get { return issued; }
+                set { issued = value; }
+            }
 
             /// <summary>
             /// This is when the order was issued in local time
             /// </summary>
-            public DateTime IssuedLocal;
+            public DateTime IssuedLocal
+            {
+                get { return issuedLocal; }
+                set { issuedLocal = value; }
+            }
         }
 
         /// <summary>
