@@ -11,10 +11,16 @@ namespace libeveapi
     /// </summary>
     public class IndustryJobList : ApiResponse
     {
+        private IndustryJobListItem[] industryJobListItems = new IndustryJobListItem[0];
+
         /// <summary>
         /// 
         /// </summary>
-        public IndustryJobListItem[] IndustryJobListItems = new IndustryJobListItem[0];
+        public IndustryJobListItem[] IndustryJobListItems
+        {
+            get { return industryJobListItems; }
+            set { industryJobListItems = value; }
+        }
 
         /// <summary>
         /// Create an IndustryJobList by parsing an XmlDocument response from the eveapi
@@ -148,21 +154,72 @@ namespace libeveapi
         /// </summary>
         public class IndustryJobListItem
         {
+            private int jobId;
+            private int assemblyLineId;
+            private int containerId;
+            private int installedItemId;
+            private int installedItemLocationId;
+            private int installedItemQuantity;
+            private int installedItemProductivityLevel;
+            private int installedItemMaterialLevel;
+            private int installedItemLicensedProductionRunsRemaining;
+            private int outputLocationId;
+            private int installerId;
+            private int runs;
+            private int licensedProductionRuns;
+            private int installedInSolarSystemId;
+            private int containerLocationId;
+            private double materialMultiplier;
+            private double charMaterialMultiplier;
+            private double timeMultiplier;
+            private double charTimeMultiplier;
+            private int installedItemTypeId;
+            private int outputTypeId;
+            private int containerTypeId;
+            private bool installedItemCopy;
+            private bool completed;
+            private bool completedSuccessfully;
+            private int installedItemFlag;
+            private int outputFlag;
+            private int activityId;
+            private Activities activity;
+            private IndustryJobCompletedStatuses completedStatus;
+            private DateTime installTime;
+            private DateTime beginProductionTime;
+            private DateTime endProductionTime;
+            private DateTime pauseProductionTime;
+            private DateTime installTimeLocal;
+            private DateTime beginProductionTimeLocal;
+            private DateTime endProductionTimeLocal;
+            private DateTime pauseProductionTimeLocal;
+
             /// <summary>
             /// This is the unique job id that is assigned 
             /// to the job by the eve system
             /// </summary>
-            public int JobId;
+            public int JobId
+            {
+                get { return jobId; }
+                set { jobId = value; }
+            }
 
             /// <summary>
             /// This is the assembly line that it is installed into if in a station
             /// </summary>
-            public int AssemblyLineId;
+            public int AssemblyLineId
+            {
+                get { return assemblyLineId; }
+                set { assemblyLineId = value; }
+            }
 
             /// <summary>
             /// 
             /// </summary>
-            public int ContainerId;
+            public int ContainerId
+            {
+                get { return containerId; }
+                set { containerId = value; }
+            }
 
             /// <summary>
             /// This is the itemId of the item that was
@@ -170,98 +227,166 @@ namespace libeveapi
             /// isnt really useful as it can change, but it will link back
             /// to something in your asset list (hopefully)
             /// </summary>
-            public int InstalledItemId;
+            public int InstalledItemId
+            {
+                get { return installedItemId; }
+                set { installedItemId = value; }
+            }
 
             /// <summary>
             /// This is the locationId of where the item was installed
             /// </summary>
-            public int InstalledItemLocationId;
+            public int InstalledItemLocationId
+            {
+                get { return installedItemLocationId; }
+                set { installedItemLocationId = value; }
+            }
 
             /// <summary>
             /// This is how many of the item were installed, (usually 1)
             /// </summary>
-            public int InstalledItemQuantity;
+            public int InstalledItemQuantity
+            {
+                get { return installedItemQuantity; }
+                set { installedItemQuantity = value; }
+            }
 
             /// <summary>
             /// This is the blueprints Productivity Level (TE)
             /// </summary>
-            public int InstalledItemProductivityLevel;
+            public int InstalledItemProductivityLevel
+            {
+                get { return installedItemProductivityLevel; }
+                set { installedItemProductivityLevel = value; }
+            }
 
             /// <summary>
             /// This is the blueprints Material Level (ME)
             /// </summary>
-            public int InstalledItemMaterialLevel;
+            public int InstalledItemMaterialLevel
+            {
+                get { return installedItemMaterialLevel; }
+                set { installedItemMaterialLevel = value; }
+            }
 
             /// <summary>
             /// This is how many production runs are left on the
             /// blueprint that was installed.  A -1 represents a BPO
             /// with unlimited copies left.
             /// </summary>
-            public int InstalledItemLicensedProductionRunsRemaining;
+            public int InstalledItemLicensedProductionRunsRemaining
+            {
+                get { return installedItemLicensedProductionRunsRemaining; }
+                set { installedItemLicensedProductionRunsRemaining = value; }
+            }
 
             /// <summary>
             /// This is where the output of the job will be placed
             /// </summary>
-            public int OutputLocationId;
+            public int OutputLocationId
+            {
+                get { return outputLocationId; }
+                set { outputLocationId = value; }
+            }
 
             /// <summary>
             /// The characterId of the person who installed the job
             /// </summary>
-            public int InstallerId;
+            public int InstallerId
+            {
+                get { return installerId; }
+                set { installerId = value; }
+            }
 
 
             /// <summary>
             /// This is how many runs of the object are being made.
             /// </summary>
-            public int Runs;
+            public int Runs
+            {
+                get { return runs; }
+                set { runs = value; }
+            }
 
 
             /// <summary>
             /// 
             /// </summary>
-            public int LicensedProductionRuns;
+            public int LicensedProductionRuns
+            {
+                get { return licensedProductionRuns; }
+                set { licensedProductionRuns = value; }
+            }
 
 
             /// <summary>
             /// This is the solarsystemId of where the job was installed
             /// </summary>
-            public int InstalledInSolarSystemId;
+            public int InstalledInSolarSystemId
+            {
+                get { return installedInSolarSystemId; }
+                set { installedInSolarSystemId = value; }
+            }
 
 
             /// <summary>
             /// Where the container is located at, usually a moon or station.
             /// </summary>
-            public int ContainerLocationId;
+            public int ContainerLocationId
+            {
+                get { return containerLocationId; }
+                set { containerLocationId = value; }
+            }
 
 
             /// <summary>
             /// This is the ME multiplier from the installation place.
             /// </summary>
-            public double MaterialMultiplier;
+            public double MaterialMultiplier
+            {
+                get { return materialMultiplier; }
+                set { materialMultiplier = value; }
+            }
 
 
             /// <summary>
             /// This is the ME multiplier that id done by the character's skills
             /// </summary>
-            public double CharMaterialMultiplier;
+            public double CharMaterialMultiplier
+            {
+                get { return charMaterialMultiplier; }
+                set { charMaterialMultiplier = value; }
+            }
 
 
             /// <summary>
             /// This is the TE multiplier of the station
             /// </summary>
-            public double TimeMultiplier;
+            public double TimeMultiplier
+            {
+                get { return timeMultiplier; }
+                set { timeMultiplier = value; }
+            }
 
 
             /// <summary>
             /// The TE multiplier that id done by the character's skills
             /// </summary>
-            public double CharTimeMultiplier;
+            public double CharTimeMultiplier
+            {
+                get { return charTimeMultiplier; }
+                set { charTimeMultiplier = value; }
+            }
 
 
             /// <summary>
             /// This is the typeId of the item that was installed (a blueprint)
             /// </summary>
-            public int InstalledItemTypeId;
+            public int InstalledItemTypeId
+            {
+                get { return installedItemTypeId; }
+                set { installedItemTypeId = value; }
+            }
 
 
             /// <summary>
@@ -269,7 +394,11 @@ namespace libeveapi
             /// is finished doing whatever it is doing.  For research this will
             /// be the blueprint itself, for manufacturing this will be the item
             /// </summary>
-            public int OutputTypeId;
+            public int OutputTypeId
+            {
+                get { return outputTypeId; }
+                set { outputTypeId = value; }
+            }
 
 
             /// <summary>
@@ -277,87 +406,156 @@ namespace libeveapi
             /// Can be looked up like any typeId, usually a mobile lab 
             /// or something similar
             /// </summary>
-            public int ContainerTypeId;
+            public int ContainerTypeId
+            {
+                get { return containerTypeId; }
+                set { containerTypeId = value; }
+            }
 
             /// <summary>
             /// This is a bool value if the blueprint installed is a copy or not
             /// </summary>
-            public bool InstalledItemCopy;
+            public bool InstalledItemCopy
+            {
+                get { return installedItemCopy; }
+                set { installedItemCopy = value; }
+            }
 
             /// <summary>
             /// This is a boolean value if the item has completed or not
             /// </summary>
-            public bool Completed;
+            public bool Completed
+            {
+                get { return completed; }
+                set { completed = value; }
+            }
 
             /// <summary>
             /// Boolean value if the job completed successfully or not
             /// </summary>
-            public bool CompletedSuccessfully;
+            public bool CompletedSuccessfully
+            {
+                get { return completedSuccessfully; }
+                set { completedSuccessfully = value; }
+            }
 
             /// <summary>
             /// Flags, same as used in the assets
             /// </summary>
-            public int InstalledItemFlag;
+            public int InstalledItemFlag
+            {
+                get { return installedItemFlag; }
+                set { installedItemFlag = value; }
+            }
 
             /// <summary>
             /// Flags, same as used in the assets
             /// </summary>
-            public int OutputFlag;
+            public int OutputFlag
+            {
+                get { return outputFlag; }
+                set { outputFlag = value; }
+            }
 
             /// <summary>
             /// This is what kind of activity was going on with the item
             /// (use enum Activities)
             /// </summary>
-            public int ActivityId;
+            public int ActivityId
+            {
+                get { return activityId; }
+                set { activityId = value; }
+            }
+
             /// <summary>
             /// ENUM of what activity is currently being done
             /// </summary>
-            public Activities Activity;
+            public Activities Activity
+            {
+                get { return activity; }
+                set { activity = value; }
+            }
 
             /// <summary>
             /// Status of the item when it was completed
             /// </summary>
-            public IndustryJobCompletedStatuses CompletedStatus;
+            public IndustryJobCompletedStatuses CompletedStatus
+            {
+                get { return completedStatus; }
+                set { completedStatus = value; }
+            }
 
             /// <summary>
             /// When this item was installed in ccp time
             /// </summary>
-            public DateTime InstallTime;
+            public DateTime InstallTime
+            {
+                get { return installTime; }
+                set { installTime = value; }
+            }
 
             /// <summary>
             /// When production time started in ccp time (different than install time if a queue)
             /// </summary>
-            public DateTime BeginProductionTime;
+            public DateTime BeginProductionTime
+            {
+                get { return beginProductionTime; }
+                set { beginProductionTime = value; }
+            }
 
             /// <summary>
             /// When the job will be finished in ccp time.
             /// </summary>
-            public DateTime EndProductionTime;
+            public DateTime EndProductionTime
+            {
+                get { return endProductionTime; }
+                set { endProductionTime = value; }
+            }
 
             /// <summary>
             /// 
             /// </summary>
-            public DateTime PauseProductionTime;
+            public DateTime PauseProductionTime
+            {
+                get { return pauseProductionTime; }
+                set { pauseProductionTime = value; }
+            }
 
             /// <summary>
             /// When this item was installed in local time.
             /// </summary>
-            public DateTime InstallTimeLocal;
+            public DateTime InstallTimeLocal
+            {
+                get { return installTimeLocal; }
+                set { installTimeLocal = value; }
+            }
 
             /// <summary>
             /// When production time started in local time (different than install time if a queue)
             /// </summary>
-            public DateTime BeginProductionTimeLocal;
+            public DateTime BeginProductionTimeLocal
+            {
+                get { return beginProductionTimeLocal; }
+                set { beginProductionTimeLocal = value; }
+            }
 
             /// <summary>
             /// When the job will be finished in local time.
             /// </summary>
-            public DateTime EndProductionTimeLocal;
+            public DateTime EndProductionTimeLocal
+            {
+                get { return endProductionTimeLocal; }
+                set { endProductionTimeLocal = value; }
+            }
 
             /// <summary>
             /// 
             /// </summary>
-            public DateTime PauseProductionTimeLocal;
+            public DateTime PauseProductionTimeLocal
+            {
+                get { return pauseProductionTimeLocal; }
+                set { pauseProductionTimeLocal = value; }
+            }
         }
     }
 
