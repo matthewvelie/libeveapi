@@ -12,10 +12,16 @@ namespace libeveapi
     /// </summary>
     public class CharacterIdName : ApiResponse
     {
+        private CharacterIdNameItem[] characterIdItems = new CharacterIdNameItem[0];
+
         /// <summary>
         /// The character name and character id that are associated with eachother
         /// </summary>
-        public CharacterIdNameItem[] CharacterIdItems = new CharacterIdNameItem[0];
+        public CharacterIdNameItem[] CharacterIdItems
+        {
+            get { return characterIdItems; }
+            set { characterIdItems = value; }
+        }
 
         /// <summary>
         /// Returns the characterId and character name that are associated with eachother
@@ -58,15 +64,26 @@ namespace libeveapi
         /// </summary>
         public class CharacterIdNameItem
         {
+            private string name;
+            private int characterId;
+
             /// <summary>
             /// The character's name
             /// </summary>
-            public string Name;
+            public string Name
+            {
+                get { return name; }
+                set { name = value; }
+            }
 
             /// <summary>
             /// The characterId for the character name
             /// </summary>
-            public int CharacterId;
+            public int CharacterId
+            {
+                get { return characterId; }
+                set { characterId = value; }
+            }
 
         }
     }
