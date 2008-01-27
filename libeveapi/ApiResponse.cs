@@ -31,17 +31,33 @@ namespace libeveapi
     [XmlInclude(typeof(KillLog))]
     public class ApiResponse
     {
+        private string hashedUrl;
+        private DateTime currentTime;
+        private DateTime cachedUntil;
+        private DateTime currentTimeLocal;
+        private DateTime cachedUntilLocal;
+        private XmlDocument responseXml;
+        private bool fromCache = false;
+
         /// <summary>
         /// This is a hashed version of the url that is sent to CCP to request the file
         /// </summary>
         [XmlElement]
-        public string HashedUrl;
+        public string HashedUrl
+        {
+            get { return hashedUrl; }
+            set { hashedUrl = value; }
+        }
 
         /// <summary>
         /// This is the current time that CCP sends to us on the file.
         /// </summary>
         [XmlElement]
-        public DateTime CurrentTime;
+        public DateTime CurrentTime
+        {
+            get { return currentTime; }
+            set { currentTime = value; }
+        }
 
         /// <summary>
         /// This is the time that the file says it is cacheable till in CCP time.  We use
@@ -49,33 +65,53 @@ namespace libeveapi
         /// is till.
         /// </summary>
         [XmlElement]
-        public DateTime CachedUntil;
+        public DateTime CachedUntil
+        {
+            get { return cachedUntil; }
+            set { cachedUntil = value; }
+        }
 
         /// <summary>
         /// This is the current time on the local machine.
         /// </summary>
         [XmlElement]
-        public DateTime CurrentTimeLocal;
+        public DateTime CurrentTimeLocal
+        {
+            get { return currentTimeLocal; }
+            set { currentTimeLocal = value; }
+        }
 
         /// <summary>
         /// This is what time the file should be cached to according to the local
         /// clock.  A timespan is created from the eve time, and added to CurrentTimeLocal
         /// </summary>
         [XmlElement]
-        public DateTime CachedUntilLocal;
+        public DateTime CachedUntilLocal
+        {
+            get { return cachedUntilLocal; }
+            set { cachedUntilLocal = value; }
+        }
 
         /// <summary>
         /// The raw xml response from the api
         /// </summary>
         [XmlElement]
-        public XmlDocument ResponseXml;
+        public XmlDocument ResponseXml
+        {
+            get { return responseXml; }
+            set { responseXml = value; }
+        }
 
         /// <summary>
         /// True if this data came from the cache
         /// False if this data came directly from the eve api
         /// </summary>
         [XmlElement]
-        public bool FromCache = false;
+        public bool FromCache
+        {
+            get { return fromCache; }
+            set { fromCache = value; }
+        }
 
         /// <summary>
         /// This parses out all of the elements that are common to each one of the xml files,
