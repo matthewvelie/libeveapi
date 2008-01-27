@@ -12,14 +12,13 @@ namespace ConsoleTests
         public static void Main(String[] args)
         {
             UseLocalUrls();
-            ErrorList errorList = EveApi.GetErrorList();
-            ResponseCache.Clear();
-            string errorListLocation = Constants.ErrorList;
-            Constants.ErrorList = "/ErrorListNotExpired.xml.aspx";
-            errorList = EveApi.GetErrorList();
-            ErrorList errorList2 = EveApi.GetErrorList();
+            IndustryJobList jobList = EveApi.GetIndustryJobList(IndustryJobListType.Character, 432435, 234523, "fullApiKey");
 
-            Constants.ErrorList = errorListLocation;
+            //Assert.AreEqual(22, jobList.IndustryJobListItems.Length);
+
+            //Assert.AreEqual(444, jobList.IndustryJobListItems[0].JobId);
+            //Assert.AreEqual(60010783, jobList.IndustryJobListItems[0].ContainerId);
+            //Assert.AreEqual(60010783, jobList.IndustryJobListItems[0].InstalledItemLocationId);
         }
 
         public static void UseLocalUrls()

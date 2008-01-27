@@ -468,7 +468,7 @@ namespace libeveapi
         /// <returns></returns>
         public static IndustryJobList GetIndustryJobList(IndustryJobListType industryJobListType, int userId, int characterId, string fullApiKey)
         {
-            return GetIndustryJobList(industryJobListType, userId, characterId, fullApiKey);
+            return GetIndustryJobList(industryJobListType, userId, characterId, fullApiKey, false);
         }
         
         /// <summary>
