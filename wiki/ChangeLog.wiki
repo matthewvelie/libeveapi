@@ -5,6 +5,9 @@
 
 A list of all of the changes to the API is found here since version 1.0.0.
 
+== 1.1 - 1/27/2008 ==
+ * All public member variables have been replaced with properties.
+
 == 1.0.2 - 1/25/2008 ==
  * With this version it is now possible to override the API and request old cached data.  Normally the API would only serve the cache data if it was before the cacheUntil value, at this point you could request a new version.  You can send along a bool value with any API function called ignoreCacheUntil, and the api will return the latest cached data that is has.  This should normally be called if the first call is made and a network exception is thrown so the newest api data can not be accessed.
  * Updated characterList to use properties instead of public data.
