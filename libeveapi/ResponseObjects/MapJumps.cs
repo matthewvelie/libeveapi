@@ -11,10 +11,16 @@ namespace libeveapi
     /// </summary>
     public class MapJumps : ApiResponse
     {
+        private MapSystemItem[] mapSystemJumps = new MapSystemItem[0];
+
         /// <summary>
         /// 
         /// </summary>
-        public MapSystemItem[] MapSystemJumps = new MapSystemItem[0];
+        public MapSystemItem[] MapSystemJumps
+        {
+            get { return mapSystemJumps; }
+            set { mapSystemJumps = value; }
+        }
 
         /// <summary>
         /// Create an MapJumps object by parsing an XmlDocument response from the eve api
@@ -44,15 +50,26 @@ namespace libeveapi
         /// </summary>
         public class MapSystemItem
         {
+            private int solarSystemId;
+            private int shipJumps;
+
             /// <summary>
             /// The Id of the solarsystem
             /// </summary>
-            public int SolarSystemId;
+            public int SolarSystemId
+            {
+                get { return solarSystemId; }
+                set { solarSystemId = value; }
+            }
 
             /// <summary>
             /// The number of jumps
             /// </summary>
-            public int ShipJumps;
+            public int ShipJumps
+            {
+                get { return shipJumps; }
+                set { shipJumps = value; }
+            }
         }
     }
 }
