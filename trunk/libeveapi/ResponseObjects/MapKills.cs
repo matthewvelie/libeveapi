@@ -11,10 +11,16 @@ namespace libeveapi
     /// </summary>
     public class MapKills : ApiResponse
     {
+        private MapKillsItem[] mapSystemKills = new MapKillsItem[0];
+
         /// <summary>
         /// 
         /// </summary>
-        public MapKillsItem[] MapSystemKills = new MapKillsItem[0];
+        public MapKillsItem[] MapSystemKills
+        {
+            get { return mapSystemKills; }
+            set { mapSystemKills = value; }
+        }
 
         /// <summary>
         /// Create an Mapkills object by parsing an XmlDocument response from the eve api
@@ -46,25 +52,46 @@ namespace libeveapi
         /// </summary>
         public class MapKillsItem
         {
+            private int solarSystemId;
+            private int shipKills;
+            private int factionKills;
+            private int podKills;
+
             /// <summary>
             /// The Id of the solarsystem
             /// </summary>
-            public int SolarSystemId;
+            public int SolarSystemId
+            {
+                get { return solarSystemId; }
+                set { solarSystemId = value; }
+            }
 
             /// <summary>
             /// The number of kills
             /// </summary>
-            public int ShipKills;
+            public int ShipKills
+            {
+                get { return shipKills; }
+                set { shipKills = value; }
+            }
 
             /// <summary>
             /// The number of kills
             /// </summary>
-            public int FactionKills;
+            public int FactionKills
+            {
+                get { return factionKills; }
+                set { factionKills = value; }
+            }
 
             /// <summary>
             /// The number of kills
             /// </summary>
-            public int PodKills;
+            public int PodKills
+            {
+                get { return podKills; }
+                set { podKills = value; }
+            }
         }
     }
 
