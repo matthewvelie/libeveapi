@@ -12,10 +12,16 @@ namespace libeveapi
     /// </summary>
     public class AccountBalance : ApiResponse
     {
+        private AccountBalanceItem[] accountBalanceItems = new AccountBalanceItem[0];
+
         /// <summary>
         /// The accounts associated with this character or corporation
         /// </summary>
-        public AccountBalanceItem[] AccountBalanceItems = new AccountBalanceItem[0];
+        public AccountBalanceItem[] AccountBalanceItems
+        {
+            get { return accountBalanceItems; }
+            set { accountBalanceItems = value; }
+        }
 
         /// <summary>
         /// Create an AccountBalance object by parsing an XmlDocument response from the eve api
@@ -46,22 +52,39 @@ namespace libeveapi
         /// </summary>
         public class AccountBalanceItem
         {
+            private int accountId;
+            private int accountKey;
+            private double balance;
+
             /// <summary>
             /// ID number of the account
             /// </summary>
-            public int AccountId;
-
+            public int AccountId
+            {
+                get { return accountId; }
+                set { accountId = value; }
+            }
+            
             /// <summary>
             /// Account Identifier
             /// For character: always 1000
             /// For corporation: the corp wallet division
             /// </summary>
-            public int AccountKey;
+            public int AccountKey
+            {
+                get { return accountKey; }
+                set { accountKey = value; }
+            }
+            
 
             /// <summary>
             /// Amount of isk in the account
             /// </summary>
-            public double Balance;
+            public double Balance
+            {
+                get { return balance; }
+                set { balance = value; }
+            }
         }
     }
 
