@@ -10,10 +10,16 @@ namespace libeveapi
     /// </summary>
     public class AssetList : ApiResponse
     {
+        private AssetListItem[] assetListItems = new AssetListItem[0];
+
         /// <summary>
         /// 
         /// </summary>
-        public AssetListItem[] AssetListItems = new AssetListItem[0];
+        public AssetListItem[] AssetListItems
+        {
+            get { return assetListItems; }
+            set { assetListItems = value; }
+        }
 
         /// <summary>
         /// Create an AssetList by parsing an XmlDocument response from the eveapi
@@ -82,6 +88,14 @@ namespace libeveapi
         /// </summary>
         public class AssetListItem
         {
+            private int itemId;
+            private int locationId;
+            private int typeId;
+            private long quantity;
+            private InventoryFlagType flag;
+            private bool singleton;
+            private AssetListItem[] contents = new AssetListItem[0];
+
             /// <summary>
             /// Unique Id for this item. This is only guaranteed to be unique within 
             /// this page load. Ids are recycled over time and it is possible for this 
@@ -89,41 +103,69 @@ namespace libeveapi
             /// over time. When they are repackaged, stacks are split or merged, when 
             /// they're assembled, and other actions can cause itemIds to change.
             /// </summary>
-            public int ItemId;
+            public int ItemId
+            {
+                get { return itemId; }
+                set { itemId = value; }
+            }
 
             /// <summary>
             /// References a solar system or station. Note that this column is not present in 
             /// the sub-asset lists, i.e. for things inside of other things.
             /// </summary>
-            public int LocationId;
+            public int LocationId
+            {
+                get { return locationId; }
+                set { locationId = value; }
+            }
 
             /// <summary>
             /// The type of this item. References the invTypes table.
             /// </summary>
-            public int TypeId;
+            public int TypeId
+            {
+                get { return typeId; }
+                set { typeId = value; }
+            }
 
             /// <summary>
             /// How many items are in this stack.
             /// </summary>
-            public long Quantity;
+            public long Quantity
+            {
+                get { return quantity; }
+                set { quantity = value; }
+            }
 
             /// <summary>
             /// Indicates something about this item's storage location. The flag 
             /// is used to differentiate between hangar divisions, drone bay, 
             /// fitting location, and similar. Please see the <see cref="InventoryFlagType" />.
             /// </summary>
-            public InventoryFlagType Flag;
+            public InventoryFlagType Flag
+            {
+                get { return flag; }
+                set { flag = value; }
+            }
 
             /// <summary>
             /// If true, indicates that this item is a singleton. This means that 
             /// the item is not packaged.
             /// </summary>
-            public bool Singleton;
+            public bool Singleton
+            {
+                get { return singleton; }
+                set { singleton = value; }
+            }
 
             /// <summary>
             /// The items contained in this item if any
             /// </summary>
-            public AssetListItem[] Contents = new AssetListItem[0];
+            public AssetListItem[] Contents
+            {
+                get { return contents; }
+                set { contents = value; }
+            }
         }
     }
 
