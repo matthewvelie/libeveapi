@@ -19,10 +19,9 @@ Implementing the IXmlSerializable interface would allow us to set private fields
 
 *Pros*
  * Would discourage improper usage of the response objects and cache. An example would be using the library as a mutable data store.
- * A little easier to reason about the data on the client application side
 
 *Cons*
- * Not enough immutability to be inherently thread safe.
+ * Not enough immutability to be inherently thread safe. On a fundamental level -- a response object is an abstraction of an eve-api response. Whenever a new response is retrieved from the api the abstraction will mutate, no matter how immutable to resulting object is. 
  * IReadOnlyCollection enforces immutability at runtime not compile time.
  * Quite a bit of work implementing the !ReadXml and !WriteXml methods for every class (including nested classes)
  * There is the possibility of performance issues 
