@@ -108,7 +108,6 @@ namespace libeveapi
             get { return trainingToLevel; }
             set { trainingToLevel = value; }
         }
-        /// 
 
         /// <summary>
         /// Create a SkillIntTraining Object by parsing an XmlDocument

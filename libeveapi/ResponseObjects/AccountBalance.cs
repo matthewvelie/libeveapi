@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using System.Xml;
 
@@ -37,9 +38,9 @@ namespace libeveapi
             foreach (XmlNode accountRow in xmlDoc.SelectNodes("//rowset[@name='accounts']/row"))
             {
                 AccountBalanceItem account = new AccountBalanceItem();
-                account.AccountId = Convert.ToInt32(accountRow.Attributes["accountID"].InnerText);
-                account.AccountKey = Convert.ToInt32(accountRow.Attributes["accountKey"].InnerText);
-                account.Balance = Convert.ToDouble(accountRow.Attributes["balance"].InnerText);
+                account.AccountId = Convert.ToInt32(accountRow.Attributes["accountID"].InnerText, CultureInfo.InvariantCulture);
+                account.AccountKey = Convert.ToInt32(accountRow.Attributes["accountKey"].InnerText, CultureInfo.InvariantCulture);
+                account.Balance = Convert.ToDouble(accountRow.Attributes["balance"].InnerText, CultureInfo.InvariantCulture);
                 accountList.Add(account);
             }
             accountBalance.AccountBalanceItems = accountList.ToArray();
