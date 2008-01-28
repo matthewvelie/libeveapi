@@ -38,3 +38,4 @@
   * ResponseCache
  # === Library Development ===
   * [DevelopmentEnvironment Setting up the development environment]
+  * [FuturePlans Future Plans] - Ideas for future development
