@@ -65,7 +65,7 @@ namespace UnitTests
             Assert.AreEqual(24698, secondKill.Attackers[1].ShipTypeId);
             Assert.AreEqual(25715, secondKill.Attackers[1].WeaponTypeId);
             Assert.AreEqual(false, secondKill.Attackers[1].FinalBlow);
-            Assert.AreEqual((float)0.3, secondKill.Attackers[1].SecurityStatus);
+            Assert.AreEqual((double)0.3, secondKill.Attackers[1].SecurityStatus);
             Assert.AreEqual("Margaritaville", secondKill.Attackers[1].AllianceName);
 
             //Items
