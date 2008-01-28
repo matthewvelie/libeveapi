@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
 using System.Xml;
 
 namespace libeveapi
@@ -124,10 +125,10 @@ namespace libeveapi
             {
                 skilltraining.TrainingEndTime = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(xmlDoc.SelectSingleNode("/eveapi/result/trainingEndTime").InnerText);
                 skilltraining.TrainingStartTime = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(xmlDoc.SelectSingleNode("/eveapi/result/trainingStartTime").InnerText);
-                skilltraining.TrainingTypeId = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/trainingTypeID").InnerText);
-                skilltraining.TrainingStartSP = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/trainingStartSP").InnerText);
-                skilltraining.TrainingDestinationSP = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/trainingDestinationSP").InnerText);
-                skilltraining.TrainingToLevel = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/trainingToLevel").InnerText);
+                skilltraining.TrainingTypeId = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/trainingTypeID").InnerText, CultureInfo.InvariantCulture);
+                skilltraining.TrainingStartSP = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/trainingStartSP").InnerText, CultureInfo.InvariantCulture);
+                skilltraining.TrainingDestinationSP = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/trainingDestinationSP").InnerText, CultureInfo.InvariantCulture);
+                skilltraining.TrainingToLevel = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/trainingToLevel").InnerText, CultureInfo.InvariantCulture);
 
                 skilltraining.TrainingEndTimeLocal = TimeUtilities.ConvertCCPToLocalTime(skilltraining.TrainingEndTime);
                 skilltraining.TrainingStartTimeLocal = TimeUtilities.ConvertCCPToLocalTime(skilltraining.TrainingStartTimeLocal);

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
 using System.Xml;
 
 namespace libeveapi
@@ -30,7 +31,7 @@ namespace libeveapi
 
             foreach (XmlNode refTypeNode in xmlDoc.SelectNodes("//rowset[@name='refTypes']/row"))
             {
-                refTypes.ReferenceTypes.Add(Convert.ToInt32(refTypeNode.Attributes["refTypeID"].InnerText), refTypeNode.Attributes["refTypeName"].InnerText);
+                refTypes.ReferenceTypes.Add(Convert.ToInt32(refTypeNode.Attributes["refTypeID"].InnerText, CultureInfo.InvariantCulture), refTypeNode.Attributes["refTypeName"].InnerText);
             }
 
             return refTypes;

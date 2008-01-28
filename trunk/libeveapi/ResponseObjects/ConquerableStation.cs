@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
 using System.Xml;
 
 namespace libeveapi
@@ -49,11 +50,11 @@ namespace libeveapi
         protected static ConquerableStation ParseStationRow(XmlNode stationRow)
         {
             ConquerableStation conquerableStationItem = new ConquerableStation();
-            conquerableStationItem.StationId = Convert.ToInt32(stationRow.Attributes["stationID"].InnerText);
+            conquerableStationItem.StationId = Convert.ToInt32(stationRow.Attributes["stationID"].InnerText, CultureInfo.InvariantCulture);
             conquerableStationItem.StationName = stationRow.Attributes["stationName"].InnerText;
-            conquerableStationItem.StationTypeId = Convert.ToInt32(stationRow.Attributes["stationTypeID"].InnerText);
-            conquerableStationItem.SolarSystemId = Convert.ToInt32(stationRow.Attributes["solarSystemID"].InnerText);
-            conquerableStationItem.CorporationId = Convert.ToInt32(stationRow.Attributes["corporationID"].InnerText);
+            conquerableStationItem.StationTypeId = Convert.ToInt32(stationRow.Attributes["stationTypeID"].InnerText, CultureInfo.InvariantCulture);
+            conquerableStationItem.SolarSystemId = Convert.ToInt32(stationRow.Attributes["solarSystemID"].InnerText, CultureInfo.InvariantCulture);
+            conquerableStationItem.CorporationId = Convert.ToInt32(stationRow.Attributes["corporationID"].InnerText, CultureInfo.InvariantCulture);
             conquerableStationItem.CorporationName = stationRow.Attributes["corporationName"].InnerText;
 
             return conquerableStationItem;

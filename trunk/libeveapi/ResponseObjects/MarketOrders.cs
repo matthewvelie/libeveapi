@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
 using System.Xml;
 
 namespace libeveapi
@@ -51,14 +52,14 @@ namespace libeveapi
         {
             MarketOrderItem marketItem = new MarketOrderItem();
 
-            marketItem.OrderId = Convert.ToInt32(marketOrderRow.Attributes["orderID"].InnerText);
-            marketItem.CharId = Convert.ToInt64(marketOrderRow.Attributes["charID"].InnerText);
-            marketItem.StationId = Convert.ToInt64(marketOrderRow.Attributes["stationID"].InnerText);
-            marketItem.VolEntered = Convert.ToInt64(marketOrderRow.Attributes["volEntered"].InnerText);
-            marketItem.VolRemaining = Convert.ToInt64(marketOrderRow.Attributes["volRemaining"].InnerText);
-            marketItem.MinVolume = Convert.ToInt64(marketOrderRow.Attributes["minVolume"].InnerText);
+            marketItem.OrderId = Convert.ToInt32(marketOrderRow.Attributes["orderID"].InnerText, CultureInfo.InvariantCulture);
+            marketItem.CharId = Convert.ToInt64(marketOrderRow.Attributes["charID"].InnerText, CultureInfo.InvariantCulture);
+            marketItem.StationId = Convert.ToInt64(marketOrderRow.Attributes["stationID"].InnerText, CultureInfo.InvariantCulture);
+            marketItem.VolEntered = Convert.ToInt64(marketOrderRow.Attributes["volEntered"].InnerText, CultureInfo.InvariantCulture);
+            marketItem.VolRemaining = Convert.ToInt64(marketOrderRow.Attributes["volRemaining"].InnerText, CultureInfo.InvariantCulture);
+            marketItem.MinVolume = Convert.ToInt64(marketOrderRow.Attributes["minVolume"].InnerText, CultureInfo.InvariantCulture);
 
-            switch (Convert.ToInt32(marketOrderRow.Attributes["orderState"].InnerText))
+            switch (Convert.ToInt32(marketOrderRow.Attributes["orderState"].InnerText, CultureInfo.InvariantCulture))
             {
                 case 0:
                     marketItem.OrderState = MarketOrderState.OpenActive;
@@ -82,13 +83,13 @@ namespace libeveapi
                     break;
             }
 
-            marketItem.TypeId = Convert.ToInt64(marketOrderRow.Attributes["typeID"].InnerText);
-            marketItem.Range = Convert.ToInt32(marketOrderRow.Attributes["range"].InnerText);
-            marketItem.AccountKey = Convert.ToInt32(marketOrderRow.Attributes["accountKey"].InnerText);
-            marketItem.Duration = Convert.ToInt32(marketOrderRow.Attributes["duration"].InnerText);
-            marketItem.Escrow = Convert.ToDouble(marketOrderRow.Attributes["escrow"].InnerText);
-            marketItem.Price = Convert.ToDouble(marketOrderRow.Attributes["price"].InnerText);
-            marketItem.Bid = Convert.ToBoolean(Convert.ToInt32(marketOrderRow.Attributes["bid"].InnerText));
+            marketItem.TypeId = Convert.ToInt64(marketOrderRow.Attributes["typeID"].InnerText, CultureInfo.InvariantCulture);
+            marketItem.Range = Convert.ToInt32(marketOrderRow.Attributes["range"].InnerText, CultureInfo.InvariantCulture);
+            marketItem.AccountKey = Convert.ToInt32(marketOrderRow.Attributes["accountKey"].InnerText, CultureInfo.InvariantCulture);
+            marketItem.Duration = Convert.ToInt32(marketOrderRow.Attributes["duration"].InnerText, CultureInfo.InvariantCulture);
+            marketItem.Escrow = Convert.ToDouble(marketOrderRow.Attributes["escrow"].InnerText, CultureInfo.InvariantCulture);
+            marketItem.Price = Convert.ToDouble(marketOrderRow.Attributes["price"].InnerText, CultureInfo.InvariantCulture);
+            marketItem.Bid = Convert.ToBoolean(Convert.ToInt32(marketOrderRow.Attributes["bid"].InnerText, CultureInfo.InvariantCulture), CultureInfo.InvariantCulture);
             marketItem.Issued = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(marketOrderRow.Attributes["issued"].InnerText);
             marketItem.IssuedLocal = TimeUtilities.ConvertCCPToLocalTime(marketItem.Issued);
             if (marketItem.Bid)

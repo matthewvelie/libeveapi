@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
 using System.Xml;
 
 namespace libeveapi
@@ -48,10 +49,10 @@ namespace libeveapi
             {
                 Skill skill = new Skill();
                 skill.TypeName = row.Attributes["typeName"].InnerText;
-                skill.GroupId = Convert.ToInt32(row.Attributes["groupID"].InnerText);
-                skill.TypeId = Convert.ToInt32(row.Attributes["typeID"].InnerText);
+                skill.GroupId = Convert.ToInt32(row.Attributes["groupID"].InnerText, CultureInfo.InvariantCulture);
+                skill.TypeId = Convert.ToInt32(row.Attributes["typeID"].InnerText, CultureInfo.InvariantCulture);
                 skill.Description = row.SelectSingleNode("description").InnerText;
-                skill.Rank = Convert.ToInt32(row.SelectSingleNode("rank").InnerText);
+                skill.Rank = Convert.ToInt32(row.SelectSingleNode("rank").InnerText, CultureInfo.InvariantCulture);
 
                 skill.PrimaryAttribute = mapStringToAttributeType(row.SelectSingleNode("requiredAttributes/primaryAttribute").InnerText);
                 skill.SecondaryAttribute = mapStringToAttributeType(row.SelectSingleNode("requiredAttributes/secondaryAttribute").InnerText);
@@ -61,8 +62,8 @@ namespace libeveapi
                 foreach (XmlNode requiredNode in row.SelectNodes("rowset[@name='requiredSkills']/row"))
                 {
                     RequiredSkill requiredSkill = new RequiredSkill();
-                    requiredSkill.TypeId = Convert.ToInt32(requiredNode.Attributes["typeID"].InnerText);
-                    requiredSkill.SkillLevel = Convert.ToInt32(requiredNode.Attributes["skillLevel"].InnerText);
+                    requiredSkill.TypeId = Convert.ToInt32(requiredNode.Attributes["typeID"].InnerText, CultureInfo.InvariantCulture);
+                    requiredSkill.SkillLevel = Convert.ToInt32(requiredNode.Attributes["skillLevel"].InnerText, CultureInfo.InvariantCulture);
                     parsedRequiredSkills.Add(requiredSkill);
                 }
                 skill.RequiredSkills = parsedRequiredSkills.ToArray();
@@ -73,7 +74,7 @@ namespace libeveapi
                 {
                     SkillBonus skillBonus = new SkillBonus();
                     skillBonus.BonusType = bonusNode.Attributes["bonusType"].InnerText;
-                    skillBonus.BonusValue = Convert.ToDouble(bonusNode.Attributes["bonusValue"].InnerText);
+                    skillBonus.BonusValue = Convert.ToDouble(bonusNode.Attributes["bonusValue"].InnerText, CultureInfo.InvariantCulture);
                     parsedSkillBonuses.Add(skillBonus);
                 }
                 skill.SkillBonuses = parsedSkillBonuses.ToArray();

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
 using System.Xml;
 
 namespace libeveapi
@@ -197,14 +198,14 @@ namespace libeveapi
             characterSheet.ParseCommonElements(xmlDoc);
 
             // general info
-            characterSheet.CharacterId = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/characterID").InnerText);
+            characterSheet.CharacterId = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/characterID").InnerText, CultureInfo.InvariantCulture);
             characterSheet.Name = xmlDoc.SelectSingleNode("/eveapi/result/name").InnerText;
             characterSheet.Race = xmlDoc.SelectSingleNode("/eveapi/result/race").InnerText;
             characterSheet.BloodLine = xmlDoc.SelectSingleNode("/eveapi/result/bloodLine").InnerText;
             characterSheet.Gender = xmlDoc.SelectSingleNode("/eveapi/result/gender").InnerText;
             characterSheet.CorporationName = xmlDoc.SelectSingleNode("/eveapi/result/corporationName").InnerText;
-            characterSheet.CorporationId = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/corporationID").InnerText);
-            characterSheet.Balance = Convert.ToDouble(xmlDoc.SelectSingleNode("/eveapi/result/balance").InnerText);
+            characterSheet.CorporationId = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/corporationID").InnerText, CultureInfo.InvariantCulture);
+            characterSheet.Balance = Convert.ToDouble(xmlDoc.SelectSingleNode("/eveapi/result/balance").InnerText, CultureInfo.InvariantCulture);
 
             // attribute enhancers
             parseAugmentator("/eveapi/result/attributeEnhancers/memoryBonus", xmlDoc, characterSheet.MemoryBonus);
@@ -214,20 +215,20 @@ namespace libeveapi
             parseAugmentator("/eveapi/result/attributeEnhancers/charismaBonus", xmlDoc, characterSheet.CharismaBonus);
 
             // attributes
-            characterSheet.Intelligence = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/attributes/intelligence").InnerText);
-            characterSheet.Memory = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/attributes/memory").InnerText);
-            characterSheet.Charisma = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/attributes/charisma").InnerText);
-            characterSheet.Perception = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/attributes/perception").InnerText);
-            characterSheet.Willpower = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/attributes/willpower").InnerText);
+            characterSheet.Intelligence = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/attributes/intelligence").InnerText, CultureInfo.InvariantCulture);
+            characterSheet.Memory = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/attributes/memory").InnerText, CultureInfo.InvariantCulture);
+            characterSheet.Charisma = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/attributes/charisma").InnerText, CultureInfo.InvariantCulture);
+            characterSheet.Perception = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/attributes/perception").InnerText, CultureInfo.InvariantCulture);
+            characterSheet.Willpower = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/attributes/willpower").InnerText, CultureInfo.InvariantCulture);
 
             // skills
             List<SkillItem> parsedSkillItems = new List<SkillItem>();
             foreach (XmlNode row in xmlDoc.SelectNodes("//rowset[@name='skills']/row"))
             {
                 SkillItem si = new SkillItem();
-                si.TypeId = Convert.ToInt32(row.Attributes["typeID"].InnerText);
-                si.Skillpoints = Convert.ToInt64(row.Attributes["skillpoints"].InnerText);
-                si.Level = Convert.ToInt32(row.Attributes["level"].InnerText);
+                si.TypeId = Convert.ToInt32(row.Attributes["typeID"].InnerText, CultureInfo.InvariantCulture);
+                si.Skillpoints = Convert.ToInt64(row.Attributes["skillpoints"].InnerText, CultureInfo.InvariantCulture);
+                si.Level = Convert.ToInt32(row.Attributes["level"].InnerText, CultureInfo.InvariantCulture);
 
                 if (row.Attributes.GetNamedItem("unpublished") != null)
                 {

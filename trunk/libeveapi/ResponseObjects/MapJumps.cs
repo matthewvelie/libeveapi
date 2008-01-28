@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
 using System.Xml;
 
 namespace libeveapi
@@ -36,8 +37,8 @@ namespace libeveapi
             foreach (XmlNode systemRow in xmlDoc.SelectNodes("//rowset[@name='solarSystems']/row"))
             {
                 MapSystemItem systemData = new MapSystemItem();
-                systemData.SolarSystemId = Convert.ToInt32(systemRow.Attributes["solarSystemID"].InnerText);
-                systemData.ShipJumps = Convert.ToInt32(systemRow.Attributes["shipJumps"].InnerText);
+                systemData.SolarSystemId = Convert.ToInt32(systemRow.Attributes["solarSystemID"].InnerText, CultureInfo.InvariantCulture);
+                systemData.ShipJumps = Convert.ToInt32(systemRow.Attributes["shipJumps"].InnerText, CultureInfo.InvariantCulture);
                 systemList.Add(systemData);
             }
             mapJumps.MapSystemJumps = systemList.ToArray();

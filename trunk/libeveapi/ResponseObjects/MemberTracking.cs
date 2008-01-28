@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -37,14 +38,14 @@ namespace libeveapi
             foreach (XmlNode row in xmlDoc.SelectNodes("//rowset[@name='members']/row"))
             {
                 Member mti = new Member();
-                mti.CharacterId = Convert.ToInt32(row.Attributes["characterID"].InnerText);
+                mti.CharacterId = Convert.ToInt32(row.Attributes["characterID"].InnerText, CultureInfo.InvariantCulture);
                 mti.Name = row.Attributes["name"].InnerText;
-                mti.BaseId = Convert.ToInt32(row.Attributes["baseID"].InnerText);
+                mti.BaseId = Convert.ToInt32(row.Attributes["baseID"].InnerText, CultureInfo.InvariantCulture);
                 mti.Base = row.Attributes["base"].InnerText;
                 mti.Title = row.Attributes["title"].InnerText;
-                mti.LocationId = Convert.ToInt32(row.Attributes["locationID"].InnerText);
+                mti.LocationId = Convert.ToInt32(row.Attributes["locationID"].InnerText, CultureInfo.InvariantCulture);
                 mti.Location = row.Attributes["location"].InnerText;
-                mti.ShipTypeId = Convert.ToInt32(row.Attributes["shipTypeID"].InnerText);
+                mti.ShipTypeId = Convert.ToInt32(row.Attributes["shipTypeID"].InnerText, CultureInfo.InvariantCulture);
                 mti.ShipType = row.Attributes["shipType"].InnerText;
                 mti.RolesMask = row.Attributes["roles"].InnerText;
                 mti.GrantableRoles = row.Attributes["grantableRoles"].InnerText;
