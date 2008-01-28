@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
 using System.Xml;
 
 namespace libeveapi
@@ -35,10 +36,10 @@ namespace libeveapi
             foreach (XmlNode starbaseNode in xmlDoc.SelectNodes("//rowset[@name='starbases']/row"))
             {
                 StarbaseListItem starbase = new StarbaseListItem();
-                starbase.ItemId = Convert.ToInt32(starbaseNode.Attributes["itemID"].InnerText);
-                starbase.TypeId = Convert.ToInt32(starbaseNode.Attributes["typeID"].InnerText);
-                starbase.LocationId = Convert.ToInt32(starbaseNode.Attributes["locationID"].InnerText);
-                starbase.MoonId = Convert.ToInt32(starbaseNode.Attributes["moonID"].InnerText);
+                starbase.ItemId = Convert.ToInt32(starbaseNode.Attributes["itemID"].InnerText, CultureInfo.InvariantCulture);
+                starbase.TypeId = Convert.ToInt32(starbaseNode.Attributes["typeID"].InnerText, CultureInfo.InvariantCulture);
+                starbase.LocationId = Convert.ToInt32(starbaseNode.Attributes["locationID"].InnerText, CultureInfo.InvariantCulture);
+                starbase.MoonId = Convert.ToInt32(starbaseNode.Attributes["moonID"].InnerText, CultureInfo.InvariantCulture);
                 starbase.StateTimestamp = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(starbaseNode.Attributes["stateTimestamp"].InnerText);
                 starbase.OnlineTimestamp = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(starbaseNode.Attributes["onlineTimestamp"].InnerText);
 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
 using System.Xml;
 
 namespace libeveapi
@@ -38,39 +39,39 @@ namespace libeveapi
                 Kill tmpKill = new Kill();
                 
                 //Kill Info
-                tmpKill.KillId = Convert.ToInt32(Kill.Attributes["killID"].InnerText);
-                tmpKill.SolarSystemId = Convert.ToInt32(Kill.Attributes["solarSystemID"].InnerText);
+                tmpKill.KillId = Convert.ToInt32(Kill.Attributes["killID"].InnerText, CultureInfo.InvariantCulture);
+                tmpKill.SolarSystemId = Convert.ToInt32(Kill.Attributes["solarSystemID"].InnerText, CultureInfo.InvariantCulture);
                 tmpKill.KillTime = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(Kill.Attributes["killTime"].InnerText);
                 tmpKill.KillTimeLocal = TimeUtilities.ConvertCCPToLocalTime(tmpKill.KillTime);
-                tmpKill.MoonId = Convert.ToInt32(Kill.Attributes["moonID"].InnerText);
+                tmpKill.MoonId = Convert.ToInt32(Kill.Attributes["moonID"].InnerText, CultureInfo.InvariantCulture);
                 
                 //Victim
                 XmlNode victimNode = Kill.SelectSingleNode("./victim");
-                tmpKill.Victim.CharacterId = Convert.ToInt32(victimNode.Attributes["characterID"].InnerText);
+                tmpKill.Victim.CharacterId = Convert.ToInt32(victimNode.Attributes["characterID"].InnerText, CultureInfo.InvariantCulture);
                 tmpKill.Victim.CharacterName = victimNode.Attributes["characterName"].InnerText;
-                tmpKill.Victim.CorporationId = Convert.ToInt32(victimNode.Attributes["corporationID"].InnerText);
+                tmpKill.Victim.CorporationId = Convert.ToInt32(victimNode.Attributes["corporationID"].InnerText, CultureInfo.InvariantCulture);
                 tmpKill.Victim.CorporationName = victimNode.Attributes["corporationName"].InnerText;
-                tmpKill.Victim.AllianceId = Convert.ToInt32(victimNode.Attributes["allianceID"].InnerText);
+                tmpKill.Victim.AllianceId = Convert.ToInt32(victimNode.Attributes["allianceID"].InnerText, CultureInfo.InvariantCulture);
                 tmpKill.Victim.AllianceName = (victimNode.Attributes.GetNamedItem("allianceName") != null) ? victimNode.Attributes["allianceName"].InnerText : "";
-                tmpKill.Victim.DamageTaken = Convert.ToInt32(victimNode.Attributes["damageTaken"].InnerText);
-                tmpKill.Victim.ShipTypeId = Convert.ToInt32(victimNode.Attributes["shipTypeID"].InnerText);
+                tmpKill.Victim.DamageTaken = Convert.ToInt32(victimNode.Attributes["damageTaken"].InnerText, CultureInfo.InvariantCulture);
+                tmpKill.Victim.ShipTypeId = Convert.ToInt32(victimNode.Attributes["shipTypeID"].InnerText, CultureInfo.InvariantCulture);
 
                 //Atackers
                 List<Attacker> attackerList = new List<Attacker>();
                 foreach (XmlNode attacker in Kill.SelectNodes("./rowset[@name='attackers']/row"))
                 {
                     Attacker tmpAttacker = new Attacker();
-                    tmpAttacker.CharacterId = Convert.ToInt32(attacker.Attributes["characterID"].InnerText);
+                    tmpAttacker.CharacterId = Convert.ToInt32(attacker.Attributes["characterID"].InnerText, CultureInfo.InvariantCulture);
                     tmpAttacker.CharacterName = attacker.Attributes["characterName"].InnerText;
-                    tmpAttacker.CorporationId = Convert.ToInt32(attacker.Attributes["corporationID"].InnerText);
+                    tmpAttacker.CorporationId = Convert.ToInt32(attacker.Attributes["corporationID"].InnerText, CultureInfo.InvariantCulture);
                     tmpAttacker.CorporationName = attacker.Attributes["corporationName"].InnerText;
-                    tmpAttacker.AllianceId = Convert.ToInt32(attacker.Attributes["allianceID"].InnerText);
+                    tmpAttacker.AllianceId = Convert.ToInt32(attacker.Attributes["allianceID"].InnerText, CultureInfo.InvariantCulture);
                     tmpAttacker.AllianceName = attacker.Attributes["allianceName"].InnerText;
-                    tmpAttacker.SecurityStatus = (float)Convert.ToDouble(attacker.Attributes["securityStatus"].InnerText);
-                    tmpAttacker.DamageDone = Convert.ToInt32(attacker.Attributes["damageDone"].InnerText);
-                    tmpAttacker.FinalBlow = Convert.ToBoolean(Convert.ToInt32(attacker.Attributes["finalBlow"].InnerText));
-                    tmpAttacker.WeaponTypeId = Convert.ToInt32(attacker.Attributes["weaponTypeID"].InnerText);
-                    tmpAttacker.ShipTypeId = Convert.ToInt32(attacker.Attributes["shipTypeID"].InnerText);
+                    tmpAttacker.SecurityStatus = Convert.ToDouble(attacker.Attributes["securityStatus"].InnerText, CultureInfo.InvariantCulture);
+                    tmpAttacker.DamageDone = Convert.ToInt32(attacker.Attributes["damageDone"].InnerText, CultureInfo.InvariantCulture);
+                    tmpAttacker.FinalBlow = Convert.ToBoolean(Convert.ToInt32(attacker.Attributes["finalBlow"].InnerText, CultureInfo.InvariantCulture), CultureInfo.InvariantCulture);
+                    tmpAttacker.WeaponTypeId = Convert.ToInt32(attacker.Attributes["weaponTypeID"].InnerText, CultureInfo.InvariantCulture);
+                    tmpAttacker.ShipTypeId = Convert.ToInt32(attacker.Attributes["shipTypeID"].InnerText, CultureInfo.InvariantCulture);
                     attackerList.Add(tmpAttacker);
                 }
                 tmpKill.Attackers = attackerList.ToArray();

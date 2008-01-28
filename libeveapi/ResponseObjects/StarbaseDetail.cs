@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
 using System.Xml;
 
 namespace libeveapi
@@ -134,23 +135,23 @@ namespace libeveapi
 
             starbaseDetail.UsageFlags = xmlDoc.SelectSingleNode("//generalSettings/usageFlags").InnerText;
             starbaseDetail.DeployFlags = xmlDoc.SelectSingleNode("//generalSettings/deployFlags").InnerText;
-            starbaseDetail.AllowCorporationMembers = Convert.ToBoolean(Convert.ToInt32(xmlDoc.SelectSingleNode("//generalSettings/allowCorporationMembers").InnerText));
-            starbaseDetail.AllowAllianceMembers = Convert.ToBoolean(Convert.ToInt32(xmlDoc.SelectSingleNode("//generalSettings/allowAllianceMembers").InnerText));
-            starbaseDetail.ClaimSovereignty = Convert.ToBoolean(Convert.ToInt32(xmlDoc.SelectSingleNode("//generalSettings/claimSovereignty").InnerText));
+            starbaseDetail.AllowCorporationMembers = Convert.ToBoolean(Convert.ToInt32(xmlDoc.SelectSingleNode("//generalSettings/allowCorporationMembers").InnerText, CultureInfo.InvariantCulture), CultureInfo.InvariantCulture);
+            starbaseDetail.AllowAllianceMembers = Convert.ToBoolean(Convert.ToInt32(xmlDoc.SelectSingleNode("//generalSettings/allowAllianceMembers").InnerText, CultureInfo.InvariantCulture), CultureInfo.InvariantCulture);
+            starbaseDetail.ClaimSovereignty = Convert.ToBoolean(Convert.ToInt32(xmlDoc.SelectSingleNode("//generalSettings/claimSovereignty").InnerText, CultureInfo.InvariantCulture), CultureInfo.InvariantCulture);
 
-            starbaseDetail.OnStandingDropEnabled = Convert.ToBoolean(Convert.ToInt32(xmlDoc.SelectSingleNode("//combatSettings/onStandingDrop").Attributes["enabled"].InnerText));
+            starbaseDetail.OnStandingDropEnabled = Convert.ToBoolean(Convert.ToInt32(xmlDoc.SelectSingleNode("//combatSettings/onStandingDrop").Attributes["enabled"].InnerText, CultureInfo.InvariantCulture), CultureInfo.InvariantCulture);
             starbaseDetail.OnStandingDropStanding = xmlDoc.SelectSingleNode("//combatSettings/onStandingDrop").Attributes["standing"].InnerText;
-            starbaseDetail.OnStatusDropEnabled = Convert.ToBoolean(Convert.ToInt32(xmlDoc.SelectSingleNode("//combatSettings/onStatusDrop").Attributes["enabled"].InnerText));
+            starbaseDetail.OnStatusDropEnabled = Convert.ToBoolean(Convert.ToInt32(xmlDoc.SelectSingleNode("//combatSettings/onStatusDrop").Attributes["enabled"].InnerText, CultureInfo.InvariantCulture), CultureInfo.InvariantCulture);
             starbaseDetail.OnStatusDropStanding = xmlDoc.SelectSingleNode("//combatSettings/onStatusDrop").Attributes["standing"].InnerText;
-            starbaseDetail.OnAgressionEnabled = Convert.ToBoolean(Convert.ToInt32(xmlDoc.SelectSingleNode("//combatSettings/onAggression").Attributes["enabled"].InnerText));
-            starbaseDetail.OnCorporationWarEnabled = Convert.ToBoolean(Convert.ToInt32(xmlDoc.SelectSingleNode("//combatSettings/onCorporationWar").Attributes["enabled"].InnerText));
+            starbaseDetail.OnAgressionEnabled = Convert.ToBoolean(Convert.ToInt32(xmlDoc.SelectSingleNode("//combatSettings/onAggression").Attributes["enabled"].InnerText, CultureInfo.InvariantCulture), CultureInfo.InvariantCulture);
+            starbaseDetail.OnCorporationWarEnabled = Convert.ToBoolean(Convert.ToInt32(xmlDoc.SelectSingleNode("//combatSettings/onCorporationWar").Attributes["enabled"].InnerText, CultureInfo.InvariantCulture), CultureInfo.InvariantCulture);
             
             List<FuelListItem> fuelList = new List<FuelListItem>();
             foreach (XmlNode fuelNode in xmlDoc.SelectNodes("//rowset[@name='fuel']/row"))
             {
                 FuelListItem fli = new FuelListItem();
                 fli.TypeId = fuelNode.Attributes["typeID"].InnerText;
-                fli.Quantity = Convert.ToInt64(fuelNode.Attributes["quantity"].InnerText);
+                fli.Quantity = Convert.ToInt64(fuelNode.Attributes["quantity"].InnerText, CultureInfo.InvariantCulture);
                 fuelList.Add(fli);
             }
             starbaseDetail.FuelList = fuelList.ToArray();

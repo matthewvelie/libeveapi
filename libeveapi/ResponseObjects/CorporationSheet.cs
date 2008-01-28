@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
 using System.Xml;
 
 namespace libeveapi
@@ -196,27 +197,27 @@ namespace libeveapi
             CorporationSheet corporationSheet = new CorporationSheet();
             corporationSheet.ParseCommonElements(xmlDoc);
 
-            corporationSheet.CorporationId = Convert.ToInt32(xmlDoc.SelectSingleNode("//result/corporationID").InnerText);
+            corporationSheet.CorporationId = Convert.ToInt32(xmlDoc.SelectSingleNode("//result/corporationID").InnerText, CultureInfo.InvariantCulture);
             corporationSheet.CorporationName = xmlDoc.SelectSingleNode("//result/corporationName").InnerText;
             corporationSheet.Ticker = xmlDoc.SelectSingleNode("//result/ticker").InnerText;
-            corporationSheet.CeoId = Convert.ToInt32(xmlDoc.SelectSingleNode("//result/ceoID").InnerText);
+            corporationSheet.CeoId = Convert.ToInt32(xmlDoc.SelectSingleNode("//result/ceoID").InnerText, CultureInfo.InvariantCulture);
             corporationSheet.CeoName = xmlDoc.SelectSingleNode("//result/ceoName").InnerText;
-            corporationSheet.StationId = Convert.ToInt32(xmlDoc.SelectSingleNode("//result/stationID").InnerText);
+            corporationSheet.StationId = Convert.ToInt32(xmlDoc.SelectSingleNode("//result/stationID").InnerText, CultureInfo.InvariantCulture);
             corporationSheet.StationName = xmlDoc.SelectSingleNode("//result/stationName").InnerText;
             corporationSheet.Description = xmlDoc.SelectSingleNode("//result/description").InnerText;
             corporationSheet.Url = xmlDoc.SelectSingleNode("//result/url").InnerText;
-            corporationSheet.AllianceId = Convert.ToInt32(xmlDoc.SelectSingleNode("//result/allianceID").InnerText);
+            corporationSheet.AllianceId = Convert.ToInt32(xmlDoc.SelectSingleNode("//result/allianceID").InnerText, CultureInfo.InvariantCulture);
             corporationSheet.AllianceName = xmlDoc.SelectSingleNode("//result/allianceName").InnerText;
-            corporationSheet.TaxRate = Convert.ToDouble(xmlDoc.SelectSingleNode("//result/taxRate").InnerText);
-            corporationSheet.MemberCount = Convert.ToInt32(xmlDoc.SelectSingleNode("//result/memberCount").InnerText);
-            corporationSheet.MemberLimit = Convert.ToInt32(xmlDoc.SelectSingleNode("//result/memberLimit").InnerText);
-            corporationSheet.Shares = Convert.ToInt64(xmlDoc.SelectSingleNode("//result/shares").InnerText);
+            corporationSheet.TaxRate = Convert.ToDouble(xmlDoc.SelectSingleNode("//result/taxRate").InnerText, CultureInfo.InvariantCulture);
+            corporationSheet.MemberCount = Convert.ToInt32(xmlDoc.SelectSingleNode("//result/memberCount").InnerText, CultureInfo.InvariantCulture);
+            corporationSheet.MemberLimit = Convert.ToInt32(xmlDoc.SelectSingleNode("//result/memberLimit").InnerText, CultureInfo.InvariantCulture);
+            corporationSheet.Shares = Convert.ToInt64(xmlDoc.SelectSingleNode("//result/shares").InnerText, CultureInfo.InvariantCulture);
 
             List<Division> parsedDivisions = new List<Division>();
             foreach (XmlNode row in xmlDoc.SelectNodes("//rowset[@name='divisions']/row"))
             {
                 Division division = new Division();
-                division.AccountKey = Convert.ToInt32(row.Attributes["accountKey"].InnerText);
+                division.AccountKey = Convert.ToInt32(row.Attributes["accountKey"].InnerText, CultureInfo.InvariantCulture);
                 division.Description = row.Attributes["description"].InnerText;
                 parsedDivisions.Add(division);
             }
@@ -226,19 +227,19 @@ namespace libeveapi
             foreach (XmlNode row in xmlDoc.SelectNodes("//rowset[@name='walletDivisions']/row"))
             {
                 WalletDivision walletDivision = new WalletDivision();
-                walletDivision.AccountKey = Convert.ToInt32(row.Attributes["accountKey"].InnerText);
+                walletDivision.AccountKey = Convert.ToInt32(row.Attributes["accountKey"].InnerText, CultureInfo.InvariantCulture);
                 walletDivision.Description = row.Attributes["description"].InnerText;
                 parsedWalletDivisions.Add(walletDivision);
             }
             corporationSheet.WalletDivisions = parsedWalletDivisions.ToArray();
 
-            corporationSheet.Logo.GraphicId = Convert.ToInt32(xmlDoc.SelectSingleNode("//result/logo/graphicID").InnerText);
-            corporationSheet.Logo.Shape1 = Convert.ToInt32(xmlDoc.SelectSingleNode("//result/logo/shape1").InnerText);
-            corporationSheet.Logo.Shape2 = Convert.ToInt32(xmlDoc.SelectSingleNode("//result/logo/shape2").InnerText);
-            corporationSheet.Logo.Shape3 = Convert.ToInt32(xmlDoc.SelectSingleNode("//result/logo/shape3").InnerText);
-            corporationSheet.Logo.Color1 = Convert.ToInt32(xmlDoc.SelectSingleNode("//result/logo/color1").InnerText);
-            corporationSheet.Logo.Color2 = Convert.ToInt32(xmlDoc.SelectSingleNode("//result/logo/color2").InnerText);
-            corporationSheet.Logo.Color3 = Convert.ToInt32(xmlDoc.SelectSingleNode("//result/logo/color3").InnerText);
+            corporationSheet.Logo.GraphicId = Convert.ToInt32(xmlDoc.SelectSingleNode("//result/logo/graphicID").InnerText, CultureInfo.InvariantCulture);
+            corporationSheet.Logo.Shape1 = Convert.ToInt32(xmlDoc.SelectSingleNode("//result/logo/shape1").InnerText, CultureInfo.InvariantCulture);
+            corporationSheet.Logo.Shape2 = Convert.ToInt32(xmlDoc.SelectSingleNode("//result/logo/shape2").InnerText, CultureInfo.InvariantCulture);
+            corporationSheet.Logo.Shape3 = Convert.ToInt32(xmlDoc.SelectSingleNode("//result/logo/shape3").InnerText, CultureInfo.InvariantCulture);
+            corporationSheet.Logo.Color1 = Convert.ToInt32(xmlDoc.SelectSingleNode("//result/logo/color1").InnerText, CultureInfo.InvariantCulture);
+            corporationSheet.Logo.Color2 = Convert.ToInt32(xmlDoc.SelectSingleNode("//result/logo/color2").InnerText, CultureInfo.InvariantCulture);
+            corporationSheet.Logo.Color3 = Convert.ToInt32(xmlDoc.SelectSingleNode("//result/logo/color3").InnerText, CultureInfo.InvariantCulture);
 
             return corporationSheet;
         }

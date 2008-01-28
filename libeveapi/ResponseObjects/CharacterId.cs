@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml;
+using System.Globalization;
 using System.Text.RegularExpressions;
 
 namespace libeveapi
@@ -51,7 +52,7 @@ namespace libeveapi
             {
                 CharacterIdNameItem charIdItem = new CharacterIdNameItem();
                 charIdItem.Name = charIdRow.Attributes["name"].InnerText;
-                charIdItem.CharacterId = Convert.ToInt32(charIdRow.Attributes["characterID"].InnerText);
+                charIdItem.CharacterId = Convert.ToInt32(charIdRow.Attributes["characterID"].InnerText, CultureInfo.InvariantCulture);
                 characterList.Add(charIdItem);
             }
             charId.CharacterIdItems = characterList.ToArray();

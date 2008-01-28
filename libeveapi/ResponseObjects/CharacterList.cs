@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
 using System.Xml;
 
 namespace libeveapi
@@ -30,9 +31,9 @@ namespace libeveapi
             {
                 CharacterListItem character = new CharacterListItem();
                 character.Name = row.Attributes["name"].InnerText;
-                character.CharacterId = Convert.ToInt32(row.Attributes["characterID"].InnerText);
+                character.CharacterId = Convert.ToInt32(row.Attributes["characterID"].InnerText, CultureInfo.InvariantCulture);
                 character.CorporationName = row.Attributes["corporationName"].InnerText;
-                character.CorporationId = Convert.ToInt32(row.Attributes["corporationID"].InnerText);
+                character.CorporationId = Convert.ToInt32(row.Attributes["corporationID"].InnerText, CultureInfo.InvariantCulture);
                 parsedCharacters.Add(character);
             }
             characterList.CharacterListItems = parsedCharacters.ToArray();
