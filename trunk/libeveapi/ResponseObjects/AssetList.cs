@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using System.Xml;
 
@@ -50,10 +51,10 @@ namespace libeveapi
         protected static AssetListItem ParseAssetRow(XmlNode assetRow)
         {
             AssetListItem assetListItem = new AssetListItem();
-            assetListItem.ItemId = Convert.ToInt32(assetRow.Attributes["itemID"].InnerText);
-            assetListItem.TypeId = Convert.ToInt32(assetRow.Attributes["typeID"].InnerText);
-            assetListItem.Quantity = Convert.ToInt64(assetRow.Attributes["quantity"].InnerText);
-            assetListItem.Singleton = Convert.ToBoolean(Convert.ToInt32(assetRow.Attributes["singleton"].InnerText));
+            assetListItem.ItemId = Convert.ToInt32(assetRow.Attributes["itemID"].InnerText, CultureInfo.InvariantCulture);
+            assetListItem.TypeId = Convert.ToInt32(assetRow.Attributes["typeID"].InnerText, CultureInfo.InvariantCulture);
+            assetListItem.Quantity = Convert.ToInt64(assetRow.Attributes["quantity"].InnerText, CultureInfo.InvariantCulture);
+            assetListItem.Singleton = Convert.ToBoolean(Convert.ToInt32(assetRow.Attributes["singleton"].InnerText, CultureInfo.InvariantCulture));
 
             int flagValue = Convert.ToInt32(assetRow.Attributes["flag"].InnerText);
             if (Enum.IsDefined(typeof(InventoryFlagType), flagValue))
@@ -67,7 +68,7 @@ namespace libeveapi
 
             if (assetRow.Attributes.GetNamedItem("locationID") != null)
             {
-                assetListItem.LocationId = Convert.ToInt32(assetRow.Attributes["locationID"].InnerText);
+                assetListItem.LocationId = Convert.ToInt32(assetRow.Attributes["locationID"].InnerText, CultureInfo.InvariantCulture);
             }
             
 

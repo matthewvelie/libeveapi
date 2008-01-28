@@ -81,7 +81,6 @@ namespace libeveapi
 
             /// <summary>
             /// The Id of the alliance that has sovereignty of this constellation, or 0 if nobody has constellation sovereignty.
-            /// http://myeve.eve-online.com/devblog.asp?a=blog&bid=477
             /// </summary>
             public int ConstellationSovereignty
             {
