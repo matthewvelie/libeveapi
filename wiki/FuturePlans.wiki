@@ -10,5 +10,5 @@
 
 === Objects returned from the library should be immutable ===
 Here are a few of the problems with doing this:
- * Fields with readonly modifier can only be set in the declaration or constructor of their class. XmlSerializer always calls the class's empty constructor making it impossible to set the readonly fields.
+ * Fields with readonly modifier can only be set in the declaration or constructor of their class. !XmlSerializer always calls the class's empty constructor making it impossible to set the readonly fields.
  * Collections (including Array) are still mutable when wrapped in a get-only property. They can be made immutable with a !ReadOnlyCollection<T> wrapper. Using an immutable collection with !XmlSerializer might be possible with a public property that wraps the array in the getter. Then the !ReadXml() function (from IXmlSerializable) could operate on a mutable private collection.
