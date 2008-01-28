@@ -1,4 +1,4 @@
-#Ideas for future versions.
+# summary Ideas for future versions.
 
 === Network Interface ===
  * Extract an INetwork interface from the existing network code
