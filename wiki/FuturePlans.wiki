@@ -7,3 +7,8 @@
  * Provide a default simple network implementation
 
  This satisfies a few design goals. We can create a simple network implementation that will cover basic needs but every application is going to have different needs. The application developer should have the ability to write their own networking without having to dig into the library. This change would also allow us to make it so the unit tests work out of the box, no local webserver required. (Credit goes to Stinkbomb on the eve-o forums for bringing this up).
+
+=== Objects returned from the library should be immutable ===
+Here are a few of the problems with doing this:
+ * Fields with readonly modifier can only be set in the declaration or constructor of their class. XmlSerializer always calls the class's empty constructor making it impossible to set the readonly fields.
+ * Collections (including Array) are still mutable when wrapped in a get-only property. They can be made immutable with a ReadOnlyCollection<T> wrapper. Using an immutable collection with XmlSerializer might be possible with a public property that wraps the array in the getter. Then the ReadXml() function (from IXmlSerializable) could operate on a mutable private collection.
