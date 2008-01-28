@@ -68,10 +68,10 @@ namespace libeveapi
             IndustryJobListItem.LicensedProductionRuns = Convert.ToInt32(industryJobRow.Attributes["licensedProductionRuns"].InnerText, CultureInfo.InvariantCulture);
             IndustryJobListItem.InstalledInSolarSystemId = Convert.ToInt32(industryJobRow.Attributes["installedInSolarSystemID"].InnerText, CultureInfo.InvariantCulture);
             IndustryJobListItem.ContainerLocationId = Convert.ToInt32(industryJobRow.Attributes["containerLocationID"].InnerText, CultureInfo.InvariantCulture);
-            IndustryJobListItem.MaterialMultiplier = (float)Convert.ToDouble(industryJobRow.Attributes["materialMultiplier"].InnerText, CultureInfo.InvariantCulture);
-            IndustryJobListItem.CharMaterialMultiplier = (float)Convert.ToDouble(industryJobRow.Attributes["charMaterialMultiplier"].InnerText, CultureInfo.InvariantCulture);
-            IndustryJobListItem.TimeMultiplier = (float)Convert.ToDouble(industryJobRow.Attributes["timeMultiplier"].InnerText, CultureInfo.InvariantCulture);
-            IndustryJobListItem.CharTimeMultiplier = (float)Convert.ToDouble(industryJobRow.Attributes["charTimeMultiplier"].InnerText, CultureInfo.InvariantCulture);
+            IndustryJobListItem.MaterialMultiplier = Convert.ToDouble(industryJobRow.Attributes["materialMultiplier"].InnerText, CultureInfo.InvariantCulture);
+            IndustryJobListItem.CharMaterialMultiplier = Convert.ToDouble(industryJobRow.Attributes["charMaterialMultiplier"].InnerText, CultureInfo.InvariantCulture);
+            IndustryJobListItem.TimeMultiplier = Convert.ToDouble(industryJobRow.Attributes["timeMultiplier"].InnerText, CultureInfo.InvariantCulture);
+            IndustryJobListItem.CharTimeMultiplier = Convert.ToDouble(industryJobRow.Attributes["charTimeMultiplier"].InnerText, CultureInfo.InvariantCulture);
             IndustryJobListItem.InstalledItemTypeId = Convert.ToInt32(industryJobRow.Attributes["installedItemTypeID"].InnerText, CultureInfo.InvariantCulture);
             IndustryJobListItem.OutputTypeId = Convert.ToInt32(industryJobRow.Attributes["outputTypeID"].InnerText, CultureInfo.InvariantCulture);
             IndustryJobListItem.ContainerTypeId = Convert.ToInt32(industryJobRow.Attributes["containerTypeID"].InnerText, CultureInfo.InvariantCulture);
