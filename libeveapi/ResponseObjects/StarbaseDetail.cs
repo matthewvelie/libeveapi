@@ -150,7 +150,7 @@ namespace libeveapi
             foreach (XmlNode fuelNode in xmlDoc.SelectNodes("//rowset[@name='fuel']/row"))
             {
                 FuelListItem fli = new FuelListItem();
-                fli.TypeId = fuelNode.Attributes["typeID"].InnerText;
+                fli.TypeId = Convert.ToInt32(fuelNode.Attributes["typeID"].InnerText, CultureInfo.InvariantCulture);
                 fli.Quantity = Convert.ToInt64(fuelNode.Attributes["quantity"].InnerText, CultureInfo.InvariantCulture);
                 fuelList.Add(fli);
             }
@@ -164,13 +164,13 @@ namespace libeveapi
         /// </summary>
         public class FuelListItem
         {
-            private string typeId;
+            private int typeId;
             private long quantity;
 
             /// <summary>
             /// Type Id of the fuel
             /// </summary>
-            public string TypeId
+            public int TypeId
             {
                 get { return typeId; }
                 set { typeId = value; }

@@ -35,7 +35,7 @@ namespace UnitTests
             Assert.AreEqual(false, starbaseDetail.OnAgressionEnabled);
             Assert.AreEqual(false, starbaseDetail.OnCorporationWarEnabled);
 
-            Assert.AreEqual("3689", starbaseDetail.FuelList[0].TypeId);
+            Assert.AreEqual(3689, starbaseDetail.FuelList[0].TypeId);
             Assert.AreEqual(710, starbaseDetail.FuelList[0].Quantity);
         }
 
