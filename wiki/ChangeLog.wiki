@@ -6,7 +6,7 @@
 A list of all of the changes to the API is found here since version 1.0.0.
 
 == 1.1.1 - 1/28/2008 ==
- * Localization issues have been fixed.
+ * Localization issues have been fixed. (Amida Ta)
 
 == 1.1 - 1/27/2008 ==
  * All public member variables have been replaced with properties.
