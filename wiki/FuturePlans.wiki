@@ -1,4 +1,5 @@
 #summary Ideas for future versions.
+#labels Featured,libEveApi
 
 === Network Interface ===
  * Extract an INetwork interface from the existing network code
