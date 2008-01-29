@@ -6,7 +6,7 @@
 A list of all of the changes to the API is found here since version 1.0.0.
 
 == 1.1.2 - 1/28/2008 ==
- * Fixed FuelListItem.!TypeId which was left as a string, which should have been an int like all other !TypeId's.  This was inside the StarbaseDetail.cs file.
+ * Fixed !FuelListItem.!TypeId which was left as a string, which should have been an int like all other !TypeId's.  This was inside the !StarbaseDetail.cs file.
 
 == 1.1.1 - 1/28/2008 ==
  * Localization issues have been fixed. (Bug Reporter: Amida Ta)
