@@ -1,6 +1,8 @@
 #summary Ideas for future versions.
 #labels Featured,libEveApi
 
+Note: I've created a new page: DesignDecisions to explain some of the decisions we made when creating the library.
+
 === Network Interface ===
  * Extract an INetwork interface from the existing network code
  * Allow application developer to use their own network implementation
