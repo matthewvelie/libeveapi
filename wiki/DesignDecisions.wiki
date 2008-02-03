@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary Why the code is the way it is
 
 === Objects returned from the library should be immutable (aka public member variables are bad) ===
 Here are a few of the problems with doing this:
