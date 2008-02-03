@@ -1,5 +1,6 @@
 #labels Featured
-*State of the documentation*
+*State of the documentation*:
+
 All the pages listed below are accurate but some new features may not be documented right away. The ChangeLog contains information on the newest developments.
 
  # === General ===
