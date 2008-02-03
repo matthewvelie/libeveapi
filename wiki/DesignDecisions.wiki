@@ -18,5 +18,5 @@ Implementing the IXmlSerializable interface would allow us to set private fields
  * Quite a bit of work implementing the !ReadXml and !WriteXml methods for every class (including nested classes)
  * There is the possibility of performance issues  Automatic links to other wiki pages
 
-=== Why do the api methods return Array instead of List<T> ===
+=== Why do response objects use Array for collections instead of List<T> ===
 ApiResponse objects are not meant to be modified. While we don't have a way to effectively enforce immutability, I would definitely discourage adding, removing or modifying objects from a response. I think using Array for response collections discourages modification more than a List<T> would. I also wouldn't expect to see a performance difference since a typed Array isn't going to require boxing.
