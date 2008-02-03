@@ -9,7 +9,7 @@ All the pages listed below are accurate but some new features may not be documen
   * [Security Security]
   * [UrlConstants How to get XML Responses from a local web server instead of the eve api]
   * [AdvNetwork Advanced Network Setup] - Using a proxy and customizing the User Agent string.
-  * [LibEveApi.png Class Diagram]
+  * [http://libeveapi.googlecode.com/files/LibEveApi.png Class Diagram]
  # === Supported Eve Api Requests ===
   * [AccountBalances Account Balances] - Information about a character or corporation's accounts.
   * [AllianceList Alliance List] - A list of all the alliances in the game and their member corporations.
