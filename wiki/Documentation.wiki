@@ -39,3 +39,4 @@
  # === Library Development ===
   * [DevelopmentEnvironment Setting up the development environment]
   * [FuturePlans Future Plans] - Ideas for future development
+  * [DesignDecisions Design Decisions] - Explains some of our design decisions
