@@ -25,7 +25,10 @@ namespace libeveapi.ResponseObjects.Parsers
             corporationSheet.Description = xmlDocument.SelectSingleNode("//result/description").InnerText;
             corporationSheet.Url = xmlDocument.SelectSingleNode("//result/url").InnerText;
             corporationSheet.AllianceId = Convert.ToInt32(xmlDocument.SelectSingleNode("//result/allianceID").InnerText, CultureInfo.InvariantCulture);
-            corporationSheet.AllianceName = xmlDocument.SelectSingleNode("//result/allianceName").InnerText;
+            if( corporationSheet.AllianceId != 0 )
+            {
+                corporationSheet.AllianceName = xmlDocument.SelectSingleNode("//result/allianceName").InnerText;
+            }
             corporationSheet.TaxRate = Convert.ToDouble(xmlDocument.SelectSingleNode("//result/taxRate").InnerText, CultureInfo.InvariantCulture);
             corporationSheet.MemberCount = Convert.ToInt32(xmlDocument.SelectSingleNode("//result/memberCount").InnerText, CultureInfo.InvariantCulture);
             corporationSheet.MemberLimit = Convert.ToInt32(xmlDocument.SelectSingleNode("//result/memberLimit").InnerText, CultureInfo.InvariantCulture);
