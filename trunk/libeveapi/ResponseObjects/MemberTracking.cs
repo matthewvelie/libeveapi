@@ -1,9 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Globalization;
-using System.Xml;
-using System.Xml.Serialization;
 
 namespace libeveapi
 {
@@ -22,46 +17,6 @@ namespace libeveapi
         {
             get { return members; }
             set { members = value; }
-        }
-
-        /// <summary>
-        /// Create a MemberTracking object by parsing an XmlDocument response from the eveapi
-        /// </summary>
-        /// <param name="xmlDoc">An XML File containing member tracking data</param>
-        /// <returns></returns>
-        public static MemberTracking FromXmlDocument(XmlDocument xmlDoc)
-        {
-            MemberTracking memberTracking = new MemberTracking();
-            memberTracking.ParseCommonElements(xmlDoc);
-
-            List<Member> parsedMemeberTrackingItems = new List<Member>();
-            foreach (XmlNode row in xmlDoc.SelectNodes("//rowset[@name='members']/row"))
-            {
-                Member mti = new Member();
-                mti.CharacterId = Convert.ToInt32(row.Attributes["characterID"].InnerText, CultureInfo.InvariantCulture);
-                mti.Name = row.Attributes["name"].InnerText;
-                mti.BaseId = Convert.ToInt32(row.Attributes["baseID"].InnerText, CultureInfo.InvariantCulture);
-                mti.Base = row.Attributes["base"].InnerText;
-                mti.Title = row.Attributes["title"].InnerText;
-                mti.LocationId = Convert.ToInt32(row.Attributes["locationID"].InnerText, CultureInfo.InvariantCulture);
-                mti.Location = row.Attributes["location"].InnerText;
-                mti.ShipTypeId = Convert.ToInt32(row.Attributes["shipTypeID"].InnerText, CultureInfo.InvariantCulture);
-                mti.ShipType = row.Attributes["shipType"].InnerText;
-                mti.RolesMask = row.Attributes["roles"].InnerText;
-                mti.GrantableRoles = row.Attributes["grantableRoles"].InnerText;
-
-                mti.StartDateTime = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(row.Attributes["startDateTime"].InnerText);
-                mti.LogonDateTime = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(row.Attributes["logonDateTime"].InnerText);
-                mti.LogoffDateTime = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(row.Attributes["logoffDateTime"].InnerText);
-                mti.StartDateTimeLocal = TimeUtilities.ConvertCCPToLocalTime(mti.StartDateTime);
-                mti.LogonDateTimeLocal = TimeUtilities.ConvertCCPToLocalTime(mti.LogonDateTime);
-                mti.LogoffDateTimeLocal = TimeUtilities.ConvertCCPToLocalTime(mti.LogoffDateTime);
-
-                parsedMemeberTrackingItems.Add(mti);
-            }
-
-            memberTracking.Members = parsedMemeberTrackingItems.ToArray();
-            return memberTracking;
         }
 
         /// <summary>

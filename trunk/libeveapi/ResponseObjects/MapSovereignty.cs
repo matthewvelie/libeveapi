@@ -1,9 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Globalization;
-using System.Xml;
-
 namespace libeveapi
 {
     /// <summary>
@@ -22,33 +16,6 @@ namespace libeveapi
                 get { return mapSystemSovereigntyItems; }
                 set { mapSystemSovereigntyItems = value; }
             }
-
-        /// <summary>
-        /// Create an Mapkills object by parsing an XmlDocument response from the eve api
-        /// </summary>
-        /// <param name="xmlDoc">XML Document containing map sovereignty information</param>
-        /// <returns><see cref="MapSovereignty"/>A map sovereignty object</returns>
-        public static MapSovereignty FromXmlDocument(XmlDocument xmlDoc)
-        {
-            MapSovereignty mapSovereignty = new MapSovereignty();
-            mapSovereignty.ParseCommonElements(xmlDoc);
-
-            List<MapSovereigntyItem> sovereigntyList = new List<MapSovereigntyItem>();
-            foreach (XmlNode systemRow in xmlDoc.SelectNodes("//rowset[@name='solarSystems']/row"))
-            {
-                MapSovereigntyItem sovereigntyData = new MapSovereigntyItem();
-                sovereigntyData.SolarSystemId = Convert.ToInt32(systemRow.Attributes["solarSystemID"].InnerText, CultureInfo.InvariantCulture);
-                sovereigntyData.AllianceId = Convert.ToInt32(systemRow.Attributes["allianceID"].InnerText, CultureInfo.InvariantCulture);
-                sovereigntyData.ConstellationSovereignty = Convert.ToInt32(systemRow.Attributes["constellationSovereignty"].InnerText, CultureInfo.InvariantCulture);
-                sovereigntyData.SovereigntyLevel = Convert.ToInt32(systemRow.Attributes["sovereigntyLevel"].InnerText, CultureInfo.InvariantCulture);
-                sovereigntyData.FactionId = Convert.ToInt32(systemRow.Attributes["factionID"].InnerText, CultureInfo.InvariantCulture);
-                sovereigntyData.SolarSystemName = systemRow.Attributes["solarSystemName"].InnerText;
-                sovereigntyList.Add(sovereigntyData);
-            }
-            mapSovereignty.MapSystemSovereigntyItems = sovereigntyList.ToArray();
-
-            return mapSovereignty;
-        }
 
         /// <summary>
         /// The information for a system with one jump or more

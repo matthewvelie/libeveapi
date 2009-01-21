@@ -1,9 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
-using System.Xml;
-
 namespace libeveapi
 {
     /// <summary>
@@ -22,30 +16,6 @@ namespace libeveapi
         {
             get { return accountBalanceItems; }
             set { accountBalanceItems = value; }
-        }
-
-        /// <summary>
-        /// Create an AccountBalance object by parsing an XmlDocument response from the eve api
-        /// </summary>
-        /// <param name="xmlDoc">An XML Document containing Account Balance Information</param>
-        /// <returns><see cref="AccountBalance"/>Returns an AccountBlance Object</returns>
-        public static AccountBalance FromXmlDocument(XmlDocument xmlDoc)
-        {
-            AccountBalance accountBalance = new AccountBalance();
-            accountBalance.ParseCommonElements(xmlDoc);
-
-            List<AccountBalanceItem> accountList = new List<AccountBalanceItem>();
-            foreach (XmlNode accountRow in xmlDoc.SelectNodes("//rowset[@name='accounts']/row"))
-            {
-                AccountBalanceItem account = new AccountBalanceItem();
-                account.AccountId = Convert.ToInt32(accountRow.Attributes["accountID"].InnerText, CultureInfo.InvariantCulture);
-                account.AccountKey = Convert.ToInt32(accountRow.Attributes["accountKey"].InnerText, CultureInfo.InvariantCulture);
-                account.Balance = Convert.ToDouble(accountRow.Attributes["balance"].InnerText, CultureInfo.InvariantCulture);
-                accountList.Add(account);
-            }
-            accountBalance.AccountBalanceItems = accountList.ToArray();
-
-            return accountBalance;
         }
 
         /// <summary>

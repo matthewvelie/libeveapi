@@ -1,8 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Globalization;
-using System.Xml;
 
 namespace libeveapi
 {
@@ -21,52 +17,6 @@ namespace libeveapi
         {
             get { return journalEntryItems; }
             set { journalEntryItems = value; }
-        }
-
-        /// <summary>
-        /// Create an JournalEntryItemList by parsing an XmlDocument response from the eveapi
-        /// </summary>
-        /// <param name="xmlDoc">An XML Document containing the JournalEntries List</param>
-        /// <returns><see cref="JournalEntries"/></returns>
-        public static JournalEntries FromXmlDocument(XmlDocument xmlDoc)
-        {
-            JournalEntries JournalEntryList = new JournalEntries();
-            JournalEntryList.ParseCommonElements(xmlDoc);
-
-            List<JournalEntryItem> journalEntry = new List<JournalEntryItem>();
-            foreach (XmlNode node in xmlDoc.SelectNodes("//rowset[@name='entries']/row"))
-            {
-                journalEntry.Add(ParseTransactionRow(node));
-            }
-            JournalEntryList.JournalEntryItems = journalEntry.ToArray();
-
-            return JournalEntryList;
-        }
-
-        /// <summary>
-        /// Create an JournalEntryItem by parsing a single row
-        /// </summary>
-        /// <param name="journalTransactionRow"></param>
-        /// <returns></returns>
-        protected static JournalEntryItem ParseTransactionRow(XmlNode journalTransactionRow)
-        {
-            JournalEntryItem journalEntryItem = new JournalEntryItem();
-
-            journalEntryItem.Date = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(journalTransactionRow.Attributes["date"].InnerText);
-            journalEntryItem.DateLocal = TimeUtilities.ConvertCCPToLocalTime(journalEntryItem.Date);
-            journalEntryItem.RefId = Convert.ToInt32(journalTransactionRow.Attributes["refID"].InnerText, CultureInfo.InvariantCulture);
-            journalEntryItem.RefTypeId = Convert.ToInt32(journalTransactionRow.Attributes["refTypeID"].InnerText, CultureInfo.InvariantCulture);
-            journalEntryItem.OwnerName1 = journalTransactionRow.Attributes["ownerName1"].InnerText;
-            journalEntryItem.OwnerId1 = Convert.ToInt32(journalTransactionRow.Attributes["ownerID1"].InnerText, CultureInfo.InvariantCulture);
-            journalEntryItem.OwnerName2 = journalTransactionRow.Attributes["ownerName2"].InnerText;
-            journalEntryItem.OwnerId2 = Convert.ToInt32(journalTransactionRow.Attributes["ownerID2"].InnerText, CultureInfo.InvariantCulture);
-            journalEntryItem.ArgName1 = journalTransactionRow.Attributes["argName1"].InnerText;
-            journalEntryItem.ArgId1 = Convert.ToInt32(journalTransactionRow.Attributes["argID1"].InnerText, CultureInfo.InvariantCulture);
-            journalEntryItem.Amount = Convert.ToDouble(journalTransactionRow.Attributes["amount"].InnerText, CultureInfo.InvariantCulture);
-            journalEntryItem.Balance = Convert.ToDouble(journalTransactionRow.Attributes["balance"].InnerText, CultureInfo.InvariantCulture);
-            journalEntryItem.Reason = journalTransactionRow.Attributes["reason"].InnerText;
-
-            return journalEntryItem;
         }
 
         /// <summary>

@@ -1,9 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
-using System.Xml;
-
 namespace libeveapi
 {
     /// <summary>
@@ -20,67 +14,6 @@ namespace libeveapi
         {
             get { return assetListItems; }
             set { assetListItems = value; }
-        }
-
-        /// <summary>
-        /// Create an AssetList by parsing an XmlDocument response from the eveapi
-        /// </summary>
-        /// <param name="xmlDoc">An XML Dcoument containing Asset Information</param>
-        /// <returns><see cref="AssetList"/>Return an AssetList object</returns>
-        public static AssetList FromXmlDocument(XmlDocument xmlDoc)
-        {
-            AssetList assetList = new AssetList();
-            assetList.ParseCommonElements(xmlDoc);
-
-            List<AssetListItem> assets = new List<AssetListItem>();
-            foreach (XmlNode node in xmlDoc.SelectNodes("//rowset[@name='assets']/row"))
-            {
-                assets.Add(ParseAssetRow(node));
-            }
-            assetList.AssetListItems = assets.ToArray();
-
-            return assetList;
-        }
-
-        /// <summary>
-        /// Create an AssetListItem by parsing a single row
-        /// Recursively parses all contained assets
-        /// </summary>
-        /// <param name="assetRow"></param>
-        /// <returns></returns>
-        protected static AssetListItem ParseAssetRow(XmlNode assetRow)
-        {
-            AssetListItem assetListItem = new AssetListItem();
-            assetListItem.ItemId = Convert.ToInt32(assetRow.Attributes["itemID"].InnerText, CultureInfo.InvariantCulture);
-            assetListItem.TypeId = Convert.ToInt32(assetRow.Attributes["typeID"].InnerText, CultureInfo.InvariantCulture);
-            assetListItem.Quantity = Convert.ToInt64(assetRow.Attributes["quantity"].InnerText, CultureInfo.InvariantCulture);
-            assetListItem.Singleton = Convert.ToBoolean(Convert.ToInt32(assetRow.Attributes["singleton"].InnerText, CultureInfo.InvariantCulture));
-
-            int flagValue = Convert.ToInt32(assetRow.Attributes["flag"].InnerText);
-            if (Enum.IsDefined(typeof(InventoryFlagType), flagValue))
-            {
-                assetListItem.Flag = (InventoryFlagType)Enum.ToObject(typeof(InventoryFlagType), flagValue);
-            }
-            else
-            {
-                assetListItem.Flag = InventoryFlagType.FlagUnknown;
-            }
-
-            if (assetRow.Attributes.GetNamedItem("locationID") != null)
-            {
-                assetListItem.LocationId = Convert.ToInt32(assetRow.Attributes["locationID"].InnerText, CultureInfo.InvariantCulture);
-            }
-            
-
-            // Parse any contained assets and add them to this item's contents
-            List<AssetListItem> containedAssets = new List<AssetListItem>();
-            foreach (XmlNode containedAssetRow in assetRow.SelectNodes("./rowset[@name='contents']/row"))
-            {
-                containedAssets.Add(ParseAssetRow(containedAssetRow));
-            }
-            assetListItem.Contents = containedAssets.ToArray();
-
-            return assetListItem;
         }
 
         /// <summary>

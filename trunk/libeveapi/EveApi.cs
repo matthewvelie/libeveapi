@@ -1,9 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Drawing;
-using System.Text;
-using System.Xml;
+using libeveapi.ResponseObjects.Parsers;
 
 namespace libeveapi
 {
@@ -76,19 +74,11 @@ namespace libeveapi
         /// <returns></returns>
         public static CharacterList GetAccountCharacters(int userId, string apiKey, bool ignoreCacheUntil)
         {
-            string url = String.Format("{0}{1}?userID={2}&apiKey={3}", Constants.ApiPrefix, Constants.CharacterList, userId, apiKey);
+            var url = new ApiRequestUrl(Constants.CharacterList);
+            url.AddProperty(ApiRequestUrl.PROPERTY_USER_ID, userId.ToString());
+            url.AddProperty(ApiRequestUrl.PROPERTY_API_KEY, apiKey);
 
-            ApiResponse cachedResponse = ResponseCache.Get(url, ignoreCacheUntil);
-            if (cachedResponse != null)
-            {
-                return cachedResponse as CharacterList;
-            }
-
-            XmlDocument xmlDoc = Network.GetXml(url);
-            CharacterList characterList = CharacterList.FromXmlDocument(xmlDoc);
-            ResponseCache.Set(url, characterList);
-
-            return characterList;
+            return HandleRequest(url, new CharacterListResponseParser(), ignoreCacheUntil);
         }
 
                 /// <summary>
@@ -132,19 +122,10 @@ namespace libeveapi
                     break;
             }
 
-            string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}", Constants.ApiPrefix, apiPath, userId, characterId, fullApiKey);
+            var url = new ApiRequestUrl(apiPath);
+            AddCommonCharacterInformation(url, userId, characterId, fullApiKey);
 
-            ApiResponse cachedResponse = ResponseCache.Get(url, ignoreCacheUntil);
-            if (cachedResponse != null)
-            {
-                return cachedResponse as AccountBalance;
-            }
-
-            XmlDocument xmlDoc = Network.GetXml(url);
-            AccountBalance accountBalance = AccountBalance.FromXmlDocument(xmlDoc);
-            ResponseCache.Set(url, accountBalance);
-
-            return accountBalance;
+            return HandleRequest(url, new AccountBalanceResponseParser(), ignoreCacheUntil);
         }
 
         /// <summary>
@@ -169,19 +150,11 @@ namespace libeveapi
         /// <returns></returns>
         public static StarbaseList GetStarbaseList(int userId, int characterId, string fullApiKey, bool ignoreCacheUntil)
         {
-            string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}&version=2", Constants.ApiPrefix, Constants.StarbaseList, userId, characterId, fullApiKey);
+            var url = new ApiRequestUrl(Constants.StarbaseList);
+            AddCommonCharacterInformation(url, userId, characterId, fullApiKey);
+            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
 
-            ApiResponse cachedResponse = ResponseCache.Get(url, ignoreCacheUntil);
-            if (cachedResponse != null)
-            {
-                return cachedResponse as StarbaseList;
-            }
-
-            XmlDocument xmlDoc = Network.GetXml(url);
-            StarbaseList starbaseList = StarbaseList.FromXmlDocument(xmlDoc);
-            ResponseCache.Set(url, starbaseList);
-
-            return starbaseList;
+            return HandleRequest(url, new StarbaseListResponseParser(), ignoreCacheUntil);
         }
 
         /// <summary>
@@ -202,19 +175,10 @@ namespace libeveapi
         /// <returns></returns>
         public static CharacterIdName GetCharacterIdName(string charactername, bool ignoreCacheUntil)
         {
-            string url = String.Format("{0}{1}?names={2}", Constants.ApiPrefix, Constants.CharacterIdName, charactername);
+            var url = new ApiRequestUrl(Constants.CharacterIdName);
+            url.AddProperty(ApiRequestUrl.PROPERTY_NAMES, charactername);
 
-            ApiResponse cachedResponse = ResponseCache.Get(url, ignoreCacheUntil);
-            if (cachedResponse != null)
-            {
-                return cachedResponse as CharacterIdName;
-            }
-
-            XmlDocument xmlDoc = Network.GetXml(url);
-            CharacterIdName charId = CharacterIdName.FromXmlDocument(xmlDoc);
-            ResponseCache.Set(url, charId);
-
-            return charId;
+            return HandleRequest(url, new CharacterIdNameResponseParser(), ignoreCacheUntil);
         }
 
         /// <summary>
@@ -236,19 +200,10 @@ namespace libeveapi
         /// <returns></returns>
         public static CharacterIdName GetCharacterIdName(int characterId, bool ignoreCacheUntil)
         {
-            string url = String.Format("{0}{1}?ids={2}", Constants.ApiPrefix, Constants.CharacterIdName, characterId);
+            var url = new ApiRequestUrl(Constants.CharacterIdName);
+            url.AddProperty(ApiRequestUrl.PROPERTY_IDENTIFICATIONS, characterId.ToString());
 
-            ApiResponse cachedResponse = ResponseCache.Get(url, ignoreCacheUntil);
-            if (cachedResponse != null)
-            {
-                return cachedResponse as CharacterIdName;
-            }
-
-            XmlDocument xmlDoc = Network.GetXml(url);
-            CharacterIdName charId = CharacterIdName.FromXmlDocument(xmlDoc);
-            ResponseCache.Set(url, charId);
-
-            return charId;
+            return HandleRequest(url, new CharacterIdNameResponseParser(), ignoreCacheUntil);
         }
 
         /// <summary>
@@ -275,19 +230,12 @@ namespace libeveapi
         /// <returns></returns>
         public static StarbaseDetail GetStarbaseDetail(int userId, int characterId, string fullApiKey, int itemId, bool ignoreCacheUntil)
         {
-            string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}&itemID={5}&version=2", Constants.ApiPrefix, Constants.StarbaseDetails, userId, characterId, fullApiKey, itemId);
+            var url = new ApiRequestUrl(Constants.StarbaseDetails);
+            AddCommonCharacterInformation(url, userId, characterId, fullApiKey);
+            url.AddProperty(ApiRequestUrl.PROPERTY_ITEM_ID, itemId.ToString());
+            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
 
-            ApiResponse cachedResponse = ResponseCache.Get(url, ignoreCacheUntil);
-            if (cachedResponse != null)
-            {
-                return cachedResponse as StarbaseDetail;
-            }
-
-            XmlDocument xmlDoc = Network.GetXml(url);
-            StarbaseDetail starbaseDetail = StarbaseDetail.FromXmlDocument(xmlDoc);
-            ResponseCache.Set(url, starbaseDetail);
-
-            return starbaseDetail;
+            return HandleRequest(url, new StarbaseDetailResponseParser(), ignoreCacheUntil);
         }
 
         /// <summary>
@@ -306,19 +254,10 @@ namespace libeveapi
         /// <returns></returns>
         public static ErrorList GetErrorList(bool ignoreCacheUntil)
         {
-            string url = String.Format("{0}{1}?version=2", Constants.ApiPrefix, Constants.ErrorList);
+            var url = new ApiRequestUrl(Constants.ErrorList);
+            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
 
-            ApiResponse cachedResponse = ResponseCache.Get(url, ignoreCacheUntil);
-            if (cachedResponse != null)
-            {
-                return cachedResponse as ErrorList;
-            }
-
-            XmlDocument xmlDoc = Network.GetXml(url);
-            ErrorList errorList = ErrorList.FromXmlDocument(xmlDoc);
-            ResponseCache.Set(url, errorList);
-
-            return errorList;
+            return HandleRequest(url, new ErrorListResponseParser(), ignoreCacheUntil);
         }
 
         /// <summary>
@@ -356,19 +295,11 @@ namespace libeveapi
                     break;
             }
 
-            string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}&version=2", Constants.ApiPrefix, apiPath, userId, characterId, fullApiKey);
+            var url = new ApiRequestUrl(apiPath);
+            AddCommonCharacterInformation(url, userId, characterId, fullApiKey);
+            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
 
-            ApiResponse cachedResponse = ResponseCache.Get(url, ignoreCacheUntil);
-            if (cachedResponse != null)
-            {
-                return cachedResponse as AssetList;
-            }
-
-            XmlDocument xmlDoc = Network.GetXml(url);
-            AssetList assetList = AssetList.FromXmlDocument(xmlDoc);
-            ResponseCache.Set(url, assetList);
-
-            return assetList;
+            return HandleRequest(url, new AssetListResponseParser(), ignoreCacheUntil);
         }
 
         /// <summary>
@@ -408,27 +339,17 @@ namespace libeveapi
                     break;
             }
 
-            string url = string.Empty;
-            if (beforeKillID == 0)
+            var url = new ApiRequestUrl(apiPath);
+            AddCommonCharacterInformation(url, userId, characterId, fullApiKey);
+
+            if (beforeKillID != 0)
             {
-                url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}&version=2", Constants.ApiPrefix, apiPath, userId, characterId, fullApiKey);
-            }
-            else
-            {
-                url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}&beforeKillID={5}&version=2", Constants.ApiPrefix, apiPath, userId, characterId, fullApiKey, beforeKillID);
+                url.AddProperty(ApiRequestUrl.PROPERTY_BEFORE_KILL_ID, beforeKillID.ToString());
             }
 
-            ApiResponse cachedResponse = ResponseCache.Get(url, ignoreCacheUntil);
-            if (cachedResponse != null)
-            {
-                return cachedResponse as KillLog;
-            }
+            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
 
-            XmlDocument xmlDoc = Network.GetXml(url);
-            KillLog killLog = KillLog.FromXmlDocument(xmlDoc);
-            ResponseCache.Set(url, killLog);
-
-            return killLog;
+            return HandleRequest(url, new KillLogResponseParser(), ignoreCacheUntil);
         }
 
         /// <summary>
@@ -493,19 +414,11 @@ namespace libeveapi
                     break;
             }
 
-            string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}&version=2", Constants.ApiPrefix, apiPath, userId, characterId, fullApiKey);
+            var url = new ApiRequestUrl(apiPath);
+            AddCommonCharacterInformation(url, userId, characterId, fullApiKey);
+            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
 
-            ApiResponse cachedResponse = ResponseCache.Get(url, ignoreCacheUntil);
-            if (cachedResponse != null)
-            {
-                return cachedResponse as IndustryJobList;
-            }
-
-            XmlDocument xmlDoc = Network.GetXml(url);
-            IndustryJobList industryJobList = IndustryJobList.FromXmlDocument(xmlDoc);
-            ResponseCache.Set(url, industryJobList);
-
-            return industryJobList;
+            return HandleRequest(url, new IndustryJobListResponseParser(), ignoreCacheUntil);
         }
 
         /// <summary>
@@ -572,23 +485,15 @@ namespace libeveapi
                     break;
             }
 
-            string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}", Constants.ApiPrefix, apiPath, userId, characterId, fullApiKey);
+            var url = new ApiRequestUrl(apiPath);
+            AddCommonCharacterInformation(url, userId, characterId, fullApiKey);
+            
             if (beforeRefId != 0)
             {
-                url += String.Format("&beforeRefID={0}", beforeRefId);
+                url.AddProperty(ApiRequestUrl.PROPERTY_BEFORE_REF_ID, beforeRefId.ToString());
             }
 
-            ApiResponse cachedResponse = ResponseCache.Get(url, ignoreCacheUntil);
-            if (cachedResponse != null)
-            {
-                return cachedResponse as JournalEntries;
-            }
-
-            XmlDocument xmlDoc = Network.GetXml(url);
-            JournalEntries journalEntriesList = JournalEntries.FromXmlDocument(xmlDoc);
-            ResponseCache.Set(url, journalEntriesList);
-
-            return journalEntriesList;
+            return HandleRequest(url, new JournalEntriesResponseParser(), ignoreCacheUntil);
         }
 
         /// <summary>
@@ -626,19 +531,11 @@ namespace libeveapi
                     break;
             }
 
-            string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}&version=2", Constants.ApiPrefix, apiPath, userId, characterId, fullApiKey);
+            var url = new ApiRequestUrl(apiPath);
+            AddCommonCharacterInformation(url, userId, characterId, fullApiKey);
+            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
 
-            ApiResponse cachedResponse = ResponseCache.Get(url, ignoreCacheUntil);
-            if (cachedResponse != null)
-            {
-                return cachedResponse as MarketOrders;
-            }
-
-            XmlDocument xmlDoc = Network.GetXml(url);
-            MarketOrders marketOrderList = MarketOrders.FromXmlDocument(xmlDoc);
-            ResponseCache.Set(url, marketOrderList);
-
-            return marketOrderList;
+            return HandleRequest(url, new MarketOrdersResponseParser(), ignoreCacheUntil);
         }
 
         /// <summary>
@@ -705,19 +602,17 @@ namespace libeveapi
                     break;
             }
 
-            string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}&version=2", Constants.ApiPrefix, apiPath, userId, characterId, fullApiKey);
+            var url = new ApiRequestUrl(apiPath);
+            AddCommonCharacterInformation(url, userId, characterId, fullApiKey);
 
-            ApiResponse cachedResponse = ResponseCache.Get(url, ignoreCacheUntil);
-            if (cachedResponse != null)
+            if(beforeTransId != 0)
             {
-                return cachedResponse as WalletTransactions;
+                url.AddProperty(ApiRequestUrl.PROPERTY_BEFORE_TRANSACTION_ID, beforeTransId.ToString());
             }
 
-            XmlDocument xmlDoc = Network.GetXml(url);
-            WalletTransactions walletTransactionList = WalletTransactions.FromXmlDocument(xmlDoc);
-            ResponseCache.Set(url, walletTransactionList);
+            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
 
-            return walletTransactionList;
+            return HandleRequest(url, new WalletTransactionsResponseParser(), ignoreCacheUntil);
         }
 
         /// <summary>
@@ -736,19 +631,10 @@ namespace libeveapi
         /// <returns></returns>
         public static RefTypes GetRefTypesList(bool ignoreCacheUntil)
         {
-            string url = String.Format("{0}{1}?version=2", Constants.ApiPrefix, Constants.RefTypesList);
+            var url = new ApiRequestUrl(Constants.RefTypesList);
+            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
 
-            ApiResponse cachedResponse = ResponseCache.Get(url, ignoreCacheUntil);
-            if (cachedResponse != null)
-            {
-                return cachedResponse as RefTypes;
-            }
-
-            XmlDocument xmlDoc = Network.GetXml(url);
-            RefTypes refTypeList = RefTypes.FromXmlDocument(xmlDoc);
-            ResponseCache.Set(url, refTypeList);
-
-            return refTypeList;
+            return HandleRequest(url, new RefTypesResponseParser(), ignoreCacheUntil);
         }
 
         /// <summary>
@@ -767,19 +653,10 @@ namespace libeveapi
         /// <returns></returns>
         public static MapJumps GetMapJumps(bool ignoreCacheUntil)
         {
-            string url = String.Format("{0}{1}?version=2", Constants.ApiPrefix, Constants.MapJumps);
+            var url = new ApiRequestUrl(Constants.MapJumps);
+            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
 
-            ApiResponse cachedResponse = ResponseCache.Get(url, ignoreCacheUntil);
-            if (cachedResponse != null)
-            {
-                return cachedResponse as MapJumps;
-            }
-
-            XmlDocument xmlDoc = Network.GetXml(url);
-            MapJumps mapJumps = MapJumps.FromXmlDocument(xmlDoc);
-            ResponseCache.Set(url, mapJumps);
-
-            return mapJumps;
+            return HandleRequest(url, new MapJumpsResponseParser(), ignoreCacheUntil);
         }
 
         /// <summary>
@@ -798,19 +675,10 @@ namespace libeveapi
         /// <returns></returns>
         public static MapSovereignty GetMapSovereignty(bool ignoreCacheUntil)
         {
-            string url = String.Format("{0}{1}?version=2", Constants.ApiPrefix, Constants.MapSoveignty);
+            var url = new ApiRequestUrl(Constants.MapSoveignty);
+            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
 
-            ApiResponse cachedResponse = ResponseCache.Get(url, ignoreCacheUntil);
-            if (cachedResponse != null)
-            {
-                return cachedResponse as MapSovereignty;
-            }
-
-            XmlDocument xmlDoc = Network.GetXml(url);
-            MapSovereignty mapSovereignty = MapSovereignty.FromXmlDocument(xmlDoc);
-            ResponseCache.Set(url, mapSovereignty);
-
-            return mapSovereignty;
+            return HandleRequest(url, new MapSovereigntyResponseParser(), ignoreCacheUntil);
         }
 
         /// <summary>
@@ -830,19 +698,10 @@ namespace libeveapi
         /// <returns></returns>
         public static MapKills GetMapKills(bool ignoreCacheUntil)
         {
-            string url = String.Format("{0}{1}?version=2", Constants.ApiPrefix, Constants.MapKills);
+            var url = new ApiRequestUrl(Constants.MapKills);
+            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
 
-            ApiResponse cachedResponse = ResponseCache.Get(url, ignoreCacheUntil);
-            if (cachedResponse != null)
-            {
-                return cachedResponse as MapKills;
-            }
-
-            XmlDocument xmlDoc = Network.GetXml(url);
-            MapKills mapKills = MapKills.FromXmlDocument(xmlDoc);
-            ResponseCache.Set(url, mapKills);
-
-            return mapKills;
+            return HandleRequest(url, new MapKillsResponseParser(), ignoreCacheUntil);
         }
 
         /// <summary>
@@ -869,19 +728,11 @@ namespace libeveapi
         /// <returns></returns>
         public static MemberTracking GetMemberTracking(int userId, int characterId, string fullApiKey, bool ignoreCacheUntil)
         {
-            string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}&version=1", Constants.ApiPrefix, Constants.MemberTracking, userId, characterId, fullApiKey);
+            var url = new ApiRequestUrl(Constants.MemberTracking);
+            AddCommonCharacterInformation(url, userId, characterId, fullApiKey);
+            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "1");
 
-            ApiResponse cachedResponse = ResponseCache.Get(url, ignoreCacheUntil);
-            if (cachedResponse != null)
-            {
-                return cachedResponse as MemberTracking;
-            }
-
-            XmlDocument xmlDoc = Network.GetXml(url);
-            MemberTracking memberTracking = MemberTracking.FromXmlDocument(xmlDoc);
-            ResponseCache.Set(url, memberTracking);
-
-            return memberTracking;
+            return HandleRequest(url, new MemberTrackingResponseParser(), ignoreCacheUntil);
         }
 
         /// <summary>
@@ -906,19 +757,10 @@ namespace libeveapi
         /// <returns></returns>
         public static CharacterSheet GetCharacterSheet(int userId, int characterId, string apiKey, bool ignoreCacheUntil)
         {
-            string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}", Constants.ApiPrefix, Constants.CharacterSheet, userId, characterId, apiKey);
+            var url = new ApiRequestUrl(Constants.CharacterSheet);
+            AddCommonCharacterInformation(url, userId, characterId, apiKey);
 
-            ApiResponse cachedResponse = ResponseCache.Get(url, ignoreCacheUntil);
-            if (cachedResponse != null)
-            {
-                return cachedResponse as CharacterSheet;
-            }
-
-            XmlDocument xmlDoc = Network.GetXml(url);
-            CharacterSheet characterSheet = CharacterSheet.FromXmlDocument(xmlDoc);
-            ResponseCache.Set(url, characterSheet);
-
-            return characterSheet;
+            return HandleRequest(url, new CharacterSheetResponseParser(), ignoreCacheUntil);
         }
 
         /// <summary>
@@ -970,24 +812,15 @@ namespace libeveapi
         /// <returns></returns>
         public static CorporationSheet GetCorporationSheet(int userId, int characterId, string apiKey, int corporationId, bool ignoreCacheUntil)
         {
-            string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}", Constants.ApiPrefix, Constants.CorporationSheet, userId, characterId, apiKey);
+            var url = new ApiRequestUrl(Constants.CorporationSheet);
+            AddCommonCharacterInformation(url, userId, characterId, apiKey);
 
-            if (corporationId != 0)
+            if(corporationId != 0)
             {
-                url = String.Format("{0}&corporationID={1}", url, corporationId);
+                url.AddProperty(ApiRequestUrl.PROPERTY_CORPORATION_ID, corporationId.ToString());
             }
 
-            ApiResponse cachedResponse = ResponseCache.Get(url, ignoreCacheUntil);
-            if (cachedResponse != null)
-            {
-                return cachedResponse as CorporationSheet;
-            }
-
-            XmlDocument xmlDoc = Network.GetXml(url);
-            CorporationSheet corporationSheet = CorporationSheet.FromXmlDocument(xmlDoc);
-            ResponseCache.Set(url, corporationSheet);
-
-            return corporationSheet;
+            return HandleRequest(url, new CorporationSheetResponseParser(), ignoreCacheUntil);
         }
 
         /// <summary>
@@ -1006,19 +839,10 @@ namespace libeveapi
         /// <returns></returns>
         public static ConquerableStationList GetConquerableStationList(bool ignoreCacheUntil)
         {
-            string url = String.Format("{0}{1}?version=2", Constants.ApiPrefix, Constants.ConquerableStationOutpost);
+            var url = new ApiRequestUrl(Constants.ConquerableStationOutpost);
+            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
 
-            ApiResponse cachedResponse = ResponseCache.Get(url, ignoreCacheUntil);
-            if (cachedResponse != null)
-            {
-                return cachedResponse as ConquerableStationList;
-            }
-
-            XmlDocument xmlDoc = Network.GetXml(url);
-            ConquerableStationList outpostList = ConquerableStationList.FromXmlDocument(xmlDoc);
-            ResponseCache.Set(url, outpostList);
-
-            return outpostList;
+            return HandleRequest(url, new ConquerableStationListResponseParser(), ignoreCacheUntil);
         }
 
         /// <summary>
@@ -1037,19 +861,10 @@ namespace libeveapi
         /// <returns></returns>
         public static SkillTree GetSkillTree(bool ignoreCacheUntil)
         {
-            string url = String.Format("{0}{1}?version=1", Constants.ApiPrefix, Constants.SkillTree);
+            var url = new ApiRequestUrl(Constants.SkillTree);
+            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "1");
 
-            ApiResponse cachedResponse = ResponseCache.Get(url, ignoreCacheUntil);
-            if (cachedResponse != null)
-            {
-                return cachedResponse as SkillTree;
-            }
-
-            XmlDocument xmlDoc = Network.GetXml(url);
-            SkillTree skillTree = SkillTree.FromXmlDocument(xmlDoc);
-            ResponseCache.Set(url, skillTree);
-
-            return skillTree;
+            return HandleRequest(url, new SkillTreeResponseParser(), ignoreCacheUntil);
         }
 
         /// <summary>
@@ -1068,19 +883,10 @@ namespace libeveapi
         /// <returns></returns>
         public static AllianceList GetAllianceList(bool ignoreCacheUntil)
         {
-            string url = String.Format("{0}{1}?version=1", Constants.ApiPrefix, Constants.AllianceList);
+            var url = new ApiRequestUrl(Constants.AllianceList);
+            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "1");
 
-            ApiResponse cachedResponse = ResponseCache.Get(url, ignoreCacheUntil);
-            if (cachedResponse != null)
-            {
-                return cachedResponse as AllianceList;
-            }
-
-            XmlDocument xmlDoc = Network.GetXml(url);
-            AllianceList allianceList = AllianceList.FromXmlDocument(xmlDoc);
-            ResponseCache.Set(url, allianceList);
-
-            return allianceList;
+            return HandleRequest(url, new AllianceListResponseParser(), ignoreCacheUntil);
         }
 
         /// <summary>
@@ -1105,19 +911,10 @@ namespace libeveapi
         /// <returns></returns>
         public static SkillInTraining GetSkillInTraining(int userId, int characterId, string apiKey, bool ignoreCacheUntil)
         {
-            string url = String.Format("{0}{1}?userID={2}&characterID={3}&apiKey={4}", Constants.ApiPrefix, Constants.SkillInTraining, userId, characterId, apiKey);
+            var url = new ApiRequestUrl(Constants.SkillInTraining);
+            AddCommonCharacterInformation(url, userId, characterId, apiKey);
 
-            ApiResponse cachedResponse = ResponseCache.Get(url, ignoreCacheUntil);
-            if (cachedResponse != null)
-            {
-                return cachedResponse as SkillInTraining;
-            }
-
-            XmlDocument xmlDoc = Network.GetXml(url);
-            SkillInTraining skillintraining = SkillInTraining.FromXmlDocument(xmlDoc);
-            ResponseCache.Set(url, skillintraining);
-
-            return skillintraining;
+            return HandleRequest(url, new SkillInTrainingResponseParser(), ignoreCacheUntil);
         }
 
         /// <summary>
@@ -1136,8 +933,31 @@ namespace libeveapi
             else
                 imageSize = 64;
 
-            string url = String.Format("{0}?c={1}&s={2}", Constants.ImageFullURL, characterId.ToString(), imageSize.ToString());
+            string url = String.Format("{0}?c={1}&s={2}", Constants.ImageFullURL, characterId, imageSize);
             return Network.GetImage(url);
+        }
+
+        /// <summary>
+        /// Handles a request to the <see cref="ApiRequestHandler{T}" />.
+        /// </summary>
+        /// <param name="url">The <see cref="ApiRequestUrl" /> to which the request should be sent.</param>
+        /// <param name="parser">The <see cref="IApiResponseParser{T}" /> which should be used to parse the response.</param>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired.</param>
+        /// <returns>The appropriate (parsed) <see cref="ApiResponse" /></returns>
+        private static T HandleRequest<T>( ApiRequestUrl url, IApiResponseParser<T> parser, bool ignoreCacheUntil ) where T : ApiResponse
+        {
+            var requestHandler = new ApiRequestHandler<T>(parser, ignoreCacheUntil);
+            return requestHandler.HandleRequest(url);
+        }
+
+        /// <summary>
+        /// Adds the common character information elements to a the request web address.
+        /// </summary>
+        private static void AddCommonCharacterInformation(ApiRequestUrl url, int userId, int characterId, string apiKey)
+        {
+            url.AddProperty(ApiRequestUrl.PROPERTY_USER_ID, userId.ToString());
+            url.AddProperty(ApiRequestUrl.PROPERTY_CHARACTER_ID, characterId.ToString());
+            url.AddProperty(ApiRequestUrl.PROPERTY_API_KEY, apiKey);
         }
     }
 
@@ -1159,7 +979,7 @@ namespace libeveapi
         public ApiResponseErrorException(string code, string message)
             : base(message)
         {
-            this.Code = code;
+            Code = code;
         }
     }
 
