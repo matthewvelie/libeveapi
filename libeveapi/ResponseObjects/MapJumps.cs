@@ -1,9 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Globalization;
-using System.Xml;
-
 namespace libeveapi
 {
     /// <summary>
@@ -21,29 +15,6 @@ namespace libeveapi
         {
             get { return mapSystemJumps; }
             set { mapSystemJumps = value; }
-        }
-
-        /// <summary>
-        /// Create an MapJumps object by parsing an XmlDocument response from the eve api
-        /// </summary>
-        /// <param name="xmlDoc">An XML document containing jump information</param>
-        /// <returns></returns>
-        public static MapJumps FromXmlDocument(XmlDocument xmlDoc)
-        {
-            MapJumps mapJumps = new MapJumps();
-            mapJumps.ParseCommonElements(xmlDoc);
-
-            List<MapSystemItem> systemList = new List<MapSystemItem>();
-            foreach (XmlNode systemRow in xmlDoc.SelectNodes("//rowset[@name='solarSystems']/row"))
-            {
-                MapSystemItem systemData = new MapSystemItem();
-                systemData.SolarSystemId = Convert.ToInt32(systemRow.Attributes["solarSystemID"].InnerText, CultureInfo.InvariantCulture);
-                systemData.ShipJumps = Convert.ToInt32(systemRow.Attributes["shipJumps"].InnerText, CultureInfo.InvariantCulture);
-                systemList.Add(systemData);
-            }
-            mapJumps.MapSystemJumps = systemList.ToArray();
-
-            return mapJumps;
         }
 
         /// <summary>

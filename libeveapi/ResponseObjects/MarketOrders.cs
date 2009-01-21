@@ -1,8 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Globalization;
-using System.Xml;
 
 namespace libeveapi
 {
@@ -21,87 +17,6 @@ namespace libeveapi
         {
             get { return marketOrderItems; }
             set { marketOrderItems = value; }
-        }
-
-        /// <summary>
-        /// Create an MarketOrderList by parsing an XmlDocument response from the eveapi
-        /// </summary>
-        /// <param name="xmlDoc"></param>
-        /// <returns></returns>
-        public static MarketOrders FromXmlDocument(XmlDocument xmlDoc)
-        {
-            MarketOrders MarketOrderList = new MarketOrders();
-            MarketOrderList.ParseCommonElements(xmlDoc);
-
-            List<MarketOrderItem> orders = new List<MarketOrderItem>();
-            foreach (XmlNode node in xmlDoc.SelectNodes("//rowset[@name='orders']/row"))
-            {
-                orders.Add(ParseTransactionRow(node));
-            }
-            MarketOrderList.MarketOrderItems = orders.ToArray();
-
-            return MarketOrderList;
-        }
-
-        /// <summary>
-        /// Create an MarketOrderItem by parsing a single row
-        /// </summary>
-        /// <param name="marketOrderRow"></param>
-        /// <returns></returns>
-        protected static MarketOrderItem ParseTransactionRow(XmlNode marketOrderRow)
-        {
-            MarketOrderItem marketItem = new MarketOrderItem();
-
-            marketItem.OrderId = Convert.ToInt32(marketOrderRow.Attributes["orderID"].InnerText, CultureInfo.InvariantCulture);
-            marketItem.CharId = Convert.ToInt64(marketOrderRow.Attributes["charID"].InnerText, CultureInfo.InvariantCulture);
-            marketItem.StationId = Convert.ToInt64(marketOrderRow.Attributes["stationID"].InnerText, CultureInfo.InvariantCulture);
-            marketItem.VolEntered = Convert.ToInt64(marketOrderRow.Attributes["volEntered"].InnerText, CultureInfo.InvariantCulture);
-            marketItem.VolRemaining = Convert.ToInt64(marketOrderRow.Attributes["volRemaining"].InnerText, CultureInfo.InvariantCulture);
-            marketItem.MinVolume = Convert.ToInt64(marketOrderRow.Attributes["minVolume"].InnerText, CultureInfo.InvariantCulture);
-
-            switch (Convert.ToInt32(marketOrderRow.Attributes["orderState"].InnerText, CultureInfo.InvariantCulture))
-            {
-                case 0:
-                    marketItem.OrderState = MarketOrderState.OpenActive;
-                    break;
-                case 1:
-                    marketItem.OrderState = MarketOrderState.Closed;
-                    break;
-                case 2:
-                    marketItem.OrderState = MarketOrderState.ExpiredFulfilled;
-                    break;
-                case 3:
-                    marketItem.OrderState = MarketOrderState.Canceled;
-                    break;
-                case 4:
-                    marketItem.OrderState = MarketOrderState.Pending;
-                    break;
-                case 5:
-                    marketItem.OrderState = MarketOrderState.CharacterDeleted;
-                    break;
-                default:
-                    break;
-            }
-
-            marketItem.TypeId = Convert.ToInt64(marketOrderRow.Attributes["typeID"].InnerText, CultureInfo.InvariantCulture);
-            marketItem.Range = Convert.ToInt32(marketOrderRow.Attributes["range"].InnerText, CultureInfo.InvariantCulture);
-            marketItem.AccountKey = Convert.ToInt32(marketOrderRow.Attributes["accountKey"].InnerText, CultureInfo.InvariantCulture);
-            marketItem.Duration = Convert.ToInt32(marketOrderRow.Attributes["duration"].InnerText, CultureInfo.InvariantCulture);
-            marketItem.Escrow = Convert.ToDouble(marketOrderRow.Attributes["escrow"].InnerText, CultureInfo.InvariantCulture);
-            marketItem.Price = Convert.ToDouble(marketOrderRow.Attributes["price"].InnerText, CultureInfo.InvariantCulture);
-            marketItem.Bid = Convert.ToBoolean(Convert.ToInt32(marketOrderRow.Attributes["bid"].InnerText, CultureInfo.InvariantCulture), CultureInfo.InvariantCulture);
-            marketItem.Issued = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(marketOrderRow.Attributes["issued"].InnerText);
-            marketItem.IssuedLocal = TimeUtilities.ConvertCCPToLocalTime(marketItem.Issued);
-            if (marketItem.Bid)
-            {
-                marketItem.OrderType = MarketOrderType.Buy;
-            }
-            else
-            {
-                marketItem.OrderType = MarketOrderType.Sell;
-            }
-
-            return marketItem;
         }
 
         /// <summary>

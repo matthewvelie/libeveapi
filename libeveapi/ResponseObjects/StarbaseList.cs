@@ -1,8 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Globalization;
-using System.Xml;
 
 namespace libeveapi
 {
@@ -20,55 +16,6 @@ namespace libeveapi
         {
             get { return starbaseListItems; }
             set { starbaseListItems = value; }
-        }
-
-        /// <summary>
-        /// Create a StarbaseList by parsing an XmlDocument response from the eveapi
-        /// </summary>
-        /// <param name="xmlDoc"></param>
-        /// <returns></returns>
-        public static StarbaseList FromXmlDocument(XmlDocument xmlDoc)
-        {
-            StarbaseList starbaseList = new StarbaseList();
-            starbaseList.ParseCommonElements(xmlDoc);
-
-            List<StarbaseListItem> starbaseListItems = new List<StarbaseListItem>();
-            foreach (XmlNode starbaseNode in xmlDoc.SelectNodes("//rowset[@name='starbases']/row"))
-            {
-                StarbaseListItem starbase = new StarbaseListItem();
-                starbase.ItemId = Convert.ToInt32(starbaseNode.Attributes["itemID"].InnerText, CultureInfo.InvariantCulture);
-                starbase.TypeId = Convert.ToInt32(starbaseNode.Attributes["typeID"].InnerText, CultureInfo.InvariantCulture);
-                starbase.LocationId = Convert.ToInt32(starbaseNode.Attributes["locationID"].InnerText, CultureInfo.InvariantCulture);
-                starbase.MoonId = Convert.ToInt32(starbaseNode.Attributes["moonID"].InnerText, CultureInfo.InvariantCulture);
-                starbase.StateTimestamp = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(starbaseNode.Attributes["stateTimestamp"].InnerText);
-                starbase.OnlineTimestamp = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(starbaseNode.Attributes["onlineTimestamp"].InnerText);
-
-                starbase.StateTimestampLocal = TimeUtilities.ConvertCCPToLocalTime(starbase.StateTimestamp);
-                starbase.OnlineTimestampLocal = TimeUtilities.ConvertCCPToLocalTime(starbase.OnlineTimestamp);
-                
-                switch (Convert.ToInt32(starbaseNode.Attributes["state"].InnerText))
-                {
-                    case 1:
-                        starbase.State = StarbaseState.AnchoredOrOffline;
-                        break;
-                    case 2:
-                        starbase.State = StarbaseState.Onlining;
-                        break;
-                    case 3:
-                        starbase.State = StarbaseState.Reinforced;
-                        break;
-                    case 4:
-                        starbase.State = StarbaseState.Online;
-                        break;
-                    default:
-                        break;
-                }
-
-                starbaseListItems.Add(starbase);
-            }
-
-            starbaseList.StarbaseListItems = starbaseListItems.ToArray();
-            return starbaseList;
         }
 
         /// <summary>

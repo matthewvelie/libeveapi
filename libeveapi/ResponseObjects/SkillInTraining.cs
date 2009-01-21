@@ -1,8 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Globalization;
-using System.Xml;
 
 namespace libeveapi
 {
@@ -108,43 +104,6 @@ namespace libeveapi
         {
             get { return trainingToLevel; }
             set { trainingToLevel = value; }
-        }
-
-        /// <summary>
-        /// Create a SkillIntTraining Object by parsing an XmlDocument
-        /// response for the eveapi
-        /// </summary>
-        /// <param name="xmlDoc">XmlDocument containing the skill in training xml</param>
-        /// <returns></returns>
-        public static SkillInTraining FromXmlDocument(XmlDocument xmlDoc)
-        {
-            SkillInTraining skilltraining = new SkillInTraining();
-            skilltraining.ParseCommonElements(xmlDoc);
-            skilltraining.SkillCurrentlyInTraining = Convert.ToBoolean(Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/skillInTraining").InnerText));
-            if (skilltraining.SkillCurrentlyInTraining)
-            {
-                skilltraining.TrainingEndTime = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(xmlDoc.SelectSingleNode("/eveapi/result/trainingEndTime").InnerText);
-                skilltraining.TrainingStartTime = TimeUtilities.ConvertCCPTimeStringToDateTimeUTC(xmlDoc.SelectSingleNode("/eveapi/result/trainingStartTime").InnerText);
-                skilltraining.TrainingTypeId = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/trainingTypeID").InnerText, CultureInfo.InvariantCulture);
-                skilltraining.TrainingStartSP = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/trainingStartSP").InnerText, CultureInfo.InvariantCulture);
-                skilltraining.TrainingDestinationSP = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/trainingDestinationSP").InnerText, CultureInfo.InvariantCulture);
-                skilltraining.TrainingToLevel = Convert.ToInt32(xmlDoc.SelectSingleNode("/eveapi/result/trainingToLevel").InnerText, CultureInfo.InvariantCulture);
-
-                skilltraining.TrainingEndTimeLocal = TimeUtilities.ConvertCCPToLocalTime(skilltraining.TrainingEndTime);
-                skilltraining.TrainingStartTimeLocal = TimeUtilities.ConvertCCPToLocalTime(skilltraining.TrainingStartTimeLocal);
-            }
-            else
-            {
-                skilltraining.TrainingEndTime = DateTime.MinValue;
-                skilltraining.TrainingStartTime = DateTime.MinValue;
-                skilltraining.TrainingEndTimeLocal = DateTime.MinValue;
-                skilltraining.TrainingStartTimeLocal = DateTime.MinValue;
-                skilltraining.TrainingTypeId = 0;
-                skilltraining.TrainingStartSP = 0;
-                skilltraining.TrainingDestinationSP = 0;
-                skilltraining.TrainingToLevel = 0;
-            }
-            return skilltraining;
         }
     }
 }

@@ -1,9 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Globalization;
-using System.Xml;
-
 namespace libeveapi
 {
     /// <summary>
@@ -20,44 +14,6 @@ namespace libeveapi
         {
             get { return conquerableStations; }
             set { conquerableStations = value; }
-        }
-
-        /// <summary>
-        /// Create an Conquerable Station list by parsing an XmlDocument response from the eveapi
-        /// </summary>
-        /// <param name="xmlDoc"></param>
-        /// <returns></returns>
-        public static ConquerableStationList FromXmlDocument(XmlDocument xmlDoc)
-        {
-            ConquerableStationList stationList = new ConquerableStationList();
-            stationList.ParseCommonElements(xmlDoc);
-
-            List<ConquerableStation> stationItemList = new List<ConquerableStation>();
-            foreach (XmlNode node in xmlDoc.SelectNodes("//rowset[@name='outposts']/row"))
-            {
-                stationItemList.Add(ParseStationRow(node));
-            }
-            stationList.ConquerableStations = stationItemList.ToArray();
-
-            return stationList;
-        }
-
-        /// <summary>
-        /// Create an ConquerableStationItem by parsing a single row
-        /// </summary>
-        /// <param name="stationRow"></param>
-        /// <returns></returns>
-        protected static ConquerableStation ParseStationRow(XmlNode stationRow)
-        {
-            ConquerableStation conquerableStationItem = new ConquerableStation();
-            conquerableStationItem.StationId = Convert.ToInt32(stationRow.Attributes["stationID"].InnerText, CultureInfo.InvariantCulture);
-            conquerableStationItem.StationName = stationRow.Attributes["stationName"].InnerText;
-            conquerableStationItem.StationTypeId = Convert.ToInt32(stationRow.Attributes["stationTypeID"].InnerText, CultureInfo.InvariantCulture);
-            conquerableStationItem.SolarSystemId = Convert.ToInt32(stationRow.Attributes["solarSystemID"].InnerText, CultureInfo.InvariantCulture);
-            conquerableStationItem.CorporationId = Convert.ToInt32(stationRow.Attributes["corporationID"].InnerText, CultureInfo.InvariantCulture);
-            conquerableStationItem.CorporationName = stationRow.Attributes["corporationName"].InnerText;
-
-            return conquerableStationItem;
         }
 
         /// <summary>

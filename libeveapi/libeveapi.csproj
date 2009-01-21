@@ -1,14 +1,34 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.50727</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{16840879-B98B-4860-892E-361B8F7BFF91}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>libeveapi</RootNamespace>
     <AssemblyName>libeveapi</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <PublishUrl>http://localhost/libeveapi/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,6 +56,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiRequestHandler.cs" />
+    <Compile Include="ApiRequestUrl.cs" />
     <Compile Include="ApiResponse.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="EveApi.cs" />
@@ -58,6 +80,30 @@
     <Compile Include="ResponseObjects\IndustryJobs.cs" />
     <Compile Include="ResponseObjects\JournalEntries.cs" />
     <Compile Include="ResponseObjects\MarketOrders.cs" />
+    <Compile Include="ResponseObjects\Parsers\AccountBalanceResponseParser.cs" />
+    <Compile Include="ResponseObjects\Parsers\AllianceListResponseParser.cs" />
+    <Compile Include="ResponseObjects\Parsers\CharacterListResponseParser.cs" />
+    <Compile Include="ResponseObjects\Parsers\CharacterIdNameResponseParser.cs" />
+    <Compile Include="ResponseObjects\Parsers\AssetListResponseParser.cs" />
+    <Compile Include="ResponseObjects\Parsers\CharacterSheetResponseParser.cs" />
+    <Compile Include="ResponseObjects\Parsers\ConquerableStationListResponseParser.cs" />
+    <Compile Include="ResponseObjects\Parsers\CorporationSheetResponseParser.cs" />
+    <Compile Include="ResponseObjects\Parsers\IndustryJobListResponseParser.cs" />
+    <Compile Include="ResponseObjects\Parsers\JournalEntriesResponseParser.cs" />
+    <Compile Include="ResponseObjects\Parsers\KillLogResponseParser.cs" />
+    <Compile Include="ResponseObjects\Parsers\ErrorListResponseParser.cs" />
+    <Compile Include="ResponseObjects\Parsers\MapJumpsResponseParser.cs" />
+    <Compile Include="ResponseObjects\Parsers\MapKillsResponseParser.cs" />
+    <Compile Include="ResponseObjects\Parsers\MapSovereigntyResponseParser.cs" />
+    <Compile Include="ResponseObjects\Parsers\MarketOrdersResponseParser.cs" />
+    <Compile Include="ResponseObjects\Parsers\MemberTrackingResponseParser.cs" />
+    <Compile Include="ResponseObjects\Parsers\RefTypesResponseParser.cs" />
+    <Compile Include="ResponseObjects\Parsers\SkillInTrainingResponseParser.cs" />
+    <Compile Include="ResponseObjects\Parsers\SkillTreeResponseParser.cs" />
+    <Compile Include="ResponseObjects\Parsers\StarbaseDetailResponseParser.cs" />
+    <Compile Include="ResponseObjects\Parsers\StarbaseListResponseParser.cs" />
+    <Compile Include="ResponseObjects\Parsers\IApiResponseParser.cs" />
+    <Compile Include="ResponseObjects\Parsers\WalletTransactionsResponseParser.cs" />
     <Compile Include="ResponseObjects\RefTypes.cs" />
     <Compile Include="ResponseObjects\MemberTracking.cs" />
     <Compile Include="ResponseObjects\SkillInTraining.cs" />
@@ -68,6 +114,33 @@
     <Compile Include="Roles.cs" />
     <Compile Include="SerializableDictionary.cs" />
     <Compile Include="TimeUtilities.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
