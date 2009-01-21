@@ -24,7 +24,7 @@ namespace libeveapi.ResponseObjects.Parsers
                 skilltraining.TrainingToLevel = Convert.ToInt32(xmlDocument.SelectSingleNode("/eveapi/result/trainingToLevel").InnerText, CultureInfo.InvariantCulture);
 
                 skilltraining.TrainingEndTimeLocal = TimeUtilities.ConvertCCPToLocalTime(skilltraining.TrainingEndTime);
-                skilltraining.TrainingStartTimeLocal = TimeUtilities.ConvertCCPToLocalTime(skilltraining.TrainingStartTimeLocal);
+                skilltraining.TrainingStartTimeLocal = TimeUtilities.ConvertCCPToLocalTime(skilltraining.TrainingStartTime);
             }
             else
             {
