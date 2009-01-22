@@ -30,6 +30,7 @@ namespace libeveapi
     [XmlInclude(typeof(CharacterIdName))]
     [XmlInclude(typeof(KillLog))]
     [XmlInclude(typeof(ServerStatus))]
+    [XmlInclude(typeof(MapFacWarSystems))]
     public class ApiResponse
     {
         private string hashedUrl;

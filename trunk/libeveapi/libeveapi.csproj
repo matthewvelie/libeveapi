@@ -72,6 +72,7 @@
     <Compile Include="ResponseObjects\CharacterSheet.cs" />
     <Compile Include="ResponseObjects\ConquerableStation.cs" />
     <Compile Include="ResponseObjects\KillLog.cs" />
+    <Compile Include="ResponseObjects\MapFacWarSystems.cs" />
     <Compile Include="ResponseObjects\MapSovereignty.cs" />
     <Compile Include="ResponseObjects\MapKills.cs" />
     <Compile Include="ResponseObjects\MapJumps.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="ResponseObjects\Parsers\JournalEntriesResponseParser.cs" />
     <Compile Include="ResponseObjects\Parsers\KillLogResponseParser.cs" />
     <Compile Include="ResponseObjects\Parsers\ErrorListResponseParser.cs" />
+    <Compile Include="ResponseObjects\Parsers\MapFacWarSystemsParser.cs" />
     <Compile Include="ResponseObjects\Parsers\MapJumpsResponseParser.cs" />
     <Compile Include="ResponseObjects\Parsers\MapKillsResponseParser.cs" />
     <Compile Include="ResponseObjects\Parsers\MapSovereigntyResponseParser.cs" />

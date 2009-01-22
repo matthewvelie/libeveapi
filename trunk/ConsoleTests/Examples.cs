@@ -13,7 +13,21 @@ namespace ConsoleTests
         {
             UseLocalUrls();
             ResponseCache.Clear();
-            ServerStatus();
+            MapFactionWarSystemsExample();
+        }
+
+        public static void MapFactionWarSystemsExample()
+        {
+            MapFacWarSystems mapFacWarSystems = EveApi.GetFactionWarSystems();
+
+            Console.WriteLine("Currently occupied by Gallente Federation:");
+            foreach (MapFacWarSystems.FactionWarSystem system in mapFacWarSystems.FactionWarSystems)
+            {
+                if (system.OccupyingFactionId == 500004)
+                {
+                    Console.WriteLine(system.SolarSystemName);
+                }
+            }
         }
 
         public static void ServerStatus()
