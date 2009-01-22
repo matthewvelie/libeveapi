@@ -13,11 +13,22 @@ namespace ConsoleTests
         {
             UseLocalUrls();
             ResponseCache.Clear();
-            AllianceList al = EveApi.GetAllianceList();
-            ResponseCache.Save("ResponseCache.xml");
-            ResponseCache.Clear();
-            ResponseCache.Load("ResponseCache.xml");
-            AllianceList cal = EveApi.GetAllianceList();
+            ServerStatus();
+        }
+
+        public static void ServerStatus()
+        {
+            ServerStatus serverStatus = EveApi.GetServerStatus();
+
+            if (serverStatus.ServerOpen)
+            {
+                Console.WriteLine("Tranquility is currently up");
+                Console.WriteLine("There are currently {0} players online", serverStatus.OnlinePlayers);
+            }
+            else
+            {
+                Console.WriteLine("Tranquility is currently down");
+            }
         }
 
         public static void UseLocalUrls()
