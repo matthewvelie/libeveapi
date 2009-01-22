@@ -28,6 +28,7 @@ All the pages listed below are accurate but some new features may not be documen
   * [MarketOrders Market Orders] - A list of market orders by a character or corporation.
   * [MapJumps Map: Jumps] - Represents the number of jumps per system from the eve api.
   * [MapKills Map: Kills] - Represents the number of kills per system from the eve api.
+  * [MapOccupancy Map: Occupancy] - List of contestable solar systems and the faction currently occupying them.
   * [MapSovereignty Map: Sovereignty] - Returns a list of solarsystems and what faction or alliance controls them.
   * [WalletTransactions Market / Wallet Transactions] - Market / Wallet transactions for a character or corporation.
   * [MemberTracking Member Tracking] - Detailed current information about the members of a corporation.
