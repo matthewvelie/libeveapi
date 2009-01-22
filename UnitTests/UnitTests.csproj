@@ -52,6 +52,7 @@
     <Compile Include="CharacterSheetTests.cs" />
     <Compile Include="ConquerableStationTests.cs" />
     <Compile Include="KillLogTests.cs" />
+    <Compile Include="MapFacWarSystemsTests.cs" />
     <Compile Include="MapSovereigntyTests.cs" />
     <Compile Include="MapKillsTests.cs" />
     <Compile Include="CorporationSheetTests.cs" />

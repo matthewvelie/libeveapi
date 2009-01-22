@@ -958,6 +958,26 @@ namespace libeveapi
         }
 
         /// <summary>
+        /// Get a list of contestable solar systems and the NPC faction currently occupying them
+        /// </summary>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns></returns>
+        public static MapFacWarSystems GetFactionWarSystems(bool ignoreCacheUntil)
+        {
+            var url = new ApiRequestUrl(Constants.MapFactionWarSystems);
+            return HandleRequest(url, new MapFacWarSystemsParser(), ignoreCacheUntil);
+        }
+
+        /// <summary>
+        /// Get a list of contestable solar systems and the NPC faction currently occupying them
+        /// </summary>
+        /// <returns></returns>
+        public static MapFacWarSystems GetFactionWarSystems()
+        {
+            return GetFactionWarSystems(false);
+        }
+
+        /// <summary>
         /// Handles a request to the <see cref="ApiRequestHandler{T}" />.
         /// </summary>
         /// <param name="url">The <see cref="ApiRequestUrl" /> to which the request should be sent.</param>

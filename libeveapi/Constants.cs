@@ -143,7 +143,10 @@ namespace libeveapi
         /// The location of the current eve skill tree xml file
         /// </summary>
         public static string ServerStatus = "/Server/ServerStatus.xml.aspx";
-
+        /// <summary>
+        /// A list of contestable solar systems and the NPD faction currently occupying them
+        /// </summary>
+        public static string MapFactionWarSystems = "/map/FacWarSystems.xml.aspx";
         /// <summary>
         /// Not part of the eve-api - used for unit tests
         /// </summary>
