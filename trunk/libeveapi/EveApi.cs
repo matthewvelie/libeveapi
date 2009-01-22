@@ -938,6 +938,26 @@ namespace libeveapi
         }
 
         /// <summary>
+        /// Retrieve current Tranquility status
+        /// </summary>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns></returns>
+        public static ServerStatus GetServerStatus(bool ignoreCacheUntil)
+        {
+            var url = new ApiRequestUrl(Constants.ServerStatus);
+            return HandleRequest(url, new ServerStatusResponseParser(), ignoreCacheUntil);
+        }
+
+        /// <summary>
+        /// Retrieve current Tranquility status
+        /// </summary>
+        /// <returns></returns>
+        public static ServerStatus GetServerStatus()
+        {
+            return GetServerStatus(false);
+        }
+
+        /// <summary>
         /// Handles a request to the <see cref="ApiRequestHandler{T}" />.
         /// </summary>
         /// <param name="url">The <see cref="ApiRequestUrl" /> to which the request should be sent.</param>

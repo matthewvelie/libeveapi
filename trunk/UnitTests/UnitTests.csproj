@@ -66,6 +66,7 @@
     <Compile Include="RefTypesTests.cs" />
     <Compile Include="ResponseCacheTests.cs" />
     <Compile Include="RolesTests.cs" />
+    <Compile Include="ServerStatusTests.cs" />
     <Compile Include="SkillInTrainingTests.cs" />
     <Compile Include="SkillTreeTests.cs" />
     <Compile Include="StarbaseDetailTests.cs" />
