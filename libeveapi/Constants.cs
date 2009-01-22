@@ -139,6 +139,10 @@ namespace libeveapi
         /// The FULL PATH to the image generator
         /// </summary>
         public static string ImageFullURL = "http://img.eve.is/serv.asp";
+        /// <summary>
+        /// The location of the current eve skill tree xml file
+        /// </summary>
+        public static string ServerStatus = "/Server/ServerStatus.xml.aspx";
 
         /// <summary>
         /// Not part of the eve-api - used for unit tests
