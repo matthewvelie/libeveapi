@@ -58,11 +58,11 @@ namespace libeveapi
         /// <summary>
         /// The location of the character's journal entries xml file
         /// </summary>
-        public static string CharJournalEntries = "/char/JournalEntries.xml.aspx";
+        public static string CharJournalEntries = "/char/WalletJournal.xml.aspx";
         /// <summary>
         /// The location of the corporation's journal entries xml file
         /// </summary>
-        public static string CorpJournalEntries = "/corp/JournalEntries.xml.aspx";
+        public static string CorpJournalEntries = "/corp/WalletJournal.xml.aspx";
         /// <summary>
         /// The location of the character's wallet transaction xml file
         /// </summary>
