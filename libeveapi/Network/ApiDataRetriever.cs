@@ -53,7 +53,7 @@ namespace libeveapi
             Debug.Assert( converter != null );
 
             WebClient wc = new WebClient();
-            wc.Headers.Add( "user-agent", networkSettings.UserAgent );
+            wc.Headers.Add( "user-agent", networkSettings.FullUserAgentName );
             if (networkSettings.Proxy != null)
             {
                 wc.Proxy = networkSettings.Proxy;

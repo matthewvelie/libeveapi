@@ -10,6 +10,8 @@ namespace libeveapi
     /// </summary>
     public class EveApi
     {
+        private static IApiNetworkSettings networkSettings;
+
         /// <summary>
         /// Sets a proxy server for the connection to run through
         /// </summary>
@@ -18,7 +20,7 @@ namespace libeveapi
         /// <returns></returns>
         public static void SetProxy(string url, int port)
         {
-            Network.eveNetworkClientSettings.proxy = new WebProxy(url, port);
+            SetProxy( url, port, null, null );
         }
 
         /// <summary>
@@ -31,8 +33,15 @@ namespace libeveapi
         /// <returns></returns>
         public static void SetProxy(string url, int port, string username, string password)
         {
-            Network.eveNetworkClientSettings.proxy = new WebProxy(url, port);
-            Network.eveNetworkClientSettings.proxy.Credentials = new NetworkCredential(username, password);
+            lock( networkSettings )
+            {
+                if( networkSettings == null )
+                {
+                    networkSettings = new ApiNetworkSettings();
+                }
+
+                networkSettings.SetProxySettings( url, port, username, password );
+            }
         }
 
         /// <summary>
@@ -41,7 +50,22 @@ namespace libeveapi
         /// <returns></returns>
         public static void UnsetProxy()
         {
-            Network.eveNetworkClientSettings.proxy = null;
+            lock( networkSettings )
+            {
+                networkSettings.Proxy = null;
+            }
+            
+        }
+
+        ///<summary>
+        /// Sets the NetworkSettings the external application wishes to use.
+        /// This method should only be used when the external application developer wishes 
+        /// to provide his own implementation of the <see cref="IApiNetworkSettings"/> interface.
+        ///</summary>
+        ///<param name="settings"></param>
+        public static void SetNetworkSettings( IApiNetworkSettings settings )
+        {
+            networkSettings = settings;
         }
 
         /// <summary>
@@ -51,7 +75,10 @@ namespace libeveapi
         /// <returns></returns>
         public static void SetUserAgent(string userAgent)
         {
-            Network.eveNetworkClientSettings.userAgent = "libEveApi/1 (" + userAgent + ")";
+            lock( networkSettings )
+            {
+                networkSettings.UserAgent = userAgent;
+            }
         }
 
         /// <summary>
