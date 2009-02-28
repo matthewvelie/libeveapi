@@ -2,37 +2,38 @@ using System.Net;
 
 namespace libeveapi
 {
-    public class ApiNetworkSettings : IApiNetworkSettings
+    ///<summary>
+    /// Maintains a list of network settings relevant for retrieving API details.
+    ///</summary>
+    internal class ApiNetworkSettings : IApiNetworkSettings
     {
         private readonly string libEveApiAgent = "libEveApi/" +
                                                  System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-        private readonly IWebProxy proxy;
-        private readonly string userAgent;
 
-        public ApiNetworkSettings( IWebProxy proxy, string userAgent )
-        {
-            this.proxy = proxy;
-            this.userAgent = userAgent;
-        }
-
-        public string UserAgent
+        public string FullUserAgentName
         {
             get
             {
-                if( string.IsNullOrEmpty( userAgent ) )
+                if( string.IsNullOrEmpty( UserAgent ) )
                 {
                     return libEveApiAgent;
                 }
                 
-                return string.Format( "{0}({1})", libEveApiAgent, userAgent );
+                return string.Format( "{0}({1})", libEveApiAgent, UserAgent );
             }
         }
 
-        public IWebProxy Proxy
+        public string UserAgent { get; set; }
+
+        public IWebProxy Proxy { get; set; }
+
+        public void SetProxySettings( string host, int port, string userName, string password )
         {
-            get
+            Proxy = new WebProxy( host, port );
+
+            if( !string.IsNullOrEmpty( userName ) )
             {
-                return proxy;
+                Proxy.Credentials = new NetworkCredential( userName, password );
             }
         }
     }
