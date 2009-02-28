@@ -15,7 +15,10 @@ namespace libeveapi
 
         public ApiDataRetriever( IApiNetworkSettings networkSettings )
         {
-            Debug.Assert( networkSettings != null );
+            if( networkSettings == null )
+            {
+                networkSettings = new ApiNetworkSettings();
+            }
 
             this.networkSettings = networkSettings;
         }

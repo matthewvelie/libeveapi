@@ -961,7 +961,7 @@ namespace libeveapi
                 imageSize = 64;
 
             string url = String.Format("{0}?c={1}&s={2}", Constants.ImageFullURL, characterId, imageSize);
-            return Network.GetImage(url);
+            return new ApiDataRetriever( networkSettings ).GetImage( new Uri( url ) );
         }
 
         /// <summary>
@@ -1013,7 +1013,7 @@ namespace libeveapi
         /// <returns>The appropriate (parsed) <see cref="ApiResponse" /></returns>
         private static T HandleRequest<T>( ApiRequestUrl url, IApiResponseParser<T> parser, bool ignoreCacheUntil ) where T : ApiResponse
         {
-            var requestHandler = new ApiRequestHandler<T>(parser, ignoreCacheUntil);
+            var requestHandler = new ApiRequestHandler<T>( networkSettings, parser, ignoreCacheUntil);
             return requestHandler.HandleRequest(url);
         }
 
