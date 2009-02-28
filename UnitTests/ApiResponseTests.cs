@@ -37,7 +37,7 @@ namespace UnitTests
         [ExpectedException(typeof(ApiResponseErrorException))]
         public void ApiResponseError()
         {
-            XmlDocument xmlDoc = Network.GetXml(Constants.ApiPrefix + Constants.ExampleError);
+            XmlDocument xmlDoc = new ApiDataRetriever( null ).GetXml( new Uri( Constants.ApiPrefix + Constants.ExampleError ) );
             ApiResponse apiResponse = new ApiResponse();
             apiResponse.ParseCommonElements(xmlDoc);
         }

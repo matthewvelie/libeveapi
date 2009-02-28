@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 using System.Xml;
 using libeveapi.ResponseObjects.Parsers;
@@ -10,21 +11,24 @@ namespace libeveapi
     ///<typeparam name="T">The <see cref="ApiResponse"/> type which the <see cref="ApiRequestHandler{T}"/> should handle.</typeparam>
     internal class ApiRequestHandler<T> where T : ApiResponse
     {
+        private readonly IApiNetworkSettings networkSettings;
         private readonly IApiResponseParser<T> parser;
         private readonly bool ignoreCacheUntil;
 
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="networkSettings">The network settings to use for performing the external request.</param>
         /// <param name="parser">
         /// The <see cref="IApiResponseParser{T}"/> which should handle 
         /// conversion from a <see cref="XmlDocument"/> to an <see cref="ApiResponse"/>
         /// Pre-condition: the given parser should not be null.</param>
         /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
-        internal ApiRequestHandler( IApiResponseParser<T> parser, bool ignoreCacheUntil)
+        internal ApiRequestHandler( IApiNetworkSettings networkSettings, IApiResponseParser<T> parser, bool ignoreCacheUntil )
         {
             Debug.Assert(parser != null);
 
+            this.networkSettings = networkSettings;
             this.parser = parser;
             this.ignoreCacheUntil = ignoreCacheUntil;
         }
@@ -43,8 +47,8 @@ namespace libeveapi
             {
                 return (T)cachedResponse;
             }
-
-            XmlDocument xmlDocument = Network.GetXml(url);
+            
+            XmlDocument xmlDocument = new ApiDataRetriever( networkSettings ).GetXml( new Uri( url ) );
             T responseObject = parser.Parse(xmlDocument);
             ResponseCache.Set(url, responseObject);
 
