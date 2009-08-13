@@ -613,7 +613,21 @@ namespace libeveapi
         /// <returns></returns>
         public static WalletTransactions GetWalletTransactionsList(WalletTransactionListType walletTransactionType, int userId, int characterId, string fullApiKey)
         {
-            return GetWalletTransactionsList(walletTransactionType, userId, characterId, fullApiKey, 0, false);
+            return GetWalletTransactionsList(walletTransactionType, userId, characterId, fullApiKey, 0, false, WalletDivision.Master);
+        }
+
+        /// <summary>
+        /// Returns a list of market transactions (wallet transactions) owned by a character or corporation.
+        /// </summary>
+        /// <param name="walletTransactionType"><see cref="WalletTransactionListType" /></param>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullApiKey">Full access API key of account</param>
+        /// <param name="walletDivision">The (corporation) wallet division to retrieve transaction entries from</param>
+        /// <returns></returns>
+        public static WalletTransactions GetWalletTransactionsList(WalletTransactionListType walletTransactionType, int userId, int characterId, string fullApiKey, WalletDivision walletDivision)
+        {
+            return GetWalletTransactionsList(walletTransactionType, userId, characterId, fullApiKey, 0, false, walletDivision);
         }
 
         /// <summary>
@@ -627,7 +641,22 @@ namespace libeveapi
         /// <returns></returns>
         public static WalletTransactions GetWalletTransactionsList(WalletTransactionListType walletTransactionType, int userId, int characterId, string fullApiKey, bool ignoreCacheUntil)
         {
-            return GetWalletTransactionsList(walletTransactionType, userId, characterId, fullApiKey, 0, ignoreCacheUntil);
+            return GetWalletTransactionsList(walletTransactionType, userId, characterId, fullApiKey, 0, ignoreCacheUntil, WalletDivision.Master);
+        }
+
+        /// <summary>
+        /// Returns a list of market transactions (wallet transactions) owned by a character or corporation.
+        /// </summary>
+        /// <param name="walletTransactionType"><see cref="WalletTransactionListType" /></param>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullApiKey">Full access API key of account</param>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <param name="walletDivision">The (corporation) wallet division to retrieve transaction entries from</param>
+        /// <returns></returns>
+        public static WalletTransactions GetWalletTransactionsList(WalletTransactionListType walletTransactionType, int userId, int characterId, string fullApiKey, bool ignoreCacheUntil, WalletDivision walletDivision)
+        {
+            return GetWalletTransactionsList(walletTransactionType, userId, characterId, fullApiKey, 0, ignoreCacheUntil, walletDivision);
         }
 
         /// <summary>
@@ -641,7 +670,37 @@ namespace libeveapi
         /// <returns></returns>
         public static WalletTransactions GetWalletTransactionsList(WalletTransactionListType walletTransactionType, int userId, int characterId, string fullApiKey, int beforeTransId)
         {
-            return GetWalletTransactionsList(walletTransactionType, userId, characterId, fullApiKey, beforeTransId, false);
+            return GetWalletTransactionsList(walletTransactionType, userId, characterId, fullApiKey, beforeTransId, false, WalletDivision.Master);
+        }
+
+        /// <summary>
+        /// Returns a list of market transactions (wallet transactions) owned by a character or corporation.
+        /// </summary>
+        /// <param name="walletTransactionType"><see cref="WalletTransactionListType" /></param>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullApiKey">Full access API key of account</param>
+        /// <param name="beforeTransId">retrieve up to 1000 entries after this transactionId</param>
+        /// <param name="walletDivision">The (corporation) wallet division to retrieve transaction entries from</param>
+        /// <returns></returns>
+        public static WalletTransactions GetWalletTransactionsList(WalletTransactionListType walletTransactionType, int userId, int characterId, string fullApiKey, int beforeTransId, WalletDivision walletDivision)
+        {
+            return GetWalletTransactionsList(walletTransactionType, userId, characterId, fullApiKey, beforeTransId, false, walletDivision);
+        }
+
+                /// <summary>
+        /// Returns a list of market transactions (wallet transactions) owned by a character or corporation.
+        /// </summary>
+        /// <param name="walletTransactionType"><see cref="WalletTransactionListType" /></param>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullApiKey">Full access API key of account</param>
+        /// <param name="beforeTransId">retrieve up to 1000 entries after this transactionId</param>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns></returns>
+        public static WalletTransactions GetWalletTransactionsList(WalletTransactionListType walletTransactionType, int userId, int characterId, string fullApiKey, int beforeTransId, bool ignoreCacheUntil)
+        {
+            return GetWalletTransactionsList(walletTransactionType, userId, characterId, fullApiKey, beforeTransId, ignoreCacheUntil, WalletDivision.Master);
         }
 
         /// <summary>
@@ -653,8 +712,9 @@ namespace libeveapi
         /// <param name="fullApiKey">Full access API key of account</param>
         /// <param name="beforeTransId">retrieve up to 1000 entries after this transactionId</param>
         /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <param name="walletDivision">The (corporation) wallet division to retrieve transaction entries from</param>
         /// <returns></returns>
-        public static WalletTransactions GetWalletTransactionsList(WalletTransactionListType walletTransactionType, int userId, int characterId, string fullApiKey, int beforeTransId, bool ignoreCacheUntil)
+        public static WalletTransactions GetWalletTransactionsList(WalletTransactionListType walletTransactionType, int userId, int characterId, string fullApiKey, int beforeTransId, bool ignoreCacheUntil, WalletDivision walletDivision)
         {
             string apiPath = string.Empty;
             switch (walletTransactionType)
@@ -676,6 +736,11 @@ namespace libeveapi
             }
 
             url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
+
+            if(walletTransactionType == WalletTransactionListType.Corporation)
+            {
+                url.AddProperty(ApiRequestUrl.PROPERTY_ACCOUNT_KEY, ((int)walletDivision).ToString());
+            }
 
             return HandleRequest(url, new WalletTransactionsResponseParser(), ignoreCacheUntil);
         }
