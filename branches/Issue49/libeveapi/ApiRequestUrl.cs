@@ -18,6 +18,7 @@ namespace libeveapi
         internal const string PROPERTY_BEFORE_REF_ID = "beforeRefID";
         internal const string PROPERTY_BEFORE_TRANSACTION_ID = "beforeTransID";
         internal const string PROPERTY_CORPORATION_ID = "corporationID";
+        internal const string PROPERTY_ACCOUNT_KEY = "accountKey";
 
         private readonly string requestPage;
         private readonly List<KeyValuePair<string, string>> customProperties = new List<KeyValuePair<string, string>>();

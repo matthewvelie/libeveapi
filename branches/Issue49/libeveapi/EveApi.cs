@@ -431,7 +431,21 @@ namespace libeveapi
         /// <returns></returns>
         public static JournalEntries GetJournalEntryList(JournalEntryType journalEntriesType, int userId, int characterId, string fullApiKey)
         {
-            return GetJournalEntryList(journalEntriesType, userId, characterId, fullApiKey, 0, false);
+            return GetJournalEntryList(journalEntriesType, userId, characterId, fullApiKey, 0, false, WalletDivision.Master);
+        }
+
+        /// <summary>
+        /// Returns a list of journal entries owned by a character or corporation.
+        /// </summary>
+        /// <param name="journalEntriesType"><see cref="JournalEntryType" /></param>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullApiKey">Full access API key of account</param>
+        /// <param name="walletDivision">The (corporation) wallet division to retrieve journal entries from</param>
+        /// <returns></returns>
+        public static JournalEntries GetJournalEntryList(JournalEntryType journalEntriesType, int userId, int characterId, string fullApiKey, WalletDivision walletDivision)
+        {
+            return GetJournalEntryList(journalEntriesType, userId, characterId, fullApiKey, 0, false, walletDivision);
         }
 
         /// <summary>
@@ -445,7 +459,22 @@ namespace libeveapi
         /// <returns></returns>
         public static JournalEntries GetJournalEntryList(JournalEntryType journalEntriesType, int userId, int characterId, string fullApiKey, bool ignoreCacheUntil)
         {
-            return GetJournalEntryList(journalEntriesType, userId, characterId, fullApiKey, 0, ignoreCacheUntil);
+            return GetJournalEntryList(journalEntriesType, userId, characterId, fullApiKey, 0, ignoreCacheUntil, WalletDivision.Master);
+        }
+
+        /// <summary>
+        /// Returns a list of journal entries owned by a character or corporation.
+        /// </summary>
+        /// <param name="journalEntriesType"><see cref="JournalEntryType" /></param>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullApiKey">Full access API key of account</param>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <param name="walletDivision">The (corporation) wallet division to retrieve journal entries from</param>
+        /// <returns></returns>
+        public static JournalEntries GetJournalEntryList(JournalEntryType journalEntriesType, int userId, int characterId, string fullApiKey, bool ignoreCacheUntil, WalletDivision walletDivision)
+        {
+            return GetJournalEntryList(journalEntriesType, userId, characterId, fullApiKey, 0, ignoreCacheUntil, walletDivision);
         }
 
         /// <summary>
@@ -459,7 +488,22 @@ namespace libeveapi
         /// <returns></returns>
         public static JournalEntries GetJournalEntryList(JournalEntryType journalEntriesType, int userId, int characterId, string fullApiKey, int beforeRefId)
         {
-            return GetJournalEntryList(journalEntriesType, userId, characterId, fullApiKey, beforeRefId, false);
+            return GetJournalEntryList(journalEntriesType, userId, characterId, fullApiKey, beforeRefId, false, WalletDivision.Master);
+        }
+
+        /// <summary>
+        /// Returns a list of journal entries owned by a character or corporation.
+        /// </summary>
+        /// <param name="journalEntriesType"><see cref="JournalEntryType" /></param>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullApiKey">Full access API key of account</param>
+        /// <param name="beforeRefId">Retrieve entries after this refId</param>
+        /// <param name="walletDivision">The (corporation) wallet division to retrieve journal entries from</param>
+        /// <returns></returns>
+        public static JournalEntries GetJournalEntryList(JournalEntryType journalEntriesType, int userId, int characterId, string fullApiKey, int beforeRefId, WalletDivision walletDivision)
+        {
+            return GetJournalEntryList(journalEntriesType, userId, characterId, fullApiKey, beforeRefId, false, walletDivision);
         }
 
         /// <summary>
@@ -474,8 +518,7 @@ namespace libeveapi
         /// <returns></returns>
         public static JournalEntries GetJournalEntryList(JournalEntryType journalEntriesType, int userId, int characterId, string fullApiKey, int beforeRefId, bool ignoreCacheUntil)
         {
-            return GetJournalEntryList( journalEntriesType, userId, characterId, fullApiKey, beforeRefId,
-                                        ignoreCacheUntil, WalletDivision.Master );
+            return GetJournalEntryList(journalEntriesType, userId, characterId, fullApiKey, beforeRefId, ignoreCacheUntil, WalletDivision.Master);
         }
 
         /// <summary>
@@ -487,8 +530,9 @@ namespace libeveapi
         /// <param name="fullApiKey">Full access API key of account</param>
         /// <param name="beforeRefId">Retrieve entries after this refId</param>
         /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <param name="walletDivision">The (corporation) wallet division to retrieve journal entries from</param>
         /// <returns></returns>
-        public static JournalEntries GetJournalEntryList(JournalEntryType journalEntriesType, int userId, int characterId, string fullApiKey, int beforeRefId, bool ignoreCacheUntil, WalletDivision walletDivision )
+        public static JournalEntries GetJournalEntryList(JournalEntryType journalEntriesType, int userId, int characterId, string fullApiKey, int beforeRefId, bool ignoreCacheUntil, WalletDivision walletDivision)
         {
             string apiPath = string.Empty;
             switch (journalEntriesType)
@@ -507,6 +551,11 @@ namespace libeveapi
             if (beforeRefId != 0)
             {
                 url.AddProperty(ApiRequestUrl.PROPERTY_BEFORE_REF_ID, beforeRefId.ToString());
+            }
+
+            if(journalEntriesType == JournalEntryType.Corporation)
+            {
+                url.AddProperty(ApiRequestUrl.PROPERTY_ACCOUNT_KEY, ((int)walletDivision).ToString());
             }
 
             return HandleRequest(url, new JournalEntriesResponseParser(), ignoreCacheUntil);
