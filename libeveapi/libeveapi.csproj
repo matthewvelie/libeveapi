@@ -118,6 +118,7 @@
     <Compile Include="Roles.cs" />
     <Compile Include="SerializableDictionary.cs" />
     <Compile Include="TimeUtilities.cs" />
+    <Compile Include="WalletDivision.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
