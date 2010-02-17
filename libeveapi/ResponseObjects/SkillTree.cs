@@ -9,16 +9,13 @@ namespace libeveapi
         private SkillGroup[] skillGroups = new SkillGroup[0];
 
         /// <summary>
-        /// List of Skills
+        /// 
         /// </summary>
         public Skill[] Skills
         {
             get { return skills; }
             set { skills = value; }
         }
-        /// <summary>
-        /// List of Skill Groups
-        /// </summary>
         public SkillGroup[] SkillGroups
         {
             get { return skillGroups; }

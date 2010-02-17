@@ -69,7 +69,6 @@
     <Compile Include="RolesTests.cs" />
     <Compile Include="ServerStatusTests.cs" />
     <Compile Include="SkillInTrainingTests.cs" />
-    <Compile Include="SkillQueueTests.cs" />
     <Compile Include="SkillTreeTests.cs" />
     <Compile Include="StarbaseDetailTests.cs" />
     <Compile Include="StarbaseListTests.cs" />

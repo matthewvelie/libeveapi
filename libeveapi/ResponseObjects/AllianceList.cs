@@ -2,9 +2,6 @@ using System;
 
 namespace libeveapi
 {
-    /// <summary>
-    /// List of Alliances
-    /// </summary>
     public class AllianceList : ApiResponse
     {
         private AllianceListItem[] allianceListItems = new AllianceListItem[0];

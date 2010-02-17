@@ -8,9 +8,6 @@
     {
         private FactionWarSystem[] factionWarSystems = new FactionWarSystem[0];
 
-        /// <summary>
-        /// List of Faction War Systems
-        /// </summary>
         public FactionWarSystem[] FactionWarSystems
         {
             get { return factionWarSystems; }

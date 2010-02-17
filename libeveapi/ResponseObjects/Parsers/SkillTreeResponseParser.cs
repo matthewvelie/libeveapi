@@ -14,7 +14,6 @@ namespace libeveapi.ResponseObjects.Parsers
         {
             SkillTree skillTree = new SkillTree();
 
-            skillTree.ResponseXml = xmlDocument;
             // Skill Groups
             List<SkillTree.SkillGroup> parsedSkillGroups = new List<SkillTree.SkillGroup>();
             foreach (XmlNode row in xmlDocument.SelectNodes("//rowset[@name='skillGroups']/row"))
