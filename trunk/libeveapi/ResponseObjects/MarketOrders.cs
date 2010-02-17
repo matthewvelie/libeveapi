@@ -24,23 +24,23 @@ namespace libeveapi
         /// </summary>
         public class MarketOrderItem
         {
-            public MarketOrderType orderType;
-            public int orderId;
-            public long charId;
-            public long stationId;
-            public long volEntered;
-            public long volRemaining;
-            public long minVolume;
-            public MarketOrderState orderState;
-            public long typeId;
-            public int range;
-            public int accountKey;
-            public int duration;
-            public double escrow;
-            public double price;
-            public bool bid;
-            public DateTime issued;
-            public DateTime issuedLocal;
+            private MarketOrderType orderType;
+            private int orderId;
+            private long charId;
+            private long stationId;
+            private long volEntered;
+            private long volRemaining;
+            private long minVolume;
+            private MarketOrderState orderState;
+            private long typeId;
+            private int range;
+            private int accountKey;
+            private int duration;
+            private double escrow;
+            private double price;
+            private bool bid;
+            private DateTime issued;
+            private DateTime issuedLocal;
 
             /// <summary>
             /// Order type (Buy or Sell)

@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Xml;
 using libeveapi.ResponseObjects.Parsers;
+using System.IO;
 
 namespace libeveapi
 {

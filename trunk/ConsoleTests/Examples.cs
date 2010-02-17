@@ -11,9 +11,13 @@ namespace ConsoleTests
     {
         public static void Main(String[] args)
         {
+            Console.WriteLine("*******\nExample\n*******\n");
             UseLocalUrls();
             ResponseCache.Clear();
-            MapFactionWarSystemsExample();
+            SkillQueueExample();
+
+            SkillInTrainingExample();
+            ResponseCache.Save("ResponseCache.xml");
         }
 
         public static void MapFactionWarSystemsExample()
@@ -101,7 +105,7 @@ namespace ConsoleTests
             MapSovereignty ms = EveApi.GetMapSovereignty();
             foreach (MapSovereignty.MapSovereigntyItem msi in ms.MapSystemSovereigntyItems)
             {
-                Console.WriteLine("System Name: {0} Sovereignty Level: {1}", msi.SolarSystemName, msi.SovereigntyLevel);
+                Console.WriteLine("System Name: {0} FactionId: {1}", msi.SolarSystemName, msi.FactionId);
             }
         }
 
@@ -179,6 +183,25 @@ namespace ConsoleTests
                 Console.WriteLine("You should start a skill training!");
             }
         }
+
+        public static void SkillQueueExample()
+        {
+            SkillQueue skillQueue = EveApi.GetSkillQueue(1234, 1234, "apiKey");
+            foreach (SkillQueue.Skill skill in skillQueue.SkillList)
+            {
+                Console.WriteLine("Queue Position: {0}", skill.QueuePosition);
+                Console.WriteLine("Skill ID: {0}", skill.TrainingTypeId);
+                Console.WriteLine("Skill Level: {0}", skill.TrainingToLevel);
+                Console.WriteLine("Start SP: {0}", skill.TrainingStartSP);
+                Console.WriteLine("End SP: {0}", skill.TrainingEndSP);
+                Console.WriteLine("StartTime: {0}", skill.TrainingStartTime);
+                Console.WriteLine("EndTime: {0}", skill.TrainingEndTime);
+                Console.WriteLine("Start Local: {0}", skill.TrainingStartTimeLocal);
+                Console.WriteLine("End Local: {0}", skill.TrainingEndTimeLocal);
+                Console.WriteLine("");
+            }
+        }
+
         public static void IndustryJobListExample()
         {
             IndustryJobList ijl = EveApi.GetIndustryJobList(IndustryJobListType.Corporation, 1234, 5678, "fullApiKey");

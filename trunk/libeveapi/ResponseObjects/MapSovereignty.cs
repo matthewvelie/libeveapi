@@ -24,13 +24,13 @@ namespace libeveapi
         {
             private int solarSystemId;
             private int allianceId;
-            private int constellationSovereignty;
-            private int sovereigntyLevel;
             private int factionId;
             private string solarSystemName;
+            private int corporationID;
 
             /// <summary>
             /// The unique identification number of a solar system
+            /// Solar System details located in the table mapSolarSystems of the CCP Database Dump
             /// </summary>
             public int SolarSystemId
             {
@@ -40,6 +40,7 @@ namespace libeveapi
 
             /// <summary>
             /// The Id of the alliance that has sovereignty of this solar system, or 0 if nobody has sovereignty.
+            /// The Alliance List provides a list of the alliances. 
             /// </summary>
             public int AllianceId
             {
@@ -48,25 +49,8 @@ namespace libeveapi
             }
 
             /// <summary>
-            /// The Id of the alliance that has sovereignty of this constellation, or 0 if nobody has constellation sovereignty.
-            /// </summary>
-            public int ConstellationSovereignty
-            {
-                get { return constellationSovereignty; }
-                set { constellationSovereignty = value; }
-            }
-
-            /// <summary>
-            /// The level of sovernty
-            /// </summary>
-            public int SovereigntyLevel
-            {
-                get { return sovereigntyLevel; }
-                set { sovereigntyLevel = value; }
-            }
-
-            /// <summary>
             /// The NPC faction that controls this system
+            /// The CCP Database Dump has a table with the faction names. 
             /// </summary>
             public int FactionId
             {
@@ -82,6 +66,16 @@ namespace libeveapi
                 get { return solarSystemName; }
                 set { solarSystemName = value; }
             }
+
+            /// <summary>
+            /// The ID of the corporation that owns the Territorial Claim Unit (TCU) if there is one in the system. 
+            /// </summary>
+            public int CorporationID
+            {
+                get { return corporationID; }
+                set { corporationID = value; }
+            }
+
         }
     }
 }

@@ -102,6 +102,7 @@
     <Compile Include="ResponseObjects\Parsers\RefTypesResponseParser.cs" />
     <Compile Include="ResponseObjects\Parsers\ServerStatusResponseParser.cs" />
     <Compile Include="ResponseObjects\Parsers\SkillInTrainingResponseParser.cs" />
+    <Compile Include="ResponseObjects\Parsers\SkillQueueResponseParser.cs" />
     <Compile Include="ResponseObjects\Parsers\SkillTreeResponseParser.cs" />
     <Compile Include="ResponseObjects\Parsers\StarbaseDetailResponseParser.cs" />
     <Compile Include="ResponseObjects\Parsers\StarbaseListResponseParser.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="ResponseObjects\MemberTracking.cs" />
     <Compile Include="ResponseObjects\ServerStatus.cs" />
     <Compile Include="ResponseObjects\SkillInTraining.cs" />
+    <Compile Include="ResponseObjects\SkillQueue.cs" />
     <Compile Include="ResponseObjects\SkillTree.cs" />
     <Compile Include="ResponseObjects\StarbaseDetail.cs" />
     <Compile Include="ResponseObjects\StarbaseList.cs" />
