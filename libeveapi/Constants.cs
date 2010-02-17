@@ -128,6 +128,10 @@ namespace libeveapi
         /// </summary>
         internal const string SkillInTraining = "/char/SkillInTraining.xml.aspx";
         /// <summary>
+        /// The location of the characters current skill queue xml file
+        /// </summary>
+        internal const string SkillQueue = "/char/SkillQueue.xml.aspx";
+        /// <summary>
         /// The location of the current eve skill tree xml file
         /// </summary>
         internal const string SkillTree = "/eve/SkillTree.xml.aspx";

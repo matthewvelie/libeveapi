@@ -21,10 +21,9 @@ namespace libeveapi.ResponseObjects.Parsers
                 MapSovereignty.MapSovereigntyItem sovereigntyData = new MapSovereignty.MapSovereigntyItem();
                 sovereigntyData.SolarSystemId = Convert.ToInt32(systemRow.Attributes["solarSystemID"].InnerText, CultureInfo.InvariantCulture);
                 sovereigntyData.AllianceId = Convert.ToInt32(systemRow.Attributes["allianceID"].InnerText, CultureInfo.InvariantCulture);
-                sovereigntyData.ConstellationSovereignty = Convert.ToInt32(systemRow.Attributes["constellationSovereignty"].InnerText, CultureInfo.InvariantCulture);
-                sovereigntyData.SovereigntyLevel = Convert.ToInt32(systemRow.Attributes["sovereigntyLevel"].InnerText, CultureInfo.InvariantCulture);
                 sovereigntyData.FactionId = Convert.ToInt32(systemRow.Attributes["factionID"].InnerText, CultureInfo.InvariantCulture);
                 sovereigntyData.SolarSystemName = systemRow.Attributes["solarSystemName"].InnerText;
+                sovereigntyData.CorporationID = Convert.ToInt32(systemRow.Attributes["corporationID"].InnerText, CultureInfo.InvariantCulture);
                 sovereigntyList.Add(sovereigntyData);
             }
             mapSovereignty.MapSystemSovereigntyItems = sovereigntyList.ToArray();

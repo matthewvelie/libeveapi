@@ -10,6 +10,32 @@ namespace libeveapi
     /// </summary>
     public class EveApi
     {
+
+        /// <summary>
+        /// Sets Domain to 'http://localhost/eveapi' if prefix is null
+        /// otherwise sets Domain to prefix
+        /// </summary>
+        /// <param name="prefix">Domain prefix to use</param>
+        public static void UseLocalUrls(string prefix)
+        {
+            if (prefix.CompareTo(string.Empty) == 0)
+            {
+                Constants.ApiPrefix = "http://localhost/eveapi";
+            }
+            else
+            {
+                Constants.ApiPrefix = prefix;
+            }
+        }
+
+        /// <summary>
+        /// Resets the Url Domain to the EVE Api domain
+        /// </summary>
+        public static void UseEveApiUrls()
+        {
+            Constants.ApiPrefix = "http://api.eve-online.com";
+        }
+
         /// <summary>
         /// Sets a proxy server for the connection to run through
         /// </summary>
@@ -1045,6 +1071,33 @@ namespace libeveapi
             AddCommonCharacterInformation(url, userId, characterId, apiKey);
 
             return HandleRequest(url, new SkillInTrainingResponseParser(), ignoreCacheUntil);
+        }
+
+        /// <summary>
+        /// Retrives the Training Skill Queue for the specified character
+        /// </summary>
+        /// <param name="userId">userID of account for authentication.</param>
+        /// <param name="characterId">Character you wish to request data from.</param>
+        /// <param name="apiKey">Limited access API key of account.</param>
+        /// <returns>Array of skills</returns>
+        public static SkillQueue GetSkillQueue(int userId, int characterId, string apiKey)
+        {
+            return GetSkillQueue(userId, characterId, apiKey, false);
+        }
+
+        /// <summary>
+        /// Retrives the Training Skill Queue for the specified character
+        /// </summary>
+        /// <param name="userId">userID of account for authentication.</param>
+        /// <param name="characterId">Character you wish to request data from.</param>
+        /// <param name="apiKey">Limited access API key of account.</param>
+        /// <param name="ignoreCacheUntil">Force Update</param>
+        /// <returns>Array of skills</returns>
+        public static SkillQueue GetSkillQueue(int userId, int characterId, string apiKey, bool ignoreCacheUntil)
+        {
+            var url = new ApiRequestUrl(Constants.SkillQueue);
+            AddCommonCharacterInformation(url, userId, characterId, apiKey);
+            return HandleRequest(url, new SkillQueueResponseParser(), ignoreCacheUntil);
         }
 
         /// <summary>

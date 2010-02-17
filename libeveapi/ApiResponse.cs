@@ -6,6 +6,9 @@ using System.Xml.Serialization;
 
 namespace libeveapi
 {
+    /// <summary>
+    /// Base class for all ResponseObjects
+    /// </summary>
     [XmlInclude(typeof(CharacterList))]
     [XmlInclude(typeof(AccountBalance))]
     [XmlInclude(typeof(StarbaseList))]
@@ -26,6 +29,7 @@ namespace libeveapi
     [XmlInclude(typeof(MapSovereignty))]
     [XmlInclude(typeof(CorporationSheet))]
     [XmlInclude(typeof(SkillInTraining))]
+    [XmlInclude(typeof(SkillQueue))]
     [XmlInclude(typeof(AllianceList))]
     [XmlInclude(typeof(CharacterIdName))]
     [XmlInclude(typeof(KillLog))]
