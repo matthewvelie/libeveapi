@@ -21,10 +21,12 @@ namespace libeveapi
             if (prefix.CompareTo(string.Empty) == 0)
             {
                 Constants.ApiPrefix = "http://localhost/eveapi";
+                Constants.ImageFullURL = "http://localhost/eveapi/test.jpg";
             }
             else
             {
                 Constants.ApiPrefix = prefix;
+                Constants.ImageFullURL = "http://localhost/eveapi/test.jpg";
             }
         }
 
@@ -34,6 +36,7 @@ namespace libeveapi
         public static void UseEveApiUrls()
         {
             Constants.ApiPrefix = "http://api.eve-online.com";
+            Constants.ImageFullURL = "http://img.eve.is/serv.asp";
         }
 
         /// <summary>
