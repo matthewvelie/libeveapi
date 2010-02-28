@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -7,8 +7,7 @@ using libeveapi;
 
 namespace UnitTests
 {
-    [TestFixture]
-    public class JournalEntriesTests
+    class WalletJournalTests
     {
         [SetUp]
         public void Setup()
@@ -17,11 +16,12 @@ namespace UnitTests
         }
 
         [Test]
-        public void GetCharJournalEntriesTest()
+        public void GetCharWalletJournalTest()
         {
-            JournalEntries.VersionCheck = false;
-            JournalEntries journal = EveApi.GetJournalEntryList(JournalEntryType.Character, 0, 0, "apiKey");
-            JournalEntries.JournalEntryItem journalEntry = journal.JournalEntryItems[0];
+            WalletJournal walletJournal = EveApi.GetWalletJournal(WalletJournalType.Character, 0, 0, "apiKey");
+
+            WalletJournal.WalletJournalItem journalEntry = walletJournal.WalletJournalItems[0];
+            Assert.AreEqual(new DateTime(2008, 08, 22, 03, 36, 00), journalEntry.Date);
             Assert.AreEqual(1578932679, journalEntry.RefId);
             Assert.AreEqual(54, journalEntry.RefTypeId);
             Assert.AreEqual("corpslave", journalEntry.OwnerName1);
@@ -33,14 +33,16 @@ namespace UnitTests
             Assert.AreEqual(-8396.99, journalEntry.Amount);
             Assert.AreEqual(576336941.61, journalEntry.Balance);
             Assert.AreEqual("", journalEntry.Reason);
+            Assert.AreEqual(0, journalEntry.TaxRecieverID);
+            Assert.AreEqual(0, journalEntry.TaxAmount);
         }
 
         [Test]
-        public void GetCorpJournalEntriesTest()
+        public void GetCorpWalletJournalTest()
         {
-            JournalEntries.VersionCheck = false;
-            JournalEntries journal = EveApi.GetJournalEntryList(JournalEntryType.Corporation, 0, 0, "apiKey");
-            JournalEntries.JournalEntryItem journalEntry = journal.JournalEntryItems[0];
+            WalletJournal walletJournal = EveApi.GetWalletJournal(WalletJournalType.Corporation, 0, 0, "apiKey");
+
+            WalletJournal.WalletJournalItem journalEntry = walletJournal.WalletJournalItems[0];
             Assert.AreEqual(new DateTime(2008, 08, 22, 03, 36, 00), journalEntry.Date);
             Assert.AreEqual(1578932679, journalEntry.RefId);
             Assert.AreEqual(54, journalEntry.RefTypeId);
@@ -56,28 +58,26 @@ namespace UnitTests
         }
 
         [Test]
-        public void JournalEntriesPersist()
+        public void WalletJournalPersist()
         {
             ResponseCache.Clear();
 
-            JournalEntries.VersionCheck = false;
-            JournalEntries journalEntry = EveApi.GetJournalEntryList(JournalEntryType.Corporation, 0, 0, "apiKey");
+            WalletJournal journalEntry = EveApi.GetWalletJournal(WalletJournalType.Corporation, 0, 0, "apiKey");
             ResponseCache.Save("ResponseCache.xml");
             ResponseCache.Clear();
             ResponseCache.Load("ResponseCache.xml");
-            JournalEntries cachedJournalEntry = EveApi.GetJournalEntryList(JournalEntryType.Corporation, 0, 0, "apiKey");
+            WalletJournal cachedJournalEntry = EveApi.GetWalletJournal(WalletJournalType.Corporation, 0, 0, "apiKey");
 
             Assert.AreEqual(journalEntry.CachedUntilLocal, cachedJournalEntry.CachedUntilLocal);
 
 
-            for (int i = 0; i < journalEntry.JournalEntryItems.Length; i++)
+            for (int i = 0; i < journalEntry.WalletJournalItems.Length; i++)
             {
-                Assert.AreEqual(journalEntry.JournalEntryItems[i].Date, cachedJournalEntry.JournalEntryItems[i].Date);
-                Assert.AreEqual(journalEntry.JournalEntryItems[i].Amount, cachedJournalEntry.JournalEntryItems[i].Amount);
-                Assert.AreEqual(journalEntry.JournalEntryItems[i].Balance, cachedJournalEntry.JournalEntryItems[i].Balance);
+                Assert.AreEqual(journalEntry.WalletJournalItems[i].Date, cachedJournalEntry.WalletJournalItems[i].Date);
+                Assert.AreEqual(journalEntry.WalletJournalItems[i].Amount, cachedJournalEntry.WalletJournalItems[i].Amount);
+                Assert.AreEqual(journalEntry.WalletJournalItems[i].Balance, cachedJournalEntry.WalletJournalItems[i].Balance);
             }
-             
+
         }
     }
 }
-

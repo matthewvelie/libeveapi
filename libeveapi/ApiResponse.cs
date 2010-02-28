@@ -17,6 +17,7 @@ namespace libeveapi
     [XmlInclude(typeof(AssetList))]
     [XmlInclude(typeof(IndustryJobList))]
     [XmlInclude(typeof(JournalEntries))]
+    [XmlInclude(typeof(WalletJournal))]
     [XmlInclude(typeof(WalletTransactions))]
     [XmlInclude(typeof(MarketOrders))]
     [XmlInclude(typeof(RefTypes))]

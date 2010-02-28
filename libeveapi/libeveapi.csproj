@@ -110,6 +110,7 @@
     <Compile Include="ResponseObjects\Parsers\StarbaseDetailResponseParser.cs" />
     <Compile Include="ResponseObjects\Parsers\StarbaseListResponseParser.cs" />
     <Compile Include="ResponseObjects\Parsers\IApiResponseParser.cs" />
+    <Compile Include="ResponseObjects\Parsers\WalletJournalResponseParser.cs" />
     <Compile Include="ResponseObjects\Parsers\WalletTransactionsResponseParser.cs" />
     <Compile Include="ResponseObjects\RefTypes.cs" />
     <Compile Include="ResponseObjects\MemberTracking.cs" />

@@ -8,6 +8,9 @@ namespace libeveapi
     /// </summary>
     public class MarketOrders : ApiResponse
     {
+        /// <summary>
+        /// API Version Compatibility
+        /// </summary>
         public const string API_VERSION = "2";
         private MarketOrderItem[] marketOrderItems = new MarketOrderItem[0];
 
@@ -25,10 +28,6 @@ namespace libeveapi
         /// </summary>
         public class MarketOrderItem
         {
-            /// <summary>
-            /// API Version Compatibility
-            /// </summary>
-            public const string API_VERSION = "2";
             private MarketOrderType orderType;
             private int orderId;
             private long charId;

@@ -23,29 +23,41 @@ namespace UnitTests
             MemberTracking memberTracking = EveApi.GetMemberTracking(432435, 234523, "fullApiKey");
 
             Assert.AreEqual(memberTracking.Members.Length, 2);
+            // First member
+            MemberTracking.Member tracking = memberTracking.Members[0];
+            Assert.AreEqual(150336922, tracking.CharacterId);
+            Assert.AreEqual("corpexport", tracking.Name);
+            Assert.AreEqual(0, tracking.BaseId);
+            Assert.AreEqual(string.Empty, tracking.Base);
+            Assert.AreEqual("asdf", tracking.Title);
+            Assert.AreEqual(60011566, tracking.LocationId);
+            Assert.AreEqual("Bourynes VII - Moon 2 - University of Caille School", tracking.Location);
+            Assert.AreEqual(606, tracking.ShipTypeId);
+            Assert.AreEqual("Velator", tracking.ShipType);
+            Assert.AreEqual("0", tracking.RolesMask);
+            Assert.AreEqual("0", tracking.GrantableRoles);
 
-            MemberTracking.Member mti = memberTracking.Members[0];
-            Assert.AreEqual(150336922, mti.CharacterId);
-            Assert.AreEqual("corpexport", mti.Name);
-            Assert.AreEqual(0, mti.BaseId);
-            Assert.AreEqual("base", mti.Base);
-            Assert.AreEqual("asdf", mti.Title);
-            Assert.AreEqual(60011566, mti.LocationId);
-            Assert.AreEqual("Bourynes VII - Moon 2 - University of Caille School", mti.Location);
-            Assert.AreEqual(606, mti.ShipTypeId);
-            Assert.AreEqual("Velator", mti.ShipType);
-            Assert.AreEqual("1281", mti.RolesMask);
-            Assert.AreEqual("0", mti.GrantableRoles);
+            Assert.AreEqual(new DateTime(2007, 6, 13, 14, 39, 00), tracking.StartDateTime);
+            Assert.AreEqual(new DateTime(2007, 6, 16, 21, 12, 00), tracking.LogonDateTime);
+            Assert.AreEqual(new DateTime(2007, 6, 16, 21, 36, 00), tracking.LogoffDateTime);
 
-            Assert.AreEqual(new DateTime(2007, 6, 13, 14, 39, 00), mti.StartDateTime);
-            Assert.AreEqual(new DateTime(2007, 6, 16, 21, 12, 00), mti.LogonDateTime);
-            Assert.AreEqual(new DateTime(2007, 6, 16, 21, 36, 00), mti.LogoffDateTime);
+            // Second Member
+            tracking = memberTracking.Members[1];
+            Assert.AreEqual(150337897, tracking.CharacterId);
+            Assert.AreEqual("corpslave", tracking.Name);
+            Assert.AreEqual(0, tracking.BaseId);
+            Assert.AreEqual(string.Empty, tracking.Base);
+            Assert.AreEqual(string.Empty, tracking.Title);
+            Assert.AreEqual(60011566, tracking.LocationId);
+            Assert.AreEqual("Bourynes VII - Moon 2 - University of Caille School", tracking.Location);
+            Assert.AreEqual(670, tracking.ShipTypeId);
+            Assert.AreEqual("Capsule", tracking.ShipType);
+            Assert.AreEqual("22517998271070336", tracking.RolesMask);
+            Assert.AreEqual("0", tracking.GrantableRoles);
 
-            Assert.IsFalse(mti.Roles.HasRole(RoleTypes.PersonnelManager));
-            Assert.IsFalse(mti.Roles.HasRole(RoleTypes.SecurityManager));
-            Assert.IsTrue(mti.Roles.HasRole(RoleTypes.Director));
-            Assert.IsTrue(mti.Roles.HasRole(RoleTypes.Accountant));
-            Assert.IsTrue(mti.Roles.HasRole(RoleTypes.FactoryManager));
+            Assert.AreEqual(new DateTime(2007, 6, 14, 13, 14, 00), tracking.StartDateTime);
+            Assert.AreEqual(new DateTime(2007, 6, 16, 21, 14, 00), tracking.LogonDateTime);
+            Assert.AreEqual(new DateTime(2007, 6, 16, 21, 35, 00), tracking.LogoffDateTime);
         }
 
         [Test]

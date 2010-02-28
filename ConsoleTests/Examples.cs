@@ -14,12 +14,15 @@ namespace ConsoleTests
             Console.WriteLine("*******\nExample\n*******\n");
             UseLocalUrls();
             ResponseCache.Clear();
-            MemberTrackingExample();
-
+            //MemberTrackingExample();
+            
             //MapSovereigntyExample();
             //CharFacWarStatsExample();
-
+            WalletJournalExample();
+            JournalExample();
             ResponseCache.Save("ResponseCache.xml");
+            Console.WriteLine("Press Any Key to Continue");
+            Console.ReadKey();
         }
 
         public static void CharFacWarStatsExample()
@@ -172,10 +175,48 @@ namespace ConsoleTests
             bool done = false;
             int lastEntrySeen = 0;
 
+            JournalEntries.VersionCheck = false;
             while (!done)
             {
                 JournalEntries entries = EveApi.GetJournalEntryList(JournalEntryType.Character, 0, 0, "fullApiKey", lastEntrySeen);
                 DisplayJournalEntries(entries);
+                lastEntrySeen += entries.JournalEntryItems.Length;
+                if (entries.JournalEntryItems.Length < 1000)
+                {
+                    done = true;
+                }
+            }
+        }
+
+        public static void WalletJournalExample()
+        {
+            bool done = false;
+            int lastEntrySeen = 0;
+
+            while (!done)
+            {
+                WalletJournal entries = EveApi.GetWalletJournal(WalletJournalType.Character, 0, 0, "fullApiKey", lastEntrySeen);
+                foreach (WalletJournal.WalletJournalItem item in entries.WalletJournalItems)
+                {
+                    Console.WriteLine("Date: {0} Amount: {1} Balance: {2}", item.DateLocal, item.Amount, item.Balance);
+                }
+                lastEntrySeen += entries.JournalEntryItems.Length;
+                if (entries.JournalEntryItems.Length < 1000)
+                {
+                    done = true;
+                }
+            }
+
+            Console.WriteLine();
+            done = false;
+            lastEntrySeen = 0;
+            while (!done)
+            {
+                WalletJournal entries = EveApi.GetWalletJournal(WalletJournalType.Corporation, 0, 0, "fullApiKey", lastEntrySeen);
+                foreach (WalletJournal.WalletJournalItem item in entries.WalletJournalItems)
+                {
+                    Console.WriteLine("Date: {0} Amount: {1} Balance: {2}", item.DateLocal, item.Amount, item.Balance);
+                }
                 lastEntrySeen += entries.JournalEntryItems.Length;
                 if (entries.JournalEntryItems.Length < 1000)
                 {

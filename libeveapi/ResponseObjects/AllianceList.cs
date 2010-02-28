@@ -10,7 +10,7 @@ namespace libeveapi
         /// <summary>
         /// API Version Compatibility
         /// </summary>
-        public const string API_VERSION = "1";
+        public const string API_VERSION = "2";
         private AllianceListItem[] allianceListItems = new AllianceListItem[0];
 
         /// <summary>
