@@ -591,6 +591,148 @@ namespace libeveapi
         }
 
         /// <summary>
+        /// Returns a list of wallet journal entries owned by a character or corporation.
+        /// </summary>
+        /// <param name="walletJournalType"><see cref="WalletJournalType" /></param>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullApiKey">Full access API key of account</param>
+        /// <returns>Wallet Journal Entries</returns>
+        public static WalletJournal GetWalletJournal(WalletJournalType walletJournalType, int userId, int characterId, string fullApiKey)
+        {
+            return GetWalletJournal(walletJournalType, userId, characterId, fullApiKey, 0, false, WalletDivision.Master);
+        }
+
+        /// <summary>
+        /// Returns a list of wallet journal entries owned by a character or corporation.
+        /// </summary>
+        /// <param name="walletJournalType"><see cref="WalletJournalType" /></param>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullApiKey">Full access API key of account</param>
+        /// <param name="walletDivision">The (corporation) wallet division to retrieve journal entries from</param>
+        /// <returns>Wallet Journal Entries</returns>
+        public static WalletJournal GetWalletJournal(WalletJournalType walletJournalType, int userId, int characterId, string fullApiKey, WalletDivision walletDivision)
+        {
+            return GetWalletJournal(walletJournalType, userId, characterId, fullApiKey, 0, false, walletDivision);
+        }
+
+        /// <summary>
+        /// Returns a list of wallet journal entries owned by a character or corporation.
+        /// </summary>
+        /// <param name="walletJournalType"><see cref="WalletJournalType" /></param>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullApiKey">Full access API key of account</param>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns>Wallet Journal Entries</returns>
+        public static WalletJournal GetWalletJournal(WalletJournalType walletJournalType, int userId, int characterId, string fullApiKey, bool ignoreCacheUntil)
+        {
+            return GetWalletJournal(walletJournalType, userId, characterId, fullApiKey, 0, ignoreCacheUntil, WalletDivision.Master);
+        }
+
+        /// <summary>
+        /// Returns a list of wallet journal entries owned by a character or corporation.
+        /// </summary>
+        /// <param name="walletJournalType"><see cref="WalletJournalType" /></param>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullApiKey">Full access API key of account</param>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <param name="walletDivision">The (corporation) wallet division to retrieve journal entries from</param>
+        /// <returns>Wallet Journal Entries</returns>
+        public static WalletJournal GetWalletJournal(WalletJournalType walletJournalType, int userId, int characterId, string fullApiKey, bool ignoreCacheUntil, WalletDivision walletDivision)
+        {
+            return GetWalletJournal(walletJournalType, userId, characterId, fullApiKey, 0, ignoreCacheUntil, walletDivision);
+        }
+
+        /// <summary>
+        /// Returns a list of wallet journal entries owned by a character or corporation.
+        /// </summary>
+        /// <param name="walletJournalType"><see cref="WalletJournalType" /></param>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullApiKey">Full access API key of account</param>
+        /// <param name="beforeRefId">Retrieve entries after this refId</param>
+        /// <returns>Wallet Journal Entries</returns>
+        public static WalletJournal GetWalletJournal(WalletJournalType walletJournalType, int userId, int characterId, string fullApiKey, int beforeRefId)
+        {
+            return GetWalletJournal(walletJournalType, userId, characterId, fullApiKey, beforeRefId, false, WalletDivision.Master);
+        }
+
+        /// <summary>
+        /// Returns a list of wallet journal entries owned by a character or corporation.
+        /// </summary>
+        /// <param name="walletJournalType"><see cref="WalletJournalType" /></param>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullApiKey">Full access API key of account</param>
+        /// <param name="beforeRefId">Retrieve entries after this refId</param>
+        /// <param name="walletDivision">The (corporation) wallet division to retrieve journal entries from</param>
+        /// <returns>Wallet Journal Entries</returns>
+        public static WalletJournal GetWalletJournal(WalletJournalType walletJournalType, int userId, int characterId, string fullApiKey, int beforeRefId, WalletDivision walletDivision)
+        {
+            return GetWalletJournal(walletJournalType, userId, characterId, fullApiKey, beforeRefId, false, walletDivision);
+        }
+
+        /// <summary>
+        /// Returns a list of wallet journal entries owned by a character or corporation.
+        /// </summary>
+        /// <param name="walletJournalType"><see cref="WalletJournalType" /></param>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullApiKey">Full access API key of account</param>
+        /// <param name="beforeRefId">Retrieve entries after this refId</param>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns>Wallet Journal Entries</returns>
+        public static WalletJournal GetWalletJournal(WalletJournalType walletJournalType, int userId, int characterId, string fullApiKey, int beforeRefId, bool ignoreCacheUntil)
+        {
+            return GetWalletJournal(walletJournalType, userId, characterId, fullApiKey, beforeRefId, ignoreCacheUntil, WalletDivision.Master);
+        }
+
+        /// <summary>
+        /// Returns a list of wallet journal entries owned by a character or corporation.
+        /// </summary>
+        /// <param name="walletJournalType"><see cref="WalletJournalType" /></param>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullApiKey">Full access API key of account</param>
+        /// <param name="beforeRefId">Retrieve entries after this refId</param>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <param name="walletDivision">The (corporation) wallet division to retrieve journal entries from</param>
+        /// <returns>Wallet Journal Entries</returns>
+        public static WalletJournal GetWalletJournal(WalletJournalType walletJournalType, int userId, int characterId, string fullApiKey, int beforeRefId, bool ignoreCacheUntil, WalletDivision walletDivision)
+        {
+            string apiPath = string.Empty;
+            switch (walletJournalType)
+            {
+                case WalletJournalType.Character:
+                    apiPath = Constants.CharJournalEntries;
+                    break;
+                case WalletJournalType.Corporation:
+                    apiPath = Constants.CorpJournalEntries;
+                    break;
+            }
+
+            var url = new ApiRequestUrl(apiPath);
+            AddCommonCharacterInformation(url, userId, characterId, fullApiKey);
+
+            if (beforeRefId != 0)
+            {
+                url.AddProperty(ApiRequestUrl.PROPERTY_BEFORE_REF_ID, beforeRefId.ToString());
+            }
+
+            if (walletJournalType == WalletJournalType.Corporation)
+            {
+                url.AddProperty(ApiRequestUrl.PROPERTY_ACCOUNT_KEY, ((int)walletDivision).ToString());
+            }
+
+            return HandleRequest(url, new WalletJournalResponseParser(), ignoreCacheUntil);
+        }
+
+
+
+        /// <summary>
         /// Returns a list of market orders owned by a character or corporation.
         /// </summary>
         /// <param name="marketOrdersListType"><see cref="MarketOrdersListType" /></param>
