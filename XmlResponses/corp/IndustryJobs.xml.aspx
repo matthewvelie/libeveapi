@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<eveapi version="1">
+<eveapi version="2">
   <currentTime>2007-12-01 12:10:48</currentTime>
   <result>
     <rowset name="jobs" key="jobID" columns="jobID,containerID,installedItemID,installedItemLocationID,installedItemQuantity,installedItemProductivityLevel,installedItemMaterialLevel,installedItemLicensedProductionRunsRemaining,outputLocationID,installerID,runs,licensedProductionRuns,installedInSolarSystemID,containerLocationID,materialMultiplier,charMaterialMultiplier,timeMultiplier,charTimeMultiplier,installedItemTypeID,outputTypeID,containerTypeID,installedItemCopy,completed,completedSuccessfully,installedItemFlag,outputFlag,activityID,completedStatus,installTime,beginProductionTime,endProductionTime,pauseProductionTime">

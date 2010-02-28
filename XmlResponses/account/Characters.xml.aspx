@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<eveapi version="1">
+<eveapi version="2">
 	<currentTime>2007-12-12 11:48:50</currentTime>
 	<result>
 		<rowset name="characters" key="characterID" columns="name,characterID,corporationName,corporationID">
