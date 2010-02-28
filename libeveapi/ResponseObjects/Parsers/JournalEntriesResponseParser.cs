@@ -12,6 +12,7 @@ namespace libeveapi.ResponseObjects.Parsers
     {
         public JournalEntries Parse(XmlDocument xmlDocument)
         {
+            this.CheckVersion(xmlDocument);
             JournalEntries JournalEntryList = new JournalEntries();
             JournalEntryList.ParseCommonElements(xmlDocument);
 
@@ -49,6 +50,18 @@ namespace libeveapi.ResponseObjects.Parsers
             journalEntryItem.Reason = journalTransactionRow.Attributes["reason"].InnerText;
 
             return journalEntryItem;
+        }
+
+        public void CheckVersion(XmlDocument xmlDocument)
+        {
+            if (JournalEntries.VersionCheck)
+            {
+                string version = xmlDocument.SelectSingleNode("//eveapi").Attributes["version"].InnerText;
+                if (version.CompareTo(JournalEntries.API_VERSION) != 0)
+                {
+                    throw new ApiVersionException(version, JournalEntries.API_VERSION);
+                }
+            }
         }
     }
 }

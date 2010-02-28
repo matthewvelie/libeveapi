@@ -3,8 +3,38 @@ namespace libeveapi
     /// <summary>
     /// Holds the full asset list of a corporation or character
     /// </summary>
+    /// <remarks>
+    /// SQL Query
+    /// This works in MySQL 5.0 for me anyway.
+    /// Note that dbo.eveNames can be used in place of dbo.mapDenormalize 
+    /// 
+    /// SELECT case
+    /// when a.locationID BETWEEN 66000000 AND 66999999 then
+    /// (SELECT s.stationName FROM dbo.staStations AS s
+    /// WHERE s.stationID=a.locationID-6000001)
+    /// when a.locationID BETWEEN 67000000 AND 67999999 then
+    /// (SELECT c.stationName FROM api.ConqStations AS c
+    /// WHERE c.stationID=a.locationID-6000000)
+    /// when a.locationID BETWEEN 60014861 AND 60014928 then
+    /// (SELECT c.stationName FROM api.ConqStations AS c
+    /// WHERE c.stationID=a.locationID)
+    /// when a.locationID BETWEEN 60000000 AND 61000000 then
+    /// (SELECT s.stationName FROM dbo.staStations AS s
+    /// WHERE s.stationID=a.locationID)
+    /// when a.locationID>=61000000 then
+    /// (SELECT c.stationName FROM api.ConqStations AS c
+    /// WHERE c.stationID=a.locationID)
+    /// else (SELECT m.itemName FROM dbo.mapDenormalize AS m
+    /// WHERE m.itemID=a.locationID) end
+    /// AS location,a.locationId AS locID FROM aleAssetItems AS a
+    /// GROUP BY a.locationID;
+    /// </remarks>
     public class AssetList : ApiResponse
     {
+        /// <summary>
+        /// API Version Compatibility
+        /// </summary>
+        public const string API_VERSION = "2";
         private AssetListItem[] assetListItems = new AssetListItem[0];
 
         /// <summary>

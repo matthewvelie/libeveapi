@@ -12,6 +12,7 @@ namespace libeveapi.ResponseObjects.Parsers
     {
         public MapJumps Parse(XmlDocument xmlDocument)
         {
+            this.CheckVersion(xmlDocument);
             MapJumps mapJumps = new MapJumps();
             mapJumps.ParseCommonElements(xmlDocument);
 
@@ -26,6 +27,18 @@ namespace libeveapi.ResponseObjects.Parsers
             mapJumps.MapSystemJumps = systemList.ToArray();
 
             return mapJumps;
+        }
+
+        public void CheckVersion(XmlDocument xmlDocument)
+        {
+            if (AccountBalance.VersionCheck)
+            {
+                string version = xmlDocument.SelectSingleNode("//eveapi").Attributes["version"].InnerText;
+                if (version.CompareTo(AccountBalance.API_VERSION) != 0)
+                {
+                    throw new ApiVersionException(version, AccountBalance.API_VERSION);
+                }
+            }
         }
     }
 }

@@ -12,6 +12,7 @@ namespace libeveapi.ResponseObjects.Parsers
     {
         public AccountBalance Parse(XmlDocument xmlDocument)
         {
+            this.CheckVersion(xmlDocument);
             AccountBalance accountBalance = new AccountBalance();
             accountBalance.ParseCommonElements(xmlDocument);
 
@@ -27,6 +28,18 @@ namespace libeveapi.ResponseObjects.Parsers
             accountBalance.AccountBalanceItems = accountList.ToArray();
 
             return accountBalance;
+        }
+
+        public void CheckVersion(XmlDocument xmlDocument)
+        {
+            if (AccountBalance.VersionCheck)
+            {
+                string version = xmlDocument.SelectSingleNode("//eveapi").Attributes["version"].InnerText;
+                if (version.CompareTo(AccountBalance.API_VERSION) != 0)
+                {
+                    throw new ApiVersionException(version, AccountBalance.API_VERSION);
+                }
+            }
         }
     }
 }

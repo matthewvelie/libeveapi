@@ -12,6 +12,7 @@ namespace libeveapi.ResponseObjects.Parsers
     {
         public StarbaseDetail Parse(XmlDocument xmlDocument)
         {
+            this.CheckVersion(xmlDocument);
             StarbaseDetail starbaseDetail = new StarbaseDetail();
             starbaseDetail.ParseCommonElements(xmlDocument);
 
@@ -39,6 +40,18 @@ namespace libeveapi.ResponseObjects.Parsers
             starbaseDetail.FuelList = fuelList.ToArray();
 
             return starbaseDetail;
+        }
+
+        public void CheckVersion(XmlDocument xmlDocument)
+        {
+            if (StarbaseDetail.VersionCheck)
+            {
+                string version = xmlDocument.SelectSingleNode("//eveapi").Attributes["version"].InnerText;
+                if (version.CompareTo(StarbaseDetail.API_VERSION) != 0)
+                {
+                    throw new ApiVersionException(version, StarbaseDetail.API_VERSION);
+                }
+            }
         }
     }
 }

@@ -35,8 +35,14 @@ namespace libeveapi
     [XmlInclude(typeof(KillLog))]
     [XmlInclude(typeof(ServerStatus))]
     [XmlInclude(typeof(MapFacWarSystems))]
+    [XmlInclude(typeof(FacWarStats))]
     public class ApiResponse
     {
+        /// <summary>
+        /// Turn version checking on/true or off/false
+        /// </summary>
+        public static bool VersionCheck = true;
+
         private string hashedUrl;
         private DateTime currentTime;
         private DateTime cachedUntil;

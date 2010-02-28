@@ -8,6 +8,10 @@ namespace libeveapi
     /// </summary>
     public class MemberTracking : ApiResponse
     {
+        /// <summary>
+        /// API Version Compatibility
+        /// </summary>
+        public const string API_VERSION = "2";
         private Member[] members = new Member[0];
 
         /// <summary>

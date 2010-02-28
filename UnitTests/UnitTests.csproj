@@ -50,6 +50,7 @@
     <Compile Include="CharacterIdTests.cs" />
     <Compile Include="CharacterListTests.cs" />
     <Compile Include="CharacterSheetTests.cs" />
+    <Compile Include="FacWarStatsTests.cs" />
     <Compile Include="ConquerableStationTests.cs" />
     <Compile Include="KillLogTests.cs" />
     <Compile Include="MapFacWarSystemsTests.cs" />

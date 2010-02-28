@@ -12,6 +12,7 @@ namespace libeveapi
     /// </summary>
     public class SkillQueue : ApiResponse
     {
+        public const string API_VERSION = "2";
         [XmlIgnore]
         private Skill[] skillList = new Skill[0];
         /// <summary>

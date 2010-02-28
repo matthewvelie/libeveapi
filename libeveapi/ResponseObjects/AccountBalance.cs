@@ -7,6 +7,10 @@ namespace libeveapi
     /// </summary>
     public class AccountBalance : ApiResponse
     {
+        /// <summary>
+        /// API Version Compatibility
+        /// </summary>
+        public const string API_VERSION = "2";
         private AccountBalanceItem[] accountBalanceItems = new AccountBalanceItem[0];
 
         /// <summary>

@@ -5,6 +5,10 @@ namespace libeveapi
     /// </summary>
     public class StarbaseDetail : ApiResponse
     {
+        /// <summary>
+        /// API Version Compatibility
+        /// </summary>
+        public const string API_VERSION = "2";
         private string usageFlags;
         private string deployFlags;
         private bool allowCorporationMembers;

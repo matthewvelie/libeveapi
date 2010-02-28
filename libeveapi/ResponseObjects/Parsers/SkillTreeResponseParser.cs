@@ -12,6 +12,7 @@ namespace libeveapi.ResponseObjects.Parsers
     {
         public SkillTree Parse(XmlDocument xmlDocument)
         {
+            this.CheckVersion(xmlDocument);
             SkillTree skillTree = new SkillTree();
 
             skillTree.ResponseXml = xmlDocument;
@@ -90,6 +91,18 @@ namespace libeveapi.ResponseObjects.Parsers
             }
 
             return SkillTree.AttributeType.Unknown;
+        }
+
+        public void CheckVersion(XmlDocument xmlDocument)
+        {
+            if (SkillTree.VersionCheck)
+            {
+                string version = xmlDocument.SelectSingleNode("//eveapi").Attributes["version"].InnerText;
+                if (version.CompareTo(SkillTree.API_VERSION) != 0)
+                {
+                    throw new ApiVersionException(version, SkillTree.API_VERSION);
+                }
+            }
         }
     }
 }

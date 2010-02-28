@@ -12,6 +12,7 @@ namespace libeveapi.ResponseObjects.Parsers
     {
         public MemberTracking Parse(XmlDocument xmlDocument)
         {
+            this.CheckVersion(xmlDocument);
             MemberTracking memberTracking = new MemberTracking();
             memberTracking.ParseCommonElements(xmlDocument);
 
@@ -43,6 +44,18 @@ namespace libeveapi.ResponseObjects.Parsers
 
             memberTracking.Members = parsedMemeberTrackingItems.ToArray();
             return memberTracking;
+        }
+
+        public void CheckVersion(XmlDocument xmlDocument)
+        {
+            if (MemberTracking.VersionCheck)
+            {
+                string version = xmlDocument.SelectSingleNode("//eveapi").Attributes["version"].InnerText;
+                if (version.CompareTo(MemberTracking.API_VERSION) != 0)
+                {
+                    throw new ApiVersionException(version, MemberTracking.API_VERSION);
+                }
+            }
         }
     }
 }

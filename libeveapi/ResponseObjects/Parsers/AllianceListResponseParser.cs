@@ -12,6 +12,7 @@ namespace libeveapi.ResponseObjects.Parsers
     {
         public AllianceList Parse(XmlDocument xmlDocument)
         {
+            this.CheckVersion(xmlDocument);
             AllianceList allianceList = new AllianceList();
             allianceList.ParseCommonElements(xmlDocument);
 
@@ -45,5 +46,17 @@ namespace libeveapi.ResponseObjects.Parsers
             allianceList.AllianceListItems = parsedAllianceListItems.ToArray();
             return allianceList;
         }
+        public void CheckVersion(XmlDocument xmlDocument)
+        {
+            if (AllianceList.VersionCheck)
+            {
+                string version = xmlDocument.SelectSingleNode("//eveapi").Attributes["version"].InnerText;
+                if (version.CompareTo(AllianceList.API_VERSION) != 0)
+                {
+                    throw new ApiVersionException(version, AllianceList.API_VERSION);
+                }
+            }
+        }
+
     }
 }

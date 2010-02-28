@@ -8,6 +8,10 @@ namespace libeveapi
     /// </summary>
     public class JournalEntries : ApiResponse
     {
+        /// <summary>
+        /// API Version Compatibility
+        /// </summary>
+        public const string API_VERSION = "1";
         private JournalEntryItem[] journalEntryItems = new JournalEntryItem[0];
 
         /// <summary>

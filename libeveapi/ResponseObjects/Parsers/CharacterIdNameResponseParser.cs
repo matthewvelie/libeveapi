@@ -13,6 +13,8 @@ namespace libeveapi.ResponseObjects.Parsers
     {
         public CharacterIdName Parse(XmlDocument xmlDocument)
         {
+            this.CheckVersion(xmlDocument);
+
             //FIX the row:name problem here (HACK!)
             string fixXML = xmlDocument.OuterXml;
             fixXML = Regex.Replace(fixXML, "row:name", "row");
@@ -41,5 +43,18 @@ namespace libeveapi.ResponseObjects.Parsers
 
             return charId;
         }
+
+        public void CheckVersion(XmlDocument xmlDocument)
+        {
+            if (CharacterIdName.VersionCheck)
+            {
+                string version = xmlDocument.SelectSingleNode("//eveapi").Attributes["version"].InnerText;
+                if (version.CompareTo(CharacterIdName.API_VERSION) != 0)
+                {
+                    throw new ApiVersionException(version, CharacterIdName.API_VERSION);
+                }
+            }
+        }
+
     }
 }

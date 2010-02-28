@@ -12,6 +12,7 @@ namespace libeveapi.ResponseObjects.Parsers
     {
         public ConquerableStationList Parse(XmlDocument xmlDocument)
         {
+            this.CheckVersion(xmlDocument);
             ConquerableStationList stationList = new ConquerableStationList();
             stationList.ParseCommonElements(xmlDocument);
 
@@ -41,6 +42,18 @@ namespace libeveapi.ResponseObjects.Parsers
             conquerableStationItem.CorporationName = stationRow.Attributes["corporationName"].InnerText;
 
             return conquerableStationItem;
+        }
+
+        public void CheckVersion(XmlDocument xmlDocument)
+        {
+            if (ConquerableStationList.VersionCheck)
+            {
+                string version = xmlDocument.SelectSingleNode("//eveapi").Attributes["version"].InnerText;
+                if (version.CompareTo(ConquerableStationList.API_VERSION) != 0)
+                {
+                    throw new ApiVersionException(version, ConquerableStationList.API_VERSION);
+                }
+            }
         }
     }
 }

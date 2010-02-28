@@ -71,6 +71,8 @@
     <Compile Include="ResponseObjects\CharacterId.cs" />
     <Compile Include="ResponseObjects\CharacterSheet.cs" />
     <Compile Include="ResponseObjects\ConquerableStation.cs" />
+    <Compile Include="ResponseObjects\EveApiExceptions.cs" />
+    <Compile Include="ResponseObjects\FacWarStats.cs" />
     <Compile Include="ResponseObjects\KillLog.cs" />
     <Compile Include="ResponseObjects\MapFacWarSystems.cs" />
     <Compile Include="ResponseObjects\MapSovereignty.cs" />
@@ -87,6 +89,7 @@
     <Compile Include="ResponseObjects\Parsers\CharacterIdNameResponseParser.cs" />
     <Compile Include="ResponseObjects\Parsers\AssetListResponseParser.cs" />
     <Compile Include="ResponseObjects\Parsers\CharacterSheetResponseParser.cs" />
+    <Compile Include="ResponseObjects\Parsers\CharFacWarStatsResponseParser.cs" />
     <Compile Include="ResponseObjects\Parsers\ConquerableStationListResponseParser.cs" />
     <Compile Include="ResponseObjects\Parsers\CorporationSheetResponseParser.cs" />
     <Compile Include="ResponseObjects\Parsers\IndustryJobListResponseParser.cs" />
@@ -116,6 +119,7 @@
     <Compile Include="ResponseObjects\SkillTree.cs" />
     <Compile Include="ResponseObjects\StarbaseDetail.cs" />
     <Compile Include="ResponseObjects\StarbaseList.cs" />
+    <Compile Include="ResponseObjects\WalletJournal.cs" />
     <Compile Include="ResponseObjects\WalletTransactions.cs" />
     <Compile Include="Roles.cs" />
     <Compile Include="SerializableDictionary.cs" />

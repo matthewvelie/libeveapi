@@ -11,6 +11,7 @@ namespace libeveapi.ResponseObjects.Parsers
     {
         public ServerStatus Parse(XmlDocument xmlDocument)
         {
+            this.CheckVersion(xmlDocument);
             ServerStatus serverStatus = new ServerStatus();
             serverStatus.ParseCommonElements(xmlDocument);
 
@@ -18,6 +19,18 @@ namespace libeveapi.ResponseObjects.Parsers
             serverStatus.OnlinePlayers = Convert.ToInt32(xmlDocument.SelectSingleNode("/eveapi/result/onlinePlayers").InnerText);
 
             return serverStatus;
+        }
+
+        public void CheckVersion(XmlDocument xmlDocument)
+        {
+            if (ServerStatus.VersionCheck)
+            {
+                string version = xmlDocument.SelectSingleNode("//eveapi").Attributes["version"].InnerText;
+                if (version.CompareTo(ServerStatus.API_VERSION) != 0)
+                {
+                    throw new ApiVersionException(version, ServerStatus.API_VERSION);
+                }
+            }
         }
     }
 }

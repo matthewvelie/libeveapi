@@ -7,6 +7,10 @@ namespace libeveapi
     /// </summary>
     public class StarbaseList : ApiResponse
     {
+        /// <summary>
+        /// API Version Compatibility
+        /// </summary>
+        public const string API_VERSION = "2";
         private StarbaseListItem[] starbaseListItems = new StarbaseListItem[0];
 
         /// <summary>

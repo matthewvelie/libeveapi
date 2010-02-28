@@ -9,6 +9,10 @@ namespace libeveapi
     /// </summary>
     public class ServerStatus : ApiResponse
     {
+        /// <summary>
+        /// API Version Compatibility
+        /// </summary>
+        public const string API_VERSION = "2";
         private bool serverOpen;
         private int onlinePlayers;
 

@@ -8,6 +8,10 @@ namespace libeveapi
     /// </summary>
     public class WalletTransactions : ApiResponse
     {
+        /// <summary>
+        /// API Version Compatibility
+        /// </summary>
+        public const string API_VERSION = "2";
         private WalletTransactionItem[] walletTransactionItems = new WalletTransactionItem[0];
 
         /// <summary>

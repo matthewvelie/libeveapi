@@ -9,6 +9,8 @@ namespace libeveapi.ResponseObjects.Parsers
     {
         public ErrorList Parse(XmlDocument xmlDocument)
         {
+            this.CheckVersion(xmlDocument);
+
             ErrorList errorList = new ErrorList();
             errorList.ParseCommonElements(xmlDocument);
 
@@ -18,6 +20,18 @@ namespace libeveapi.ResponseObjects.Parsers
             }
 
             return errorList;
+        }
+
+        public void CheckVersion(XmlDocument xmlDocument)
+        {
+            if (ErrorList.VersionCheck)
+            {
+                string version = xmlDocument.SelectSingleNode("//eveapi").Attributes["version"].InnerText;
+                if (version.CompareTo(ErrorList.API_VERSION) != 0)
+                {
+                    throw new ApiVersionException(version, ErrorList.API_VERSION);
+                }
+            }
         }
     }
 }

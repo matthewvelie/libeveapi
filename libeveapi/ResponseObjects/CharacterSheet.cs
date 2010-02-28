@@ -5,6 +5,10 @@ namespace libeveapi
     /// </summary>
     public class CharacterSheet : ApiResponse
     {
+        /// <summary>
+        /// API Version Compatibility
+        /// </summary>
+        public const string API_VERSION = "2";
         private int characterId;
         private string name;
         private string race;

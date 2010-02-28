@@ -12,6 +12,7 @@ namespace libeveapi.ResponseObjects.Parsers
     {
         public CorporationSheet Parse(XmlDocument xmlDocument)
         {
+            this.CheckVersion(xmlDocument);
             CorporationSheet corporationSheet = new CorporationSheet();
             corporationSheet.ParseCommonElements(xmlDocument);
 
@@ -63,6 +64,18 @@ namespace libeveapi.ResponseObjects.Parsers
             corporationSheet.Logo.Color3 = Convert.ToInt32(xmlDocument.SelectSingleNode("//result/logo/color3").InnerText, CultureInfo.InvariantCulture);
 
             return corporationSheet;
+        }
+
+        public void CheckVersion(XmlDocument xmlDocument)
+        {
+            if (CorporationSheet.VersionCheck)
+            {
+                string version = xmlDocument.SelectSingleNode("//eveapi").Attributes["version"].InnerText;
+                if (version.CompareTo(CorporationSheet.API_VERSION) != 0)
+                {
+                    throw new ApiVersionException(version, CorporationSheet.API_VERSION);
+                }
+            }
         }
     }
 }

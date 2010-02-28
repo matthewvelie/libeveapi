@@ -5,13 +5,14 @@ using System.Xml;
 
 namespace libeveapi.ResponseObjects.Parsers
 {
-        ///<summary>
+    ///<summary>
     /// A parser which converts a given <see cref="XmlDocument"/> to a <see cref="AssetList"/>.
     ///</summary>
     internal class AssetListResponseParser : IApiResponseParser<AssetList>
     {
         public AssetList Parse(XmlDocument xmlDocument)
         {
+            this.CheckVersion(xmlDocument);
             AssetList assetList = new AssetList();
             assetList.ParseCommonElements(xmlDocument);
 
@@ -64,6 +65,18 @@ namespace libeveapi.ResponseObjects.Parsers
             assetListItem.Contents = containedAssets.ToArray();
 
             return assetListItem;
+        }
+
+        public void CheckVersion(XmlDocument xmlDocument)
+        {
+            if (AssetList.VersionCheck)
+            {
+                string version = xmlDocument.SelectSingleNode("//eveapi").Attributes["version"].InnerText;
+                if (version.CompareTo(AssetList.API_VERSION) != 0)
+                {
+                    throw new ApiVersionException(version, AssetList.API_VERSION);
+                }
+            }
         }
     }
 }

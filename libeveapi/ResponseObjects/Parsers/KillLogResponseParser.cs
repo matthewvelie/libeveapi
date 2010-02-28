@@ -12,6 +12,7 @@ namespace libeveapi.ResponseObjects.Parsers
     {
         public KillLog Parse(XmlDocument xmlDocument)
         {
+            this.CheckVersion(xmlDocument);
             KillLog killLog = new KillLog();
             killLog.ParseCommonElements(xmlDocument);
 
@@ -107,6 +108,18 @@ namespace libeveapi.ResponseObjects.Parsers
                 tmpItem.ContainedItems = itemList.ToArray();
             }
             return tmpItem;
+        }
+
+        public void CheckVersion(XmlDocument xmlDocument)
+        {
+            if (KillLog.VersionCheck)
+            {
+                string version = xmlDocument.SelectSingleNode("//eveapi").Attributes["version"].InnerText;
+                if (version.CompareTo(KillLog.API_VERSION) != 0)
+                {
+                    throw new ApiVersionException(version, KillLog.API_VERSION);
+                }
+            }
         }
     }
 }

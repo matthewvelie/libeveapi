@@ -7,27 +7,30 @@ using System.Text;
 namespace libeveapi
 {
     /// <summary>
-    /// 
+    /// Roles of a Corporation Member
     /// </summary>
     public class Roles
     {
         /// <summary>
-        /// 
+        /// Hashtable containing roles for the Corporation Member
         /// </summary>
         protected Hashtable rolesTable = new Hashtable();
+        public List<RoleTypes> RoleList = new List<RoleTypes>();
 
         /// <summary>
-        /// 
+        /// Constructor
         /// </summary>
-        public Roles(string roleMask)
+        /// <param name="roleMask">String representing Roles</param>
+        public Roles(string roleMask):this(Convert.ToUInt64(roleMask))
         {
-            ulong mask = Convert.ToUInt64(roleMask);
-            decodeRoles(mask);
+            //ulong mask = Convert.ToUInt64(roleMask);
+            //decodeRoles(mask);
         }
 
         /// <summary>
-        /// 
+        /// Constructor
         /// </summary>
+        /// <param name="roleMask">64bit Unsigned Integer representing Roles</param>
         public Roles(ulong roleMask)
         {
             decodeRoles(roleMask);
@@ -36,8 +39,7 @@ namespace libeveapi
         /// <summary>
         /// This loops through each role and checks to see if it has been assigned
         /// </summary>
-        /// <param name="mask"></param>
-        /// <returns></returns>
+        /// <param name="mask">64bit Unsigned Integer representing Roles</param>
         private void decodeRoles(ulong mask)
         {
             foreach (RoleTypes roleType in Enum.GetValues(typeof(RoleTypes)))
@@ -45,6 +47,7 @@ namespace libeveapi
                 if (((ulong)roleType & mask) > 0)
                 {
                     rolesTable.Add(roleType, 1);
+                    RoleList.Add(roleType);
                 }
             }
         }
@@ -52,8 +55,8 @@ namespace libeveapi
         /// <summary>
         /// Return true if the specified role is present
         /// </summary>
-        /// <param name="roleType"></param>
-        /// <returns></returns>
+        /// <param name="roleType">Type of role</param>
+        /// <returns>True/False</returns>
         public bool HasRole(RoleTypes roleType)
         {
             if (rolesTable.Contains(roleType))
@@ -69,8 +72,8 @@ namespace libeveapi
         /// <summary>
         /// Get the name of a role
         /// </summary>
-        /// <param name="en"></param>
-        /// <returns></returns>
+        /// <param name="en">Type of role</param>
+        /// <returns>Name of the role</returns>
         public static string GetRoleName(RoleTypes en)
         {
             Type type = en.GetType();
@@ -84,15 +87,14 @@ namespace libeveapi
                     return ((Name)attributes[0]).Text;
                 }
             }
-
             return en.ToString();
         }
 
         /// <summary>
         /// Get the description of a role
         /// </summary>
-        /// <param name="en"></param>
-        /// <returns></returns>
+        /// <param name="en">Type of role</param>
+        /// <returns>Description of the RoleType</returns>
         public static string GetRoleDescription(RoleTypes en)
         {
             Type type = en.GetType();

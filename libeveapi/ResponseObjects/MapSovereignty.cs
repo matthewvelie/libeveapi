@@ -6,6 +6,10 @@ namespace libeveapi
     /// </summary>
     public class MapSovereignty : ApiResponse
     {
+        /// <summary>
+        /// API Version Compatibility
+        /// </summary>
+        public const string API_VERSION = "2";
         private MapSovereigntyItem[] mapSystemSovereigntyItems = new MapSovereigntyItem[0];
 
         /// <summary>

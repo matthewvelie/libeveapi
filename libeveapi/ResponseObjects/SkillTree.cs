@@ -5,6 +5,10 @@ namespace libeveapi
     /// </summary>
     public class SkillTree : ApiResponse
     {
+        /// <summary>
+        /// API Version Compatibility
+        /// </summary>
+        public const string API_VERSION = "2";
         private Skill[] skills = new Skill[0];
         private SkillGroup[] skillGroups = new SkillGroup[0];
 

@@ -12,6 +12,7 @@ namespace libeveapi.ResponseObjects.Parsers
     {
         public IndustryJobList Parse(XmlDocument xmlDocument)
         {
+            this.CheckVersion(xmlDocument);
             IndustryJobList industryJobList = new IndustryJobList();
             industryJobList.ParseCommonElements(xmlDocument);
 
@@ -130,6 +131,18 @@ namespace libeveapi.ResponseObjects.Parsers
             IndustryJobListItem.PauseProductionTimeLocal = TimeUtilities.ConvertCCPToLocalTime(IndustryJobListItem.PauseProductionTime);
 
             return IndustryJobListItem;
+        }
+
+        public void CheckVersion(XmlDocument xmlDocument)
+        {
+            if (IndustryJobList.VersionCheck)
+            {
+                string version = xmlDocument.SelectSingleNode("//eveapi").Attributes["version"].InnerText;
+                if (version.CompareTo(IndustryJobList.API_VERSION) != 0)
+                {
+                    throw new ApiVersionException(version, IndustryJobList.API_VERSION);
+                }
+            }
         }
     }
 }
