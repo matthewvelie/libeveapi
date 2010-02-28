@@ -12,6 +12,7 @@ namespace libeveapi.ResponseObjects.Parsers
     {
         public SkillQueue Parse(XmlDocument xmlDocument)
         {
+            this.CheckVersion(xmlDocument);
             SkillQueue skillqueue = new SkillQueue();
             skillqueue.ParseCommonElements(xmlDocument);
             List<SkillQueue.Skill> skills = new List<SkillQueue.Skill>();
@@ -43,6 +44,18 @@ namespace libeveapi.ResponseObjects.Parsers
             }
             skillqueue.SkillList = skills.ToArray();
             return skillqueue;
+        }
+
+        public void CheckVersion(XmlDocument xmlDocument)
+        {
+            if (SkillQueue.VersionCheck)
+            {
+                string version = xmlDocument.SelectSingleNode("//eveapi").Attributes["version"].InnerText;
+                if (version.CompareTo(SkillQueue.API_VERSION) != 0)
+                {
+                    throw new ApiVersionException(version, SkillQueue.API_VERSION);
+                }
+            }
         }
     }
 }

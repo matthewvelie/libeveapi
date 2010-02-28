@@ -12,6 +12,7 @@ namespace libeveapi.ResponseObjects.Parsers
     {
         public MarketOrders Parse(XmlDocument xmlDocument)
         {
+            this.CheckVersion(xmlDocument);
             MarketOrders MarketOrderList = new MarketOrders();
             MarketOrderList.ParseCommonElements(xmlDocument);
 
@@ -84,6 +85,18 @@ namespace libeveapi.ResponseObjects.Parsers
             }
 
             return marketItem;
+        }
+
+        public void CheckVersion(XmlDocument xmlDocument)
+        {
+            if (MarketOrders.VersionCheck)
+            {
+                string version = xmlDocument.SelectSingleNode("//eveapi").Attributes["version"].InnerText;
+                if (version.CompareTo(MarketOrders.API_VERSION) != 0)
+                {
+                    throw new ApiVersionException(version, MarketOrders.API_VERSION);
+                }
+            }
         }
     }
 }

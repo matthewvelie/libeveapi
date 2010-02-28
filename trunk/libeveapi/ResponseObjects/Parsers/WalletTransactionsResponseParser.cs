@@ -12,6 +12,7 @@ namespace libeveapi.ResponseObjects.Parsers
     {
         public WalletTransactions Parse(XmlDocument xmlDocument)
         {
+            this.CheckVersion(xmlDocument);
             WalletTransactions WalletTransactionList = new WalletTransactions();
             WalletTransactionList.ParseCommonElements(xmlDocument);
 
@@ -60,6 +61,18 @@ namespace libeveapi.ResponseObjects.Parsers
             walletTransactionItem.TransactionFor = walletTransactionRow.Attributes["transactionFor"].InnerText;
 
             return walletTransactionItem;
+        }
+
+        public void CheckVersion(XmlDocument xmlDocument)
+        {
+            if (WalletTransactions.VersionCheck)
+            {
+                string version = xmlDocument.SelectSingleNode("//eveapi").Attributes["version"].InnerText;
+                if (version.CompareTo(WalletTransactions.API_VERSION) != 0)
+                {
+                    throw new ApiVersionException(version, WalletTransactions.API_VERSION);
+                }
+            }
         }
     }
 }

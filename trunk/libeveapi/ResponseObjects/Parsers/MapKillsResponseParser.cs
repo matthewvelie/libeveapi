@@ -12,6 +12,7 @@ namespace libeveapi.ResponseObjects.Parsers
     {
         public MapKills Parse(XmlDocument xmlDocument)
         {
+            this.CheckVersion(xmlDocument);
             MapKills mapKills = new MapKills();
             mapKills.ParseCommonElements(xmlDocument);
 
@@ -28,6 +29,18 @@ namespace libeveapi.ResponseObjects.Parsers
             mapKills.MapSystemKills = systemList.ToArray();
 
             return mapKills;
+        }
+
+        public void CheckVersion(XmlDocument xmlDocument)
+        {
+            if (MapKills.VersionCheck)
+            {
+                string version = xmlDocument.SelectSingleNode("//eveapi").Attributes["version"].InnerText;
+                if (version.CompareTo(MapKills.API_VERSION) != 0)
+                {
+                    throw new ApiVersionException(version, MapKills.API_VERSION);
+                }
+            }
         }
     }
 }

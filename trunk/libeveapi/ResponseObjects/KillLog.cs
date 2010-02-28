@@ -7,6 +7,10 @@ namespace libeveapi
     /// </summary>
     public class KillLog : ApiResponse
     {
+        /// <summary>
+        /// API Version Compatibility
+        /// </summary>
+        public const string API_VERSION = "1";
         private Kill[] kills = new Kill[0];
 
         /// <summary>

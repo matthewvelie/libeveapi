@@ -8,6 +8,10 @@ namespace libeveapi
     public class RefTypes : ApiResponse
     {
         /// <summary>
+        /// API Version Compatibility
+        /// </summary>
+        public const string API_VERSION = "2";
+        /// <summary>
         /// A reference type is made up of an int, which is the referenceId, and then a string
         /// which is the name of the reference.  They are stored in a serializable dictionary
         /// for easy searching and saving.
@@ -17,8 +21,8 @@ namespace libeveapi
         /// <summary>
         /// Returns the description for the specified reference type id
         /// </summary>
-        /// <param name="referenceTypeId"></param>
-        /// <returns></returns>
+        /// <param name="referenceTypeId">ID</param>
+        /// <returns>Wallet Journal Description according to the referenceTypeId</returns>
         public string GetReferenceTypeNameForId(int referenceTypeId)
         {
             try

@@ -5,6 +5,10 @@ namespace libeveapi
     /// </summary>
     public class CorporationSheet : ApiResponse
     {
+        /// <summary>
+        /// API Version Compatibility
+        /// </summary>
+        public const string API_VERSION = "2";
         private int corporationId;
         private string corporationName;
         private string ticker;

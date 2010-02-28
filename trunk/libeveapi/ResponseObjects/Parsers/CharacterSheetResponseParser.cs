@@ -12,6 +12,7 @@ namespace libeveapi.ResponseObjects.Parsers
     {
         public CharacterSheet Parse(XmlDocument xmlDocument)
         {
+            this.CheckVersion(xmlDocument);
             CharacterSheet characterSheet = new CharacterSheet();
             characterSheet.ParseCommonElements(xmlDocument);
 
@@ -77,5 +78,18 @@ namespace libeveapi.ResponseObjects.Parsers
                 ae.Value = Convert.ToInt32(enhancer.SelectSingleNode("./augmentatorValue").InnerText);
             }
         }
+
+        public void CheckVersion(XmlDocument xmlDocument)
+        {
+            if (CharacterSheet.VersionCheck)
+            {
+                string version = xmlDocument.SelectSingleNode("//eveapi").Attributes["version"].InnerText;
+                if (version.CompareTo(CharacterSheet.API_VERSION) != 0)
+                {
+                    throw new ApiVersionException(version, CharacterSheet.API_VERSION);
+                }
+            }
+        }
+
     }
 }

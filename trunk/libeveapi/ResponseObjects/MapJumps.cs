@@ -6,6 +6,10 @@ namespace libeveapi
     /// </summary>
     public class MapJumps : ApiResponse
     {
+        /// <summary>
+        /// API Version Compatibility
+        /// </summary>
+        public const string API_VERSION = "2";
         private MapSystemItem[] mapSystemJumps = new MapSystemItem[0];
 
         /// <summary>

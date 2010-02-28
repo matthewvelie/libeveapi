@@ -6,6 +6,7 @@ namespace libeveapi
     /// </summary>
     public class MapKills : ApiResponse
     {
+        public const string API_VERSION = "2";
         private MapKillsItem[] mapSystemKills = new MapKillsItem[0];
 
         /// <summary>

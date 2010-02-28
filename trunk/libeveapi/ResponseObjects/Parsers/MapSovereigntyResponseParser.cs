@@ -12,6 +12,7 @@ namespace libeveapi.ResponseObjects.Parsers
     {
         public MapSovereignty Parse(XmlDocument xmlDocument)
         {
+            this.CheckVersion(xmlDocument);
             MapSovereignty mapSovereignty = new MapSovereignty();
             mapSovereignty.ParseCommonElements(xmlDocument);
 
@@ -29,6 +30,18 @@ namespace libeveapi.ResponseObjects.Parsers
             mapSovereignty.MapSystemSovereigntyItems = sovereigntyList.ToArray();
 
             return mapSovereignty;
+        }
+
+        public void CheckVersion(XmlDocument xmlDocument)
+        {
+            if (MapSovereignty.VersionCheck)
+            {
+                string version = xmlDocument.SelectSingleNode("//eveapi").Attributes["version"].InnerText;
+                if (version.CompareTo(MapSovereignty.API_VERSION) != 0)
+                {
+                    throw new ApiVersionException(version, MapSovereignty.API_VERSION);
+                }
+            }
         }
     }
 }

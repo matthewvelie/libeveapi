@@ -7,6 +7,10 @@ namespace libeveapi
     /// </summary>
     public class SkillInTraining : ApiResponse 
     {
+        /// <summary>
+        /// API Version Compatibility
+        /// </summary>
+        public const string API_VERSION = "2";
         private bool skillCurrentlyInTraining;
         private DateTime trainingEndTime;
         private DateTime trainingStartTime;

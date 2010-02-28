@@ -1144,6 +1144,33 @@ namespace libeveapi
         }
 
         /// <summary>
+        /// Retrieve a Characters Factional Warfare Stats
+        /// </summary>
+        /// <param name="userID">Users ID</param>
+        /// <param name="characterID">Characters ID</param>
+        /// <param name="apikey">Limited ApiKey</param>
+        /// <returns>Characters Faction War Stats</returns>
+        public static FacWarStats.CharFacWarStatsItem GetCharacterFactionWarStats(int userID, int characterID, string apikey)
+        {
+            return GetCharacterFactionWarStats(userID, characterID, apikey, false);
+        }
+
+        /// <summary>
+        /// Retrieve a Characters Factional Warfare Stats
+        /// </summary>
+        /// <param name="userID">Users ID</param>
+        /// <param name="characterID">Characters ID</param>
+        /// <param name="apikey">Limited ApiKey</param>
+        /// <param name="ignoreCachedUntil">Ignore Cached Data</param>
+        /// <returns>Characters Faction War Stats</returns>
+        public static FacWarStats.CharFacWarStatsItem GetCharacterFactionWarStats(int userID, int characterID, string apikey, bool ignoreCachedUntil)
+        {
+            var url = new ApiRequestUrl(Constants.CharFactionalWarfareStats);
+            AddCommonCharacterInformation(url, userID, characterID, apikey);
+            return HandleRequest(url,new CharFacWarStatsResponseParser(), ignoreCachedUntil);
+        }
+
+        /// <summary>
         /// Get a list of contestable solar systems and the NPC faction currently occupying them
         /// </summary>
         /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>

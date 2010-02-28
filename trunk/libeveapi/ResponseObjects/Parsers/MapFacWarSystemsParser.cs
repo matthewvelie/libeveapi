@@ -12,6 +12,7 @@ namespace libeveapi.ResponseObjects.Parsers
     {
         public MapFacWarSystems Parse(XmlDocument xmlDocument)
         {
+            this.CheckVersion(xmlDocument);
             MapFacWarSystems mapFacWarSystems = new MapFacWarSystems();
             mapFacWarSystems.ParseCommonElements(xmlDocument);
 
@@ -29,6 +30,18 @@ namespace libeveapi.ResponseObjects.Parsers
 
             mapFacWarSystems.FactionWarSystems = mapFacWarSystemItems.ToArray();
             return mapFacWarSystems;
+        }
+
+        public void CheckVersion(XmlDocument xmlDocument)
+        {
+            if (MapFacWarSystems.VersionCheck)
+            {
+                string version = xmlDocument.SelectSingleNode("//eveapi").Attributes["version"].InnerText;
+                if (version.CompareTo(MapFacWarSystems.API_VERSION) != 0)
+                {
+                    throw new ApiVersionException(version, MapFacWarSystems.API_VERSION);
+                }
+            }
         }
     }
 }

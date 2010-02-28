@@ -14,10 +14,31 @@ namespace ConsoleTests
             Console.WriteLine("*******\nExample\n*******\n");
             UseLocalUrls();
             ResponseCache.Clear();
-            SkillQueueExample();
+            MemberTrackingExample();
 
-            SkillInTrainingExample();
+            //MapSovereigntyExample();
+            //CharFacWarStatsExample();
+
             ResponseCache.Save("ResponseCache.xml");
+        }
+
+        public static void CharFacWarStatsExample()
+        {
+            FacWarStats stats = new FacWarStats();
+            stats.CharacterFactionWarStats = EveApi.GetCharacterFactionWarStats(123, 456, "apikey");
+            
+            Console.WriteLine("**** Character Stats ****");
+            Console.WriteLine("Faciton ID: {0}", stats.CharacterFactionWarStats.FactionID);
+            Console.WriteLine("Faciton Name: {0}", stats.CharacterFactionWarStats.FactionName);
+            Console.WriteLine("Enlisted: {0}", stats.CharacterFactionWarStats.Enlisted);
+            Console.WriteLine("Current Rank: {0}", stats.CharacterFactionWarStats.CurrentRank);
+            Console.WriteLine("Highest Rank: {0}", stats.CharacterFactionWarStats.HighestRank);
+            Console.WriteLine("Kills Yesterday: {0}", stats.CharacterFactionWarStats.KillsYesterday);
+            Console.WriteLine("Kills Last Week: {0}", stats.CharacterFactionWarStats.KillsLastWeek);
+            Console.WriteLine("Kills Total: {0}", stats.CharacterFactionWarStats.KillsTotal);
+            Console.WriteLine("Victory Points Yesterday: {0}", stats.CharacterFactionWarStats.VictoryPointsYesterday);
+            Console.WriteLine("Victory Points Last Week: {0}", stats.CharacterFactionWarStats.VictoryPointsLastWeek);
+            Console.WriteLine("Victory Points Total: {0}", stats.CharacterFactionWarStats.VictoryPointsTotal);
         }
 
         public static void MapFactionWarSystemsExample()
@@ -268,10 +289,29 @@ namespace ConsoleTests
             // Output the name and location of all corporation directors
             foreach (MemberTracking.Member member in memberTracking.Members)
             {
-                if (member.Roles.HasRole(RoleTypes.Director))
+                Console.WriteLine("CharacterId: {0}", member.CharacterId);
+                Console.WriteLine("Name: {0}", member.Name);
+                Console.WriteLine("StartDateTime: {0}", member.StartDateTime);
+                Console.WriteLine("StartDateTimeLocal: {0}", member.StartDateTimeLocal);
+                Console.WriteLine("BaseId: {0}", member.BaseId);
+                Console.WriteLine("Base: {0}", member.Base);
+                Console.WriteLine("Title: {0}", member.Title);
+                Console.WriteLine("LogonDateTime: {0}", member.LogonDateTime);
+                Console.WriteLine("LogonDateTimeLocal: {0}", member.LogonDateTimeLocal);
+                Console.WriteLine("LogoffDateTime: {0}", member.LogoffDateTime);
+                Console.WriteLine("LogoffDateTimeLocal: {0}", member.LogoffDateTimeLocal);
+                Console.WriteLine("LocationId: {0}", member.LocationId);
+                Console.WriteLine("Location: {0}", member.Location);
+                Console.WriteLine("ShipTypeId: {0}", member.ShipTypeId);
+                Console.WriteLine("ShipType: {0}", member.ShipType);
+                Console.WriteLine("RolesMask: {0}", member.RolesMask);
+                Console.WriteLine("GrantableRoles: {0}", member.GrantableRoles);
+                Console.Write("Roles: ");
+                foreach (RoleTypes role in member.Roles.RoleList)
                 {
-                    Console.WriteLine("Director Name: {0} Location: {1}", member.Name, member.Location);
+                    Console.Write("{0}, ", role.ToString());
                 }
+                Console.WriteLine("\n\n*************************************\n");
             }
         }
 

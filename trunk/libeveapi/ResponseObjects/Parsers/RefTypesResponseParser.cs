@@ -11,6 +11,7 @@ namespace libeveapi.ResponseObjects.Parsers
     {
         public RefTypes Parse(XmlDocument xmlDocument)
         {
+            this.CheckVersion(xmlDocument);
             RefTypes refTypes = new RefTypes();
             refTypes.ParseCommonElements(xmlDocument);
 
@@ -20,6 +21,18 @@ namespace libeveapi.ResponseObjects.Parsers
             }
 
             return refTypes;
+        }
+
+        public void CheckVersion(XmlDocument xmlDocument)
+        {
+            if (RefTypes.VersionCheck)
+            {
+                string version = xmlDocument.SelectSingleNode("//eveapi").Attributes["version"].InnerText;
+                if (version.CompareTo(RefTypes.API_VERSION) != 0)
+                {
+                    throw new ApiVersionException(version, RefTypes.API_VERSION);
+                }
+            }
         }
     }
 }

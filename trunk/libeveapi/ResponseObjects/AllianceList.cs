@@ -7,6 +7,10 @@ namespace libeveapi
     /// </summary>
     public class AllianceList : ApiResponse
     {
+        /// <summary>
+        /// API Version Compatibility
+        /// </summary>
+        public const string API_VERSION = "1";
         private AllianceListItem[] allianceListItems = new AllianceListItem[0];
 
         /// <summary>

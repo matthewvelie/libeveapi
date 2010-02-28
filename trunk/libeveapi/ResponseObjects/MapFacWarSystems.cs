@@ -6,6 +6,10 @@
     /// </summary>
     public class MapFacWarSystems : ApiResponse
     {
+        /// <summary>
+        /// API Version Compatibility
+        /// </summary>
+        public const string API_VERSION = "2";
         private FactionWarSystem[] factionWarSystems = new FactionWarSystem[0];
 
         /// <summary>

@@ -11,6 +11,7 @@ namespace libeveapi.ResponseObjects.Parsers
     {
         public SkillInTraining Parse(XmlDocument xmlDocument)
         {
+            this.CheckVersion(xmlDocument);
             SkillInTraining skilltraining = new SkillInTraining();
             skilltraining.ParseCommonElements(xmlDocument);
             skilltraining.SkillCurrentlyInTraining = Convert.ToBoolean(Convert.ToInt32(xmlDocument.SelectSingleNode("/eveapi/result/skillInTraining").InnerText));
@@ -38,6 +39,18 @@ namespace libeveapi.ResponseObjects.Parsers
                 skilltraining.TrainingToLevel = 0;
             }
             return skilltraining;
+        }
+
+        public void CheckVersion(XmlDocument xmlDocument)
+        {
+            if (SkillInTraining.VersionCheck)
+            {
+                string version = xmlDocument.SelectSingleNode("//eveapi").Attributes["version"].InnerText;
+                if (version.CompareTo(SkillInTraining.API_VERSION) != 0)
+                {
+                    throw new ApiVersionException(version, SkillInTraining.API_VERSION);
+                }
+            }
         }
     }
 }

@@ -12,6 +12,8 @@ namespace libeveapi.ResponseObjects.Parsers
     {
         public CharacterList Parse(XmlDocument xmlDocument)
         {
+            this.CheckVersion(xmlDocument);
+
             CharacterList characterList = new CharacterList();
             characterList.ParseCommonElements(xmlDocument);
 
@@ -29,5 +31,18 @@ namespace libeveapi.ResponseObjects.Parsers
 
             return characterList;
         }
+
+        public void CheckVersion(XmlDocument xmlDocument)
+        {
+            if (CharacterList.VersionCheck)
+            {
+                string version = xmlDocument.SelectSingleNode("//eveapi").Attributes["version"].InnerText;
+                if (version.CompareTo(CharacterList.API_VERSION) != 0)
+                {
+                    throw new ApiVersionException(version, CharacterList.API_VERSION);
+                }
+            }
+        }
+
     }
 }

@@ -5,6 +5,10 @@ namespace libeveapi
     /// </summary>
     public class ConquerableStationList : ApiResponse
     {
+        /// <summary>
+        /// API Version Compatibility
+        /// </summary>
+        public const string API_VERSION = "2";
         private ConquerableStation[] conquerableStations = new ConquerableStation[0];
 
         /// <summary>

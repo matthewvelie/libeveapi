@@ -6,6 +6,10 @@ namespace libeveapi
     public class CharacterList : ApiResponse
     {
         /// <summary>
+        /// API Version Compatibility
+        /// </summary>
+        public const string API_VERSION = "2";
+        /// <summary>
         /// List of characters associated with an account
         /// </summary>
         public CharacterListItem[] CharacterListItems = new CharacterListItem[0];
