@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<eveapi version="1">
+<eveapi version="2">
   <currentTime>2007-12-02 19:43:40</currentTime>
   <result>
     <corporationID>150212025</corporationID>
