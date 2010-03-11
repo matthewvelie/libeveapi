@@ -1,0 +1,251 @@
+using System;
+
+namespace libeveapi
+{
+    /// <summary>
+    /// Returns market transactions for a character.
+    /// http://wiki.eve-dev.net/APIv2_Char_MarketTransactions_XML
+    /// </summary>
+    public class KillLog : ApiResponse
+    {
+        private KillLogItem[] killLogItems = new KillLogItem[0];
+		
+        /// <summary>
+        /// Information for a Single Kill
+        /// </summary>
+        public KillLogItem[] KillLogItems
+        {
+            get { return KillLogItems; }
+            set { KillLogItems = value; }
+        }
+		public KillLogType LogType {get;set;}
+
+        /// <summary>
+        /// Contains information about one wallet transaction
+        /// </summary>
+        public class KillLogItem
+        {
+			public KillLogItem() {}
+			public KillLogItem(int killID,DateTime killTime,DateTime killTimeLocal,int solarSystemID,string moonID,int characterID,string characterName,
+										int corporationID,string corporationName,int allianceID,int allianceName,int factionID,int factionName,int damangeTaken,int shipTypeID)
+			{
+				this.killID = killID;
+				this.killTime = killTime;
+				this.killTimeLocal = killTimeLocal;
+				this.solarSystemID = solarSystemID;
+				this.moonID = moonID;
+				this.characterID = characterID;
+				this.characterName = characterName;
+				this.corporationID = corporationID;
+				this.corporationName = corporationName;
+				this.allianceID = allianceID;
+				this.allianceName = allianceName;
+				this.factionID = factionID;
+				this.factionName = factionName;
+				this.damangeTaken = damangeTaken;
+				this.shipTypeID = shipTypeID;
+			}
+
+			public KillLogItem(int killID,DateTime killTime,DateTime killTimeLocal,int solarSystemID,string moonID,int characterID,string characterName,
+										int corporationID,string corporationName,int allianceID,int allianceName,int factionID,int factionName,int damangeTaken,int shipTypeID, AttackersInfo[] attackers, ItemsInfo[] itemsLost)
+			{
+				this.killID = killID;
+				this.killTime = killTime;
+				this.killTimeLocal = killTimeLocal;
+				this.solarSystemID = solarSystemID;
+				this.moonID = moonID;
+				this.characterID = characterID;
+				this.characterName = characterName;
+				this.corporationID = corporationID;
+				this.corporationName = corporationName;
+				this.allianceID = allianceID;
+				this.allianceName = allianceName;
+				this.factionID = factionID;
+				this.factionName = factionName;
+				this.damangeTaken = damangeTaken;
+				this.shipTypeID = shipTypeID;
+				this.attackers = attackers;
+				this.itemsLost = itemslost;
+			}
+
+            #region Fields
+			private string killColumns ="killID,solarSystemID,killTime,moonID";
+            private int killID;
+			private DateTime killTime;
+            private DateTime killTimeLocal;
+            private int solarSystemID;
+            private string moonID;
+			private int characterID;
+			private string characterName;
+			private int corporationID;
+			private string corporationName;
+			private int allianceID;
+			private int allianceName;
+			private int factionID;
+			private int factionName;
+			private int damangeTaken;
+			private int shipTypeID;
+			private AttackersInfo[] attackers = new AttackersInfo[0];
+			private ItemInfo[] itemsLost = new ItemInfo[0];
+			
+			#endregion Fields
+			
+			#region Properties
+			public string KillsColumns { get{return characterID;} set{characterID=value;} }
+			public int KillID { get{return killID ;} set{killID =value;} }
+			public int KillTime { get{return killTime;} set{killTime=value;} }
+			public string KillTimeLocal { get{return killTimeLocal;} set{characterName=value;} }
+			public string SolarSystemID { get{return solarSystemID;} set{solarSystemID=value;} }
+			public int MoonID { get{return moonID;} set{moonID=value;} }
+			
+			// Victim Info
+			public int CharacterID { get{return characterID;} set{characterID=value;} }
+			public string CharacterName { get{return characterName;} set{characterName=value;} }
+			public int CorporationID { get{return corporationID;} set{corporationID=value;} }
+			public string CorporationName { get{return corporationName;} set{corporationName=value;} }
+			public int AllianceID { get{return allianceID;} set{allianceID=value;} }
+			public string AllianceName { get{return allianceName;} set{allianceName=value;} }
+			public int FactionID { get{return factionID;} set{factionID=value;} }
+			public string FactionName { get{return factionName;} set{factionName=value;} }
+			public int DamangeTaken { get{return damangeTaken;} set{damangeTaken=value;} }
+			public int ShipTypeID { get{return shipTypeID;} set{shipTypeID=value;} }
+			
+			public AttackersInfo[] Attackers {get{return attackers;} set{attackers=value;} }
+			public ItemInfo[] ItemsLost {get{return itemsLost;} set{itemsLost=value;} }
+			#endregion Properties
+			
+			#region Structs
+				///<summary>
+				/// Attacker Information
+				///</summary>
+			public struct AttackersInfo
+			{
+
+				public AttackersInfo(int characterID, string characterName, int corporationID, string corporationName, int allianceID, string allianceName,
+											int factionID, string factionName, int securityStatus, int damageDone, int finalBlow, int weaponTypeID, int shipTypeID)
+				{
+					CharacterID = characterID;
+					CharacterName = characterName;
+					CorporationID = corporationID;
+					CorporationName = corporationName;
+					AllianceID = allianceID;
+					AllianceName = allianceName;
+					FactionID = factionID;
+					FactionName = factionName;
+					SecurityStatus = securityStatus;
+					DamageDone = damageDone;
+					FinalBlow = finalBlow;
+					WeaponTypeID = weaponTypeID;
+					ShipTypeID = shipTypeID;
+				}
+				#region AttackersInfo Properties
+				public string columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID";
+				///<summary>
+				/// Character ID
+				///</summary>
+				public int CharacterID { get; set;}
+				///<summary>
+				/// Character Name
+				///</summary>
+				public string CharacterName {get;set;}
+				///<summary>
+				/// Corporation ID
+				///</summary>
+				public int CorporationID {get;set;}
+				///<summary>
+				/// Corporation Name
+				///</summary>
+				public string CorporationName {get;set;}
+				///<summary>
+				/// Alliance ID
+				/// 0 If no alliance
+				///</summary>
+				public int AllianceID {get;set;}
+				///<summary>
+				/// Alliance Name
+				/// String.Empty if no Alliance
+				///</summary>
+				public string AllianceName {get;set;}
+				///<summary>
+				/// Faction ID
+				/// 0 If no alliance
+				///</summary>
+				public int FactionID {get;set;}
+				///<summary>
+				/// Faction Name
+				/// String.Empty if no Alliance
+				///</summary>
+				public string FactionName {get;set;}
+				///<summary>
+				/// Security Status
+				///</summary>
+				public int 	SecurityStatus {get;set;}
+				///<summary>
+				/// Total Damage Done after Resists
+				///</summary>
+				public int DamageDone {get;set;}
+				///<summary>
+				/// Performed last blow
+				///</summary>
+				public bool FinalBlow {get;set;}
+				///<summary>
+				/// Character ID
+				///</summary>
+				public int WeaponTypeID {get;set;}
+				///<summary>
+				/// Character ID
+				///</summary>
+				public int ShipTypeID {get;set;}
+				#endregion AttackersInfo Properties
+			}
+
+				///<summary>
+				/// Items Information
+				///</summary>
+			public struct ItemsInfo
+			{
+			
+				public ItemsInfo(int typeID, int flag, int qtyDropped, int qtyDestroyed)
+				{
+					TypeID = typeID;
+					Flag = flag;
+					QtyDropped = qtyDropped;
+					QtyDestroyed = qtyDestroyed;
+				}
+				public string columns="typeID,flag,qtyDropped,qtyDestroyed";
+				///<summary>
+				/// Item TypeID
+				///</summary>
+				public int TypeID { get; set; }
+				///<summary>
+				/// Item Flag  Refer to EveDatabase Table inventoryFlags for description
+				///</summary>
+				public string Flag {get;set;}
+				///<summary>
+				/// Quantity Dropped
+				///</summary>
+				public int QtyDropped {get;set;}
+				///<summary>
+				/// Quantity Descroyed
+				///</summary>
+				public string QtyDestroyed {get;set;}
+			}
+
+			#endregion Structs
+    }
+
+    /// <summary>
+    /// If the transaction is a corporation or character transaction
+    /// </summary>
+    public enum KillLogType
+    {
+        /// <summary>
+        /// A corporation KillLog
+        /// </summary>
+        Corporation,
+        /// <summary>
+        /// A character KillLog
+        /// </summary>
+        Character
+    }
+}

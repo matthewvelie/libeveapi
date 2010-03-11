@@ -15,6 +15,9 @@ namespace libeveapi
         /// Hashtable containing roles for the Corporation Member
         /// </summary>
         protected Hashtable rolesTable = new Hashtable();
+        /// <summary>
+        /// List containing roles for the Corporation Member
+        /// </summary>
         public List<RoleTypes> RoleList = new List<RoleTypes>();
 
         /// <summary>
@@ -113,9 +116,7 @@ namespace libeveapi
         }
     }
 
-    /// <summary>
-    /// The name of a role
-    /// </summary>
+/*
     class Name : Attribute
     {
         public string Text;
@@ -126,9 +127,7 @@ namespace libeveapi
         }
     }
 
-    /// <summary>
-    /// The description of a role
-    /// </summary>
+
     class Description : Attribute
     {
         public string Text;
@@ -138,7 +137,7 @@ namespace libeveapi
             this.Text = text;
         }
     }
-
+*/
     /// <summary>
     /// Character Roles
     /// </summary>

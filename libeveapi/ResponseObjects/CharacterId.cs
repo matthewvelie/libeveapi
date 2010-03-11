@@ -6,6 +6,9 @@ namespace libeveapi
     /// </summary>
     public class CharacterIdName : ApiResponse
     {
+        /// <summary>
+        /// API Version Compatibility
+        /// </summary>
         public const string API_VERSION = "2";
         private CharacterIdNameItem[] characterIdItems = new CharacterIdNameItem[0];
 

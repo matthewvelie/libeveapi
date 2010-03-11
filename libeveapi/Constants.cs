@@ -63,7 +63,7 @@ namespace libeveapi
         /// <summary>
         /// The location of the Character's Notificatinos xml file
         /// </summary>
-        internal const string CharacterNotifications = "/char/Notifications.xml.aspx";
+        internal const string CharNotifications = "/char/Notifications.xml.aspx";
         /// <summary>
         /// The location of the Characters Current Research jobs xml file
         /// </summary>

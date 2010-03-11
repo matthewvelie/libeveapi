@@ -12,8 +12,14 @@ namespace libeveapi
         /// <summary>
         /// List of characters associated with an account
         /// </summary>
-        public CharacterListItem[] CharacterListItems = new CharacterListItem[0];
+        public CharacterListItem[] characterListItems = new CharacterListItem[0];
 
+        public CharacterListItem[] CharacterListItems
+        {
+            get {return characterListItems;}
+            set {characterListItems = value;}
+        }
+        
         /// <summary>
         /// Represents a character from the account character list
         /// </summary>
