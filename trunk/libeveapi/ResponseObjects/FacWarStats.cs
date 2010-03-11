@@ -26,7 +26,9 @@ namespace libeveapi
         private CorpFacWarStatsItem corporationFactionWarStats = new CorpFacWarStatsItem();
         private EveFacWarStatsItem[] eveFactionWarStats = new EveFacWarStatsItem[0];
         private EveFacWarStatsTotals eveFactionWarStatsTotals = new EveFacWarStatsTotals();
-        private EveFacWarStatsTop eveFactionWarStatsTop = new EveFacWarStatsTop();
+        private EveFacWarStatsTopItem eveFactionWarStatsTop = new EveFacWarStatsTopItem();
+        private EveFactionWar[] eveFactionWars = new EveFactionWar[0];
+        private EveFacWarStatsTotals serverTotals = new EveFacWarStatsTotals();
         #endregion Fields
 
         #region Properties
@@ -67,21 +69,107 @@ namespace libeveapi
         /// Kills Yesterday, Kills Last Week, Kills Total
         /// Victory Points Yesterday, Victory Points Last Week, Victory Points Total
         /// </summary>
-        public EveFacWarStatsTop EveFactionWarStatsTop
+        public EveFacWarStatsTopItem EveFactionWarStatsTop
         {
             get { return eveFactionWarStatsTop; }
             set { eveFactionWarStatsTop = value; }
         }
+        
+        /// <summary>
+        /// Array of Waring Factions
+        /// </summary>
+        public EveFactionWar[] EveFactionWars
+        {
+            get { return eveFactionWars; }
+            set { eveFactionWars = value; }
+        }
+
+        /// <summary>
+        /// Factional Warstats Server Totals
+        /// </summary>
+        public EveFacWarStatsTotals ServerTotals
+        {
+            get { return serverTotals; }
+            set { serverTotals = value; }
+        }
+
         #endregion Properties
 
         #region SubClasses
+        
+        /// <summary>
+        /// Contains Faction information for two waring factions
+        /// </summary>
+        public class EveFactionWar
+        {
+            /// <summary>
+            /// Default Constructor
+            /// </summary>
+            public EveFactionWar(){}
+            /// <summary>
+            /// Full Constructor
+            /// </summary>
+            /// <param name="factionID">Faction ID</param>
+            /// <param name="factionName">Faction Name</param>
+            /// <param name="againstID">Opposing Faction's ID</param>
+            /// <param name="againstName">Opposing Faction's Name</param>
+            public EveFactionWar(int factionID, string factionName, int againstID, string againstName)
+            {
+                this.factionID = factionID;
+                this.factionName = factionName;
+                this.againstID = againstID;
+                this.againstName = againstName;
+            }
+
+            private int factionID;
+            private string factionName;
+            private int againstID;
+            private string againstName;
+            /// <summary>
+            /// Faction ID
+            /// </summary>
+            public int FactionID
+            {
+                get { return factionID; }
+                set { factionID = value; }
+            }
+            /// <summary>
+            /// Faction Name
+            /// </summary>
+            public string FactionName
+            {
+                get { return factionName; }
+                set { factionName = value; }
+            }
+            /// <summary>
+            /// Opposing Faction's ID
+            /// </summary>
+            public int AgainstID
+            {
+                get { return againstID; }
+                set { againstID = value; }
+            }
+            /// <summary>
+            /// Opposing Faction's Name
+            /// </summary>
+            public string AgainstName
+            {
+                get { return againstName; }
+                set { againstName = value; }
+            }
+        }
+
         /// <summary>
         /// Structure containing the Faciton Warstats Totals
         /// </summary>
-        public struct EveFacWarStatsTotals
+        public class EveFacWarStatsTotals
         {
             /// <summary>
-            /// Initialize structure
+            /// Default Constructor
+            /// </summary>
+            public EveFacWarStatsTotals(){}
+            /// <summary>
+            /// Full Constructor
             /// </summary>
             /// <param name="killsYesterday">Number of Kills Yesterday</param>
             /// <param name="killsLastWeek">Number of Kills Last Week</param>
@@ -313,6 +401,7 @@ namespace libeveapi
 
             private int pilots;
             private int systemsControlled;
+            
             /// <summary>
             /// Number of Pilots
             /// </summary>
@@ -336,12 +425,12 @@ namespace libeveapi
         /// Kills Yesterday, Kills Last Week, Kills Total
         /// Victory Points Yesterday, Victory Points Last Week, Victory Points Total
         /// </summary>
-        public class EveFacWarStatsTop
+        public class EveFacWarStatsTopItem
         {
             /// <summary>
             /// Default Constructor
             /// </summary>
-            public EveFacWarStatsTop() { }
+            public EveFacWarStatsTopItem() { }
             
             #region Fields
             #region Character Top Fields
@@ -528,7 +617,7 @@ namespace libeveapi
             /// <summary>
             /// Represents a Top Kills Stat
             /// </summary>
-            public struct TopKills
+            public class TopKills
             {
                 /// <summary>
                 /// Full Initialization
@@ -574,7 +663,7 @@ namespace libeveapi
             /// <summary>
             /// Represents a Top Victory Points Stat
             /// </summary>
-            public struct TopVictoryPoints
+            public class TopVictoryPoints
             {
                 /// <summary>
                 /// Full Initialization
@@ -729,5 +818,28 @@ namespace libeveapi
         }
         #endregion SubClasses
 
+    }
+    
+    /// <summary>
+    /// Faction Warfare Type
+    /// </summary>
+    public enum FacWarStatsType
+    {
+        /// <summary>
+        /// Factional Warstats for a Character
+        /// </summary>
+        Character = 1,
+        /// <summary>
+        /// Factional Warstats for a Corporation
+        /// </summary>
+        Corporation = 2,
+        /// <summary>
+        /// Eve Tranquility Factional Warstats
+        /// </summary>
+        Eve = 3,
+        /// <summary>
+        /// Eve Tranquility Top 100 Factional Warstats
+        /// </summary>
+        EveTop = 4,
     }
 }

@@ -6,11 +6,13 @@ using libeveapi.ResponseObjects.Parsers;
 namespace libeveapi
 {
     /// <summary>
-    /// 
+    /// API Access Class
+    /// Provides Wrappers to all EveApi Responses
     /// </summary>
     public class EveApi
     {
 
+        #region EveApi Setup
         /// <summary>
         /// Sets Domain to 'http://localhost/eveapi' if prefix is null
         /// otherwise sets Domain to prefix
@@ -83,6 +85,9 @@ namespace libeveapi
             Network.eveNetworkClientSettings.userAgent = "libEveApi/1 (" + userAgent + ")";
         }
 
+        #endregion EveApi Setup
+        
+        #region Account API
         /// <summary>
         /// Returns a list of all characters on an account
         /// </summary>
@@ -110,7 +115,10 @@ namespace libeveapi
             return HandleRequest(url, new CharacterListResponseParser(), ignoreCacheUntil);
         }
 
-                /// <summary>
+        #endregion Account API
+        
+        #region Character API
+        /// <summary>
         /// Returns the ISK balance of a corporation or character
         /// </summary>
         /// <param name="accountBalanceType">retrieve balance for character or corporation</param>
@@ -158,138 +166,6 @@ namespace libeveapi
         }
 
         /// <summary>
-        /// Returns a list of starbases owned by a corporation
-        /// </summary>
-        /// <param name="userId">user Id of account for authentication</param>
-        /// <param name="characterId">Character Id of a char with director/CEO access in the corp you want the starbases for</param>
-        /// <param name="fullApiKey">Full access api key of account</param>
-        /// <returns></returns>
-        public static StarbaseList GetStarbaseList(int userId, int characterId, string fullApiKey)
-        {
-            return GetStarbaseList(userId, characterId, fullApiKey, false);
-        }
-
-        /// <summary>
-        /// Returns a list of starbases owned by a corporation
-        /// </summary>
-        /// <param name="userId">user Id of account for authentication</param>
-        /// <param name="characterId">Character Id of a char with director/CEO access in the corp you want the starbases for</param>
-        /// <param name="fullApiKey">Full access api key of account</param>
-        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
-        /// <returns></returns>
-        public static StarbaseList GetStarbaseList(int userId, int characterId, string fullApiKey, bool ignoreCacheUntil)
-        {
-            var url = new ApiRequestUrl(Constants.StarbaseList);
-            AddCommonCharacterInformation(url, userId, characterId, fullApiKey);
-            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
-
-            return HandleRequest(url, new StarbaseListResponseParser(), ignoreCacheUntil);
-        }
-
-        /// <summary>
-        /// Returns the character id and character name, given the one or the other
-        /// </summary>
-        /// <param name="charactername">character name string, use to look up character id</param>
-        /// <returns></returns>
-        public static CharacterIdName GetCharacterIdName(string charactername)
-        {
-            return GetCharacterIdName(charactername, false);
-        }
-
-        /// <summary>
-        /// Returns the character id and character name, given the one or the other
-        /// </summary>
-        /// <param name="charactername">character name string, use to look up character id</param>
-        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
-        /// <returns></returns>
-        public static CharacterIdName GetCharacterIdName(string charactername, bool ignoreCacheUntil)
-        {
-            var url = new ApiRequestUrl(Constants.CharacterIdName);
-            url.AddProperty(ApiRequestUrl.PROPERTY_NAMES, charactername);
-
-            return HandleRequest(url, new CharacterIdNameResponseParser(), ignoreCacheUntil);
-        }
-
-        /// <summary>
-        /// Returns the character id and character name, given the one or the other
-        /// </summary>
-        /// <param name="characterId">characterId used to look up character name</param>
-        /// <returns></returns>
-        public static CharacterIdName GetCharacterIdName(int characterId)
-        {
-            return GetCharacterIdName(characterId, false);
-        }
-
-
-        /// <summary>
-        /// Returns the character id and character name, given the one or the other
-        /// </summary>
-        /// <param name="characterId">characterId used to look up character name</param>
-        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
-        /// <returns></returns>
-        public static CharacterIdName GetCharacterIdName(int characterId, bool ignoreCacheUntil)
-        {
-            var url = new ApiRequestUrl(Constants.CharacterIdName);
-            url.AddProperty(ApiRequestUrl.PROPERTY_IDENTIFICATIONS, characterId.ToString());
-
-            return HandleRequest(url, new CharacterIdNameResponseParser(), ignoreCacheUntil);
-        }
-
-        /// <summary>
-        /// Returns the settings and fuel status of a starbase
-        /// </summary>
-        /// <param name="userId">user Id of account for authentication</param>
-        /// <param name="characterId">Character Id of a char with director/CEO access in the corp that owns the starbase</param>
-        /// <param name="fullApiKey">Full access api key of account</param>
-        /// <param name="itemId">Item Id of the starbase as given in the starbase list</param>
-        /// <returns></returns>
-        public static StarbaseDetail GetStarbaseDetail(int userId, int characterId, string fullApiKey, int itemId)
-        {
-            return GetStarbaseDetail(userId, characterId, fullApiKey, itemId, false);
-        }
-
-        /// <summary>
-        /// Returns the settings and fuel status of a starbase
-        /// </summary>
-        /// <param name="userId">user Id of account for authentication</param>
-        /// <param name="characterId">Character Id of a char with director/CEO access in the corp that owns the starbase</param>
-        /// <param name="fullApiKey">Full access api key of account</param>
-        /// <param name="itemId">Item Id of the starbase as given in the starbase list</param>
-        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
-        /// <returns></returns>
-        public static StarbaseDetail GetStarbaseDetail(int userId, int characterId, string fullApiKey, int itemId, bool ignoreCacheUntil)
-        {
-            var url = new ApiRequestUrl(Constants.StarbaseDetails);
-            AddCommonCharacterInformation(url, userId, characterId, fullApiKey);
-            url.AddProperty(ApiRequestUrl.PROPERTY_ITEM_ID, itemId.ToString());
-            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
-
-            return HandleRequest(url, new StarbaseDetailResponseParser(), ignoreCacheUntil);
-        }
-
-        /// <summary>
-        /// Returns a list of error codes that can be returned by the EVE API servers
-        /// </summary>
-        /// <returns></returns>
-        public static ErrorList GetErrorList()
-        {
-            return GetErrorList(false);
-        }
-
-        /// <summary>
-        /// Returns a list of error codes that can be returned by the EVE API servers
-        /// </summary>
-        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
-        /// <returns></returns>
-        public static ErrorList GetErrorList(bool ignoreCacheUntil)
-        {
-            var url = new ApiRequestUrl(Constants.ErrorList);
-            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
-
-            return HandleRequest(url, new ErrorListResponseParser(), ignoreCacheUntil);
-        }
-
-        /// <summary>
         /// Returns a list of assets owned by a character or corporation.
         /// </summary>
         /// <param name="assetListType"><see cref="AssetListType" /></param>
@@ -332,82 +208,60 @@ namespace libeveapi
         }
 
         /// <summary>
-        /// Retrieves the Kill Log for a character or corporation
+        /// Returns a detailed description of a character
         /// </summary>
-        /// <param name="killLogType">KillLogType -- Character/Corporation which kill log do you want to retrieve</param>
-        /// <param name="userId">User ID for authentication</param>
-        /// <param name="characterId">The character your requesting data for</param>
-        /// <param name="fullApiKey">Full Api Key for the account</param>
-        /// <param name="beforeKillID">Returns the most recent kills before the specified Kill ID - used for scrolling back through the log</param>
-        /// <returns>Kill Log object containing the array of kills</returns>
-        public static KillLog GetKillLog(KillLogType killLogType, int userId, int characterId, string fullApiKey, int beforeKillID)
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="apiKey">Limited access API key of account</param>
+        /// <returns></returns>
+        public static CharacterSheet GetCharacterSheet(int userId, int characterId, string apiKey)
         {
-            return GetKillLog(killLogType, userId, characterId, fullApiKey, beforeKillID, false);
+            return GetCharacterSheet(userId, characterId, apiKey, false);
         }
 
         /// <summary>
-        /// Retrieves the Kill Log for a character or corporation
+        /// Returns a detailed description of a character
         /// </summary>
-        /// <param name="killLogType">KillLogType -- Character/Corporation which kill log do you want to retrieve</param>
-        /// <param name="userId">User ID for authentication</param>
-        /// <param name="characterId">The character your requesting data for</param>
-        /// <param name="fullApiKey">Full Api Key for the account</param>
-        /// <param name="beforeKillID">Returns the most recent kills before the specified Kill ID - used for scrolling back through the log</param>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="apiKey">Limited access API key of account</param>
         /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
-        /// <returns>Kill Log object containing the array of kills</returns>
-        public static KillLog GetKillLog(KillLogType killLogType, int userId, int characterId, string fullApiKey, int beforeKillID, bool ignoreCacheUntil)
+        /// <returns></returns>
+        public static CharacterSheet GetCharacterSheet(int userId, int characterId, string apiKey, bool ignoreCacheUntil)
         {
-            string apiPath = string.Empty;
-            switch (killLogType)
-            {
-                case KillLogType.Character:
-                    apiPath = Constants.CharKillLog;
-                    break;
-                case KillLogType.Corporation:
-                    apiPath = Constants.CorpKillLog;
-                    break;
-            }
+            var url = new ApiRequestUrl(Constants.CharacterSheet);
+            AddCommonCharacterInformation(url, userId, characterId, apiKey);
 
-            var url = new ApiRequestUrl(apiPath);
-            AddCommonCharacterInformation(url, userId, characterId, fullApiKey);
-
-            if (beforeKillID != 0)
-            {
-                url.AddProperty(ApiRequestUrl.PROPERTY_BEFORE_KILL_ID, beforeKillID.ToString());
-            }
-
-            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
-
-            return HandleRequest(url, new KillLogResponseParser(), ignoreCacheUntil);
+            return HandleRequest(url, new CharacterSheetResponseParser(), ignoreCacheUntil);
+        }
+/*
+        /// <summary>
+        /// Retrieve a Characters Factional Warfare Stats
+        /// </summary>
+        /// <param name="userID">Users ID</param>
+        /// <param name="characterID">Characters ID</param>
+        /// <param name="apikey">Limited ApiKey</param>
+        /// <returns>Characters Faction War Stats</returns>
+        public static FacWarStats.CharFacWarStatsItem GetCharacterFactionWarStats(int userID, int characterID, string apikey)
+        {
+            return GetCharacterFactionWarStats(userID, characterID, apikey, false);
         }
 
         /// <summary>
-        /// Retrieves the Kill Log for a character or corporation
+        /// Retrieve a Characters Factional Warfare Stats
         /// </summary>
-        /// <param name="killLogType">KillLogType -- Character/Corporation which kill log do you want to retrieve</param>
-        /// <param name="userId">User ID for authentication</param>
-        /// <param name="characterId">The character your requesting data for</param>
-        /// <param name="fullApiKey">Full Api Key for the account</param>
-        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
-        /// <returns>Kill Log object containing the array of kills</returns>
-        public static KillLog GetKillLog(KillLogType killLogType, int userId, int characterId, string fullApiKey, bool ignoreCacheUntil)
+        /// <param name="userID">Users ID</param>
+        /// <param name="characterID">Characters ID</param>
+        /// <param name="apikey">Limited ApiKey</param>
+        /// <param name="ignoreCachedUntil">Ignore Cached Data</param>
+        /// <returns>Characters Faction War Stats</returns>
+        public static FacWarStats.CharFacWarStatsItem GetCharacterFactionWarStats(int userID, int characterID, string apikey, bool ignoreCachedUntil)
         {
-            return GetKillLog(killLogType, userId, characterId, fullApiKey, 0, ignoreCacheUntil);
+            var url = new ApiRequestUrl(Constants.CharFactionalWarfareStats);
+            AddCommonCharacterInformation(url, userID, characterID, apikey);
+            return HandleRequest(url,new CharFacWarStatsResponseParser(), ignoreCachedUntil);
         }
-
-        /// <summary>
-        /// Retrieves the Kill Log for a character or corporation
-        /// </summary>
-        /// <param name="killLogType">KillLogType -- Character/Corporation which kill log do you want to retrieve</param>
-        /// <param name="userId">User ID for authentication</param>
-        /// <param name="characterId">The character your requesting data for</param>
-        /// <param name="fullApiKey">Full Api Key for the account</param>
-        /// <returns>Kill Log object containing the array of kills</returns>
-        public static KillLog GetKillLog(KillLogType killLogType, int userId, int characterId, string fullApiKey)
-        {
-            return GetKillLog(killLogType, userId, characterId, fullApiKey, 0, false);
-        }
-
+*/
         /// <summary>
         /// Returns a list of industrial jobs owned by a character or corporation.
         /// </summary>
@@ -450,6 +304,296 @@ namespace libeveapi
             return HandleRequest(url, new IndustryJobListResponseParser(), ignoreCacheUntil);
         }
 
+
+        /// <summary>
+        /// Retrieves the Kill Log for a character or corporation
+        /// </summary>
+        /// <param name="killLogType">KillLogType -- Character/Corporation which kill log do you want to retrieve</param>
+        /// <param name="userId">User ID for authentication</param>
+        /// <param name="characterId">The character your requesting data for</param>
+        /// <param name="fullApiKey">Full Api Key for the account</param>
+        /// <param name="beforeKillID">Returns the most recent kills before the specified Kill ID - used for scrolling back through the log</param>
+        /// <returns>Kill Log object containing the array of kills</returns>
+        public static KillLog GetKillLog(KillLogType killLogType, int userId, int characterId, string fullApiKey, int beforeKillID)
+        {
+            return GetKillLog(killLogType, userId, characterId, fullApiKey, beforeKillID, false);
+        }
+
+        /// <summary>
+        /// Retrieves the Kill Log for a character or corporation
+        /// </summary>
+        /// <param name="killLogType">KillLogType -- Character/Corporation which kill log do you want to retrieve</param>
+        /// <param name="userId">User ID for authentication</param>
+        /// <param name="characterId">The character your requesting data for</param>
+        /// <param name="fullApiKey">Full Api Key for the account</param>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns>Kill Log object containing the array of kills</returns>
+        public static KillLog GetKillLog(KillLogType killLogType, int userId, int characterId, string fullApiKey, bool ignoreCacheUntil)
+        {
+            return GetKillLog(killLogType, userId, characterId, fullApiKey, 0, ignoreCacheUntil);
+        }
+
+        /// <summary>
+        /// Retrieves the Kill Log for a character or corporation
+        /// </summary>
+        /// <param name="killLogType">KillLogType -- Character/Corporation which kill log do you want to retrieve</param>
+        /// <param name="userId">User ID for authentication</param>
+        /// <param name="characterId">The character your requesting data for</param>
+        /// <param name="fullApiKey">Full Api Key for the account</param>
+        /// <returns>Kill Log object containing the array of kills</returns>
+        public static KillLog GetKillLog(KillLogType killLogType, int userId, int characterId, string fullApiKey)
+        {
+            return GetKillLog(killLogType, userId, characterId, fullApiKey, 0, false);
+        }
+        
+        /// <summary>
+        /// Retrieves the Kill Log for a character or corporation
+        /// </summary>
+        /// <param name="killLogType">KillLogType -- Character/Corporation which kill log do you want to retrieve</param>
+        /// <param name="userId">User ID for authentication</param>
+        /// <param name="characterId">The character your requesting data for</param>
+        /// <param name="fullApiKey">Full Api Key for the account</param>
+        /// <param name="beforeKillID">Returns the most recent kills before the specified Kill ID - used for scrolling back through the log</param>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns>Kill Log object containing the array of kills</returns>
+        public static KillLog GetKillLog(KillLogType killLogType, int userId, int characterId, string fullApiKey, int beforeKillID, bool ignoreCacheUntil)
+        {
+            string apiPath = string.Empty;
+            switch (killLogType)
+            {
+                case KillLogType.Character:
+                    apiPath = Constants.CharKillLog;
+                    break;
+                case KillLogType.Corporation:
+                    apiPath = Constants.CorpKillLog;
+                    break;
+            }
+
+            var url = new ApiRequestUrl(apiPath);
+            AddCommonCharacterInformation(url, userId, characterId, fullApiKey);
+
+            if (beforeKillID != 0)
+            {
+                url.AddProperty(ApiRequestUrl.PROPERTY_BEFORE_KILL_ID, beforeKillID.ToString());
+            }
+
+            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
+
+            return HandleRequest(url, new KillLogResponseParser(), ignoreCacheUntil);
+        }
+
+        //***************************** Mail List Holder *******************************//
+        //***************************** Mail Message Holder *******************************//
+        
+        /// <summary>
+        /// Returns a list of market orders owned by a character or corporation.
+        /// </summary>
+        /// <param name="marketOrdersListType"><see cref="MarketOrdersListType" /></param>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullApiKey">Full access API key of account</param>
+        /// <returns></returns>
+        public static MarketOrders GetMarketOrderList(MarketOrdersListType marketOrdersListType, int userId, int characterId, string fullApiKey)
+        {
+            return GetMarketOrderList(marketOrdersListType, userId, characterId, fullApiKey, false);
+        }
+
+        /// <summary>
+        /// Returns a list of market orders owned by a character or corporation.
+        /// </summary>
+        /// <param name="marketOrdersListType"><see cref="MarketOrdersListType" /></param>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullApiKey">Full access API key of account</param>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns></returns>
+        public static MarketOrders GetMarketOrderList(MarketOrdersListType marketOrdersListType, int userId, int characterId, string fullApiKey, bool ignoreCacheUntil)
+        {
+            string apiPath = string.Empty;
+            switch (marketOrdersListType)
+            {
+                case MarketOrdersListType.Character:
+                    apiPath = Constants.CharMarketOrders;
+                    break;
+                case MarketOrdersListType.Corporation:
+                    apiPath = Constants.CorpMarketOrders;
+                    break;
+            }
+
+            var url = new ApiRequestUrl(apiPath);
+            AddCommonCharacterInformation(url, userId, characterId, fullApiKey);
+            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
+
+            return HandleRequest(url, new MarketOrdersResponseParser(), ignoreCacheUntil);
+        }
+
+        /// <summary>
+        /// Returns a list of medals the character has
+        /// </summary>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullKey">Full access API key of account</param>
+        /// <returns></returns>
+        public static CharacterMedals GetCharacterMedals(int userId, int characterId, string fullKey)
+        {
+            return GetCharacterMedals(userId, characterId, fullKey, false);
+        }
+        
+        /// <summary>
+        /// Returns a list of medals the character has
+        /// </summary>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullKey">Full access API key of account</param>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns></returns>
+        public static CharacterMedals GetCharacterMedals(int userId, int characterId, string fullKey, bool ignoreCacheUntil)
+        {
+            var url = new ApiRequestUrl(Constants.CharMedals);
+            AddCommonCharacterInformation(url, userId, characterId, fullKey);
+// FIXME
+            return HandleRequest(url, new CharacterMedalsResponseParser(), ignoreCacheUntil);
+        }
+
+        /// <summary>
+        /// Returns the message headers for notifications
+        /// </summary>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullKey">Full access API key of account</param>
+        /// <returns></returns>
+        public static Notifications GetNotifications(int userId, int characterId, string fullKey)
+        {
+            return GetNotifications(userId, characterId, fullKey, false);
+        }
+        
+        /// <summary>
+        /// Returns the message headers for notifications
+        /// </summary>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullKey">Full access API key of account</param>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns></returns>
+        public static Notifications GetNotifications(int userId, int characterId, string fullKey, bool ignoreCacheUntil)
+        {
+            var url = new ApiRequestUrl(Constants.CharNotifications);
+            AddCommonCharacterInformation(url, userId, characterId, fullKey);
+// FIXME
+            return HandleRequest(url, new NotificationsResponseParser(), ignoreCacheUntil);
+        }
+
+        /// <summary>
+        /// Returns information about agents character is doing research with
+        /// </summary>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullKey">Full access API key of account</param>
+        /// <returns></returns>
+        public static Research GetResearch(int userId, int characterId, string fullKey)
+        {
+            return GetResearch(userId, characterId, fullKey, false);
+        }
+
+        /// <summary>
+        /// Returns information about agents character is doing research with
+        /// </summary>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullKey">Full access API key of account</param>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns></returns>
+        public static Research GetResearch(int userId, int characterId, string fullKey, bool ignoreCacheUntil)
+        {
+            var url = new ApiRequestUrl(Constants.CharResearch);
+            AddCommonCharacterInformation(url, userId, characterId, fullKey);
+
+            return HandleRequest(url, new ResearchResponseParser(), ignoreCacheUntil);
+        }
+
+        /// <summary>
+        /// Get the currently training Skill for a character
+        /// </summary>
+        /// <param name="userId">User Id of account for authentication</param>
+        /// <param name="characterId">Character Id of the character to get skill info for</param>
+        /// <param name="apiKey">limited access API key of Account</param>
+        /// <returns></returns>
+        public static SkillInTraining GetSkillInTraining(int userId, int characterId, string apiKey)
+        {
+            return GetSkillInTraining(userId, characterId, apiKey, false);
+        }
+
+        /// <summary>
+        /// Get the currently training Skill for a character
+        /// </summary>
+        /// <param name="userId">User Id of account for authentication</param>
+        /// <param name="characterId">Character Id of the character to get skill info for</param>
+        /// <param name="apiKey">limited access API key of Account</param>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns></returns>
+        public static SkillInTraining GetSkillInTraining(int userId, int characterId, string apiKey, bool ignoreCacheUntil)
+        {
+            var url = new ApiRequestUrl(Constants.SkillInTraining);
+            AddCommonCharacterInformation(url, userId, characterId, apiKey);
+
+            return HandleRequest(url, new SkillInTrainingResponseParser(), ignoreCacheUntil);
+        }
+
+        /// <summary>
+        /// Retrives the Training Skill Queue for the specified character
+        /// </summary>
+        /// <param name="userId">userID of account for authentication.</param>
+        /// <param name="characterId">Character you wish to request data from.</param>
+        /// <param name="apiKey">Limited access API key of account.</param>
+        /// <returns>Array of skills</returns>
+        public static SkillQueue GetSkillQueue(int userId, int characterId, string apiKey)
+        {
+            return GetSkillQueue(userId, characterId, apiKey, false);
+        }
+
+        /// <summary>
+        /// Retrives the Training Skill Queue for the specified character
+        /// </summary>
+        /// <param name="userId">userID of account for authentication.</param>
+        /// <param name="characterId">Character you wish to request data from.</param>
+        /// <param name="apiKey">Limited access API key of account.</param>
+        /// <param name="ignoreCacheUntil">Force Update</param>
+        /// <returns>Array of skills</returns>
+        public static SkillQueue GetSkillQueue(int userId, int characterId, string apiKey, bool ignoreCacheUntil)
+        {
+            var url = new ApiRequestUrl(Constants.SkillQueue);
+            AddCommonCharacterInformation(url, userId, characterId, apiKey);
+            return HandleRequest(url, new SkillQueueResponseParser(), ignoreCacheUntil);
+        }
+        
+        /// <summary>
+        /// Returns the standings to and from a character
+        /// </summary>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullKey">Full access API key of account</param>
+        /// <returns></returns>
+        public static Standings GetStandings(int userId, int characterId, string fullKey)
+        {
+            return GetStandings(userId, characterId, fullKey, false);
+        }
+        
+        /// <summary>
+        /// Returns the standings to and from a character
+        /// </summary>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullKey">Full access API key of account</param>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns></returns>
+        public static Standings GetStandings(int userId, int characterId, string fullKey, bool ignoreCacheUntil)
+        {
+            var url = new ApiRequestUrl(Constants.CharStandings);
+            AddCommonCharacterInformation(url, userId, characterId, fullKey);
+// FIXME
+            return HandleRequest(url, new StandingsResponseParser(), ignoreCacheUntil);
+        }
+        
         /// <summary>
         /// Returns a list of journal entries owned by a character or corporation.
         /// </summary>
@@ -730,50 +874,6 @@ namespace libeveapi
             return HandleRequest(url, new WalletJournalResponseParser(), ignoreCacheUntil);
         }
 
-
-
-        /// <summary>
-        /// Returns a list of market orders owned by a character or corporation.
-        /// </summary>
-        /// <param name="marketOrdersListType"><see cref="MarketOrdersListType" /></param>
-        /// <param name="userId">userId of account for authentication</param>
-        /// <param name="characterId">CharacterId of character for authentication</param>
-        /// <param name="fullApiKey">Full access API key of account</param>
-        /// <returns></returns>
-        public static MarketOrders GetMarketOrderList(MarketOrdersListType marketOrdersListType, int userId, int characterId, string fullApiKey)
-        {
-            return GetMarketOrderList(marketOrdersListType, userId, characterId, fullApiKey, false);
-        }
-
-        /// <summary>
-        /// Returns a list of market orders owned by a character or corporation.
-        /// </summary>
-        /// <param name="marketOrdersListType"><see cref="MarketOrdersListType" /></param>
-        /// <param name="userId">userId of account for authentication</param>
-        /// <param name="characterId">CharacterId of character for authentication</param>
-        /// <param name="fullApiKey">Full access API key of account</param>
-        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
-        /// <returns></returns>
-        public static MarketOrders GetMarketOrderList(MarketOrdersListType marketOrdersListType, int userId, int characterId, string fullApiKey, bool ignoreCacheUntil)
-        {
-            string apiPath = string.Empty;
-            switch (marketOrdersListType)
-            {
-                case MarketOrdersListType.Character:
-                    apiPath = Constants.CharMarketOrders;
-                    break;
-                case MarketOrdersListType.Corporation:
-                    apiPath = Constants.CorpMarketOrders;
-                    break;
-            }
-
-            var url = new ApiRequestUrl(apiPath);
-            AddCommonCharacterInformation(url, userId, characterId, fullApiKey);
-            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
-
-            return HandleRequest(url, new MarketOrdersResponseParser(), ignoreCacheUntil);
-        }
-
         /// <summary>
         /// Returns a list of market transactions (wallet transactions) owned by a character or corporation.
         /// </summary>
@@ -916,152 +1016,35 @@ namespace libeveapi
             return HandleRequest(url, new WalletTransactionsResponseParser(), ignoreCacheUntil);
         }
 
+        #endregion Character API
+        
+        #region Corporation API
         /// <summary>
-        /// Returns a list of RefTypes that are used by certain API Calls
-        /// </summary>
-        /// <returns></returns>
-        public static RefTypes GetRefTypesList()
-        {
-            return GetRefTypesList(false);
-        }
-
-        /// <summary>
-        /// Returns a list of RefTypes that are used by certain API Calls
-        /// </summary>
-        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
-        /// <returns></returns>
-        public static RefTypes GetRefTypesList(bool ignoreCacheUntil)
-        {
-            var url = new ApiRequestUrl(Constants.RefTypesList);
-            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
-
-            return HandleRequest(url, new RefTypesResponseParser(), ignoreCacheUntil);
-        }
-
-        /// <summary>
-        /// Returns a list solar systems that have more than 0 jumps with the jump count
-        /// </summary>
-        /// <returns></returns>
-        public static MapJumps GetMapJumps()
-        {
-            return GetMapJumps(false);
-        }
-
-        /// <summary>
-        /// Returns a list solar systems that have more than 0 jumps with the jump count
-        /// </summary>
-        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
-        /// <returns></returns>
-        public static MapJumps GetMapJumps(bool ignoreCacheUntil)
-        {
-            var url = new ApiRequestUrl(Constants.MapJumps);
-            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
-
-            return HandleRequest(url, new MapJumpsResponseParser(), ignoreCacheUntil);
-        }
-
-        /// <summary>
-        /// Returns a list solar systems that have sovereignty
-        /// </summary>
-        /// <returns></returns>
-        public static MapSovereignty GetMapSovereignty()
-        {
-            return GetMapSovereignty(false);
-        }
-
-        /// <summary>
-        /// Returns a list solar systems that have sovereignty
-        /// </summary>
-        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
-        /// <returns></returns>
-        public static MapSovereignty GetMapSovereignty(bool ignoreCacheUntil)
-        {
-            var url = new ApiRequestUrl(Constants.MapSoveignty);
-            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
-
-            return HandleRequest(url, new MapSovereigntyResponseParser(), ignoreCacheUntil);
-        }
-
-        /// <summary>
-        /// Returns a list kills in solar systems with more than 0 kills
-        /// </summary>
-        /// <returns></returns>
-        public static MapKills GetMapKills()
-        {
-            return GetMapKills(false);
-        }
-
-
-        /// <summary>
-        /// Returns a list kills in solar systems with more than 0 kills
-        /// </summary>
-        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
-        /// <returns></returns>
-        public static MapKills GetMapKills(bool ignoreCacheUntil)
-        {
-            var url = new ApiRequestUrl(Constants.MapKills);
-            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
-
-            return HandleRequest(url, new MapKillsResponseParser(), ignoreCacheUntil);
-        }
-
-        /// <summary>
-        /// Returns information on every member in the corporation. Information retrieved
-        /// varies on your roles without within the corporation. Not valid for NPC corps.
-        /// </summary>
-        /// <param name="userId">user Id of account for authentication</param>
-        /// <param name="characterId">Character Id of a char with director/CEO access in the corp that owns the starbase</param>
-        /// <param name="fullApiKey">Full access api key of account</param>
-        /// <returns></returns>
-        public static MemberTracking GetMemberTracking(int userId, int characterId, string fullApiKey)
-        {
-            return GetMemberTracking(userId, characterId, fullApiKey, false);
-        }
-
-        /// <summary>
-        /// Returns information on every member in the corporation. Information retrieved
-        /// varies on your roles without within the corporation. Not valid for NPC corps.
-        /// </summary>
-        /// <param name="userId">user Id of account for authentication</param>
-        /// <param name="characterId">Character Id of a char with director/CEO access in the corp that owns the starbase</param>
-        /// <param name="fullApiKey">Full access api key of account</param>
-        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
-        /// <returns></returns>
-        public static MemberTracking GetMemberTracking(int userId, int characterId, string fullApiKey, bool ignoreCacheUntil)
-        {
-            var url = new ApiRequestUrl(Constants.MemberTracking);
-            AddCommonCharacterInformation(url, userId, characterId, fullApiKey);
-            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "1");
-
-            return HandleRequest(url, new MemberTrackingResponseParser(), ignoreCacheUntil);
-        }
-
-        /// <summary>
-        /// Returns a detailed description of a character
+        /// Shows corporate container audit log
         /// </summary>
         /// <param name="userId">userId of account for authentication</param>
         /// <param name="characterId">CharacterId of character for authentication</param>
-        /// <param name="apiKey">Limited access API key of account</param>
+        /// <param name="fullKey">Full access API key of account</param>
         /// <returns></returns>
-        public static CharacterSheet GetCharacterSheet(int userId, int characterId, string apiKey)
+        public static ContainerLog GetContainerLog(int userId, int characterId, string fullKey)
         {
-            return GetCharacterSheet(userId, characterId, apiKey, false);
+            return GetContainerLog(userId, characterId, fullKey, false);
         }
 
         /// <summary>
-        /// Returns a detailed description of a character
+        /// Shows corporate container audit log
         /// </summary>
         /// <param name="userId">userId of account for authentication</param>
         /// <param name="characterId">CharacterId of character for authentication</param>
-        /// <param name="apiKey">Limited access API key of account</param>
+        /// <param name="fullKey">Full access API key of account</param>
         /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
         /// <returns></returns>
-        public static CharacterSheet GetCharacterSheet(int userId, int characterId, string apiKey, bool ignoreCacheUntil)
+        public static ContainerLog GetContainerLog(int userId, int characterId, string fullKey, bool ignoreCacheUntil)
         {
-            var url = new ApiRequestUrl(Constants.CharacterSheet);
-            AddCommonCharacterInformation(url, userId, characterId, apiKey);
-
-            return HandleRequest(url, new CharacterSheetResponseParser(), ignoreCacheUntil);
+            var url = new ApiRequestUrl(Constants.CorpContainerLog);
+            AddCommonCharacterInformation(url, userId, characterId, fullKey);
+// FIXME
+            return HandleRequest(url, new ContainerLogResponseParser(), ignoreCacheUntil);
         }
 
         /// <summary>
@@ -1123,7 +1106,266 @@ namespace libeveapi
 
             return HandleRequest(url, new CorporationSheetResponseParser(), ignoreCacheUntil);
         }
+ 
+        /// <summary>
+        /// Returns a list of medals created by this corporation
+        /// </summary>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="limitedKey">LimitedKey access API key of account</param>
+        /// <returns></returns>
+        public static CorporationMedals GetCorporationMedals(int userId, int characterId, string limitedKey)
+        {
+            return GetCorporationMedals(userId, characterId, limitedKey, false);
+        }
+        
+        /// <summary>
+        /// Returns a list of medals created by this corporation
+        /// </summary>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="limitedKey">Limited access API key of account</param>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns></returns>
+        public static CorporationMedals GetCorporationMedals(int userId, int characterId, string limitedKey, bool ignoreCacheUntil)
+        {
+            var url = new ApiRequestUrl(Constants.CorpMedals);
+            AddCommonCharacterInformation(url, userId, characterId, limitedKey);
+// FIXME
+            return HandleRequest(url, new CorporationMedalsResponseParser(), ignoreCacheUntil);
+        }
 
+        /// <summary>
+        /// Returns the security roles of members in a corporation
+        /// </summary>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullKey">Full access API key of account</param>
+        /// <returns></returns>
+        public static MemberSecurity GetMemberSecurity(int userId, int characterId, string fullKey)
+        {
+            return GetMemberSecurity(userId, characterId, fullKey, false);
+        }
+
+        /// <summary>
+        /// Returns the security roles of members in a corporation
+        /// </summary>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullKey">Full access API key of account</param>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns></returns>
+        public static MemberSecurity GetMemberSecurity(int userId, int characterId, string fullKey, bool ignoreCacheUntil)
+        {
+            var url = new ApiRequestUrl(Constants.CorpMemberSecurity);
+            AddCommonCharacterInformation(url, userId, characterId, fullKey);
+// FIXME
+            return HandleRequest(url, new MemberSecurityResponseParser(), ignoreCacheUntil);
+        }
+        
+        /// <summary>
+        /// Returns info about corporation role changes for members and who did the change
+        /// </summary>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullKey">Full access API key of account</param>
+        /// <returns></returns>
+        public static MemberSecurityLog GetMemberSecurityLog(int userId, int characterId, string fullKey)
+        {
+            return GetMemberSecurityLog(userId, characterId, fullKey, false);
+        }
+
+        /// <summary>
+        /// Returns info about corporation role changes for members and who did the change
+        /// </summary>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullKey">Full access API key of account</param>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns></returns>
+        public static MemberSecurityLog GetMemberSecurityLog(int userId, int characterId, string fullKey, bool ignoreCacheUntil)
+        {
+            var url = new ApiRequestUrl(Constants.CorpMemberSecurityLog);
+            AddCommonCharacterInformation(url, userId, characterId, fullKey);
+// FIXME
+            return HandleRequest(url, new MemberSecurityLogResponseParser(), ignoreCacheUntil);
+        }
+
+        /// <summary>
+        /// Returns information on every member in the corporation. Information retrieved
+        /// varies on your roles without within the corporation. Not valid for NPC corps.
+        /// </summary>
+        /// <param name="userId">user Id of account for authentication</param>
+        /// <param name="characterId">Character Id of a char with director/CEO access in the corp that owns the starbase</param>
+        /// <param name="fullApiKey">Full access api key of account</param>
+        /// <returns></returns>
+        public static MemberTracking GetMemberTracking(int userId, int characterId, string fullApiKey)
+        {
+            return GetMemberTracking(userId, characterId, fullApiKey, false);
+        }
+
+        /// <summary>
+        /// Returns information on every member in the corporation. Information retrieved
+        /// varies on your roles without within the corporation. Not valid for NPC corps.
+        /// </summary>
+        /// <param name="userId">user Id of account for authentication</param>
+        /// <param name="characterId">Character Id of a char with director/CEO access in the corp that owns the starbase</param>
+        /// <param name="fullApiKey">Full access api key of account</param>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns></returns>
+        public static MemberTracking GetMemberTracking(int userId, int characterId, string fullApiKey, bool ignoreCacheUntil)
+        {
+            var url = new ApiRequestUrl(Constants.MemberTracking);
+            AddCommonCharacterInformation(url, userId, characterId, fullApiKey);
+            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "1");
+
+            return HandleRequest(url, new MemberTrackingResponseParser(), ignoreCacheUntil);
+        }
+
+
+        /// <summary>
+        /// Returns the settings and fuel status of a starbase
+        /// </summary>
+        /// <param name="userId">user Id of account for authentication</param>
+        /// <param name="characterId">Character Id of a char with director/CEO access in the corp that owns the starbase</param>
+        /// <param name="fullApiKey">Full access api key of account</param>
+        /// <param name="itemId">Item Id of the starbase as given in the starbase list</param>
+        /// <returns></returns>
+        public static StarbaseDetail GetStarbaseDetail(int userId, int characterId, string fullApiKey, int itemId)
+        {
+            return GetStarbaseDetail(userId, characterId, fullApiKey, itemId, false);
+        }
+
+        /// <summary>
+        /// Returns the settings and fuel status of a starbase
+        /// </summary>
+        /// <param name="userId">user Id of account for authentication</param>
+        /// <param name="characterId">Character Id of a char with director/CEO access in the corp that owns the starbase</param>
+        /// <param name="fullApiKey">Full access api key of account</param>
+        /// <param name="itemId">Item Id of the starbase as given in the starbase list</param>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns></returns>
+        public static StarbaseDetail GetStarbaseDetail(int userId, int characterId, string fullApiKey, int itemId, bool ignoreCacheUntil)
+        {
+            var url = new ApiRequestUrl(Constants.StarbaseDetails);
+            AddCommonCharacterInformation(url, userId, characterId, fullApiKey);
+            url.AddProperty(ApiRequestUrl.PROPERTY_ITEM_ID, itemId.ToString());
+            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
+
+            return HandleRequest(url, new StarbaseDetailResponseParser(), ignoreCacheUntil);
+        }
+
+        /// <summary>
+        /// Returns a list of starbases owned by a corporation
+        /// </summary>
+        /// <param name="userId">user Id of account for authentication</param>
+        /// <param name="characterId">Character Id of a char with director/CEO access in the corp you want the starbases for</param>
+        /// <param name="fullApiKey">Full access api key of account</param>
+        /// <returns></returns>
+        public static StarbaseList GetStarbaseList(int userId, int characterId, string fullApiKey)
+        {
+            return GetStarbaseList(userId, characterId, fullApiKey, false);
+        }
+
+        /// <summary>
+        /// Returns a list of starbases owned by a corporation
+        /// </summary>
+        /// <param name="userId">user Id of account for authentication</param>
+        /// <param name="characterId">Character Id of a char with director/CEO access in the corp you want the starbases for</param>
+        /// <param name="fullApiKey">Full access api key of account</param>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns></returns>
+        public static StarbaseList GetStarbaseList(int userId, int characterId, string fullApiKey, bool ignoreCacheUntil)
+        {
+            var url = new ApiRequestUrl(Constants.StarbaseList);
+            AddCommonCharacterInformation(url, userId, characterId, fullApiKey);
+            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
+
+            return HandleRequest(url, new StarbaseListResponseParser(), ignoreCacheUntil);
+        }
+
+        /// <summary>
+        /// Returns the character and corporation share holders of a corporation
+        /// </summary>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullKey">Full access API key of account</param>
+        /// <returns></returns>
+        public static Shareholders GetShareholders(int userId, int characterId, string fullKey)
+        {
+            return GetShareholders(userId, characterId, fullKey, false);
+        }
+        
+        /// <summary>
+        /// Returns the character and corporation share holders of a corporation
+        /// </summary>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullKey">Full access API key of account</param>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns></returns>
+        public static Shareholders GetShareholders(int userId, int characterId, string fullKey, bool ignoreCacheUntil)
+        {
+            var url = new ApiRequestUrl(Constants.CorpShareholders);
+            AddCommonCharacterInformation(url, userId, characterId, fullKey);
+// FIXME
+            return HandleRequest(url, new ShareholdersResponseParser(), ignoreCacheUntil);
+        }
+
+        /// <summary>
+        /// Returns the titles of a corporation
+        /// </summary>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullKey">Full access API key of account</param>
+        /// <returns></returns>
+        public static Titles GetTitles(int userId, int characterId, string fullKey)
+        {
+            return GetTitles(userId, characterId, fullKey, false);
+        }
+
+        /// <summary>
+        /// Returns the titles of a corporation
+        /// </summary>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="fullKey">Full access API key of account</param>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns></returns>
+        public static Titles GetTitles(int userId, int characterId, string fullKey, bool ignoreCacheUntil)
+        {
+            var url = new ApiRequestUrl(Constants.CorpTitles);
+            AddCommonCharacterInformation(url, userId, characterId, fullKey);
+// FIXME
+            return HandleRequest(url, new TitlesResponseParser(), ignoreCacheUntil);
+        }
+
+        #endregion Corporation API
+        
+        #region Eve API
+
+        /// <summary>
+        /// Gets a list of all alliances and their member corporations
+        /// </summary>
+        /// <returns></returns>
+        public static AllianceList GetAllianceList()
+        {
+            return GetAllianceList(false);
+        }
+
+        /// <summary>
+        /// Gets a list of all alliances and their member corporations
+        /// </summary>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns></returns>
+        public static AllianceList GetAllianceList(bool ignoreCacheUntil)
+        {
+            var url = new ApiRequestUrl(Constants.AllianceList);
+            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "1");
+
+            return HandleRequest(url, new AllianceListResponseParser(), ignoreCacheUntil);
+        }
+        
         /// <summary>
         /// Gets a list of conquerable stations from the api
         /// </summary>
@@ -1147,6 +1389,116 @@ namespace libeveapi
         }
 
         /// <summary>
+        /// Returns a list of error codes that can be returned by the EVE API servers
+        /// </summary>
+        /// <returns></returns>
+        public static ErrorList GetErrorList()
+        {
+            return GetErrorList(false);
+        }
+
+        /// <summary>
+        /// Returns a list of error codes that can be returned by the EVE API servers
+        /// </summary>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns></returns>
+        public static ErrorList GetErrorList(bool ignoreCacheUntil)
+        {
+            var url = new ApiRequestUrl(Constants.ErrorList);
+            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
+
+            return HandleRequest(url, new ErrorListResponseParser(), ignoreCacheUntil);
+        }
+/*
+        /// <summary>
+        /// Returns Factional warfare statistics
+        /// </summary>
+        /// <param name="userId">userId of account for authentication</param>
+        /// <param name="characterId">CharacterId of character for authentication</param>
+        /// <param name="apiKey">Limited access API key of account</param>
+        /// <returns></returns>
+        public static FacWarStats GetFacWarStats(int userId, int characterId, string apiKey)
+        {
+            var url = new ApiRequestUrl(Constants.ErrorList);
+            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
+            return null;
+//FIXME
+//            return HandleRequest(url, new FacWarStatsResponseParser(), ignoreCacheUntil);
+        }
+*/
+       
+        /// <summary>
+        /// Returns the character id and character name, given the one or the other
+        /// </summary>
+        /// <param name="charactername">character name string, use to look up character id</param>
+        /// <returns></returns>
+        public static CharacterIdName GetCharacterIdName(string charactername)
+        {
+            return GetCharacterIdName(charactername, false);
+        }
+
+        /// <summary>
+        /// Returns the character id and character name, given the one or the other
+        /// </summary>
+        /// <param name="charactername">character name string, use to look up character id</param>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns></returns>
+        public static CharacterIdName GetCharacterIdName(string charactername, bool ignoreCacheUntil)
+        {
+            var url = new ApiRequestUrl(Constants.CharacterIdName);
+            url.AddProperty(ApiRequestUrl.PROPERTY_NAMES, charactername);
+
+            return HandleRequest(url, new CharacterIdNameResponseParser(), ignoreCacheUntil);
+        }
+
+        /// <summary>
+        /// Returns the character id and character name, given the one or the other
+        /// </summary>
+        /// <param name="characterId">characterId used to look up character name</param>
+        /// <returns></returns>
+        public static CharacterIdName GetCharacterIdName(int characterId)
+        {
+            return GetCharacterIdName(characterId, false);
+        }
+
+
+        /// <summary>
+        /// Returns the character id and character name, given the one or the other
+        /// </summary>
+        /// <param name="characterId">characterId used to look up character name</param>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns></returns>
+        public static CharacterIdName GetCharacterIdName(int characterId, bool ignoreCacheUntil)
+        {
+            var url = new ApiRequestUrl(Constants.CharacterIdName);
+            url.AddProperty(ApiRequestUrl.PROPERTY_IDENTIFICATIONS, characterId.ToString());
+
+            return HandleRequest(url, new CharacterIdNameResponseParser(), ignoreCacheUntil);
+        }
+
+        /// <summary>
+        /// Returns a list of RefTypes that are used by certain API Calls
+        /// </summary>
+        /// <returns></returns>
+        public static RefTypes GetRefTypesList()
+        {
+            return GetRefTypesList(false);
+        }
+
+        /// <summary>
+        /// Returns a list of RefTypes that are used by certain API Calls
+        /// </summary>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns></returns>
+        public static RefTypes GetRefTypesList(bool ignoreCacheUntil)
+        {
+            var url = new ApiRequestUrl(Constants.RefTypesList);
+            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
+
+            return HandleRequest(url, new RefTypesResponseParser(), ignoreCacheUntil);
+        }
+       
+        /// <summary>
         /// Gets a data structure containing information on every skill in the game.
         /// </summary>
         /// <returns></returns>
@@ -1168,82 +1520,6 @@ namespace libeveapi
             return HandleRequest(url, new SkillTreeResponseParser(), ignoreCacheUntil);
         }
 
-        /// <summary>
-        /// Gets a list of all alliances and their member corporations
-        /// </summary>
-        /// <returns></returns>
-        public static AllianceList GetAllianceList()
-        {
-            return GetAllianceList(false);
-        }
-
-        /// <summary>
-        /// Gets a list of all alliances and their member corporations
-        /// </summary>
-        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
-        /// <returns></returns>
-        public static AllianceList GetAllianceList(bool ignoreCacheUntil)
-        {
-            var url = new ApiRequestUrl(Constants.AllianceList);
-            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "1");
-
-            return HandleRequest(url, new AllianceListResponseParser(), ignoreCacheUntil);
-        }
-
-        /// <summary>
-        /// Get the currently training Skill for a character
-        /// </summary>
-        /// <param name="userId">User Id of account for authentication</param>
-        /// <param name="characterId">Character Id of the character to get skill info for</param>
-        /// <param name="apiKey">limited access API key of Account</param>
-        /// <returns></returns>
-        public static SkillInTraining GetSkillInTraining(int userId, int characterId, string apiKey)
-        {
-            return GetSkillInTraining(userId, characterId, apiKey, false);
-        }
-
-        /// <summary>
-        /// Get the currently training Skill for a character
-        /// </summary>
-        /// <param name="userId">User Id of account for authentication</param>
-        /// <param name="characterId">Character Id of the character to get skill info for</param>
-        /// <param name="apiKey">limited access API key of Account</param>
-        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
-        /// <returns></returns>
-        public static SkillInTraining GetSkillInTraining(int userId, int characterId, string apiKey, bool ignoreCacheUntil)
-        {
-            var url = new ApiRequestUrl(Constants.SkillInTraining);
-            AddCommonCharacterInformation(url, userId, characterId, apiKey);
-
-            return HandleRequest(url, new SkillInTrainingResponseParser(), ignoreCacheUntil);
-        }
-
-        /// <summary>
-        /// Retrives the Training Skill Queue for the specified character
-        /// </summary>
-        /// <param name="userId">userID of account for authentication.</param>
-        /// <param name="characterId">Character you wish to request data from.</param>
-        /// <param name="apiKey">Limited access API key of account.</param>
-        /// <returns>Array of skills</returns>
-        public static SkillQueue GetSkillQueue(int userId, int characterId, string apiKey)
-        {
-            return GetSkillQueue(userId, characterId, apiKey, false);
-        }
-
-        /// <summary>
-        /// Retrives the Training Skill Queue for the specified character
-        /// </summary>
-        /// <param name="userId">userID of account for authentication.</param>
-        /// <param name="characterId">Character you wish to request data from.</param>
-        /// <param name="apiKey">Limited access API key of account.</param>
-        /// <param name="ignoreCacheUntil">Force Update</param>
-        /// <returns>Array of skills</returns>
-        public static SkillQueue GetSkillQueue(int userId, int characterId, string apiKey, bool ignoreCacheUntil)
-        {
-            var url = new ApiRequestUrl(Constants.SkillQueue);
-            AddCommonCharacterInformation(url, userId, characterId, apiKey);
-            return HandleRequest(url, new SkillQueueResponseParser(), ignoreCacheUntil);
-        }
 
         /// <summary>
         /// Retrieve the portrait for a character
@@ -1264,54 +1540,9 @@ namespace libeveapi
             string url = String.Format("{0}?c={1}&s={2}", Constants.ImageFullURL, characterId, imageSize);
             return Network.GetImage(url);
         }
-
-        /// <summary>
-        /// Retrieve current Tranquility status
-        /// </summary>
-        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
-        /// <returns></returns>
-        public static ServerStatus GetServerStatus(bool ignoreCacheUntil)
-        {
-            var url = new ApiRequestUrl(Constants.ServerStatus);
-            return HandleRequest(url, new ServerStatusResponseParser(), ignoreCacheUntil);
-        }
-
-        /// <summary>
-        /// Retrieve current Tranquility status
-        /// </summary>
-        /// <returns></returns>
-        public static ServerStatus GetServerStatus()
-        {
-            return GetServerStatus(false);
-        }
-
-        /// <summary>
-        /// Retrieve a Characters Factional Warfare Stats
-        /// </summary>
-        /// <param name="userID">Users ID</param>
-        /// <param name="characterID">Characters ID</param>
-        /// <param name="apikey">Limited ApiKey</param>
-        /// <returns>Characters Faction War Stats</returns>
-        public static FacWarStats.CharFacWarStatsItem GetCharacterFactionWarStats(int userID, int characterID, string apikey)
-        {
-            return GetCharacterFactionWarStats(userID, characterID, apikey, false);
-        }
-
-        /// <summary>
-        /// Retrieve a Characters Factional Warfare Stats
-        /// </summary>
-        /// <param name="userID">Users ID</param>
-        /// <param name="characterID">Characters ID</param>
-        /// <param name="apikey">Limited ApiKey</param>
-        /// <param name="ignoreCachedUntil">Ignore Cached Data</param>
-        /// <returns>Characters Faction War Stats</returns>
-        public static FacWarStats.CharFacWarStatsItem GetCharacterFactionWarStats(int userID, int characterID, string apikey, bool ignoreCachedUntil)
-        {
-            var url = new ApiRequestUrl(Constants.CharFactionalWarfareStats);
-            AddCommonCharacterInformation(url, userID, characterID, apikey);
-            return HandleRequest(url,new CharFacWarStatsResponseParser(), ignoreCachedUntil);
-        }
-
+        #endregion Eve API
+        
+        #region Map API
         /// <summary>
         /// Get a list of contestable solar systems and the NPC faction currently occupying them
         /// </summary>
@@ -1331,6 +1562,98 @@ namespace libeveapi
         {
             return GetFactionWarSystems(false);
         }
+
+        /// <summary>
+        /// Returns a list solar systems that have more than 0 jumps with the jump count
+        /// </summary>
+        /// <returns></returns>
+        public static MapJumps GetMapJumps()
+        {
+            return GetMapJumps(false);
+        }
+
+        /// <summary>
+        /// Returns a list solar systems that have more than 0 jumps with the jump count
+        /// </summary>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns></returns>
+        public static MapJumps GetMapJumps(bool ignoreCacheUntil)
+        {
+            var url = new ApiRequestUrl(Constants.MapJumps);
+            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
+
+            return HandleRequest(url, new MapJumpsResponseParser(), ignoreCacheUntil);
+        }
+        
+        /// <summary>
+        /// Returns a list kills in solar systems with more than 0 kills
+        /// </summary>
+        /// <returns></returns>
+        public static MapKills GetMapKills()
+        {
+            return GetMapKills(false);
+        }
+
+
+        /// <summary>
+        /// Returns a list kills in solar systems with more than 0 kills
+        /// </summary>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns></returns>
+        public static MapKills GetMapKills(bool ignoreCacheUntil)
+        {
+            var url = new ApiRequestUrl(Constants.MapKills);
+            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
+
+            return HandleRequest(url, new MapKillsResponseParser(), ignoreCacheUntil);
+        }
+
+        /// <summary>
+        /// Returns a list solar systems that have sovereignty
+        /// </summary>
+        /// <returns></returns>
+        public static MapSovereignty GetMapSovereignty()
+        {
+            return GetMapSovereignty(false);
+        }
+
+        /// <summary>
+        /// Returns a list solar systems that have sovereignty
+        /// </summary>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns></returns>
+        public static MapSovereignty GetMapSovereignty(bool ignoreCacheUntil)
+        {
+            var url = new ApiRequestUrl(Constants.MapSoveignty);
+            url.AddProperty(ApiRequestUrl.PROPERTY_VERSION, "2");
+
+            return HandleRequest(url, new MapSovereigntyResponseParser(), ignoreCacheUntil);
+        }
+        
+        #endregion Map API
+        
+        #region Server API
+        /// <summary>
+        /// Retrieve current Tranquility status
+        /// </summary>
+        /// <param name="ignoreCacheUntil">Ignores the cacheUntil and will return the cache even if expired</param>
+        /// <returns></returns>
+        public static ServerStatus GetServerStatus(bool ignoreCacheUntil)
+        {
+            var url = new ApiRequestUrl(Constants.ServerStatus);
+            return HandleRequest(url, new ServerStatusResponseParser(), ignoreCacheUntil);
+        }
+
+        /// <summary>
+        /// Retrieve current Tranquility status
+        /// </summary>
+        /// <returns></returns>
+        public static ServerStatus GetServerStatus()
+        {
+            return GetServerStatus(false);
+        }
+        #endregion Server API
+        
 
         /// <summary>
         /// Handles a request to the <see cref="ApiRequestHandler{T}" />.

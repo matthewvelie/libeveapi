@@ -36,7 +36,7 @@ namespace libeveapi
     [XmlInclude(typeof(KillLog))]
     [XmlInclude(typeof(ServerStatus))]
     [XmlInclude(typeof(MapFacWarSystems))]
-    [XmlInclude(typeof(FacWarStats))]
+//    [XmlInclude(typeof(FacWarStats))]
     public class ApiResponse
     {
         /// <summary>

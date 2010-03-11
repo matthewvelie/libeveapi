@@ -29,7 +29,7 @@ namespace libeveapi
             }
             catch (KeyNotFoundException)
             {
-                return "Unknown Error Code";
+                return "Unknown Error Code " + errorCode;
             }
         }
     }

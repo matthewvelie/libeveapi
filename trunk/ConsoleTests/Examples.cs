@@ -24,7 +24,7 @@ namespace ConsoleTests
             Console.WriteLine("Press Any Key to Continue");
             Console.ReadKey();
         }
-
+/*
         public static void CharFacWarStatsExample()
         {
             FacWarStats stats = new FacWarStats();
@@ -43,7 +43,7 @@ namespace ConsoleTests
             Console.WriteLine("Victory Points Last Week: {0}", stats.CharacterFactionWarStats.VictoryPointsLastWeek);
             Console.WriteLine("Victory Points Total: {0}", stats.CharacterFactionWarStats.VictoryPointsTotal);
         }
-
+*/
         public static void MapFactionWarSystemsExample()
         {
             MapFacWarSystems mapFacWarSystems = EveApi.GetFactionWarSystems();

@@ -6,11 +6,14 @@ namespace libeveapi
     /// </summary>
     public class MapKills : ApiResponse
     {
+        /// <summary>
+        /// API Version Compatibility
+        /// </summary>
         public const string API_VERSION = "2";
         private MapKillsItem[] mapSystemKills = new MapKillsItem[0];
 
         /// <summary>
-        /// 
+        /// Array of Map Kills by System
         /// </summary>
         public MapKillsItem[] MapSystemKills
         {
@@ -23,6 +26,30 @@ namespace libeveapi
         /// </summary>
         public class MapKillsItem
         {
+            /// <summary>
+            /// XmlResponse Columns List
+            /// </summary>
+			public static string Columns="solarSystemId,shipKills,factionKills,podKills";
+            /// <summary>
+            /// Column Key or Unique Identifier for the object
+            /// </summary>
+			public static string Key = "solarSystemId";
+
+            /// <summary>
+            /// Default Constructor
+            /// </summary>
+            public MapKillsItem(){}
+            /// <summary>
+            /// Full Constructor
+            /// </summary>
+            public MapKillsItem(int solarSystemId, int shipKills, int factionKills, int podKills)
+            {
+                this.solarSystemId = solarSystemId;
+                this.shipKills = shipKills;
+                this.factionKills = factionKills;
+                this.podKills = podKills;
+            }
+            
             private int solarSystemId;
             private int shipKills;
             private int factionKills;
